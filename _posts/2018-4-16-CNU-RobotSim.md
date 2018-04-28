@@ -1,5 +1,5 @@
 ---
 layout: post
-title: CNU-LeapMotion!
+title: CNU-RobotSim!
 ---
 
