@@ -2,14 +2,16 @@
 layout: post
 title: AnalyzerUI
 ---
+!(AnalyzerUI)[https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/AnalyzerUI-Icon-32.png] AnalyzerUI 是由[擎添工業](https://ching-tech.com/)開發的氣體檢測儀器設定及資料採集記錄軟體
 
-氣體檢測儀器設定及資料採集記錄軟體
 
+---
 ### Release
 
 - AnalyzerUI v1.0 (20250115) 
 [下載](https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/Setup20250115.zip) / 
 [手冊](https://docs.google.com/presentation/d/1vMC8totW6PzqluOyhYm6pcSRuT_h-w-1fbskHXCPBik/edit?usp=sharing)
+
 
 ---
 ### Release Note
