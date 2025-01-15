@@ -29,8 +29,7 @@ title: AnalyzerUI
 - History-數值顯示皆改為小數點後1位數
 
 2025/01/14
-- 使用VSIX 發佈安裝檔
-- Installer.msi及Setup.exe
+- 使用VSIX 發佈安裝檔 Installer.msi及Setup.exe
 - appSettings.json 儲存路徑為 C:/Users/(user)/AppData/Local/appSettings.json
 - 預設開啟Template與儲存Excel路徑設為桌面
 
