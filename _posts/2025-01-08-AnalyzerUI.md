@@ -2,7 +2,7 @@
 layout: post
 title: AnalyzerUI
 ---
-!(AnalyzerUI)[https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/AnalyzerUI-Icon-32.png] AnalyzerUI 是由[擎添工業](https://ching-tech.com/)開發的氣體檢測儀器設定及資料採集記錄軟體
+![AnalyzerUI](https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/AnalyzerUI-Icon-32.png) AnalyzerUI 是由[擎添工業](https://ching-tech.com/)開發的氣體檢測儀器設定及資料採集記錄軟體
 
 本軟體採用實體USB License Key 方式授權使用
 
