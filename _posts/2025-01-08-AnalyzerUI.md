@@ -25,7 +25,7 @@ title: AnalyzerUI
 
 2025/01/15
 - History-鎖定按鈕與圖示移除,改為按狀態快選單標題來切換
-- History-資料表內儀器狀態 改為延續前一筆資料儀器狀態 預設初始值為NONE
+- History-資料表內儀器狀態,改為延續前一筆資料儀器狀態,儀器狀態預設初始值為NONE
 - History-數值顯示皆改為小數點後1位數
 - History-備註快速選單可由appSettings.json內新增
 
