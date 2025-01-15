@@ -5,14 +5,14 @@ title: AnalyzerUI
 
 氣體檢測儀器設定及資料採集記錄軟體
 
-#Release
+###Release
 
 - AnalyzerUI v1.0 (20250115) 
 [下載](https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/Setup20250115.zip) / 
 [手冊](https://docs.google.com/presentation/d/1vMC8totW6PzqluOyhYm6pcSRuT_h-w-1fbskHXCPBik/edit?usp=sharing)
 
-
-#Release Note
+---
+###Release Note
 
 2025/01/15
 - History-鎖定按鈕與圖示移除,改為按狀態快選單標題來切換
