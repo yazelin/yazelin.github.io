@@ -8,9 +8,9 @@ title: AnalyzerUI
 
 歡迎諮詢 [擎添工業](https://ching-tech.com/)
 - Addr 248 新北市五股區成泰路一段194-8號 J棟 擎添工業
-- TEL (02) 2903-2788
-- FAX (02) 2903-9518
-- E-mail chieu@ms43.hinet.net
+- Tel (02) 2903-2788
+- Fax (02) 2903-9518
+- Email chieu@ms43.hinet.net
 
 ---
 ### Release
