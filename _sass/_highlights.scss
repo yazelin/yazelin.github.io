@@ -7,7 +7,19 @@
   -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
   box-shadow: 3px 3px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
-  overflow: scroll;
+  overflow: auto;  // 只在需要時顯示捲軸
+
+  pre {
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;  // 水平捲軸放在 pre 上
+    overflow-y: hidden;
+  }
+
+  code {
+    display: block;
+    white-space: pre;
+  }
 }
 
 code {
