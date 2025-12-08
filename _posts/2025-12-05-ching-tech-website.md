@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 擎添工業官方網站
+tags: [專案, Python, FastAPI, Web, Robot, AGV]
 ---
 
 <img src="{{ site.baseurl }}/images/ching-tech/CTLogo.svg" alt="CTLogo" width="32" height="32"> [擎添工業官方網站](https://github.com/yazelin/ching-tech-website) - 打造工業 4.0 智慧工廠的堅實夥伴
