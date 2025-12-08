@@ -3,7 +3,7 @@ layout: post
 title: 擎添工業官方網站
 ---
 
-![CTLogo]({{ site.baseurl }}/images/ching-tech/CTLogo.svg) [擎添工業官方網站](https://github.com/yazelin/ching-tech-website) - 打造工業 4.0 智慧工廠的堅實夥伴
+<img src="{{ site.baseurl }}/images/ching-tech/CTLogo.svg" alt="CTLogo" width="32" height="32"> [擎添工業官方網站](https://github.com/yazelin/ching-tech-website) - 打造工業 4.0 智慧工廠的堅實夥伴
 
 擎添工業有限公司創立於 1984 年，擁有 40+ 年產業經驗，是台灣專業的工業自動化解決方案供應商。
 
