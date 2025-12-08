@@ -1,83 +1,62 @@
-#
-# This file contains configuration flags to customize your site
-#
+# Beautiful Jekyll 設定
+remote_theme: daattali/beautiful-jekyll@6.0.1
 
-# Name of your site (displayed in the header)
-name: Yaze
-
-# Short bio or description (displayed in the header)
+# 網站基本資訊
+title: Yaze
+author: Yaze
 description: Software Developer from Taiwan
 
-# URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars1.githubusercontent.com/u/6235553?s=460&v=4
+# 頭像設定
+avatar: "https://avatars1.githubusercontent.com/u/6235553?s=460&v=4"
+round-avatar: true
 
-#
-# Flags below are optional
-#
+# 導航列連結
+navbar-links:
+  About: "about"
+  Projects:
+    - AnalyzerUI: "AnalyzerUI"
+  Tags: "tags"
 
-# Includes an icon in the footer for each username you enter
-footer-links:
-  dribbble:
-  email: yaze.lin.j303@gmail.com
-  facebook: yaze.lin.gm
-  flickr:
+# 社群連結（顯示在頁尾）
+social-network-links:
+  email: "yaze.lin.j303@gmail.com"
   github: yazelin
-  instagram:
-  linkedin:
-  pinterest:
-  rss: # just type anything here for a working RSS icon
-  twitter: 
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: channel/UCOfFvRR1-TtYlok8FrwuE0A # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
+  youtube: UCOfFvRR1-TtYlok8FrwuE0A
 
+# 分享按鈕
+share-links-active:
+  twitter: true
+  facebook: true
+  linkedin: true
 
-# Enter your Disqus shortname (not your username) to enable commenting on posts
-# You can find your shortname on the Settings page of your Disqus account
-disqus:
+# 文章設定
+excerpt_length: 100
+feed_show_excerpt: true
+feed_show_tags: true
+post_search: true
 
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
-
-# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
-# Used for Sitemap.xml and your RSS feed
-url:
-
-# If you're hosting your site at a Project repository on GitHub pages
-# (http://yourusername.github.io/repository-name)
-# and NOT your User repository (http://yourusername.github.io)
-# then add in the baseurl here, like this: "/repository-name"
+# 網站網址
+url: "https://yazelin.github.io"
 baseurl: ""
 
-#
-# !! You don't need to change any of the configuration flags below !!
-#
-
-permalink: /:title/
-
-# The release of Jekyll Now that you're using
-version: v1.2.0
-
-# Jekyll 3 now only supports Kramdown for Markdown
+# Markdown 設定
+markdown: kramdown
 kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
-    css_class: 'highlight'
 
-# Set the Sass partials directory, as we're using @imports
-sass:
-  style: :expanded # You might prefer to minify using :compressed
+# 時區
+timezone: "Asia/Taipei"
 
-# Use the following plug-ins
-gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+# 外掛
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
 
-# Exclude these files from your production _site
+# 分頁設定
+paginate: 10
+
+# 排除檔案
 exclude:
   - Gemfile
   - Gemfile.lock
