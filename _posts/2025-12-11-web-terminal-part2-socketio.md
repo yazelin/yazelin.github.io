@@ -11,6 +11,8 @@ tags: [FastAPI, Socket.IO, WebSocket, Python, 即時通訊]
 > 1. [什麼是 PTY？讓網頁跑出真正的 Terminal](/2025/12/11/web-terminal-part1-pty/)
 > 2. **後端架構：FastAPI + Socket.IO 雙向通訊** ← 目前閱讀
 > 3. [前端整合：xterm.js 打造完整終端體驗](/2025/12/11/web-terminal-part3-xtermjs/)
+>
+> **📖 前置知識**：[Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
 
 ---
 
