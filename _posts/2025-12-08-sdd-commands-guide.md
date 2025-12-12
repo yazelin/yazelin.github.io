@@ -2,6 +2,7 @@
 layout: post
 title: SDD 規格驅動開發入門（二）：指令介紹篇
 subtitle: "只需記住三個斜線指令"
+categories: [SDD]
 tags: [教學, AI, Claude Code, SDD, OpenSpec]
 ---
 

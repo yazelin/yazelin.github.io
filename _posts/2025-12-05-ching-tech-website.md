@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 擎添工業官方網站
+categories: [Projects]
 tags: [專案, Python, FastAPI, Web, Robot, AGV, AI, Claude Code, SDD]
 ---
 

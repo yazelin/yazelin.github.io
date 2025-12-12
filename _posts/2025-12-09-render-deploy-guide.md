@@ -1,18 +1,19 @@
 ---
 layout: post
 title: Render 免費部署教學 - 以 LINE Bot 為例
+categories: [DevOps]
 tags: [教學, 部署, Render, Python, Flask, LINE Bot, PaaS]
 ---
 
 > **📖 前置知識**：[Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
-[Render](https://render.com) 是一個現代化的雲端平台，提供免費方案讓你快速部署 Web 應用。本文以實際部署 [Jaba LINE Bot]({{ site.baseurl }}/jaba-line-bot/) 為例，分享完整的部署流程。
+[Render](https://render.com) 是一個現代化的雲端平台，提供免費方案讓你快速部署 Web 應用。本文以實際部署 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %}) 為例，分享完整的部署流程。
 
 ---
 
 ## 為什麼選擇 Render？
 
-在開發 [LINE Bot]({{ site.baseurl }}/line-bot-guide/) 時，我需要一個能提供**公開 HTTPS URL** 的平台，因為 LINE Webhook 只接受 HTTPS。
+在開發 [LINE Bot]({% post_url 2025-12-09-line-bot-guide %}) 時，我需要一個能提供**公開 HTTPS URL** 的平台，因為 LINE Webhook 只接受 HTTPS。
 
 比較了幾個選項後，選擇 Render：
 
@@ -51,7 +52,7 @@ Render 的優勢：
 
 ## 實戰：部署 Jaba LINE Bot
 
-以下用 [jaba-line-bot]({{ site.baseurl }}/jaba-line-bot/) 專案示範完整流程。
+以下用 [jaba-line-bot]({% post_url 2025-12-09-jaba-line-bot %}) 專案示範完整流程。
 
 ### 專案結構
 
@@ -265,7 +266,7 @@ $7/月的 Starter 方案沒有冷啟動，適合正式服務。
 
 ## 相關連結
 
-- [Jaba LINE Bot 專案]({{ site.baseurl }}/jaba-line-bot/)
-- [LINE Bot 開發入門]({{ site.baseurl }}/line-bot-guide/)
+- [Jaba LINE Bot 專案]({% post_url 2025-12-09-jaba-line-bot %})
+- [LINE Bot 開發入門]({% post_url 2025-12-09-line-bot-guide %})
 - [Render 官方文件](https://render.com/docs)
 - [Render 免費方案說明](https://render.com/docs/free)

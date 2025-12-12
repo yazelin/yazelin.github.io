@@ -10,10 +10,10 @@ tags: [JavaScript, IIFE, 前端架構, Vanilla JS]
 
 > **系列文章**
 > 1. **為什麼我們選擇不用 React/Vue？談 Vanilla JS 的適用場景** ← 目前閱讀
-> 2. [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能](/2025-12-10-window-system-part1-drag/)
-> 3. [視窗系統（中）：縮放、最大化與多視窗管理](/2025-12-10-window-system-part2-resize/)
-> 4. [視窗系統（下）：Window Snap 與 Taskbar 整合](/2025-12-10-window-system-part3-snap/)
-> 5. [CSS 設計系統：一行程式碼切換全站主題](/2025-12-10-css-design-system-theme/)
+> 2. [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能]({% post_url 2025-12-10-window-system-part1-drag %})
+> 3. [視窗系統（中）：縮放、最大化與多視窗管理]({% post_url 2025-12-10-window-system-part2-resize %})
+> 4. [視窗系統（下）：Window Snap 與 Taskbar 整合]({% post_url 2025-12-10-window-system-part3-snap %})
+> 5. [CSS 設計系統：一行程式碼切換全站主題]({% post_url 2025-12-10-css-design-system-theme %})
 
 ---
 

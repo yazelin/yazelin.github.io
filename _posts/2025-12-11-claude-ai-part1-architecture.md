@@ -9,8 +9,8 @@ tags: [AI, Claude, Python, asyncio, 對話系統]
 
 > **📚 Claude AI 整合系列**
 > 1. **架構選擇：Claude CLI 整合與對話設計** ← 目前閱讀
-> 2. [Token 管理：估算、警告與自動壓縮](/2025/12/11/claude-ai-part2-token/)
-> 3. [System Prompt 設計：打造專屬 AI 助手人格](/2025/12/11/claude-ai-part3-prompt/)
+> 2. [Token 管理：估算、警告與自動壓縮]({% post_url 2025-12-11-claude-ai-part2-token %})
+> 3. [System Prompt 設計：打造專屬 AI 助手人格]({% post_url 2025-12-11-claude-ai-part3-prompt %})
 
 ---
 
@@ -97,7 +97,7 @@ user: 還有研發部的也給我
 
 ### Step 1：安裝 Claude Code
 
-> 完整的環境安裝流程（包含 nvm、Node.js、OpenSpec、uv）請參考 **[SDD 規格驅動開發入門（一）：環境安裝篇]({{ site.baseurl }}/sdd-setup-guide/)**
+> 完整的環境安裝流程（包含 nvm、Node.js、OpenSpec、uv）請參考 **[SDD 規格驅動開發入門（一）：環境安裝篇]({% post_url 2025-12-07-sdd-setup-guide %})**
 
 ```bash
 # 安裝 Claude Code（需要 Node.js 18+）

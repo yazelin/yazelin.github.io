@@ -8,8 +8,8 @@ tags: [JavaScript, xterm.js, Terminal, 前端, Socket.IO]
 ---
 
 > **📚 Web 終端機系列**
-> 1. [什麼是 PTY？讓網頁跑出真正的 Terminal](/2025/12/11/web-terminal-part1-pty/)
-> 2. [後端架構：FastAPI + Socket.IO 雙向通訊](/2025/12/11/web-terminal-part2-socketio/)
+> 1. [什麼是 PTY？讓網頁跑出真正的 Terminal]({% post_url 2025-12-11-web-terminal-part1-pty %})
+> 2. [後端架構：FastAPI + Socket.IO 雙向通訊]({% post_url 2025-12-11-web-terminal-part2-socketio %})
 > 3. **前端整合：xterm.js 打造完整終端體驗** ← 目前閱讀
 
 ---

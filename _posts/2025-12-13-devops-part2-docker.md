@@ -102,7 +102,7 @@ docker/
 └── .env                   # 實際環境變數（不進 git）
 ```
 
-> **注意**：資料表由 Alembic migration 管理，不需要 init.sql。詳見 **[Alembic 資料庫版本控制]({{ site.baseurl }}/devops-part1-alembic/)**。
+> **注意**：資料表由 Alembic migration 管理，不需要 init.sql。詳見 **[Alembic 資料庫版本控制]({% post_url 2025-12-13-devops-part1-alembic %})**。
 
 ### 步驟 2：撰寫 docker-compose.yml
 

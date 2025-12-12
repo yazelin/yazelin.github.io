@@ -9,7 +9,7 @@ tags: [Python, SMB, NAS, smbprotocol, Synology]
 
 > **📚 SMB/NAS 檔案系統系列**
 > 1. **SMB 協定入門：用 Python 連接公司 NAS** ← 目前閱讀
-> 2. [檔案管理 API：FastAPI 實作上傳下載刪除](/2025/12/12/smb-nas-part2-api/)
+> 2. [檔案管理 API：FastAPI 實作上傳下載刪除]({% post_url 2025-12-12-smb-nas-part2-api %})
 >
 > **📖 前置知識**：[Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
 
