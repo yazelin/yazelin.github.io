@@ -30,6 +30,7 @@ share-links-active:
   linkedin: true
 
 # 文章設定
+future: true
 excerpt_length: 100
 feed_show_excerpt: true
 feed_show_tags: true
