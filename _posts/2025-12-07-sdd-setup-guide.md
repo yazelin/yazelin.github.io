@@ -6,6 +6,8 @@ tags: [教學, Python, FastAPI, AI, Claude Code, SDD]
 
 本文介紹如何在 Ubuntu 上建立規格驅動開發（Specification-Driven Development, SDD）的完整開發環境，包含 Claude Code、OpenSpec 與 uv。
 
+> **📖 前置知識**：如果對 Linux 終端機不熟悉，建議先閱讀 [Linux 終端機入門：開發者必備指令]({% post_url 2025-12-13-linux-basics %})
+
 ---
 
 ## 什麼是 SDD？
@@ -308,7 +310,7 @@ git add .
 git commit -m "Initial commit: FastAPI + OpenSpec setup"
 ```
 
-> **為什麼要用 Git？** SDD 流程會產生多個規格文件與程式碼變更，Git 可以幫助你追蹤每次變更、回滾錯誤、與團隊協作。
+> **為什麼要用 Git？** SDD 流程會產生多個規格文件與程式碼變更，Git 可以幫助你追蹤每次變更、rollback 錯誤、與團隊協作。
 
 常用 Git 指令：
 
