@@ -11,6 +11,8 @@ tags: [AI, Claude, Prompt Engineering, System Prompt]
 > 1. [架構選擇：Claude CLI 整合與對話設計](/2025/12/11/claude-ai-part1-architecture/)
 > 2. [Token 管理：估算、警告與自動壓縮](/2025/12/11/claude-ai-part2-token/)
 > 3. **System Prompt 設計：打造專屬 AI 助手人格** ← 目前閱讀
+>
+> **📖 延伸閱讀**：[Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
 ---
 

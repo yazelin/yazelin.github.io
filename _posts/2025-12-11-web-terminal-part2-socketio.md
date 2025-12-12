@@ -93,7 +93,7 @@ FastAPI 基於 ASGI（Asynchronous Server Gateway Interface），原生就支援
 uv add python-socketio fastapi uvicorn
 ```
 
-> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[SDD 環境安裝篇]({{ site.baseurl }}/sdd-setup-guide/)**。
+> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[uv 入門：極速 Python 套件管理]({% post_url 2025-12-13-uv-basics %})**。
 
 ### Step 2：建立 Socket.IO Server
 

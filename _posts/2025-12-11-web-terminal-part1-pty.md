@@ -143,7 +143,7 @@ shell 的輸出會從 Slave 傳回 Master，你的程式就能讀取並傳給瀏
 uv add ptyprocess
 ```
 
-> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[SDD 環境安裝篇]({{ site.baseurl }}/sdd-setup-guide/)**。
+> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[uv 入門：極速 Python 套件管理]({% post_url 2025-12-13-uv-basics %})**。
 
 ### 第二步：建立基本的 PTY Session
 

@@ -291,7 +291,7 @@ async function login(username, password) {
 uv add geoip2 user-agents
 ```
 
-> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[SDD 環境安裝篇]({{ site.baseurl }}/sdd-setup-guide/)**。
+> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[uv 入門：極速 Python 套件管理]({% post_url 2025-12-13-uv-basics %})**。
 
 下載 GeoLite2 資料庫（需要 MaxMind 帳號）：
 

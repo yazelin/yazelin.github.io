@@ -11,7 +11,10 @@ tags: [Docker, Docker Compose, PostgreSQL, DevOps]
 > 1. [Alembic 資料庫版本控制：讓 Schema 變更可追蹤]({% post_url 2025-12-13-devops-part1-alembic %})
 > 2. [Docker Compose 一鍵啟動開發環境]({% post_url 2025-12-13-devops-part2-docker %}) ← 目前閱讀
 >
-> **📖 前置知識**：[Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})、[Docker 基礎概念]({% post_url 2025-12-13-docker-basics %})
+> **📖 前置知識**
+> - [Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
+> - [Docker 基礎概念]({% post_url 2025-12-13-docker-basics %})
+> - [Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
 ---
 

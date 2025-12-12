@@ -11,7 +11,9 @@ tags: [Python, Alembic, PostgreSQL, Migration]
 > 1. [Alembic 資料庫版本控制：讓 Schema 變更可追蹤]({% post_url 2025-12-13-devops-part1-alembic %}) ← 目前閱讀
 > 2. [Docker Compose 一鍵啟動開發環境]({% post_url 2025-12-13-devops-part2-docker %})
 >
-> **📖 前置知識**：[Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
+> **📖 前置知識**
+> - [Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
+> - [Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
 ---
 
@@ -97,7 +99,7 @@ SELECT * FROM alembic_version;
 uv add alembic
 ```
 
-> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[SDD 環境安裝篇]({{ site.baseurl }}/sdd-setup-guide/)**。
+> 本系列使用 [uv](https://docs.astral.sh/uv/) 管理 Python 套件。如尚未安裝，請參考 **[uv 入門：極速 Python 套件管理]({% post_url 2025-12-13-uv-basics %})**。
 
 ### 步驟 2：初始化 Alembic
 
