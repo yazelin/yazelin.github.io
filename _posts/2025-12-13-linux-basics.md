@@ -8,6 +8,7 @@ tags: [Linux, Ubuntu, Terminal, SSH, rsync]
 ---
 
 > **📚 延伸閱讀**
+> - [Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 > - [Docker 基礎概念與常用指令]({% post_url 2025-12-13-docker-basics %})
 > - [ChingTech OS 技術分享系列：完整目錄]({% post_url 2025-12-13-ching-tech-os-index %})
 
