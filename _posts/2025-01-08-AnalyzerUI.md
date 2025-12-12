@@ -1,6 +1,7 @@
 ---
 layout: post
 title: AnalyzerUI
+categories: [Projects]
 tags: [產品, C#]
 ---
 ![AnalyzerUI](https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/AnalyzerUI-Icon-32.png) AnalyzerUI 是由![CTLogo](https://github.com/yazelin/yazelin.github.io/raw/refs/heads/master/Release/AnalyzerUI/CTLogo-32.png) [Ching-Tech](https://ching-tech.com/)開發的氣體檢測儀器設定及資料採集記錄軟體

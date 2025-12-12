@@ -30,7 +30,7 @@ tags: [ChingTech OS, 目錄, 系列文章]
 |------|------|------|
 | Linux | [Linux 終端機入門：開發者必備指令]({% post_url 2025-12-13-linux-basics %}) | 終端機操作、SSH、rsync |
 | Docker | [Docker 基礎概念與常用指令]({% post_url 2025-12-13-docker-basics %}) | 容器化基礎、docker-compose 入門 |
-| SDD 開發流程 | [SDD 規格驅動開發入門（一）：環境安裝篇](/2025-12-07-sdd-setup-guide/) | Claude Code、OpenSpec、uv 環境建置 |
+| SDD 開發流程 | [SDD 規格驅動開發入門（一）：環境安裝篇]({% post_url 2025-12-07-sdd-setup-guide %}) | Claude Code、OpenSpec、uv 環境建置 |
 
 ---
 
@@ -55,11 +55,11 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [為什麼我們選擇不用 React/Vue？談 Vanilla JS 的適用場景](/2025-12-10-vanilla-js-why-no-framework/) | IIFE 模組化、框架取捨 |
-| 2 | [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能](/2025-12-10-window-system-part1-drag/) | 拖曳事件、座標計算 |
-| 3 | [視窗系統（中）：縮放、最大化與多視窗管理](/2025-12-10-window-system-part2-resize/) | 八方向縮放、Z-index 管理 |
-| 4 | [視窗系統（下）：Window Snap 與 Taskbar 整合](/2025-12-10-window-system-part3-snap/) | 邊緣吸附、工作列同步 |
-| 5 | [CSS 設計系統：一行程式碼切換全站主題](/2025-12-10-css-design-system-theme/) | CSS Variables、主題切換 |
+| 1 | [為什麼我們選擇不用 React/Vue？談 Vanilla JS 的適用場景]({% post_url 2025-12-10-vanilla-js-why-no-framework %}) | IIFE 模組化、框架取捨 |
+| 2 | [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能]({% post_url 2025-12-10-window-system-part1-drag %}) | 拖曳事件、座標計算 |
+| 3 | [視窗系統（中）：縮放、最大化與多視窗管理]({% post_url 2025-12-10-window-system-part2-resize %}) | 八方向縮放、Z-index 管理 |
+| 4 | [視窗系統（下）：Window Snap 與 Taskbar 整合]({% post_url 2025-12-10-window-system-part3-snap %}) | 邊緣吸附、工作列同步 |
+| 5 | [CSS 設計系統：一行程式碼切換全站主題]({% post_url 2025-12-10-css-design-system-theme %}) | CSS Variables、主題切換 |
 
 ---
 
@@ -69,9 +69,9 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [什麼是 PTY？讓網頁跑出真正的 Terminal](/2025-12-11-web-terminal-part1-pty/) | PTY 原理、ptyprocess |
-| 2 | [後端架構：FastAPI + Socket.IO 雙向通訊](/2025-12-11-web-terminal-part2-socketio/) | WebSocket、即時通訊 |
-| 3 | [前端整合：xterm.js 打造完整終端體驗](/2025-12-11-web-terminal-part3-xtermjs/) | xterm.js、ANSI 色彩 |
+| 1 | [什麼是 PTY？讓網頁跑出真正的 Terminal]({% post_url 2025-12-11-web-terminal-part1-pty %}) | PTY 原理、ptyprocess |
+| 2 | [後端架構：FastAPI + Socket.IO 雙向通訊]({% post_url 2025-12-11-web-terminal-part2-socketio %}) | WebSocket、即時通訊 |
+| 3 | [前端整合：xterm.js 打造完整終端體驗]({% post_url 2025-12-11-web-terminal-part3-xtermjs %}) | xterm.js、ANSI 色彩 |
 
 ---
 
@@ -81,9 +81,9 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [架構選擇：Claude CLI 整合與對話設計](/2025-12-11-claude-ai-part1-architecture/) | CLI vs API、對話管理 |
-| 2 | [Token 管理：估算、警告與自動壓縮](/2025-12-11-claude-ai-part2-token/) | Token 計算、對話壓縮 |
-| 3 | [System Prompt 設計：打造專屬 AI 助手人格](/2025-12-11-claude-ai-part3-prompt/) | Prompt 工程、角色設定 |
+| 1 | [架構選擇：Claude CLI 整合與對話設計]({% post_url 2025-12-11-claude-ai-part1-architecture %}) | CLI vs API、對話管理 |
+| 2 | [Token 管理：估算、警告與自動壓縮]({% post_url 2025-12-11-claude-ai-part2-token %}) | Token 計算、對話壓縮 |
+| 3 | [System Prompt 設計：打造專屬 AI 助手人格]({% post_url 2025-12-11-claude-ai-part3-prompt %}) | Prompt 工程、角色設定 |
 
 ---
 
@@ -93,8 +93,8 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [SMB 協定入門：用 Python 連接公司 NAS](/2025-12-12-smb-nas-part1-protocol/) | SMB 協定、smbprotocol |
-| 2 | [檔案管理 API：FastAPI 實作上傳下載刪除](/2025-12-12-smb-nas-part2-api/) | RESTful API、串流下載 |
+| 1 | [SMB 協定入門：用 Python 連接公司 NAS]({% post_url 2025-12-12-smb-nas-part1-protocol %}) | SMB 協定、smbprotocol |
+| 2 | [檔案管理 API：FastAPI 實作上傳下載刪除]({% post_url 2025-12-12-smb-nas-part2-api %}) | RESTful API、串流下載 |
 
 ---
 
@@ -104,8 +104,8 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [認證系統：用 NAS 帳號實現 SSO 效果](/2025-12-12-security-part1-auth/) | Session 管理、SMB 認證 |
-| 2 | [登入追蹤：裝置指紋與地理位置記錄](/2025-12-12-security-part2-tracking/) | 裝置指紋、GeoIP |
+| 1 | [認證系統：用 NAS 帳號實現 SSO 效果]({% post_url 2025-12-12-security-part1-auth %}) | Session 管理、SMB 認證 |
+| 2 | [登入追蹤：裝置指紋與地理位置記錄]({% post_url 2025-12-12-security-part2-tracking %}) | 裝置指紋、GeoIP |
 
 ---
 

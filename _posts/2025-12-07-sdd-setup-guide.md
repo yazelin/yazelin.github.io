@@ -2,6 +2,7 @@
 layout: post
 title: SDD 規格驅動開發入門（一）：環境安裝篇
 subtitle: "先與 AI 達成共識，再開始寫程式"
+categories: [SDD]
 tags: [教學, Python, FastAPI, AI, Claude Code, SDD]
 ---
 

@@ -1,10 +1,11 @@
 ---
 layout: post
 title: LINE Bot 開發入門 - 以呷爸點餐系統為例
+categories: [LINE Bot]
 tags: [教學, LINE Bot, Python, Flask, Messaging API, Webhook]
 ---
 
-LINE 是台灣最普及的通訊軟體，透過 LINE Messaging API 可以建立自己的聊天機器人。本文以 [Jaba LINE Bot]({{ site.baseurl }}/jaba-line-bot/) 為實例，帶你從零開始建立 LINE Bot。
+LINE 是台灣最普及的通訊軟體，透過 LINE Messaging API 可以建立自己的聊天機器人。本文以 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %}) 為實例，帶你從零開始建立 LINE Bot。
 
 ---
 
@@ -166,9 +167,9 @@ if __name__ == "__main__":
 
 ## 步驟 4：部署到 Render
 
-LINE Webhook 需要 **公開的 HTTPS URL**，推薦使用 [Render]({{ site.baseurl }}/render-deploy-guide/)（免費）。
+LINE Webhook 需要 **公開的 HTTPS URL**，推薦使用 [Render]({% post_url 2025-12-09-render-deploy-guide %})（免費）。
 
-詳細步驟請參考 [Render 部署教學]({{ site.baseurl }}/render-deploy-guide/)。
+詳細步驟請參考 [Render 部署教學]({% post_url 2025-12-09-render-deploy-guide %})。
 
 簡要流程：
 1. 推送程式碼到 GitHub
@@ -379,9 +380,9 @@ jaba-line-bot 需要的環境變數：
 
 ## 相關連結
 
-- [Jaba LINE Bot 專案]({{ site.baseurl }}/jaba-line-bot/)
-- [Render 部署教學]({{ site.baseurl }}/render-deploy-guide/)
-- [jaba 核心系統]({{ site.baseurl }}/jaba/)
+- [Jaba LINE Bot 專案]({% post_url 2025-12-09-jaba-line-bot %})
+- [Render 部署教學]({% post_url 2025-12-09-render-deploy-guide %})
+- [jaba 核心系統]({% post_url 2025-12-08-jaba %})
 - [LINE Developers Console](https://developers.line.biz/console/)
 - [LINE Messaging API 文件](https://developers.line.biz/en/docs/messaging-api/)
 - [line-bot-sdk-python GitHub](https://github.com/line/line-bot-sdk-python)

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Certbot SSL 憑證完整教學 - Let's Encrypt 免費 HTTPS
+categories: [DevOps]
 tags: [教學, SSL, HTTPS, Certbot, Let's Encrypt, Nginx, Docker, 資安]
 ---
 
@@ -679,10 +680,10 @@ curl -k https://localhost
 
 ### 內部文章
 
-- [擎添工業官方網站]({{ site.baseurl }}/ching-tech-website/) - 本文 HTTPS 設定的目標網站
-- [呷爸 jaba 點餐系統]({{ site.baseurl }}/jaba/) - nginx 配置中 jaba.ui 的後端系統
-- [Jaba LINE Bot]({{ site.baseurl }}/jaba-line-bot/) - nginx 配置中 /jaba-api/ 的服務
-- [LINE Bot 開發入門]({{ site.baseurl }}/line-bot-guide/) - LINE Bot 開發教學
+- [擎添工業官方網站]({% post_url 2025-12-05-ching-tech-website %}) - 本文 HTTPS 設定的目標網站
+- [呷爸 jaba 點餐系統]({% post_url 2025-12-08-jaba %}) - nginx 配置中 jaba.ui 的後端系統
+- [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %}) - nginx 配置中 /jaba-api/ 的服務
+- [LINE Bot 開發入門]({% post_url 2025-12-09-line-bot-guide %}) - LINE Bot 開發教學
 
 ### 外部資源
 
