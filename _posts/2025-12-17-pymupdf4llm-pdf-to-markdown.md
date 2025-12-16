@@ -48,11 +48,30 @@ PDF 的排版、圖片、表格，AI 不一定能正確解讀。轉成 Markdown 
 
 ### 安裝
 
+**使用 uv（推薦）：**
+
+```bash
+# 建立虛擬環境
+uv venv
+
+# 啟動環境
+source .venv/bin/activate  # Linux/Mac
+# 或
+.venv\Scripts\activate  # Windows
+
+# 安裝 pymupdf4llm
+uv pip install pymupdf4llm
+```
+
+**使用 pip：**
+
 ```bash
 pip install pymupdf4llm
 # 或
 pip install pdf4llm  # 別名
 ```
+
+> 💡 不熟悉 uv 的話可以看我的另一篇文章：[uv 基礎教學]({% post_url 2025-12-13-uv-basics %})
 
 ### 基本轉換
 
