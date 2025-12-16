@@ -11,6 +11,17 @@ tags: [ChingTech OS, 目錄, 系列文章]
 
 這是一系列關於 **ChingTech OS** 內部系統開發的技術分享文章。我們從零開始打造一個企業內部作業系統，涵蓋：
 
+<video width="100%" controls style="margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <source src="/images/ching-tech/ching-tech-os-demo.mp4" type="video/mp4">
+  您的瀏覽器不支援 HTML5 影片播放。
+</video>
+
+*▲ ChingTech OS 系統展示影片（4 分 41 秒）*
+
+---
+
+**系統特色：**
+
 - 🖥️ 無框架前端開發（Vanilla JS + IIFE 模組化）
 - 🔌 即時通訊與終端機整合
 - 🤖 AI 助手整合（Claude）
