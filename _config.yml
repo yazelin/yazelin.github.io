@@ -57,6 +57,18 @@ plugins:
 # 分頁設定
 paginate: 10
 
+# 評論系統
+comments:
+  provider: giscus
+  giscus:
+    repo: yazelin/yazelin.github.io
+    repo-id: MDEwOlJlcG9zaXRvcnkxMjk2MTgyOTk=
+    category: Announcements
+    category-id: DIC_kwDOB7nRe84Cz3Nw
+    mapping: pathname
+    reactions-enabled: "1"
+    theme: light
+
 # 排除檔案
 exclude:
   - Gemfile
