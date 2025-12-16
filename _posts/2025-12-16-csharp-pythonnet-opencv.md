@@ -28,10 +28,11 @@ tags: [C#, Python, OpenCV, Python.NET, WinForms, 影像處理]
 **前輩**：「都可以，但 .NET Framework 4.8 最簡單。新專案建議 .NET 8。」
 
 這篇文章會教你：
-- Python.NET 的版本相容性（重要！）
-- 完整的環境設定流程
-- 在 C# 中呼叫 Python OpenCV 程式
-- 常見錯誤的疑難排解
+- ✅ Python.NET 的版本相容性（Python 3.14 不支援！）
+- ✅ 完整的環境設定流程
+- ⭐ **使用自訂模組前必讀**（GIL、路徑、型別轉換等核心概念）
+- ✅ OpenCV 實戰範例（包含自訂函數呼叫）
+- ✅ 常見錯誤的疑難排解
 
 ---
 
@@ -300,6 +301,342 @@ namespace OpenCVWinFormsApp
     }
 }
 ```
+
+---
+
+## ⚠️ 使用自訂模組前必讀
+
+在開始寫程式之前，**一定要先了解這些核心概念**，否則會遇到很多難以理解的錯誤！
+
+### 1. GIL 是什麼？為什麼必須使用？
+
+**GIL = Global Interpreter Lock（全域解譯器鎖）**
+
+```csharp
+// ❌ 錯誤：沒有 GIL，程式會崩潰或行為異常
+dynamic cv2 = Py.Import("cv2");
+
+// ✅ 正確：所有 Python 操作都要在 GIL 內
+using (Py.GIL())
+{
+    dynamic cv2 = Py.Import("cv2");
+    // ... 所有 Python 操作 ...
+}
+```
+
+> **為什麼需要 GIL？**
+> Python 的執行緒安全機制。在多執行緒環境下，GIL 確保同一時間只有一個執行緒執行 Python 程式碼。
+
+**常見錯誤：GIL 範圍太小**
+
+```csharp
+// ❌ 錯誤：變數離開 GIL 後無法使用
+dynamic mymodule;
+using (Py.GIL())
+{
+    mymodule = Py.Import("mymodule");
+}
+var result = mymodule.process(); // 錯誤！已離開 GIL
+
+// ✅ 正確：整個操作都在 GIL 內完成
+using (Py.GIL())
+{
+    dynamic mymodule = Py.Import("mymodule");
+    var result = mymodule.process();
+    string output = result.ToString(); // 在 GIL 內取得結果
+}
+```
+
+### 2. Python 模組路徑設定（重要！）
+
+假設你的 Python 檔案在 `C:\MyProject\PythonScripts\opencv_utils.py`：
+
+```csharp
+using (Py.GIL())
+{
+    dynamic sys = Py.Import("sys");
+
+    // ❌ 錯誤：忘記設定路徑
+    dynamic mymodule = Py.Import("opencv_utils");
+    // ModuleNotFoundError: No module named 'opencv_utils'
+
+    // ❌ 錯誤：路徑格式錯誤（斜線方向）
+    sys.path.append("C:/MyProject/PythonScripts");  // 混用斜線
+
+    // ✅ 正確：使用 @ 字串
+    sys.path.append(@"C:\MyProject\PythonScripts");
+    dynamic mymodule = Py.Import("opencv_utils");
+
+    // ⭐ 最佳：使用絕對路徑
+    string scriptPath = Path.GetFullPath(@".\PythonScripts");
+    sys.path.append(scriptPath);
+}
+```
+
+**路徑設定的三種方式：**
+
+| 方式 | 優點 | 缺點 |
+|------|------|------|
+| `@"C:\path"` | 簡單明確 | 寫死路徑 |
+| `Path.GetFullPath(@".\relative")` | 相對路徑，彈性高 | 需注意工作目錄 |
+| 環境變數 `PYTHONPATH` | 全域設定 | 影響其他程式 |
+
+### 3. 參數傳遞與型別轉換
+
+**C# 型別如何傳給 Python？**
+
+```csharp
+// Python 函數定義
+/*
+def process_data(name, age, scores):
+    avg = sum(scores) / len(scores)
+    return f"{name} ({age}歲) 平均: {avg}"
+*/
+
+using (Py.GIL())
+{
+    dynamic mymodule = Py.Import("mymodule");
+
+    // ✅ 基本型別可直接傳遞
+    string name = "張三";
+    int age = 25;
+    // 這些會自動轉換為 Python 的 str 和 int
+
+    // ⚠️ List 需要特別處理
+    List<int> csharpScores = new List<int> { 90, 85, 95 };
+
+    // 方法 1：轉成陣列（簡單）
+    int[] scores = csharpScores.ToArray();
+    var result = mymodule.process_data(name, age, scores);
+
+    // 方法 2：使用 PyList（精確控制）
+    using (PyList pyScores = new PyList())
+    {
+        foreach (int score in csharpScores)
+        {
+            pyScores.Append(new PyInt(score));
+        }
+        var result = mymodule.process_data(name, age, pyScores);
+    }
+}
+```
+
+**型別對照速查表：**
+
+| C# 型別 | Python 型別 | 傳遞方式 | 範例 |
+|---------|------------|---------|------|
+| `int`, `double`, `float` | `int`, `float` | ✅ 直接傳 | `42`, `3.14` |
+| `string` | `str` | ✅ 直接傳 | `"Hello"` |
+| `bool` | `bool` | ✅ 直接傳 | `true` → `True` |
+| `int[]`, `double[]` | `list` | ✅ 直接傳 | `new int[] {1,2,3}` |
+| `List<T>` | `list` | ⚠️ 轉陣列或 PyList | `list.ToArray()` |
+| `Dictionary<K,V>` | `dict` | ⚠️ 需轉 PyDict | 見下方 |
+| `null` | `None` | ✅ 直接傳 | `null` → `None` |
+
+**Dictionary 的處理：**
+
+```csharp
+// Python 函數需要 dict
+/*
+def process_config(config):
+    return config.get("mode", "default")
+*/
+
+using (Py.GIL())
+{
+    dynamic mymodule = Py.Import("mymodule");
+
+    // 方法 1：用 PyDict
+    using (PyDict config = new PyDict())
+    {
+        config["mode"] = new PyString("advanced");
+        config["timeout"] = new PyInt(30);
+        var result = mymodule.process_config(config);
+    }
+
+    // 方法 2：傳 JSON 字串（推薦）
+    var configObj = new { mode = "advanced", timeout = 30 };
+    string jsonConfig = JsonSerializer.Serialize(configObj);
+
+    dynamic json = Py.Import("json");
+    dynamic configDict = json.loads(jsonConfig);
+    var result = mymodule.process_config(configDict);
+}
+```
+
+### 4. 返回值處理
+
+**Python 回傳值如何轉回 C#？**
+
+```csharp
+// Python 函數
+/*
+def get_user():
+    return {
+        "name": "張三",
+        "age": 25,
+        "scores": [90, 85, 95]
+    }
+*/
+
+using (Py.GIL())
+{
+    dynamic mymodule = Py.Import("mymodule");
+    dynamic result = mymodule.get_user();
+
+    // ❌ 可能出錯：型別不明確
+    string name = result["name"];  // 可能執行階段錯誤
+
+    // ✅ 正確：明確轉換
+    string name = result["name"].ToString();
+    int age = (int)result["age"];
+
+    // List 的處理
+    dynamic pyScores = result["scores"];
+    List<int> csharpScores = new List<int>();
+
+    foreach (dynamic score in pyScores)
+    {
+        csharpScores.Add((int)score);
+    }
+}
+```
+
+**處理不同返回型別：**
+
+```csharp
+using (Py.GIL())
+{
+    dynamic result = mymodule.some_function();
+
+    // 檢查型別
+    if (result is PyDict)
+    {
+        // 字典
+        string value = result["key"].ToString();
+    }
+    else if (result is PyList)
+    {
+        // 列表
+        foreach (dynamic item in result)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    else if (result is PyString)
+    {
+        // 字串
+        string text = result.ToString();
+    }
+    else if (result == null)
+    {
+        // Python 的 None
+        Console.WriteLine("返回 None");
+    }
+}
+```
+
+### 5. 錯誤處理（必須！）
+
+**Python 函數可能拋出異常：**
+
+```csharp
+// Python 函數
+/*
+def divide(a, b):
+    if b == 0:
+        raise ValueError("除數不能為 0")
+    return a / b
+*/
+
+// ❌ 沒有錯誤處理，程式會崩潰
+using (Py.GIL())
+{
+    dynamic mymodule = Py.Import("mymodule");
+    var result = mymodule.divide(10, 0); // 崩潰！
+}
+
+// ✅ 正確：捕捉 PythonException
+using (Py.GIL())
+{
+    try
+    {
+        dynamic mymodule = Py.Import("mymodule");
+        var result = mymodule.divide(10, 0);
+    }
+    catch (PythonException ex)
+    {
+        // Python 的異常
+        MessageBox.Show($"Python 錯誤：{ex.Message}");
+        // 詳細資訊
+        Console.WriteLine(ex.StackTrace);
+    }
+    catch (Exception ex)
+    {
+        // C# 的異常
+        MessageBox.Show($"系統錯誤：{ex.Message}");
+    }
+}
+```
+
+**實用的封裝方法：**
+
+```csharp
+private T SafeCallPython<T>(Func<T> pythonOperation, T defaultValue = default)
+{
+    try
+    {
+        using (Py.GIL())
+        {
+            return pythonOperation();
+        }
+    }
+    catch (PythonException ex)
+    {
+        MessageBox.Show($"Python 執行錯誤：{ex.Message}");
+        return defaultValue;
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"系統錯誤：{ex.Message}");
+        return defaultValue;
+    }
+}
+
+// 使用
+double result = SafeCallPython(() =>
+{
+    dynamic mymodule = Py.Import("mymodule");
+    return (double)mymodule.divide(10, 2);
+}, defaultValue: 0.0);
+```
+
+### 6. 常見陷阱速覽
+
+在開始寫程式前，先看看這些陷阱：
+
+| 陷阱 | 後果 | 解決方案 |
+|------|------|---------|
+| 忘記 `using (Py.GIL())` | 程式崩潰 | 所有 Python 操作都要在 GIL 內 |
+| GIL 範圍太小 | 無法使用 Python 物件 | 整個操作都放在同一個 GIL 內 |
+| 忘記 `sys.path.append()` | `ModuleNotFoundError` | 先設定路徑再匯入 |
+| 路徑用 `/` 混用 `\` | 找不到模組 | 統一用 `@"\\"` 或 `"/"` |
+| List 直接傳遞 | 型別錯誤 | 轉成陣列或 PyList |
+| 沒有錯誤處理 | 程式崩潰 | 用 `try-catch (PythonException)` |
+| 使用相對路徑 | 找不到檔案 | 用 `Path.GetFullPath()` |
+| 修改 Python 後沒重新載入 | 執行舊程式碼 | 用 `importlib.reload()` |
+
+### 7. 快速檢查清單
+
+在寫程式前，用這個清單確認：
+
+- [ ] ✅ 已安裝 Python 3.7-3.13（不是 3.14）
+- [ ] ✅ 已執行 `pip install opencv-python`（或你需要的套件）
+- [ ] ✅ Python 檔案路徑確認存在
+- [ ] ✅ 知道要用 `using (Py.GIL())`
+- [ ] ✅ 知道要用 `sys.path.append()` 設定路徑
+- [ ] ✅ 了解基本型別轉換規則
+- [ ] ✅ 準備好錯誤處理
 
 ---
 
