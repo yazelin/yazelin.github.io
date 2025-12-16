@@ -21,7 +21,7 @@ navbar-links:
 social-network-links:
   email: "yaze.lin.j303@gmail.com"
   github: yazelin
-  youtube: UCOfFvRR1-TtYlok8FrwuE0A
+  youtube: "@yazelin"
 
 # 分享按鈕
 share-links-active:
@@ -57,17 +57,25 @@ plugins:
 # 分頁設定
 paginate: 10
 
-# 評論系統
-comments:
-  provider: giscus
-  giscus:
-    repo: yazelin/yazelin.github.io
-    repo-id: MDEwOlJlcG9zaXRvcnkxMjk2MTgyOTk=
-    category: Announcements
-    category-id: DIC_kwDOB7nRe84Cz3Nw
-    mapping: pathname
-    reactions-enabled: "1"
-    theme: light
+# 預設值設定 - 讓所有文章都啟用評論
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
+
+# 評論系統 (Beautiful Jekyll 格式)
+giscus:
+  hostname: giscus.app
+  repository: yazelin/yazelin.github.io
+  repository-id: MDEwOlJlcG9zaXRvcnkxMjk2MTgyOTk=
+  category: Announcements
+  category-id: DIC_kwDOB7nRe84Cz3Nw
+  mapping: pathname
+  reactions-enabled: 1
+  emit-metadata: 0
+  theme: light
 
 # 排除檔案
 exclude:
