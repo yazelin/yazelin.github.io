@@ -660,6 +660,8 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
 <details>
 <summary>Opus 辨識結果（24.5 秒）</summary>
 
+<div markdown="1">
+
 ```json
 {
   "store_info": {
@@ -718,6 +720,8 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
   ]
 }
 ```
+
+</div>
 </details>
 
 **測試圖片 2：牛排菜單**（1286×882 px, 1.3MB）
@@ -726,6 +730,8 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
 
 <details>
 <summary>Opus 辨識結果（32.0 秒）</summary>
+
+<div markdown="1">
 
 ```json
 {
@@ -809,6 +815,8 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
   ]
 }
 ```
+
+</div>
 </details>
 
 **測試結果彙整**（共 5 輪測試，使用 Claude Opus 4.5 / Sonnet 4.5）：
