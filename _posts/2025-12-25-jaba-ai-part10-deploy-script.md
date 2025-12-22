@@ -344,6 +344,16 @@ main "$@"
 6. 啟動 FastAPI 應用程式
 ```
 
+### 資料安全說明
+
+**重複執行 `./start.sh` 不會覆蓋資料庫資料**：
+
+- `docker compose up -d` 只是啟動容器，不會重建
+- PostgreSQL 資料存放在 named volume（`jaba_ai_postgres_data`），容器重啟不影響
+- `alembic upgrade head` 只執行尚未執行的遷移，不會刪除現有資料
+
+只有執行 `docker compose down -v`（加 `-v` 參數）才會刪除 volume 和資料。
+
 ---
 
 ## docker-compose.yml
