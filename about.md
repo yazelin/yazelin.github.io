@@ -6,15 +6,13 @@ permalink: /about/
 
 ## 👋 Hi, I'm Yaze
 
-小學的時候寫網頁，那時候網路資訊還沒那麼發達。大學做無人飛行船自動導航系統（Microchip，學士畢業論文），到現在做工業機器人、視覺檢測、AGV 車隊管理、Web 應用，10+ 年都在做工業自動化的系統整合。
+最近用 AI 開發軟體，像 ChingTech OS 和 jaba-ai 都是這樣做出來的。主要做工業自動化的系統整合——機器人控制、視覺檢測、AGV 車隊管理，讓這些系統在產線上順利協作。也教過幾年大學的機器人課程，做過互動遊戲和展覽。大學時做的是無人飛行船自動導航系統。
 
-工業現場的專案通常預算有限、工期緊，這些限制反而讓我試了很多非典型的解法：遊戲引擎做工業應用、軟體補償硬體、消費級硬體調到工業水準、沒有資料結構就自己實作。
-
-這些年也在大學教過一些機器人和互動技術的課程。最近也在試著把 AI 開發工具整合進工業應用場景。
+工業現場常有預算或空間的限制，像是用軟體取代昂貴的感測器，久了就習慣找不同的解法。
 
 ---
 
-## 🎯 最近在做的專案
+## 🎯 做過的專案
 
 ### 🖥️ ChingTech OS - 桌面風格的 Web 應用 (2025)
 
@@ -39,42 +37,27 @@ permalink: /about/
 - **AI 菜單辨識**：上傳菜單圖片，AI 自動辨識品項、價格、特價優惠
 - **即時同步**：Socket.IO 即時廣播訂單狀態
 - **個人偏好記憶**：1對1 聊天記住稱呼和飲食偏好，群組點餐時自動套用
-- **飲料縮寫辨識**：支援「微微」「少少」「半半」等常見點法
 
-**技術架構：**
-- FastAPI + Socket.IO + Claude/Gemini CLI
-- LINE Messaging API（整合在主專案中）
-- JSON 檔案儲存（無資料庫）
-- 本機部署，port 8098
+**專案演進：**
+從最初的 JSON 檔案儲存原型，經過 LINE Bot 分離架構的過渡期，最終重寫為 PostgreSQL + Repository Pattern 的生產級系統。
 
-[詳細介紹]({% post_url 2025-12-08-jaba %}) | [LINE Bot 架構說明（舊版分離架構）]({% post_url 2025-12-09-jaba-line-bot %}) | [GitHub](https://github.com/yazelin/jaba)
+[原型介紹]({% post_url 2025-12-08-jaba %}) | [jaba-ai 技術系列（11 篇）]({% post_url 2025-12-19-jaba-ai-index %}) | [GitHub](https://github.com/yazelin/jaba-ai)
 
 ---
 
-### 👁️ 讓機器看得懂東西 (2023)
+### 🔬 AnalyzerUI - 氣體檢測資料採集軟體 (2025)
 
-客戶想要做多合一的入料、壓測、電測、AOI、包裝機台，問了幾家廠商都做不出來或報價很高。因為我們有 WiseTechVision 的經驗，對 AOI 和手臂整合都很熟，就接了這個案子。
+擎添工業的氣體檢測儀器設定及資料採集記錄軟體。C# 開發，採用 USB License Key 授權。
 
-治具的設計也是我們自己加進去的——因為有影像處理的經驗，所以設計成視覺補正快速換線的架構，換線時間從傳統的 2-4 小時縮短到 10-15 分鐘。
-
-**系統架構：**
-- **2 台 KUKA 機器人**：LDRobot（上料）+ UDRobot（檢測）
-- **3 台 IDS 工業相機**：Eye-in-Hand 配置，自動定位與尺寸檢測
-- **4 面 AOI 檢測**：20+ 種 NG 分類，完整品質追溯
-
-**最有成就感的部分：**
-- **視覺自動對位**：取代傳統治具，換線時間從 2-4 小時縮短至 10-15 分鐘
-- **抗震驗證**：2024 年花蓮 7.2 級地震後，系統用 AOI 自動校正就能正常運作
-
-[詳細介紹]({% post_url 2023-06-07-ctcui-smd-aoi-system %})
+[產品頁面]({% post_url 2025-01-08-AnalyzerUI %})
 
 ---
 
-### 🚗 讓機器人自己走：企業級 AGV 車隊管理 (2024-2025)
+### 🚗 讓機器人自己走：企業級 AGV 車隊管理 (2025)
 
-接到一個 AGV 車隊管理專案，需要整合我們的 AGV 系統、KUKA 的 AGV 系統、Web 管理介面、OPUI 介面。所以我就用 ROS2 架構來做，解決了跨網段通訊的問題，也做到了模組化設計，整合成一套完整的系統
+接到一個 AGV 車隊管理專案，需要整合我們的 AGV 系統、KUKA 的 AGV 系統、Web 管理介面、OPUI 介面。想利用 ROS2 生態系的資源，就用 ROS2 架構來做，整合成一套完整的模組化系統。
 
-#### RosAGV - 核心控制系統 (2024)
+#### RosAGV - 核心控制系統 (2025)
 
 **企業級 AGV 車隊管理系統**，採用雙環境容器化架構：
 
@@ -85,13 +68,13 @@ permalink: /about/
 - **Docker 容器化**：一鍵部署，環境一致性保證
 
 **系統特色：**
-- ✅ **多車型支援**：Cargo Mover、Loader、Unloader 三種 AGV
-- ✅ **外部系統整合**：KUKA Fleet 機器人、Keyence PLC
-- ✅ **工業相機 OCR**：物料辨識與門禁控制，與車載 KUKA 協作手臂協同
-- ✅ **TAFL WCS 系統**：視覺化工作流程編排
-- ✅ **Rack 管理**：貨架追蹤、旋轉、對位
-- ✅ **Web 管理介面**：AGVCUI（管理員）+ OPUI（操作員）
-- ✅ **統一工具系統**：只需 `r` 一個字母管理所有功能
+- **多車型支援**：Cargo Mover、Loader、Unloader 三種 AGV
+- **外部系統整合**：KUKA Fleet 機器人、Keyence PLC
+- **工業相機 OCR**：物料辨識與門禁控制，與車載 KUKA 協作手臂協同
+- **TAFL WCS 系統**：視覺化工作流程編排
+- **Rack 管理**：貨架追蹤、旋轉、對位
+- **Web 管理介面**：AGVCUI（管理員）+ OPUI（操作員）
+- **統一工具系統**：只需 `r` 一個字母管理所有功能
 
 [詳細技術介紹]({% post_url 2025-12-05-rosagv-fleet-management-system %})
 
@@ -107,13 +90,44 @@ permalink: /about/
 - **即時通訊**：Socket.IO + MQTT + ROS 2 三重整合
 
 **系統特色：**
-- ✅ **Leaflet 地圖**：即時顯示 AGV 位置、航向、電池狀態
-- ✅ **多重通訊**：同時支援 Socket.IO、MQTT、ROS 2 三種協定
-- ✅ **資訊看板**：任務監控、訊號監控、日誌檢視
-- ✅ **自定義座標**：40px 網格系統，旋轉 Marker 顯示航向
-- ✅ **前後端分離**：可獨立部署或整合部署
+- **Leaflet 地圖**：即時顯示 AGV 位置、航向、電池狀態
+- **多重通訊**：同時支援 Socket.IO、MQTT、ROS 2 三種協定
+- **資訊看板**：任務監控、訊號監控、日誌檢視
+- **自定義座標**：40px 網格系統，旋轉 Marker 顯示航向
+- **前後端分離**：可獨立部署或整合部署
 
 [詳細技術介紹]({% post_url 2025-04-24-webagv-monitoring-dashboard %})
+
+---
+
+### 👁️ 讓機器看得懂東西 (2023)
+
+客戶想要做多合一的入料、壓測、電測、AOI、包裝機台，問了幾家廠商都做不出來或報價很高。因為我們有 WiseTechVision 的經驗，對 AOI 和手臂整合都很熟，就接了這個案子。
+
+治具的設計也是我們自己加進去的——因為有影像處理的經驗，所以設計成視覺補正快速換線的架構，換線時間從傳統的 2-4 小時縮短到 10-15 分鐘。
+
+**系統架構：**
+- **2 台 KUKA 機器人**：LDRobot（上料）+ UDRobot（檢測）
+- **3 台 IDS 工業相機**：Eye-in-Hand 配置，自動定位與尺寸檢測
+- **4 面 AOI 檢測**：20+ 種 NG 分類，完整品質追溯
+
+**最有成就感的部分：**
+- **視覺自動對位**：取代傳統治具，不需精密定位機構
+- **抗震驗證**：2024 年花蓮 7.2 級地震後，系統用 AOI 自動校正就能正常運作
+
+[詳細介紹]({% post_url 2023-06-07-ctcui-smd-aoi-system %})
+
+---
+
+### 🤖 自己動手擴充功能 (2020)
+
+客戶的產線上有多個散亂工件需要同時追蹤和抓取，但 KUKA 的 ConveyTech 套件只能追蹤單一工件。要追蹤多個就需要 Queue、List、Stack 這些資料結構來管理，但 KRL（KUKA Robot Language）只有基本陣列。所以我就在 KRL 加入 Queue、Stack、List 功能。
+
+視覺辨識的部分開發了 **WiseTechVision** C# 套件，整合視覺與機器人控制。支援工業相機，也支援消費級 Webcam（用軟體演算法補償，省下不少成本）：
+- [積木堆疊](http://forum.wtech.com.tw/viewtopic.php?t=210)
+- [魔術方塊堆疊](http://forum.wtech.com.tw/viewtopic.php?t=209)
+- [散亂螺絲整列]({% post_url 2020-07-20-wisetech-vision-screw-sorting %})
+- [工件追蹤](http://forum.wtech.com.tw/viewtopic.php?t=182)
 
 ---
 
@@ -149,37 +163,14 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 
 ---
 
-### 🤖 在限制中突破 (2020)
-
-客戶的產線上有多個散亂工件需要同時追蹤和抓取，但 KUKA 的 ConveyTech 套件只能追蹤單一工件。要追蹤多個就需要 Queue、List、Stack 這些資料結構來管理，但 KRL（KUKA Robot Language）只有基本陣列。所以我就在 KRL 加入 Queue、Stack、List 功能。
-
-視覺辨識的部分開發了 **WiseTechVision** C# 套件，整合視覺與機器人控制：
-- [積木堆疊](http://forum.wtech.com.tw/viewtopic.php?t=210)
-- [魔術方塊堆疊](http://forum.wtech.com.tw/viewtopic.php?t=209)
-- [散亂螺絲整列]({% post_url 2020-07-20-wisetech-vision-screw-sorting %})
-- [工件追蹤](http://forum.wtech.com.tw/viewtopic.php?t=182)
-
-另一個省錢的做法：用消費級 Webcam + 軟體演算法補償，達到工業應用水準。
-
----
-
 ## 🎮 做過一些有趣的互動遊戲
 
 **[五花果的後花園]({% post_url 2017-01-14-8boo-land-5flowergod %})**（Unity，2017）
-- **場景**：高雄「8咘的搞怪樂園」（8000 坪，必應創造/五月天演唱會幕後團隊）中的「5花果」室內展區
-- **展期**：45 天（2017/1/14-2/28），橫跨農曆春節
-- **硬體規格**：十幾公尺寬的巨型 LED 牆（1920×426 解析度）
+- **場景**：高雄「8咘的搞怪樂園」，必應創造/五月天演唱會幕後團隊打造
+- **展期**：45 天，橫跨農曆春節
 - **玩法**：小朋友著色紙 → 掃描 → 畫作變成 3D 模型在巨型 LED 牆中活起來
-- **技術挑戰**：
-  - **10 台掃描器並行處理**：同時監控 10 個資料夾，根據後台動態配置決定角色類型
-  - **動態負載平衡**：熱門角色（如蝴蝶）可即時分配多台掃描器處理，避免排隊
-  - **佇列管理系統**：四佇列架構（inQueue、freeQueue、displayQueue、outQueue）管理角色生命週期
-  - **事件驅動架構**：天氣系統、五花果魔法互動、場景轉換（Shader BlendAlpha）
-- **後台管理**：Web 介面即時監控所有角色、動態調整掃描器配置、CRUD 操作（PHP + Unity 通訊）
 
-類似 teamLab 的互動藝術，讓創作「活起來」。45 天的長期展期，系統穩定性與靈活配置是關鍵。
-
-[詳細介紹]({% post_url 2017-01-14-8boo-land-5flowergod %})
+類似 teamLab 的互動藝術，技術挑戰是 10 台掃描器並行處理和 45 天長期展期的穩定性。
 
 **[打火解油出任務]({% post_url 2015-08-20-kinect-game-dagfire %})**（Unity + Kinect，2015）
 - **場景**：大型活動現場（夜市 × 2、夢時代商場，總共 3 場）
@@ -187,7 +178,7 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 - 遊戲結束產生 QRCode，玩家掃碼就能下載遊玩過程中 Kinect 拍的照片
 - 現場很多民眾排隊來玩，體感互動很受歡迎
 
-[詳細介紹]({% post_url 2015-08-20-kinect-game-dagfire %}) | [YouTube 示範](https://www.youtube.com/watch?v=tIt3m1miDUw)
+[YouTube 示範](https://www.youtube.com/watch?v=tIt3m1miDUw)
 
 **雷射槍射擊遊戲**（LabVIEW + Flash/Unity，2014）
 - **概念**：用真實紅外線雷射槍玩電腦遊戲
@@ -201,50 +192,16 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 
 ### 無人飛行船自動導航系統 (2011)
 
-因為學長已經做了地上的自動導航，所以我們做天上飛的。選了飛行船當載具，開發了完整的自動導航控制系統（學士畢業論文，2011 年）
-
-**專案規模：**
-- **6 人團隊**：林亞澤、侯圳嶺、侯劭東、劉文茜、葉曉霈、鄧靜容
-- **開發時程**：約 8-10 個月（2010 年 7 月 - 2011 年 1 月）
-- **測試記錄**：17 場地面測試 + 3 場飛行測試
+因為學長已經做了地上的自動導航，所以我們做天上飛的。6 人團隊，開發了完整的自動導航控制系統（學士畢業論文）。
 
 **核心突破：**
-- ✅ **自主飛行**：根據預設 GPS 座標自動導航
-- ✅ **手動/自動模式即時切換**：解決人工操控失控問題
-- ✅ **突破遙控範圍限制**：GPRS 無線通訊，飛行範圍從數百公尺擴展到無限制
-- ✅ **即時飛行資料回傳**：如同「飛航黑盒子」
-- ✅ **地面站動態模擬**：Google Maps + Flash 即時顯示飛行狀態
+- **自主飛行**：根據預設 GPS 座標自動導航
+- **突破遙控範圍**：GPRS 無線通訊，飛行範圍不受限制
+- **即時監控**：Google Maps + Flash 即時顯示飛行狀態
 
-**技術棧：**
-- **嵌入式系統**：Microchip PIC24FJ128GB106 + 自製子板
-- **週邊模組**：GPS (GARMIN GPS15XL-W)、GPRS (Create GPRS4SIM100)、Compass (HONEYWELL HMC6343)、PWM 控制
-- **地面站**：Java + MySQL + TCP Socket
-- **視覺化**：Google Maps API + Flash CS4 (ActionScript 3.0) + PHP
+這是第一次做完整的系統整合——嵌入式、通訊、地面站、視覺化全部串起來。後來走上系統整合這條路，可能就是從這裡開始的。
 
-**開發過程：**
-- **主程式**：11 個版本迭代（MainPT_Ver0712 → MainPT_Ver0921，2.5 個月）
-- **FLYDATA 副程式**：4 個版本迭代（飛行資料陣列從 10×10 擴充到 16×16）
-- **GPS 程式**：6 個版本迭代（NMEA 協定解析、數據格式轉換）
-- **監控站 Server**：3 個版本（VB → Java → Java + MySQL）
-- **Flash 動畫系統**：6 個版本（簡易顯示 → 三視角動畫 → 最終簡約協調版）
-
-**飛船船體版本演進：**
-1. **A 型**：伺服馬達轉向（左右各 75 度）→ 轉向能力不足
-2. **B 型**：碳刷馬達正反轉 → 正反轉出力落差
-3. **C 型**：主推力升級 + 四組襟翼（最終版本）→ 性能大幅提升
-
-**測試成果：**
-- **GPS 定位精度**：< 15 公尺
-- **GPRS 資料傳送**：約 3 秒/筆
-- **最高飛行高度**：127 公尺
-- **飛行資料記錄**：超過 400 筆（2011/01/08 第 29 場次）
-- **Google Maps 即時追蹤**：完整飛行路徑驗證
-
-測試中發現即使主轉向馬達失效，單靠襟翼也能達到轉向功能（較慢但更穩定）。
-
-這是第一次真正感受到系統整合的痛苦——每個模組單獨測試都正常，組合起來就爆炸了（時序衝突、資源競爭、訊號干擾）。後來在工業現場做自動化，這些踩坑經驗超實用，讓我養成習慣先想穩定性和容錯，而不是功能做完就算了。
-
-[學士畢業論文詳細技術記錄]({% post_url 2011-06-01-airship-auto-navigation-thesis %}) | [地面站監控 DEMO (2015)]({% post_url 2015-06-01-airship-ground-station %}) | [YouTube 影片](https://www.youtube.com/watch?v=YBk6aVB-wwk)
+[學士畢業論文詳細技術記錄]({% post_url 2011-06-01-airship-auto-navigation-thesis %}) | [YouTube 影片](https://www.youtube.com/watch?v=YBk6aVB-wwk)
 
 ---
 
@@ -270,13 +227,9 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 
 ---
 
-## 💡 想要有所成長所以...
+## 💡 做著做著就會了
 
-我習慣選一些當時還不太會的技術來做專案——想研究 FK/IK 就用 Unity 做機器人模擬、想試 AI SDD 開發就做桌面系統、想知道 ROS2 能不能解決跨網段通訊就拿 AGV 專案來試。每次做完一個專案，能力就會往上提升一點。
-
-工業現場常常遇到的限制（預算不夠、工具不對、語言功能不足），反而變成了有趣的挑戰。遊戲引擎做工業應用、KRL 沒資料結構就自己實作、不用感測器做力覺感知，在這些限制中找解法的過程很好玩。
-
-技術文章和教學專案都放在 [GitHub](https://github.com/yazelin?tab=repositories)，寫下來記錄以免自己忘記，可能也有有緣人會發現可能有點用。
+我習慣挑不太會的技術來做專案——想研究 FK/IK 就用 Unity 做機器人模擬（結果工作和教學都用上了）、想試 AI SDD 就拿 jaba 和 ChingTech OS 來試、想整合自家與 KUKA AGV 並利用 ROS2 生態系就拿車隊管理專案來試。也試過一些非典型做法：不用感測器做力覺感知（省下 30-80 萬）、KRL 沒資料結構就自己實作。
 
 ---
 
@@ -297,7 +250,7 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 - 應用案例：AOI 檢測、魚苗計數
 
 **Web 開發**
-- 前端：Vanilla JS、Vue.js、Kotlin
+- 前端：Vanilla JS、Vue.js
 - 後端：FastAPI、C# .NET、Node.js、PHP (FuelPHP)
 - 資料庫：PostgreSQL、MySQL
 - 系統：Docker、WebSocket
@@ -318,40 +271,34 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 
 ## 📝 寫了一些文章
 
-寫了一些文章當作記錄，也是怕自己忘記，順便分享一下踩過的坑。目前有 **60+ 篇**：
+寫了一些文章當作記錄，也是怕自己忘記，順便分享一下踩過的坑。目前有 **75+ 篇**：
 
 | 系列 | 主題 | 數量 |
 |------|------|------|
 | **ChingTech OS** | Web 桌面系統、Terminal、AI 整合、安全、SMB/NAS | 26 篇 |
+| **Jaba AI** | LINE Bot 點餐系統、AI 整合、Repository Pattern | 11 篇 |
 | **基礎工具** | Git、Docker、Linux、uv、DevOps | 6 篇 |
 | **ROS2 與機器人** | RosAGV、WebAGV、KUKA、RobotSim | 6 篇 |
 | **教學系列** | 大學課程教材（實踐、嘉南、亞洲） | 11 篇 |
 | **KUKA 力覺感知** | 記憶卡插件、PCB 深度、Tray 盤堆疊 | 4 篇 |
 | **影像處理** | OpenCV、YOLO、CTCUI 視覺檢測 | 3 篇 |
-| **其他專案** | 飛行船、互動遊戲、jaba | 7 篇 |
+| **其他專案** | 飛行船、互動遊戲 | 5 篇 |
 
-[完整文章目錄]({% post_url 2025-12-13-ching-tech-os-index %})
+[ChingTech OS 系列]({% post_url 2025-12-13-ching-tech-os-index %}) | [Jaba AI 系列]({% post_url 2025-12-19-jaba-ai-index %}) | [所有文章]({{ site.baseurl }}/)
 
 ---
 
 ## 🏢 我在...
 
-每天都在試新技術、解決技術難題，常常做到忘記時間。每次學到新東西、感覺到自己又成長了一點 😊
-
-### 擎添工業（Ching-Tech）
+### 擎添工業（Ching-Tech）｜2024/10 至今
 工業 4.0 智慧工廠解決方案、AGV/AMR 系統、機械手臂整合
 
 <img src="{{ site.baseurl }}/images/ching-tech/CTLogo.svg" alt="Ching-Tech" width="24" height="24"> [擎添工業新官網](https://ching-tech.ddns.net) | [舊官網](https://www.ching-tech.com)
 
 ---
 
-### 卓智機器人（Wisetech）
-工業機器人系統整合、RobotSim 開發與推廣、機器人教學
-
-**主要貢獻：**
-- RobotSim 機器人模擬系統開發
-- 公司官網開發（WAMP + FuelPHP）
-- 台灣機器人資訊平台維護與內容建置
+### 卓智機器人（Wisetech）｜~ 2024/8
+產線自動化系統整合（機器人、視覺、中控）、RobotSim、機器人教學
 
 <img src="{{ site.baseurl }}/images/Wisetech-Icon-32.png" alt="Wisetech" width="24" height="24"> [卓智機器人官網](http://www.wtech.com.tw/) | [台灣機器人資訊平台](http://forum.wtech.com.tw/)
 
@@ -372,7 +319,7 @@ KUKA 機器手臂要做力覺感知，標準做法是外掛六軸力覺感測器
 
 ## 🌐 其他地方找我
 
-- [GitHub](https://github.com/yazelin) - 23 個專案（工業應用、AGV、視覺檢測、教學專案）
+- [GitHub](https://github.com/yazelin) - 40+ 個專案（工業應用、AGV、視覺檢測、教學專案）
 - [YouTube](https://www.youtube.com/@yazelin) - 專案展示影片（RobotSim、互動遊戲、無人飛行船）
 - [台灣機器人資訊平台](http://forum.wtech.com.tw/) - 卓智時期的專案與技術文章
 

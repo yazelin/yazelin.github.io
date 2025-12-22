@@ -147,8 +147,8 @@ tags: [Jaba AI, 目錄, 系列文章, LINE Bot, FastAPI, Claude AI]
 
 | # | 文章 | 重點 |
 |---|------|------|
-| 1 | [一鍵啟動腳本設計：從開發到生產的部署體驗]({% post_url 2025-12-25-jaba-ai-part10-deploy-script %}) | Shell 腳本、參數處理、錯誤處理 |
-| 2 | [systemd 服務配置：讓應用程式隨系統啟動]({% post_url 2025-12-25-jaba-ai-part11-systemd %}) | 服務定義、自動重啟、日誌管理 |
+| 1 | [一鍵啟動腳本設計：讓開發者和維運人員都能輕鬆啟動服務]({% post_url 2025-12-25-jaba-ai-part10-deploy-script %}) | Shell 腳本、參數處理、錯誤處理 |
+| 2 | [systemd 服務配置：讓應用程式開機自動啟動、當機自動重啟]({% post_url 2025-12-25-jaba-ai-part11-systemd %}) | 服務定義、自動重啟、日誌管理 |
 
 **這系列會談到：**
 - 啟動腳本的設計哲學
@@ -180,7 +180,7 @@ tags: [Jaba AI, 目錄, 系列文章, LINE Bot, FastAPI, Claude AI]
 ```
 jaba-ai/
 ├── app/                          # 應用程式核心
-│   ├── models/                   # SQLAlchemy Models (14 個)
+│   ├── models/                   # SQLAlchemy Models (18 個)
 │   ├── repositories/             # Repository Pattern 資料存取層
 │   ├── services/                 # 業務邏輯層
 │   ├── routers/                  # API 路由層

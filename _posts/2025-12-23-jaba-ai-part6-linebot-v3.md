@@ -12,7 +12,7 @@ series: jaba-ai
 
 這是 [Jaba AI 技術分享系列]({% post_url 2025-12-19-jaba-ai-index %}) 的第六篇文章。
 
-在 [專案整合]({% post_url 2025-12-20-jaba-ai-part1-integration %}) 時，我們將 jaba（FastAPI + LINE Bot SDK v3）和 jaba-line-bot（Flask 代理）整合成單一應用。這篇文章分享 LINE Bot SDK v3 與 FastAPI 整合的實作細節。
+在 [專案整合與重寫]({% post_url 2025-12-20-jaba-ai-part1-integration %}) 中，我們將原本分散的 [jaba]({% post_url 2025-12-08-jaba %}) 和 [jaba-line-bot]({% post_url 2025-12-09-jaba-line-bot %}) 重寫為統一的 jaba-ai 應用。這篇文章分享 LINE Bot SDK v3 與 FastAPI 整合的實作細節。
 
 ---
 

@@ -531,10 +531,10 @@ app/repositories/
 │                     # OrderSessionRepository, GroupTodayStoreRepository
 ├── chat_repo.py      # ChatRepository
 └── system_repo.py    # SuperAdminRepository, AiPromptRepository,
-                      # SecurityLogRepository
+                      # SecurityLogRepository, AiLogRepository
 ```
 
-總計 **17 個 Repository**（不含 BaseRepository），對應 18 張資料表。
+總計 **18 個 Repository**（不含 BaseRepository），對應 18 個 Models（資料表）。
 
 ---
 
