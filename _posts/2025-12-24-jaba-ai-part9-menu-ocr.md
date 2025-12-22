@@ -168,7 +168,7 @@ Claude 本身支援視覺能力，但 jaba-ai 選擇透過 Claude Code CLI 來�
 
 菜單辨識的提示詞儲存在資料庫，可以動態調整：
 
-```python
+````python
 # migrations/versions/002_seed_ai_prompts.py
 DEFAULT_PROMPTS = {
     "menu_recognition": """請分析這張菜單圖片，提取所有菜單項目以及店家資訊。
@@ -179,17 +179,20 @@ DEFAULT_PROMPTS = {
   "store_info": {
     "name": "店家名稱（如果圖片中有顯示）",
     "phone": "電話號碼（如果圖片中有顯示）",
-    "address": "地址（如果圖片中有顯示）"
+    "address": "地址（如果圖片中有顯示）",
+    "description": "店家描述或營業時間等資訊（如果圖片中有顯示）"
   },
   "categories": [
     {
       "name": "分類名稱",
       "items": [
         {
+          "id": "item-1",
           "name": "品項名稱",
           "price": 數字價格,
           "variants": [{"name": "M", "price": 50}, {"name": "L", "price": 60}],
           "description": "描述（如有）",
+          "available": true,
           "promo": null
         }
       ]
@@ -200,13 +203,33 @@ DEFAULT_PROMPTS = {
 ```
 
 注意事項：
+- store_info 欄位：請盡可能從菜單圖片中辨識店家資訊
+  - 如果圖片中沒有該資訊，該欄位填 null
+  - 電話格式範例：02-1234-5678、0912-345-678
+  - 地址請盡量完整
+- id 請用 item-1, item-2... 格式
 - 價格請只填數字，不含貨幣符號
 - 如果無法辨識價格，請填 0 並在 warnings 中說明
 - 盡可能保留原始分類結構
-- 尺寸變體（variants）：如果品項有多種尺寸，請填入 variants 陣列
-- 特價促銷（promo）：如發現買一送一、第二杯半價等，請填入 promo 欄位"""
+- 如果沒有明確分類，請使用「一般」作為分類名稱
+- available 預設為 true
+- 尺寸變體（variants）：
+  - 如果品項有多種尺寸（如 M/L、大/中/小、大碗/小碗），請填入 variants 陣列
+  - 每個 variant 包含 name（尺寸名稱）和 price（該尺寸價格）
+  - price 欄位填入最小尺寸的價格作為預設
+  - 如果品項只有單一價格，不需要 variants 欄位
+
+特價促銷品項（promo）：
+- 如果發現特價或促銷標示（如「買一送一」、「第二杯10元」、「第二杯半價」、「限時特價」、「優惠價」），請填入 promo 欄位
+- 將特價品項歸類至「特價優惠」分類
+- promo 格式依促銷類型：
+  - 買一送一：{"type": "buy_one_get_one", "label": "買一送一"}
+  - 第二杯固定價：{"type": "second_discount", "label": "第二杯10元", "second_price": 10}
+  - 第二杯折扣：{"type": "second_discount", "label": "第二杯半價", "second_ratio": 0.5}
+  - 限時特價：{"type": "time_limited", "label": "限時特價", "original_price": 原價, "promo_price": 特價}
+- 無促銷則 promo 為 null 或不填"""
 }
-```
+````
 
 ### 提示詞重點
 
@@ -222,7 +245,9 @@ DEFAULT_PROMPTS = {
 
 ## 圖片壓縮
 
-上傳的圖片可能很大，需要壓縮以減少 token 消耗：
+上傳的圖片可能很大，壓縮可以減少上傳時間。
+
+> **注意**：Claude 會自動將超過 1568px 的圖片縮小，所以壓縮主要是為了加快上傳速度，對 token 消耗影響有限。詳見 [Anthropic 官方文件](https://docs.anthropic.com/en/docs/build-with-claude/vision)。
 
 ```python
 # app/services/menu_service.py
@@ -564,21 +589,269 @@ AI 辨識不是 100% 準確，可能出錯的情況：
 
 ### 2. 處理時間
 
-圖片辨識比純文字對話慢很多：
+圖片辨識比純文字對話慢很多，以下是實際測試結果：
 
-- 小圖（< 1MB）：約 10-20 秒
-- 大圖（> 3MB）：約 30-60 秒
+**測試環境**：Claude Code CLI + Read 工具
+
+**測試指令（簡化版 prompt）**：
+
+```bash
+time claude -p "請先使用 Read 工具讀取圖片 /path/to/menu.jpg，然後請分析這張菜單圖片，提取所有菜單項目以及店家資訊。回傳 JSON 格式，包含 store_info、categories、warnings。價格請只填數字。" \
+  --model opus \
+  --allowedTools "Read" \
+  --dangerously-skip-permissions
+```
+
+**測試指令（完整版 prompt）**：
+
+```bash
+# 將完整 prompt 存成檔案
+cat > /tmp/menu_prompt.txt << 'EOF'
+請先使用 Read 工具讀取圖片 /path/to/menu.jpg，然後請分析這張菜單圖片，提取所有菜單項目以及店家資訊。
+
+回傳 JSON 格式：
+{
+  "store_info": {
+    "name": "店家名稱（如果圖片中有顯示）",
+    "phone": "電話號碼（如果圖片中有顯示）",
+    "address": "地址（如果圖片中有顯示）",
+    "description": "店家描述或營業時間等資訊（如果圖片中有顯示）"
+  },
+  "categories": [
+    {
+      "name": "分類名稱",
+      "items": [
+        {
+          "id": "item-1",
+          "name": "品項名稱",
+          "price": 數字價格,
+          "variants": [{"name": "M", "price": 50}, {"name": "L", "price": 60}],
+          "description": "描述（如有）",
+          "available": true,
+          "promo": null
+        }
+      ]
+    }
+  ],
+  "warnings": ["無法辨識的項目或需要確認的事項"]
+}
+
+注意事項：
+- store_info 欄位：請盡可能從菜單圖片中辨識店家資訊，如果圖片中沒有該資訊，該欄位填 null
+- id 請用 item-1, item-2... 格式
+- 價格請只填數字，不含貨幣符號
+- 如果無法辨識價格，請填 0 並在 warnings 中說明
+- 盡可能保留原始分類結構
+- available 預設為 true
+- 尺寸變體（variants）：如果品項有多種尺寸，請填入 variants 陣列
+- 特價促銷品項（promo）：如果發現特價或促銷標示，請填入 promo 欄位
+EOF
+
+# 執行測試
+time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dangerously-skip-permissions
+```
+
+將 `/path/to/menu.jpg` 換成你的菜單圖片路徑，`--model` 可選 `opus` 或 `sonnet`。
+
+**測試圖片 1：便當菜單**（653×932 px, 387KB）
+
+<img src="/assets/images/jaba-ai/menu-test-1-bento.jpg" alt="測試菜單1-便當" width="300">
+
+<details>
+<summary>Opus 辨識結果（24.5 秒）</summary>
+
+```json
+{
+  "store_info": {
+    "name": "家香味排骨便當",
+    "slogan": "當天採購 新鮮現做 健康美味",
+    "features": "歡迎工商團體包月訂購，主菜均可依公司需求洽談價格",
+    "address": "新北市五股區新城八路17號",
+    "phone": ["(02) 2291-0938", "0921684983", "0983295385"],
+    "business_hours": {
+      "monday_to_friday": "上午10點至晚上7點",
+      "saturday": "上午10點至下午2點",
+      "sunday": "公休"
+    },
+    "notes": [
+      "便當合菜團購51個以上即可外送",
+      "大量訂購請於10:30分前",
+      "以上便當附湯或多多",
+      "本店已投保餐飲責任險，敬請安心食用"
+    ]
+  },
+  "categories": [
+    {
+      "name": "便當",
+      "items": [
+        {"name": "炸雞腿", "price": 125},
+        {"name": "古早味排骨", "price": 110},
+        {"name": "卡啦雞", "price": 105},
+        {"name": "高粱酒香腸", "price": 105},
+        {"name": "蔥爆豬", "price": 105},
+        {"name": "紅糟肉", "price": 105},
+        {"name": "鯖魚便當", "price": 105},
+        {"name": "鱈魚飯", "price": 105},
+        {"name": "鹹豬肉", "price": 105},
+        {"name": "蔥油雞", "price": 105},
+        {"name": "宮保雞丁", "price": 105},
+        {"name": "紅燒炊肉", "price": 105}
+      ]
+    },
+    {
+      "name": "單點類",
+      "items": [
+        {"name": "炸雞腿", "price": 80},
+        {"name": "卡啦雞", "price": 60},
+        {"name": "鯖魚", "price": 60},
+        {"name": "鱈魚", "price": 60},
+        {"name": "古早味排骨", "price": 70},
+        {"name": "高粱酒香腸", "price": 35, "unit": "1條", "bulk_price": 200, "bulk_unit": "1斤"},
+        {"name": "紅糟肉", "price": 60, "unit": "1份"},
+        {"name": "鹹豬肉", "price": 60, "unit": "1份"}
+      ]
+    }
+  ],
+  "warnings": [
+    "部分單點類項目價格可能因圖片解析度略有誤差",
+    "營業時間週日公休，週六僅營業至下午2點"
+  ]
+}
+```
+</details>
+
+**測試圖片 2：牛排菜單**（1286×882 px, 1.3MB）
+
+<img src="/assets/images/jaba-ai/menu-test-2-steak.png" alt="測試菜單2-牛排" width="400">
+
+<details>
+<summary>Opus 辨識結果（32.0 秒）</summary>
+
+```json
+{
+  "store_info": {
+    "name": "未顯示店名",
+    "notes": "提供牛排、豬排、雞排、海鮮等排餐系列"
+  },
+  "categories": [
+    {
+      "category_name": "店長推薦",
+      "items": [
+        {"name": "松露厚切雪花牛7oz", "price": 350},
+        {"name": "松露黃金雞腿排", "price": 350},
+        {"name": "厚切起司豬排", "price": 350}
+      ]
+    },
+    {
+      "category_name": "大胃王",
+      "items": [
+        {"name": "海陸雙拼（沙朗牛5oz＋豬排、雞排、比目魚）", "price": 400, "note": "任選二種"},
+        {"name": "厚切雪花牛7oz雙拼（厚切雪花牛＋豬排、雞排、比目魚、魷魚、草蝦2支）", "price": 450, "note": "任選二種"},
+        {"name": "海鮮雙拼（鮭魚、魷魚、比目魚、草蝦2支）", "price": 450, "note": "任選二種"},
+        {"name": "安格斯沙朗10oz", "price": 420},
+        {"name": "頂級沙朗16oz", "price": 699}
+      ]
+    },
+    {
+      "category_name": "排餐系列 Steak Series",
+      "items": [
+        {"name": "沙朗牛排5oz（數量有限）", "price": 280},
+        {"name": "法式羊肩排 frenched lamb shoulder chop", "price": 350},
+        {"name": "厚切雪花沙朗牛排7oz", "price": 320},
+        {"name": "厚切豬排 thick cut pork", "price": 280},
+        {"name": "黃金雞腿排 golden chrispy chicken", "price": 270},
+        {"name": "菲力牛排9oz fillet steak 9oz", "price": 399},
+        {"name": "帶骨牛小排8oz bone-in short ribs 8oz", "price": 399}
+      ]
+    },
+    {
+      "category_name": "主餐（右側）",
+      "items": [
+        {"name": "大比目魚排（鱈魚）halibut steak", "price": 300},
+        {"name": "香煎鮭魚排 seared salmon steak", "price": 320},
+        {"name": "深海魷魚排 deep-fried squid fillet", "price": 300}
+      ]
+    },
+    {
+      "category_name": "點心 Dessert",
+      "items": [
+        {"name": "脆炸薯條 crisp french fries", "price": 60},
+        {"name": "洋蔥圈 onion rings", "price": 60},
+        {"name": "草蝦3隻 shrimp 3pcs", "price": 160},
+        {"name": "雞塊 chicken nugget", "price": 60},
+        {"name": "檸檬雞翅2支 lemon chicken wings 2pcs", "price": 99}
+      ]
+    }
+  ],
+  "extras": {
+    "sauces": {
+      "description": "搭配醬料",
+      "options": ["胡椒 pepper", "蘑菇 mushroom", "黑胡椒 mix", "不要醬 no sauce"]
+    },
+    "steak_doneness": {
+      "description": "牛排熟度",
+      "options": ["3分 medium rare", "5分 medium", "7分 medium well", "全熟 well done"]
+    },
+    "upgrade_options": {
+      "description": "當月壽星免費加一份肉（沙朗/豬排/雞排/比目魚）",
+      "meat_upgrades": [
+        {"weight": "100~109公克", "price": 80},
+        {"weight": "110~139公克", "price": 120},
+        {"weight": "140公克以上", "price": 180}
+      ]
+    }
+  },
+  "warnings": [
+    "部分品項標示「數量有限」，可能售完為止",
+    "大胃王系列為雙拼組合，需任選二種配料",
+    "牛排需選擇熟度",
+    "當月壽星可免費加一份肉品"
+  ]
+}
+```
+</details>
+
+**測試結果彙整**（共 5 輪測試，使用 Claude Opus 4.5 / Sonnet 4.5）：
+
+**簡化版 prompt**：
+
+| 圖片 | 大小 | 模型 | #1 | #2 | #3 | #4 | #5 | 平均 |
+|------|------|------|-----|-----|-----|-----|-----|------|
+| 便當菜單 | 387KB | Opus 4.5 | 22.3s | 24.5s | 24.7s | 25.1s | 23.6s | **24.0s** |
+| 便當菜單 | 387KB | Sonnet 4.5 | 24.8s | 24.0s | 28.1s | 25.8s | 28.5s | **26.2s** |
+| 牛排菜單 | 1.3MB | Opus 4.5 | 34.5s | 32.0s | 34.0s | 31.2s | 31.4s | **32.6s** |
+| 牛排菜單 | 1.3MB | Sonnet 4.5 | 38.4s | 39.9s | 34.9s | 37.8s | 43.2s | **38.8s** |
+
+**完整版 prompt**：
+
+| 圖片 | 大小 | 模型 | #1 | #2 | #3 | #4 | #5 | 平均 |
+|------|------|------|-----|-----|-----|-----|-----|------|
+| 便當菜單 | 387KB | Opus 4.5 | 30.1s | 30.6s | 31.1s | 30.6s | 31.1s | **30.7s** |
+| 便當菜單 | 387KB | Sonnet 4.5 | 34.4s | 32.6s | 34.6s | 33.4s | 34.4s | **33.9s** |
+| 牛排菜單 | 1.3MB | Opus 4.5 | 39.8s | 44.0s | 40.5s | 42.4s | 43.0s | **41.9s** |
+| 牛排菜單 | 1.3MB | Sonnet 4.5 | 46.2s | 46.2s | 41.8s | 46.6s | 47.1s | **45.6s** |
+
+**簡化版 vs 完整版對比**：
+
+| 圖片 | 模型 | 簡化版 | 完整版 | 差異 |
+|------|------|--------|--------|------|
+| 便當菜單 | Opus 4.5 | 24.0s | 30.7s | +6.7s |
+| 便當菜單 | Sonnet 4.5 | 26.2s | 33.9s | +7.7s |
+| 牛排菜單 | Opus 4.5 | 32.6s | 41.9s | +9.3s |
+| 牛排菜單 | Sonnet 4.5 | 38.8s | 45.6s | +6.8s |
+
+**結論**：
+- 完整版 prompt 比簡化版慢約 **6-10 秒**（prompt 越長，處理時間越長）
+- 小圖（< 500KB）：簡化版約 24-26 秒，完整版約 31-34 秒
+- 中圖（1-2MB）：簡化版約 33-39 秒，完整版約 42-46 秒
+- Opus 4.5 比 Sonnet 4.5 略快（約快 2-6 秒）
 - 超時設定：300 秒
 
 ### 3. 成本考量
 
-視覺 API 的 token 成本較高。壓縮圖片可以顯著降低成本：
+本專案使用 Claude Code 訂閱制，未詳細計算 token 成本。
 
-| 圖片大小 | 預估 token | 成本（約） |
-|----------|------------|-----------|
-| 4000x3000 | ~1700 | $0.02 |
-| 1920x1440 | ~800 | $0.01 |
-| 壓縮後 | ~500 | $0.006 |
+如果你使用 API 計費，視覺功能的 token 消耗較高，建議參考 [Anthropic 官方定價頁面](https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table) 評估成本。壓縮圖片至 1568px 以內可避免伺服器端 resize。
 
 ---
 
