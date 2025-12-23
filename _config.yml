@@ -13,6 +13,7 @@ round-avatar: true
 # 導航列連結
 navbar-links:
   About: "about"
+  Portfolio: "portfolio"
   Projects:
     - AnalyzerUI: "AnalyzerUI"
   Tags: "tags"
