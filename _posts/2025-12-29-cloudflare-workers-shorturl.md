@@ -308,6 +308,25 @@ const data = await response.json();
 
 瀏覽器訪問 `https://shorturl.workers.dev/s/abc123` 會自動跳轉到你設定的目標 URL。
 
+### CORS 圖片代理
+
+這是後來加入的功能。前端在載入外部圖片時常常會遇到 CORS 跨域問題，透過這個代理 endpoint 可以繞過限制：
+
+```javascript
+// 原始圖片 URL 會被 CORS 擋住
+const originalUrl = 'https://example.com/image.jpg';
+
+// 透過代理取得圖片
+const proxyUrl = `https://shorturl.workers.dev/api/proxy?url=${encodeURIComponent(originalUrl)}`;
+const response = await fetch(proxyUrl);
+const blob = await response.blob();
+```
+
+安全機制：
+- **Origin 白名單**：只有 `yazelin.github.io` 可以呼叫
+- **協議限制**：只允許 `http://` 和 `https://`
+- **快取**：回應會快取 1 天，減少重複請求
+
 ---
 
 ## 進階擴充建議
