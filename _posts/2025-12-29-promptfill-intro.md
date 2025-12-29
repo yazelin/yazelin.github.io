@@ -23,7 +23,7 @@ categories: [AI, 工具]
 
 PromptFill 是一個**結構化提示詞產生工具**，核心概念很簡單：
 
-> 把 Prompt 寫成模板，用 `{{變數}}` 標記可變的部分，然後用下拉選單填空。
+> 把 Prompt 寫成模板，用 {% raw %}`{{變數}}`{% endraw %} 標記可變的部分，然後用下拉選單填空。
 
 舉個例子，原本的 Prompt 可能是：
 
@@ -34,15 +34,17 @@ warm colors, detailed brushstrokes, 4K resolution
 
 用 PromptFill 寫成模板：
 
+{% raw %}
 ```
 A beautiful {{scene}} over the {{location}}, {{style}} style,
 {{color_tone}} colors, {{detail_level}}, {{resolution}} resolution
 ```
+{% endraw %}
 
 然後你可以：
-- `{{scene}}` 選擇：sunset / sunrise / storm / rainbow
-- `{{location}}` 選擇：ocean / mountain / city / forest
-- `{{style}}` 選擇：oil painting / watercolor / digital art / anime
+- {% raw %}`{{scene}}`{% endraw %} 選擇：sunset / sunrise / storm / rainbow
+- {% raw %}`{{location}}`{% endraw %} 選擇：ocean / mountain / city / forest
+- {% raw %}`{{style}}`{% endraw %} 選擇：oil painting / watercolor / digital art / anime
 
 每個變數都有一組選項（詞庫），點一下就能切換，不用手動打字。
 
@@ -54,7 +56,7 @@ A beautiful {{scene}} over the {{location}}, {{style}} style,
 
 支援建立多個模板，每個模板獨立運作：
 
-- **編輯模式**：直接編輯文字，用 `{{變數名}}` 標記變數
+- **編輯模式**：直接編輯文字，用 {% raw %}`{{變數名}}`{% endraw %} 標記變數
 - **預覽模式**：變數會變成可點擊的下拉選單
 - **副本功能**：一鍵複製模板，方便做 A/B 測試
 
@@ -173,16 +175,20 @@ const svg = `
 
 Midjourney、Stable Diffusion、DALL-E 的 Prompt 通常有固定結構：
 
+{% raw %}
 ```
 {{主題}}, {{風格}}, {{光線}}, {{鏡頭}}, {{畫質}}
 ```
+{% endraw %}
 
 例如人物概念圖：
 
+{% raw %}
 ```
 {{角色類型}} character, {{服裝風格}}, {{動作姿勢}},
 {{背景場景}}, {{藝術風格}}, {{渲染品質}}
 ```
+{% endraw %}
 
 建好模板後，每次只要點選不同組合，就能快速產出變化。想換成「賽博龐克風格的女戰士」？點幾下就好。
 
@@ -190,9 +196,11 @@ Midjourney、Stable Diffusion、DALL-E 的 Prompt 通常有固定結構：
 
 Suno、Udio 這類 AI 音樂工具也需要結構化 Prompt：
 
+{% raw %}
 ```
 {{曲風}}, {{情緒}}, {{節奏}}, {{樂器}}, {{人聲類型}}
 ```
+{% endraw %}
 
 ### 批次測試
 
