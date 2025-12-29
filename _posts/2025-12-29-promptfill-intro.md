@@ -153,7 +153,7 @@ SVG 分享圖特色：
 
 原本分享是把整個範本壓縮後放在 URL 參數裡，URL 會變得超長。我做了一個 Cloudflare Workers 後端，把範本存到 KV，只回傳短碼。
 
-詳細技術請看：[用 Cloudflare Workers 免費架設短網址服務](/2025/12/29/cloudflare-workers-shorturl/)
+詳細技術請看：[用 Cloudflare Workers 免費架設短網址服務]({% post_url 2025-12-29-cloudflare-workers-shorturl %})
 
 ### 2. SVG 圖檔分享
 
@@ -247,5 +247,5 @@ PromptFill 把「寫 Prompt」變成「填表格」：
 
 - [PromptFill 線上版](https://yazelin.github.io/PromptFill/)
 - [GitHub Repo（我的 fork）](https://github.com/yazelin/PromptFill)
-- [短網址後端介紹](/2025/12/29/cloudflare-workers-shorturl/)
+- [短網址後端介紹]({% post_url 2025-12-29-cloudflare-workers-shorturl %})
 - [原作者 Repo](https://github.com/TanShilongMario/PromptFill)
