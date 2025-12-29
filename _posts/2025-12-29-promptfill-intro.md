@@ -98,11 +98,18 @@ SVG 分享圖特色：
 
 用瀏覽器開啟這個 SVG，會自動跳轉到 PromptFill 並匯入範本。完全離線，不需要伺服器。
 
-**範例 SVG 下載體驗：**
-- [木質層疊藝術.svg](https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E6%9C%A8%E8%B3%AA%E5%B1%A4%E7%96%8A%E8%97%9D%E8%A1%93.svg)
-- [窗邊書桌微縮場景.svg](https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E7%AA%97%E9%82%8A%E6%9B%B8%E6%A1%8C%E5%BE%AE%E7%B8%AE%E5%A0%B4%E6%99%AF.svg)
+**範例 SVG 預覽：**
 
-下載後用瀏覽器開啟，就能體驗自動匯入功能。
+<div style="display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0;">
+  <a href="https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E6%9C%A8%E8%B3%AA%E5%B1%A4%E7%96%8A%E8%97%9D%E8%A1%93.svg" download style="text-decoration: none;">
+    <img src="https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E6%9C%A8%E8%B3%AA%E5%B1%A4%E7%96%8A%E8%97%9D%E8%A1%93.svg" alt="木質層疊藝術" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  </a>
+  <a href="https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E7%AA%97%E9%82%8A%E6%9B%B8%E6%A1%8C%E5%BE%AE%E7%B8%AE%E5%A0%B4%E6%99%AF.svg" download style="text-decoration: none;">
+    <img src="https://raw.githubusercontent.com/yazelin/PromptFill/main/docs/%E7%AA%97%E9%82%8A%E6%9B%B8%E6%A1%8C%E5%BE%AE%E7%B8%AE%E5%A0%B4%E6%99%AF.svg" alt="窗邊書桌微縮場景" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  </a>
+</div>
+
+點擊圖片下載 SVG，用瀏覽器開啟就能體驗自動匯入功能。
 
 ### 4. 其他功能
 
