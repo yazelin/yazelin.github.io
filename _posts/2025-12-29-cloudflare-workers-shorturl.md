@@ -16,7 +16,7 @@ categories: [Serverless, 教學]
 - **自訂受限**：無法控制網域、無法存儲自訂資料
 - **只能存 URL**：如果想存一些額外資料（JSON、設定檔），就沒辦法了
 
-最近我在做 [PromptFill](/2025/12/29/promptfill-intro/)（一個 Prompt 模板工具），需要讓使用者分享模板。模板內容可能很長（包含模板結構、詞庫、預設值），放在 URL 參數裡會超長又醜。於是我用 Cloudflare Workers 做了一個專屬的「短網址 + 小資料庫」服務：
+最近我在做 [PromptFill](/2025/12/29/promptfill-intro/)（一個 Prompt 範本工具），需要讓使用者分享範本。範本內容可能很長（包含範本結構、詞庫、預設值），放在 URL 參數裡會超長又醜。於是我用 Cloudflare Workers 做了一個專屬的「短網址 + 小資料庫」服務：
 
 - **完全免費**：每天 10 萬次請求、1GB 儲存空間
 - **存 JSON 資料**：不只是 URL，可以存任意 JSON
@@ -284,8 +284,8 @@ const response = await fetch('https://shorturl.workers.dev/api/short-url', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     template: {
-      name: '我的模板',
-      content: '這是模板內容...'
+      name: '我的範本',
+      content: '這是範本內容...'
     },
     banks: {},
     defaults: {}
@@ -335,14 +335,14 @@ Cloudflare Workers 非常適合做這類輕量級服務：
 
 ---
 
-## 實際應用：PromptFill 模板分享
+## 實際應用：PromptFill 範本分享
 
-這個服務目前用在 [PromptFill](/2025/12/29/promptfill-intro/) 的模板分享功能。當使用者點擊「分享」時：
+這個服務目前用在 [PromptFill](/2025/12/29/promptfill-intro/) 的範本分享功能。當使用者點擊「分享」時：
 
-1. 前端把模板資料（名稱、內容、詞庫、預設值）打包成 JSON
+1. 前端把範本資料（名稱、內容、詞庫、預設值）打包成 JSON
 2. POST 到 `/api/short-url`，存入 KV
 3. 取得短網址，例如 `https://shorturl.yazelinj303.workers.dev/s/abc123`
-4. 對方點擊連結，自動跳轉到 PromptFill 並載入模板
+4. 對方點擊連結，自動跳轉到 PromptFill 並載入範本
 
 這個模式可以套用到任何需要「分享複雜資料」的場景：
 
