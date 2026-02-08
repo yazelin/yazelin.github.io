@@ -324,7 +324,7 @@ PDF 解析使用 PyMuPDF（`fitz`），有一個特別的處理：**純圖片 PD
 系統定義了一組層次化的錯誤類別：
 
 ```python
-class DocumentReadError(ServiceError):
+class DocumentReadError(Exception):
     """文件讀取錯誤（基礎類別）"""
 
 class PasswordProtectedError(DocumentReadError):
