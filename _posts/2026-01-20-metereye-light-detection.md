@@ -17,7 +17,7 @@ tags: [Computer Vision, Python, AI, 工業自動化, MeterEye]
 
 工廠裡除了數位儀表上的數字需要讀取，還有大量的**指示燈與警報燈**需要監控。火災受信總機上的區域燈號、設備運轉狀態指示燈、異常警報燈——這些燈號的「亮」或「滅」，直接關係到產線安全與設備健康。
 
-[MeterEye](https://github.com/AEJChing/ching-tech-metereye) 是 ChingTech（擎添工業）開發的多攝影機儀表監控系統，原本專注於**七段顯示器數值辨識**。在實際部署中，客戶提出了明確需求：同一組 RTSP 攝影機畫面裡，除了壓力錶數值，還需要同時偵測警報面板上的燈號狀態。
+[MeterEye](https://github.com/yazelin/ching-tech-metereye) 是 ChingTech（擎添工業）開發的多攝影機儀表監控系統，原本專注於**七段顯示器數值辨識**。在實際部署中，客戶提出了明確需求：同一組 RTSP 攝影機畫面裡，除了壓力錶數值，還需要同時偵測警報面板上的燈號狀態。
 
 本文記錄 MeterEye 如何擴充**指示燈偵測（Indicator Detection）**功能，從資料模型設計、影像處理演算法，到與既有系統的整合。
 

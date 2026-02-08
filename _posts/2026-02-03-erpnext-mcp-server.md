@@ -131,7 +131,7 @@ pip install erpnext-mcp
 ### 從原始碼安裝
 
 ```bash
-git clone https://github.com/ching-tech/erpnext-mcp
+git clone https://github.com/yazelin/erpnext-mcp
 cd erpnext-mcp
 uv sync
 ```
@@ -266,7 +266,7 @@ erpnext-mcp 的核心想法很簡單：把 ERPNext 的 REST API 用 MCP 標準�
 
 ## 參考資源
 
-- [erpnext-mcp GitHub](https://github.com/ching-tech/erpnext-mcp)
+- [erpnext-mcp GitHub](https://github.com/yazelin/erpnext-mcp)
 - [ERPNext 官方網站](https://erpnext.com/)
 - [ERPNext REST API 文件](https://frappeframework.com/docs/user/en/api/rest)
 - [FastMCP GitHub](https://github.com/jlowin/fastmcp)
