@@ -13,7 +13,7 @@ tags: [Claude Code, ACP, Python, API, Claude, AI]
 
 這就是 **ACP（Agent Client Protocol）** 的角色。
 
-[claude-code-acp-py](https://github.com/yazelin/claude-code-acp-py) 是我用 Python 實作的 ACP 套件，整合了 Anthropic 官方的 [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) 和 [Agent Client Protocol SDK](https://github.com/anthropics/agent-client-protocol)，提供兩個核心客戶端：
+[claude-code-acp-py](https://github.com/yazelin/claude-code-acp-py) 是我用 Python 實作的 ACP 套件，整合了 Anthropic 官方的 [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) 和 [Agent Client Protocol SDK](https://github.com/agentclientprotocol/agent-client-protocol)，提供兩個核心客戶端：
 
 - **ClaudeClient**：直接包裝 Claude CLI，用 decorator 註冊事件處理器
 - **AcpClient**：透過 ACP 協議連接任意 agent（Claude、Gemini、自訂 agent）
@@ -539,6 +539,6 @@ asyncio.run(main())
 - [claude-code-acp-py GitHub](https://github.com/yazelin/claude-code-acp-py) - 本文介紹的套件
 - [PyPI: claude-code-acp](https://pypi.org/project/claude-code-acp/) - 套件安裝頁面
 - [Agent Client Protocol 官網](https://agentclientprotocol.com/) - ACP 協議規格
-- [Agent Client Protocol SDK](https://github.com/anthropics/agent-client-protocol) - Anthropic 官方 ACP SDK
+- [Agent Client Protocol SDK](https://github.com/agentclientprotocol/agent-client-protocol) - Anthropic 官方 ACP SDK
 - [Claude Agent SDK (Python)](https://github.com/anthropics/claude-agent-sdk-python) - Anthropic 官方 Claude Agent SDK
 - [claude-code-acp (TypeScript)](https://github.com/zed-industries/claude-code-acp) - Zed Industries 的 TypeScript 版本
