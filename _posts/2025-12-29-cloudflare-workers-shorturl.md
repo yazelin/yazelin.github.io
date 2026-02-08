@@ -151,7 +151,7 @@ export default {
 };
 ```
 
-（完整程式碼請參考 [GitHub Repo](https://github.com/YaZeLinJ303/shorturl-worker)）
+（完整程式碼請參考 [GitHub Repo](https://github.com/yazelin/shorturl-worker)）
 
 ### 6. 本機測試
 
