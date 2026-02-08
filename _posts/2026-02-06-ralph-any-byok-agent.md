@@ -41,7 +41,7 @@ ralph "Build a REST API" --command gemini --command-args="--experimental-acp"
 
 ## 與 copilot-ralph 的關係
 
-ralph-any 是參考 [copilot-ralph](https://github.com/nicolo-ribaudo/copilot-ralph)（TypeScript 版）精簡重寫的 Python 版。重點差異：
+ralph-any 是參考 [copilot-ralph](https://github.com/doggy8088/copilot-ralph)（TypeScript 版）精簡重寫的 Python 版。重點差異：
 
 | 面向 | copilot-ralph (TS) | ralph-any (Py) |
 |------|-------------------|----------------|
@@ -248,5 +248,5 @@ ralph-any 的三個核心價值：
 - [ralph-any GitHub](https://github.com/yazelin/ralph-any)
 - [ralph-any PyPI](https://pypi.org/project/ralph-any/)
 - [claude-code-acp-py](https://github.com/yazelin/claude-code-acp-py)
-- [copilot-ralph（原版 TypeScript）](https://github.com/nicolo-ribaudo/copilot-ralph)
+- [copilot-ralph（原版 TypeScript）](https://github.com/doggy8088/copilot-ralph)
 - [ACP 協議說明](https://docs.anthropic.com/en/docs/claude-code/acp)
