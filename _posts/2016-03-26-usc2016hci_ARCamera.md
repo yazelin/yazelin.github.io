@@ -232,8 +232,6 @@ Assets/
 
 ## 專案資源
 
-**完整專案網站：**
-[https://yazelin.github.io/usc2016hci_ARCamera/](https://yazelin.github.io/usc2016hci_ARCamera/)
 
 **GitHub 開源專案：**
 [https://github.com/yazelin/usc2016hci_ARCamera](https://github.com/yazelin/usc2016hci_ARCamera)
