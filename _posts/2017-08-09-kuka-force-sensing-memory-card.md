@@ -7,6 +7,8 @@ categories: [KUKA, Automation]
 tags: [KUKA, 力覺感知, Force Sensing, 插件組裝, 品質檢測]
 ---
 
+![KUKA 力覺感知應用：記憶卡插件力道感測與反向錯放偵測](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2017-08-09-kuka-force-sensing-memory-card.png)
+
 ## 前言
 
 在電子製造業，記憶卡等元件的插件作業需要精確的力道控制。**反向錯放**是常見的品質問題：記憶卡若 180 度反向插入，會因阻力過大而損壞主機板與記憶卡。
