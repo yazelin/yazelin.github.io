@@ -7,6 +7,8 @@ date: 2011-06-01
 categories: [論文, 嵌入式系統, 自動導航]
 ---
 
+![無人飛行船自動導航系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2011-06-01-airship-auto-navigation-thesis.png)
+
 ## 論文簡介
 
 這是我在**實踐大學資訊科技與通訊學系**的**學士畢業論文專案**（民國100年，2011年），與侯圳嶺、侯劭東、劉文茜、葉曉霈、鄧靜容同學共同完成，指導教授為吳啟偉老師。
