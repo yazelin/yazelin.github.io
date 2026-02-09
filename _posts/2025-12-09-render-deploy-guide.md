@@ -5,6 +5,8 @@ categories: [DevOps]
 tags: [教學, 部署, Render, Python, Flask, LINE Bot, PaaS]
 ---
 
+![Render 免費部署教學 - 以 LINE Bot 為例](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-09-render-deploy-guide.png)
+
 > **📖 前置知識**：[Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
 [Render](https://render.com) 是一個現代化的雲端平台，提供免費方案讓你快速部署 Web 應用。本文以實際部署 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %}) 為例，分享完整的部署流程。
