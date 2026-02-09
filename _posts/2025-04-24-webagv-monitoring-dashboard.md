@@ -7,6 +7,8 @@ date: 2025-04-24
 categories: [Web開發, AGV, 即時監控]
 ---
 
+![WebAGV - AGV 車隊即時監控看板](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-04-24-webagv-monitoring-dashboard.png)
+
 ## 專案簡介
 
 **WebAGV** 是一套 AGV 車隊即時監控看板系統，由 **WebAGVClient**（前端）和 **WebAGVServer**（後端）組成。這個系統的目的是提供一個**直觀的資訊看板**，讓操作人員可以即時監控 AGV 在地圖上的位置、任務執行狀態、設備狀態等資訊。
