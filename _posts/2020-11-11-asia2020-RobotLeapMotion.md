@@ -7,6 +7,8 @@ date: 2020-11-11
 categories: [教學, RobotSim, KUKA, LeapMotion]
 ---
 
+![亞洲大學 2020 - KUKA 機器手臂與 Leap Motion 手勢控制](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2020-11-11-asia2020-RobotLeapMotion.png)
+
 ## 工作坊簡介
 
 這是 2020 年在亞洲大學舉辦的 **KUKA 機器手臂與 Leap Motion** 整合工作坊，教授如何使用手勢控制工業機器手臂，實現人機互動的創新應用。
