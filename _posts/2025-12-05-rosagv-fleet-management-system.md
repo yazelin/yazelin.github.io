@@ -7,6 +7,9 @@ date: 2025-12-05
 categories: [工業自動化, ROS2, AGV]
 ---
 
+![RosAGV - 企業級 AGV 車隊管理系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-05-rosagv-fleet-management-system.png)
+
+
 ## 專案簡介
 
 **RosAGV** 是一套企業級自動導引車（AGV）車隊管理系統，採用 ROS 2 Jazzy 和 Zenoh RMW 打造。這個系統的特別之處在於採用**雙環境容器化架構**，將車載控制與中央管理功能分離，為工業自動化提供完整的車隊管理、任務調度和設備控制解決方案。
