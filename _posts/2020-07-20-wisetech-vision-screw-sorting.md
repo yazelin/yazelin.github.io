@@ -7,6 +7,8 @@ categories: [Computer Vision, KUKA]
 tags: [WiseTechVision, KUKA, 機器視覺, 自動化, 工業視覺]
 ---
 
+![WiseTechVision 視覺系統整合應用：散亂螺絲自動整列](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2020-07-20-wisetech-vision-screw-sorting.png)
+
 ## 前言
 
 在工業自動化領域，散亂工件的整列一直是個挑戰。傳統方法依賴震動盤或固定夾具，但這些方式缺乏彈性，更換產品時需要重新設計治具。**視覺引導機器人（Vision-Guided Robot）** 提供了更靈活的解決方案。
