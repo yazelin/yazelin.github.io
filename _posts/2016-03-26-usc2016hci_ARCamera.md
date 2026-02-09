@@ -7,6 +7,8 @@ date: 2016-03-26
 categories: [專案, Unity, AR]
 ---
 
+![實踐大學 2016 人機互動課程專案 - AR 相機 (APP Client 端)](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2016-03-26-usc2016hci_ARCamera.png)
+
 ## 專案簡介
 
 這是**實踐大學 2016 人機互動技術與應用課程**的完整專案範例，展示如何使用 Unity + Vuforia 開發 AR 相機 APP，實現**拍照、截圖、上傳雲端**的完整功能。
