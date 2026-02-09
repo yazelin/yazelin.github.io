@@ -5,6 +5,8 @@ categories: [DevOps]
 tags: [教學, SSL, HTTPS, Certbot, Let's Encrypt, Nginx, Docker, 資安]
 ---
 
+![Certbot SSL 憑證完整教學 - Let's Encrypt 免費 HTTPS](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-10-certbot-ssl-guide.png)
+
 [Certbot](https://certbot.eff.org/) 是 Let's Encrypt 官方推薦的 SSL 憑證自動化工具，可以免費取得並自動更新 HTTPS 憑證。本文記錄在 Ubuntu + Docker Nginx 環境下的完整設定流程。
 
 > **實際成果**：[https://ching-tech.ddns.net](https://ching-tech.ddns.net) - 擎添工業官網
