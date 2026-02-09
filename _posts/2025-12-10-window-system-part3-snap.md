@@ -8,6 +8,8 @@ categories: [Frontend]
 tags: [JavaScript, UX, 視窗系統, Window Snap]
 ---
 
+![視窗系統（下）：Window Snap 與 Taskbar 整合](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-10-window-system-part3-snap.png)
+
 > **系列文章**
 > 1. [為什麼我們選擇不用 React/Vue？談 Vanilla JS 的適用場景]({% post_url 2025-12-10-vanilla-js-why-no-framework %})
 > 2. [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能]({% post_url 2025-12-10-window-system-part1-drag %})
