@@ -103,7 +103,7 @@ context = {
 }
 ```
 
-![訂單管理介面](/assets/images/jaba-ai/10-admin-order-management.png)
+![訂單管理介面](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-10-admin-order-management.png)
 *管理後台的訂單管理介面，顯示群組訂單和呷爸助手對話框*
 
 ---

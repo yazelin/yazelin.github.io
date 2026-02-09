@@ -28,12 +28,12 @@ categories: [專案, Unity, 互動遊戲]
 
 **全身版（接東西）：**
 
-![全身版 - 左右移動消滅垃圾食物](/images/kinect-dagfire/全身_遊戲中.jpg)
-![全身版 - 接分解茶加 5000 分](/images/kinect-dagfire/全身_分解茶.jpg)
+![全身版 - 左右移動消滅垃圾食物](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-kinect-dagfire-fullbody-playing.jpg)
+![全身版 - 接分解茶加 5000 分](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-kinect-dagfire-fullbody-tea.jpg)
 
 **半身版（噴水滅火）：**
 
-![半身版 - 消滅漢堡得分](/images/kinect-dagfire/半身_遊戲中.jpg)
+![半身版 - 消滅漢堡得分](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-kinect-dagfire-halfbody-playing.jpg)
 
 ---
 
@@ -52,7 +52,7 @@ categories: [專案, Unity, 互動遊戲]
 5. 遊戲結束，螢幕顯示得分與 QRCode
 6. 玩家用手機掃描 QRCode 下載照片
 
-![全身版 - QRCode 下載](/images/kinect-dagfire/全身_QRCode.jpg)
+![全身版 - QRCode 下載](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-kinect-dagfire-fullbody-qrcode.jpg)
 
 ### 遊戲機制
 
@@ -172,7 +172,7 @@ INIT → READY → START → PLAY → TIMESUP → RESULT → OVER → QRCODE →
 
 ## 🎪 活動現場經驗
 
-![現場小朋友開心遊玩](/images/kinect-dagfire/現場_小朋友.jpg)
+![現場小朋友開心遊玩](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-kinect-dagfire-scene-kids.jpg)
 
 ### 3 場活動地點
 

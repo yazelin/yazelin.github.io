@@ -551,10 +551,10 @@ async function viewLogDetail(logId) {
 }
 ```
 
-![AI 日誌列表](/assets/images/jaba-ai/16-admin-ai-logs-list.png)
+![AI 日誌列表](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-16-admin-ai-logs-list.png)
 *AI 對話日誌列表，顯示每次對話的時間、使用者、模型和執行時間*
 
-![AI 日誌詳情](/assets/images/jaba-ai/17-admin-ai-logs-detail-prompt.png)
+![AI 日誌詳情](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-17-admin-ai-logs-detail-prompt.png)
 *點擊「詳情」可查看完整的 prompt 和 AI 回應內容*
 
 ---

@@ -322,7 +322,7 @@ async def get_security_stats(
     return await repo.get_stats()
 ```
 
-![違規記錄頁面](/assets/images/jaba-ai/15-admin-security-logs.png)
+![違規記錄頁面](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-15-admin-security-logs.png)
 *超管後台的違規記錄頁面，顯示被攔截的可疑輸入*
 
 ---

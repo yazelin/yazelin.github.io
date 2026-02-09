@@ -232,7 +232,7 @@ async def _handle_pending_group_chat(
 
 提供網頁表單讓使用者填寫：
 
-![群組申請表單](/assets/images/jaba-ai/02-board-group-application.png)
+![群組申請表單](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-02-board-group-application.png)
 *點擊「申請開通」按鈕後，填寫群組資訊和聯絡方式*
 
 ```python
@@ -512,7 +512,7 @@ async def _handle_admin_command(
 
 除了 LINE 群組內的指令，也提供網頁後台：
 
-![群組管理頁面](/assets/images/jaba-ai/13-admin-group-management.png)
+![群組管理頁面](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-13-admin-group-management.png)
 *超管後台的群組管理頁面，可審核申請、查看群組狀態*
 
 ```python

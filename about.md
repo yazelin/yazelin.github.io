@@ -62,12 +62,12 @@ permalink: /about/
 ### 擎添工業（Ching-Tech）｜2024/10 至今
 工業 4.0 智慧工廠解決方案、AGV/AMR 系統、機械手臂整合
 
-<img src="{{ site.baseurl }}/images/ching-tech/CTLogo.svg" alt="Ching-Tech" width="24" height="24"> [擎添工業新官網](https://ching-tech.ddns.net) | [舊官網](https://www.ching-tech.com)
+<img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-ching-tech-CTLogo.svg" alt="Ching-Tech" width="24" height="24"> [擎添工業新官網](https://ching-tech.ddns.net) | [舊官網](https://www.ching-tech.com)
 
 ### 卓智機器人（Wisetech）｜~ 2024/8
 產線自動化系統整合（機器人、視覺、中控）、RobotSim、機器人教學
 
-<img src="{{ site.baseurl }}/images/Wisetech-Icon-32.png" alt="Wisetech" width="24" height="24"> [卓智機器人官網](http://www.wtech.com.tw/) | [台灣機器人資訊平台](http://forum.wtech.com.tw/)
+<img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-Wisetech-Icon-32.png" alt="Wisetech" width="24" height="24"> [卓智機器人官網](http://www.wtech.com.tw/) | [台灣機器人資訊平台](http://forum.wtech.com.tw/)
 
 ---
 

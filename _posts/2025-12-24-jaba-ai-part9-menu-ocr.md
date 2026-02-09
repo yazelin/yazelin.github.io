@@ -51,13 +51,13 @@ series: jaba-ai
 
 以下是實際的操作畫面：
 
-![上傳菜單圖片](/assets/images/jaba-ai/05-line-admin-menu-upload-dropzone.png)
+![上傳菜單圖片](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-05-line-admin-menu-upload-dropzone.png)
 *步驟 1：選擇店家後，拖拉或點擊上傳菜單照片*
 
-![AI 辨識中](/assets/images/jaba-ai/07-line-admin-menu-ai-processing.png)
+![AI 辨識中](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-07-line-admin-menu-ai-processing.png)
 *步驟 2：AI 正在努力辨識菜單內容*
 
-![辨識結果與差異比對](/assets/images/jaba-ai/08-line-admin-menu-ai-result.png)
+![辨識結果與差異比對](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-08-line-admin-menu-ai-result.png)
 *步驟 3-4：顯示辨識結果，自動與現有菜單比對差異，使用者確認後套用*
 
 ---
@@ -655,7 +655,7 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
 
 **測試圖片 1：便當菜單**（653×932 px, 387KB）
 
-<img src="/assets/images/jaba-ai/menu-test-1-bento.jpg" alt="測試菜單1-便當" width="300">
+<img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-menu-test-1-bento.jpg" alt="測試菜單1-便當" width="300">
 
 <details>
 <summary>Opus 辨識結果（24.5 秒）</summary>
@@ -726,7 +726,7 @@ time cat /tmp/menu_prompt.txt | claude --model opus --allowedTools "Read" --dang
 
 **測試圖片 2：牛排菜單**（1286×882 px, 1.3MB）
 
-<img src="/assets/images/jaba-ai/menu-test-2-steak.png" alt="測試菜單2-牛排" width="400">
+<img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-menu-test-2-steak.png" alt="測試菜單2-牛排" width="400">
 
 <details>
 <summary>Opus 辨識結果（32.0 秒）</summary>

@@ -392,7 +392,7 @@ commit_and_notify(db)
 前端收到通知 → fetch 最新資料 → 一定成功！
 ```
 
-![即時訂餐看板](/assets/images/jaba-ai/01-board-main-dashboard.png)
+![即時訂餐看板](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-01-board-main-dashboard.png)
 *事件隊列確保前端收到通知時，資料已經 commit 完成*
 
 ---

@@ -101,11 +101,11 @@ SVG 分享圖特色：
 **範例 SVG 預覽：**
 
 <div style="display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0;">
-  <a href="/assets/images/promptfill/木質層疊藝術.svg" download style="text-decoration: none;">
-    <img src="/assets/images/promptfill/木質層疊藝術.svg" alt="木質層疊藝術" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  <a href="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-promptfill-wood-art.svg" download style="text-decoration: none;">
+    <img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-promptfill-wood-art.svg" alt="木質層疊藝術" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
   </a>
-  <a href="/assets/images/promptfill/窗邊書桌微縮場景.svg" download style="text-decoration: none;">
-    <img src="/assets/images/promptfill/窗邊書桌微縮場景.svg" alt="窗邊書桌微縮場景" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  <a href="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-promptfill-desk-miniature.svg" download style="text-decoration: none;">
+    <img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-promptfill-desk-miniature.svg" alt="窗邊書桌微縮場景" style="width: 280px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
   </a>
 </div>
 

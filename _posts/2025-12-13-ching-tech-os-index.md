@@ -12,7 +12,7 @@ tags: [ChingTech OS, 目錄, 系列文章]
 這是一系列關於 **ChingTech OS** 內部系統開發的技術分享文章。我們從零開始打造一個企業內部作業系統，涵蓋：
 
 <video width="100%" controls style="margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-  <source src="/images/ching-tech/ching-tech-os-demo.mp4" type="video/mp4">
+  <source src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-ching-tech-ching-tech-os-demo.mp4" type="video/mp4">
   您的瀏覽器不支援 HTML5 影片播放。
 </video>
 

@@ -5,7 +5,7 @@ categories: [Projects]
 tags: [專案, Python, FastAPI, Web, Robot, AGV, AI, Claude Code, SDD]
 ---
 
-<img src="{{ site.baseurl }}/images/ching-tech/CTLogo.svg" alt="CTLogo" width="32" height="32"> [擎添工業官方網站](https://github.com/yazelin/ching-tech-website) - 打造工業 4.0 智慧工廠的堅實夥伴
+<img src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-ching-tech-CTLogo.svg" alt="CTLogo" width="32" height="32"> [擎添工業官方網站](https://github.com/yazelin/ching-tech-website) - 打造工業 4.0 智慧工廠的堅實夥伴
 
 擎添工業有限公司創立於 1984 年，擁有 40+ 年產業經驗，是台灣專業的工業自動化解決方案供應商。
 
@@ -28,7 +28,7 @@ tags: [專案, Python, FastAPI, Web, Robot, AGV, AI, Claude Code, SDD]
 
 ### AGV/AMR 智慧物流搬運系統
 
-![AGV]({{ site.baseurl }}/images/ching-tech/agv.jpg)
+![AGV](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-ching-tech-agv.jpg)
 
 - 全向式移動 (AMR)
 - 智能路徑規劃與自主避障
@@ -38,7 +38,7 @@ tags: [專案, Python, FastAPI, Web, Robot, AGV, AI, Claude Code, SDD]
 
 ### 機械手臂整合應用
 
-![機械手臂]({{ site.baseurl }}/images/ching-tech/robot-arm.jpg)
+![機械手臂](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/images-ching-tech-robot-arm.jpg)
 
 - 整合多品牌機械手臂（KUKA、FANUC、YASKAWA）
 - 應用領域：焊接、搬運、組裝、塗膠

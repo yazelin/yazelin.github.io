@@ -545,7 +545,7 @@ def sanitize_user_input(text: str) -> str:
 
 經過重寫，jaba-ai 實現了生產級的系統架構：
 
-![呷爸訂餐看板](/assets/images/jaba-ai/01-board-main-dashboard.png)
+![呷爸訂餐看板](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/assets-images-jaba-ai-01-board-main-dashboard.png)
 *jaba-ai 的即時訂餐看板，左側顯示 AI 對話紀錄，右側顯示訂單列表*
 
 ### 技術棧對比
