@@ -7,6 +7,8 @@ date: 2016-03-26
 categories: [專案, Web, Backend]
 ---
 
+![實踐大學 2016 人機互動課程專案 - 雲端相簿 (Web Server 端)](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2016-03-26-usc2016hci_CloudAlbum.png)
+
 ## 專案簡介
 
 這是**實踐大學 2016 人機互動技術與應用課程**的 Server 端專案，配合 [AR 相機 APP]({% post_url 2016-03-26-usc2016hci_ARCamera %}) 使用，提供**圖片上傳、儲存、檢視**的雲端相簿服務。
