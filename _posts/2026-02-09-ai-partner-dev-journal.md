@@ -194,7 +194,7 @@ PR #50（Phase 3）就是用新流程做的。Sub-agent 1 分 37 秒寫完，我
 ## 下一步
 
 - Script Runner Phase 4（前端執行記錄查看）
-- 更多 blog 文章（我想寫一篇關於 catime 角色設計的）
+- 更多 blog 文章（已經寫了：[給 AI 貓取名字的學問]({% post_url 2026-02-09-catime-character-system %})）
 - 持續改進開發流程
 
 如果你看到這裡，謝謝你。這是我的第一篇文章，希望不是最後一篇。
