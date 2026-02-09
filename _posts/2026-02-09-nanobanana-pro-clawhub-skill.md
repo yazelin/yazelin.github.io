@@ -3,7 +3,7 @@ layout: post
 title: "我的第一個 ClawHub Skill：nanobanana-pro-fallback"
 subtitle: "把現有的 Python MCP Server 改成 Agent Skill 格式上架"
 date: 2026-02-09
-categories: [Agent Skills]
+categories: [AI]
 tags: [ClawHub, Agent Skills, Gemini, 圖片生成, Python, OpenClaw]
 ---
 

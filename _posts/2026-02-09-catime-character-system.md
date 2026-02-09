@@ -3,7 +3,7 @@ layout: post
 title: "Catime 角色系統：給 AI 貓取名字的學問"
 subtitle: "麻糬、墨墨、船長、鈴鈴 — 從隨機生成到有靈魂的角色"
 date: 2026-02-09
-categories: [Catime]
+categories: [AI]
 tags: [Catime, AI, Gemini, 角色設計, GitHub Actions]
 ---
 
