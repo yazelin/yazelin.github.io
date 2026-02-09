@@ -7,6 +7,8 @@ categories: [KUKA, RobotSim]
 tags: [RobotSim, Unity, 機器手臂模擬, KUKA, 運動學]
 ---
 
+![RobotSim：Unity 3D 機器手臂模擬系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2018-03-01-robotsim-unity-robot-simulation.png)
+
 ## 前言
 
 **RobotSim** 是我基於 Unity 3D 開發的機器手臂模擬系統（Robot Simulation），主要用於機器手臂自動化專案導入前的產線規劃模擬。
