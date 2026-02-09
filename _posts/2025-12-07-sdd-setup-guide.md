@@ -6,6 +6,8 @@ categories: [SDD]
 tags: [教學, Python, FastAPI, AI, Claude Code, SDD]
 ---
 
+![SDD 規格驅動開發入門（一）：環境安裝篇](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-07-sdd-setup-guide.png)
+
 > **📖 前置知識**
 > - [Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
 > - [Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
