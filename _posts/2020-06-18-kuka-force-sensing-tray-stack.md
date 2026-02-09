@@ -7,6 +7,8 @@ categories: [KUKA, Automation]
 tags: [KUKA, 力覺感知, Force Sensing, Tray盤, 堆疊自動化]
 ---
 
+![KUKA 力覺感知應用：Tray 盤取放堆疊自動化](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2020-06-18-kuka-force-sensing-tray-stack.png)
+
 ## 前言
 
 在自動化產線中，**Tray 盤取放堆疊**是常見的作業需求。挑戰在於：取料時料盤深度不斷下降，放料時堆疊高度持續上升。傳統方案需要複雜的計數與計算邏輯，且容易因誤差累積而失敗。
