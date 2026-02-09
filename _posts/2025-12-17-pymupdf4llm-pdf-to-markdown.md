@@ -225,8 +225,8 @@ with open("thesis.md", "w", encoding="utf-8") as f:
 ```
 
 **轉換結果：**
-- 原始 PDF：**255 頁**（9.8 MB）→ [下載原始 PDF](/assets/examples/無人飛行船自動導航系統.pdf)
-- 轉換後 Markdown：**12,458 行**（實際內容約 5,370 行，其餘為排版空白行）→ **[查看轉換結果](/assets/examples/無人飛行船自動導航系統.md)**
+- 原始 PDF：**255 頁**（9.8 MB）→ [下載原始 PDF](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/airship-thesis.pdf)
+- 轉換後 Markdown：**12,458 行**（實際內容約 5,370 行，其餘為排版空白行）→ **[查看轉換結果](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/airship-thesis.md)**
 - 檔案大小：**286 KB**（9.8 MB → 286 KB，約 3% 大小）
 - **註：這次轉換沒有包含圖片**（只轉文字和表格），如果需要圖片可用 `embed_images=True` 參數
 
