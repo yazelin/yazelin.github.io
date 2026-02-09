@@ -7,6 +7,8 @@ categories: [KUKA, Automation]
 tags: [KUKA, 力覺感知, Force Sensing, PCB, 自動化]
 ---
 
+![KUKA 力覺感知應用：PCB 來料深度感測與精確吸取](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2020-06-05-kuka-force-sensing-pcb-depth.png)
+
 ## 前言
 
 在 PCB 板材的自動化上下料作業中，**料盤堆疊高度不固定**是常見的挑戰。吸嘴下壓過深會損壞 PCB，過淺則吸取失敗。傳統方案需要人工測量或使用昂貴的雷射測距儀。
