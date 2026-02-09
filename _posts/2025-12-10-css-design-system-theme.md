@@ -8,6 +8,8 @@ categories: [Frontend]
 tags: [CSS, 設計系統, 主題切換, CSS Variables]
 ---
 
+![CSS 設計系統：一行程式碼切換全站主題](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-10-css-design-system-theme.png)
+
 > **系列文章**
 > 1. [為什麼我們選擇不用 React/Vue？談 Vanilla JS 的適用場景]({% post_url 2025-12-10-vanilla-js-why-no-framework %})
 > 2. [視窗系統（上）：讓網頁變成桌面 - 基礎拖曳功能]({% post_url 2025-12-10-window-system-part1-drag %})
