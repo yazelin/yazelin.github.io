@@ -7,6 +7,8 @@ categories: [Claude AI]
 tags: [AI, Claude, Token, 對話壓縮, JavaScript]
 ---
 
+![Token 管理：估算、警告與自動壓縮](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part2-token.png)
+
 > **📚 Claude AI 整合系列**
 > 1. [架構選擇：Claude CLI 整合與對話設計]({% post_url 2025-12-11-claude-ai-part1-architecture %})
 > 2. **Token 管理：估算、警告與自動壓縮** ← 目前閱讀
