@@ -7,6 +7,8 @@ categories: [Computer Vision, KUKA, Automation]
 tags: [WiseTechVision, KUKA, AOI, 品質檢測, 自動化, SMD]
 ---
 
+![CTCUI SMD 全自動智慧檢測系統：WiseTechVision 在 QC 自動化的應用](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2023-06-07-ctcui-smd-aoi-system.png)
+
 ## 前言
 
 在電子製造業，SMD（Surface Mount Device）元件的品質檢測是生產流程中的關鍵環節。傳統檢測方式依賴人工目視或單點設備檢測，不僅效率低落，也容易因人為因素產生誤判。
