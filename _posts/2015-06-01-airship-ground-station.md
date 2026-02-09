@@ -7,6 +7,8 @@ date: 2015-06-01
 categories: [專案, 嵌入式系統, 即時監控]
 ---
 
+![無人飛行船地面站即時監控系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2015-06-01-airship-ground-station.png)
+
 ## 專案簡介
 
 這是一個飛行船地面站即時監控系統的 DEMO，用來監控飛行船的各種飛行參數與環境資料。
