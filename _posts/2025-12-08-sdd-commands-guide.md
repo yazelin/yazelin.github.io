@@ -6,6 +6,8 @@ categories: [SDD]
 tags: [教學, AI, Claude Code, SDD, OpenSpec]
 ---
 
+![SDD 規格驅動開發入門（二）：指令介紹篇](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-08-sdd-commands-guide.png)
+
 > **📖 前置閱讀**：[SDD 環境安裝篇]({% post_url 2025-12-07-sdd-setup-guide %})
 
 > **📚 延伸閱讀**：[Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
