@@ -7,6 +7,8 @@ date: 2017-01-14
 categories: [專案, Unity, 互動藝術]
 ---
 
+![五花果的後花園 - 讓小朋友的畫作在大螢幕中活起來](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2017-01-14-8boo-land-5flowergod.png)
+
 ## 專案簡介
 
 這是高雄「**8咘的搞怪樂園**」中「**5花果**」主題區的互動裝置，由五月天演唱會幕後團隊「必應創造」打造的大型親子樂園（2017年1-2月，8000坪場地）。
