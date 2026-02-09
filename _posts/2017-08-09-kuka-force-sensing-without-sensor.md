@@ -7,6 +7,8 @@ categories: [KUKA, Automation]
 tags: [KUKA, 力覺感知, Force Sensing, KRL, 自動化]
 ---
 
+![KUKA 機器手臂力覺感知技術：不外掛 Sensor 的扭力檢測應用](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2017-08-09-kuka-force-sensing-without-sensor.png)
+
 ## 前言
 
 在工業自動化領域，**力覺感知（Force Sensing）** 是實現精密組裝與安全防護的關鍵技術。傳統方案需要在機器手臂上外掛昂貴的六軸力覺感測器（Force/Torque Sensor），成本高達數十萬元，且需要額外的校正與維護。
