@@ -5,6 +5,8 @@ categories: [LINE Bot]
 tags: [專案, Python, Flask, LINE Bot, API, Claude Code, SDD]
 ---
 
+![Jaba LINE Bot - 讓點餐對話進入 LINE](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-09-jaba-line-bot.png)
+
 [Jaba LINE Bot](https://github.com/yazelin/jaba-line-bot) 是呷爸 AI 午餐訂便當系統的 LINE 介面，讓使用者可以直接在 LINE 中與 AI 對話點餐。
 
 這個專案是 [jaba 核心系統]({% post_url 2025-12-08-jaba %}) 的延伸，透過 LINE Messaging API 將點餐功能帶入最常用的通訊軟體中。
