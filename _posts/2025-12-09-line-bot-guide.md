@@ -5,6 +5,8 @@ categories: [LINE Bot]
 tags: [教學, LINE Bot, Python, Flask, Messaging API, Webhook]
 ---
 
+![LINE Bot 開發入門 - 以呷爸點餐系統為例](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-09-line-bot-guide.png)
+
 LINE 是台灣最普及的通訊軟體，透過 LINE Messaging API 可以建立自己的聊天機器人。本文以 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %}) 為實例，帶你從零開始建立 LINE Bot。
 
 ---
