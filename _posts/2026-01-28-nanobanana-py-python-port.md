@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, MCP, Python, Nanobanana, Gemini, AI]
 ---
 
+![nanobanana-py：Python 移植版 + Gemini Model Auto-Fallback](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-nanobanana-py-python-port.png)
+
 ## 前言
 
 之前在[Nanobanana 介紹]({% post_url 2026-01-14-nanobanana-image-generation %})中介紹過 Nanobanana——一個讓 Claude Code 透過 MCP 協議生成圖片的工具。原版是 TypeScript 寫的，搭配 Shell 腳本做安裝。
