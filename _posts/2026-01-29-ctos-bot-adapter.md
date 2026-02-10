@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, 重構, 設計模式, Adapter Pattern, Python, Line Bot, Telegram]
 ---
 
+![ChingTech OS：多平台 Bot Adapter 重構](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-29-ctos-bot-adapter.png)
+
 ## 前言
 
 ChingTech OS 最初只支援 Line Bot 作為聊天介面。所有程式碼——從 Webhook 處理、AI 回覆、訊息儲存到檔案管理——都直接寫死在 `linebot.py` 這個單一模組裡。當時只有一個平台，這樣做沒問題。
