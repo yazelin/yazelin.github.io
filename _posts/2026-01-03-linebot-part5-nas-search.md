@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [Line Bot, NAS, FastAPI, MCP, Python, ChingTech OS]
 ---
 
+![Line Bot 整合（五）：搜尋並發送 NAS 檔案](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-03-linebot-part5-nas-search.png)
+
 ## 前言
 
 這是 Line Bot 系列的最後一篇。前面我們完成了 [Webhook 架構]({% post_url 2025-12-30-linebot-part1-webhook %})、[檔案處理]({% post_url 2025-12-31-linebot-part2-file-download %})、[AI 對話整合]({% post_url 2026-01-01-linebot-part3-ai-integration %}) 和 [群組專案綁定]({% post_url 2026-01-02-linebot-part4-group-project %})。
