@@ -7,6 +7,9 @@ categories: [ChingTech OS]
 tags: [Line Bot, Claude, AI, MCP, FastAPI, Python, ChingTech OS]
 ---
 
+![Line Bot 整合（三）：與 Claude AI 對話整合](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-01-linebot-part3-ai-integration.png)
+
+
 ## 前言
 
 在前兩篇中，我們建立了 [Webhook 架構]({% post_url 2025-12-30-linebot-part1-webhook %}) 和 [檔案處理]({% post_url 2025-12-31-linebot-part2-file-download %})。這篇我們要整合 **Claude AI**，讓 Line Bot 能夠：
