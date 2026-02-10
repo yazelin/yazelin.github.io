@@ -8,6 +8,8 @@ tags: [Linux, systemd, 部署, DevOps, 服務管理]
 series: jaba-ai
 ---
 
+![systemd 服務配置](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-25-jaba-ai-part11-systemd.png)
+
 ## 前言
 
 這是 [Jaba AI 技術分享系列]({% post_url 2025-12-19-jaba-ai-index %}) 的第十一篇（最後一篇）文章。
