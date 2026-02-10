@@ -7,6 +7,8 @@ categories: [AI]
 tags: [Telegram, Bot, Claude, MCP, Python, AI, Copilot SDK]
 ---
 
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
+
 ## 前言
 
 之前做了 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %})，把 AI 點餐功能串到 LINE 上。用了一陣子之後，發現 LINE Bot 有幾個不太舒服的地方：
@@ -65,6 +67,8 @@ tags: [Telegram, Bot, Claude, MCP, Python, AI, Copilot SDK]
 | **uv** | Python 套件管理 |
 
 ---
+
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
 
 ## 專案結構
 
@@ -148,6 +152,8 @@ NANOBANANA_MODEL=gemini-3-pro-image-preview
 ```
 
 ---
+
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
 
 ## Step 2：用戶白名單（預設拒絕）
 
@@ -254,6 +260,8 @@ async def ping_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 管理員在 Bot 啟動時會自動收到上線通知，不用手動去確認。
 
 ---
+
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
 
 ## Step 4：Claude AI 整合（Copilot SDK）
 
@@ -517,6 +525,8 @@ for img_path in image_paths:
 
 ---
 
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
+
 ## Step 6：Reply Context（回覆上下文）
 
 使用者可以回覆（Reply）Bot 的訊息或其他訊息，AI 會看到被回覆的內容作為上下文。
@@ -620,6 +630,8 @@ if image_urls:
 
 ---
 
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
+
 ## Step 8：群組使用
 
 ### 8.1 回應規則
@@ -706,6 +718,8 @@ sudo systemctl restart telegram-bot
 ```
 
 ---
+
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
 
 ## 從 Claude CLI 到 Copilot SDK 的演進
 
@@ -796,6 +810,8 @@ async def post_shutdown(application: Application) -> None:
 整個專案只有兩個 Python 檔案（`main.py` + `services/claude_agent.py`），加上一些 Shell 腳本，維護起來很輕鬆。
 
 ---
+
+![Telegram Bot 整合 Claude CLI + MCP 圖片生成](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-28-telegram-bot-claude-mcp.png)
 
 ## 參考資源
 
