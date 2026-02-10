@@ -7,6 +7,8 @@ categories: [DevOps]
 tags: [Docker, Docker Compose, PostgreSQL, DevOps]
 ---
 
+![Docker Compose 一鍵啟動開發環境](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-13-devops-part2-docker.png)
+
 > **📚 系列文章**
 > 1. [Alembic 資料庫版本控制：讓 Schema 變更可追蹤]({% post_url 2025-12-13-devops-part1-alembic %})
 > 2. [Docker Compose 一鍵啟動開發環境]({% post_url 2025-12-13-devops-part2-docker %}) ← 目前閱讀
