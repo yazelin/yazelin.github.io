@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [Line Bot, FastAPI, Webhook, Python, ChingTech OS]
 ---
 
+![Line Bot 整合（一）：Webhook 架構與訊息接收](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-30-linebot-part1-webhook.png)
+
 ## 前言
 
 在 [LINE Bot 開發入門]({% post_url 2025-12-09-line-bot-guide %}) 中，我們介紹了 LINE Bot 的基本概念與 Webhook 運作原理；[Jaba AI 系列]({% post_url 2025-12-23-jaba-ai-part6-linebot-v3 %}) 則分享了 LINE Bot SDK v3 與 FastAPI 的非同步整合。
