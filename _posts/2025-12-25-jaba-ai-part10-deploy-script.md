@@ -8,6 +8,8 @@ tags: [Bash, Docker, 部署, DevOps, 開發環境]
 series: jaba-ai
 ---
 
+![一鍵啟動腳本設計](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-25-jaba-ai-part10-deploy-script.png)
+
 ## 前言
 
 這是 [Jaba AI 技術分享系列]({% post_url 2025-12-19-jaba-ai-index %}) 的第十篇文章。
