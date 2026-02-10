@@ -7,6 +7,8 @@ categories: [Web Terminal]
 tags: [JavaScript, xterm.js, Terminal, 前端, Socket.IO]
 ---
 
+![前端整合：xterm.js 打造完整終端體驗](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-web-terminal-part3-xtermjs.png)
+
 > **📚 Web 終端機系列**
 > 1. [什麼是 PTY？讓網頁跑出真正的 Terminal]({% post_url 2025-12-11-web-terminal-part1-pty %})
 > 2. [後端架構：FastAPI + Socket.IO 雙向通訊]({% post_url 2025-12-11-web-terminal-part2-socketio %})
