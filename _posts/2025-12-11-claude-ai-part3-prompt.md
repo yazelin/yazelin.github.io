@@ -7,6 +7,8 @@ categories: [Claude AI]
 tags: [AI, Claude, Prompt Engineering, System Prompt]
 ---
 
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
+
 > **📚 Claude AI 整合系列**
 > 1. [架構選擇：Claude CLI 整合與對話設計]({% post_url 2025-12-11-claude-ai-part1-architecture %})
 > 2. [Token 管理：估算、警告與自動壓縮]({% post_url 2025-12-11-claude-ai-part2-token %})
@@ -15,6 +17,8 @@ tags: [AI, Claude, Prompt Engineering, System Prompt]
 > **📖 延伸閱讀**：[Git 入門：版本控制基礎指令]({% post_url 2025-12-13-git-basics %})
 
 ---
+
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
 
 ## 這篇文章要解決什麼問題？
 
@@ -39,6 +43,8 @@ tags: [AI, Claude, Prompt Engineering, System Prompt]
 **業務**：「這樣就不怕 AI 亂講話了！」
 
 ---
+
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
 
 ## 技術概念
 
@@ -78,6 +84,8 @@ System Prompt 是「常駐設定」，每次對話都會帶入；User Prompt 是
 | **行為限制** | 不能做什麼、注意事項 | "不提供可能有害的內容" |
 
 ---
+
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
 
 ## 跟著做：Step by Step
 
@@ -365,6 +373,8 @@ async def call_claude(
 
 ---
 
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
+
 ## 進階技巧與踩坑紀錄
 
 ### 1. Prompt 結構化模板
@@ -495,6 +505,8 @@ def get_prompt_for_ab_test(base_name: str) -> str:
 
 ---
 
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
+
 ## 小結
 
 這篇我們完成了：
@@ -519,6 +531,8 @@ def get_prompt_for_ab_test(base_name: str) -> str:
 - 可客製化的 AI 人格
 
 ---
+
+![System Prompt 設計：打造專屬 AI 助手人格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-claude-ai-part3-prompt.png)
 
 ## 完整程式碼
 
