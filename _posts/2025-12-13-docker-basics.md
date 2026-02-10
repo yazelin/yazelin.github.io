@@ -7,6 +7,8 @@ categories: [DevOps]
 tags: [Docker, Docker Compose, 容器化, DevOps]
 ---
 
+![Docker 基礎概念與常用指令](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-13-docker-basics.png)
+
 > **📚 延伸閱讀**
 > - [Docker Compose 一鍵啟動開發環境]({% post_url 2025-12-13-devops-part2-docker %})
 > - [ChingTech OS 技術分享系列：完整目錄]({% post_url 2025-12-13-ching-tech-os-index %})
