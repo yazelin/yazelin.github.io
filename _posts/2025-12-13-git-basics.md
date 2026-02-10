@@ -7,6 +7,8 @@ categories: [Git]
 tags: [Git, 版本控制, GitHub]
 ---
 
+![Git 入門：版本控制基礎指令](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-13-git-basics.png)
+
 > **📖 前置知識**：[Linux 終端機入門]({% post_url 2025-12-13-linux-basics %})
 >
 > **📚 延伸閱讀**：[SDD 規格驅動開發入門]({% post_url 2025-12-07-sdd-setup-guide %})
