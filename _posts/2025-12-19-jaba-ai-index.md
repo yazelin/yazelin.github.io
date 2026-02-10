@@ -7,6 +7,8 @@ categories: [Index]
 tags: [Jaba AI, 目錄, 系列文章, LINE Bot, FastAPI, Claude AI]
 ---
 
+![Jaba AI 技術分享系列：完整目錄](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-19-jaba-ai-index.png)
+
 ## 關於這個系列
 
 這是一系列關於 **Jaba AI** 群組點餐系統開發的技術分享文章。Jaba AI 整合了原本的 [呷爸看板系統]({% post_url 2025-12-08-jaba %}) 與 [Jaba LINE Bot]({% post_url 2025-12-09-jaba-line-bot %})，重新設計為統一的後端架構。
