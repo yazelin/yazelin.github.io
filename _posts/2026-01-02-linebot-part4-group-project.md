@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [Line Bot, FastAPI, 專案管理, Python, ChingTech OS]
 ---
 
+![Line Bot 整合（四）：群組管理與專案綁定](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-02-linebot-part4-group-project.png)
+
 ## 前言
 
 在前幾篇中，我們完成了 [Webhook 架構]({% post_url 2025-12-30-linebot-part1-webhook %})、[檔案處理]({% post_url 2025-12-31-linebot-part2-file-download %}) 和 [AI 對話整合]({% post_url 2026-01-01-linebot-part3-ai-integration %})。
