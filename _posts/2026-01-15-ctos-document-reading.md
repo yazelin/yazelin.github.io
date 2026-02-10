@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, Line Bot, Python, 文件處理, PDF, Word, Excel]
 ---
 
+![ChingTech OS：Line Bot 文件讀取功能（Word/Excel/PDF）](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-15-ctos-document-reading.png)
+
 ## 前言
 
 在前一篇 [Nanobanana：讓 Claude Code 生成圖片的 MCP Server]({% post_url 2026-01-14-nanobanana-image-generation %}) 中，我們介紹了 AI 圖片生成工具。這篇回到 ChingTech OS 的 Line Bot，來談一個實用的功能：**文件讀取**。
