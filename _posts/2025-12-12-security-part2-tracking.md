@@ -7,6 +7,8 @@ categories: [Security]
 tags: [安全, GeoIP, 指紋, JavaScript, Python]
 ---
 
+![登入追蹤：裝置指紋與地理位置記錄](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-12-security-part2-tracking.png)
+
 > **📚 系列文章**
 > 1. [認證系統：用 NAS 帳號實現 SSO 效果]({% post_url 2025-12-12-security-part1-auth %})
 > 2. [登入追蹤：裝置指紋與地理位置記錄]({% post_url 2025-12-12-security-part2-tracking %}) ← 目前閱讀
