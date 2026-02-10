@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [專案管理, MCP, FastMCP, Python, ChingTech OS]
 ---
 
+![專案發包期程管理功能實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-09-delivery-schedule.png)
+
 ## 前言
 
 在製造業專案中，**發包期程管理**是非常重要的功能。專案經理需要追蹤：
