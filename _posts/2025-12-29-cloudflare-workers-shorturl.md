@@ -7,6 +7,8 @@ date: 2025-12-29
 categories: [Serverless, 教學]
 ---
 
+![用 Cloudflare Workers 免費架設短網址服務](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-29-cloudflare-workers-shorturl.png)
+
 ## 為什麼要自己架短網址服務？
 
 用過 bit.ly、reurl 這類公用短網址服務嗎？它們很方便，但有幾個問題：
