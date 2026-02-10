@@ -7,6 +7,8 @@ categories: [SMB/NAS]
 tags: [FastAPI, REST API, 檔案管理, Python, NAS]
 ---
 
+![檔案管理 API：FastAPI 實作上傳下載刪除](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-12-smb-nas-part2-api.png)
+
 > **📚 SMB/NAS 檔案系統系列**
 > 1. [SMB 協定入門：用 Python 連接公司 NAS]({% post_url 2025-12-12-smb-nas-part1-protocol %})
 > 2. **檔案管理 API：FastAPI 實作上傳下載刪除** ← 目前閱讀
