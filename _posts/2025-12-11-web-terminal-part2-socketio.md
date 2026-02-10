@@ -7,6 +7,8 @@ categories: [Web Terminal]
 tags: [FastAPI, Socket.IO, WebSocket, Python, 即時通訊]
 ---
 
+![後端架構：FastAPI + Socket.IO 雙向通訊](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-11-web-terminal-part2-socketio.png)
+
 > **📚 Web 終端機系列**
 > 1. [什麼是 PTY？讓網頁跑出真正的 Terminal]({% post_url 2025-12-11-web-terminal-part1-pty %})
 > 2. **後端架構：FastAPI + Socket.IO 雙向通訊** ← 目前閱讀
