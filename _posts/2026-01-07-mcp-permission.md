@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [MCP, FastMCP, 權限控制, Python, ChingTech OS]
 ---
 
+![MCP 工具權限控制設計](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-07-mcp-permission.png)
+
 ## 前言
 
 在前兩篇 [專案管理工具]({% post_url 2026-01-05-fastmcp-project-tools %}) 和 [知識庫工具]({% post_url 2026-01-06-fastmcp-knowledge-tools %}) 中，我們實作了各種 MCP 工具。但有些操作不應該讓所有人都能執行，例如：
