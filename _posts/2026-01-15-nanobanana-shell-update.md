@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, MCP, Nanobanana, Shell, Windows, PowerShell]
 ---
 
+![Nanobanana Shell 版更新：Windows 支援與 Namespace 重構](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-15-nanobanana-shell-update.png)
+
 ## 前言
 
 [上一篇]({% post_url 2026-01-14-nanobanana-image-generation %})介紹了 Nanobanana 的基本功能和安裝方式。發布後收到一些回饋，主要集中在兩個方向：Windows 使用者需要原生的安裝體驗、指令名稱容易與其他工具衝突。
