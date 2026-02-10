@@ -8,6 +8,8 @@ tags: [Python, LINE Bot, FastAPI, SDK v3, 非同步]
 series: jaba-ai
 ---
 
+![LINE Bot v3 SDK + FastAPI 非同步整合](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-23-jaba-ai-part6-linebot-v3.png)
+
 ## 前言
 
 這是 [Jaba AI 技術分享系列]({% post_url 2025-12-19-jaba-ai-index %}) 的第六篇文章。
