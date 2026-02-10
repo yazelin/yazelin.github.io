@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [專案管理, MCP, FastMCP, NAS, Python, ChingTech OS]
 ---
 
+![專案附件與連結管理](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-10-project-attachments.png)
+
 ## 前言
 
 在 [專案管理資料模型]({% post_url 2026-01-08-project-data-model %}) 中，我們設計了 `project_attachments` 和 `project_links` 資料表。這篇來實作對應的 MCP 工具，讓用戶可以透過對話：
