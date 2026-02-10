@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [知識庫, Markdown, YAML, Git, Python, ChingTech OS]
 ---
 
+![Markdown 知識庫系統設計](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-11-knowledge-base.png)
+
 ## 前言
 
 在 [FastMCP 知識庫工具與 Scope 自動判定]({% post_url 2026-01-06-fastmcp-knowledge-tools %}) 中，我們實作了知識庫的 MCP 工具。這篇來深入介紹知識庫系統的**核心設計**：
