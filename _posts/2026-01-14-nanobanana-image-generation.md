@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, MCP, Nanobanana, AI, 圖片生成, Gemini]
 ---
 
+![Nanobanana：讓 Claude Code 生成圖片的 MCP Server](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-14-nanobanana-image-generation.png)
+
 ## 前言
 
 在使用 Claude Code 開發時，有時候會需要產生一些圖片素材——流程圖、App Icon、示意圖等。過去可能要開 Figma、找線上工具，或是用其他 AI 繪圖服務。
