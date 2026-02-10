@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [分享, Token, FastAPI, 安全性, Python, ChingTech OS]
 ---
 
+![知識庫公開分享功能實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-12-knowledge-sharing.png)
+
 ## 前言
 
 在 [Markdown 知識庫系統設計]({% post_url 2026-01-11-knowledge-base %}) 中，我們建立了企業內部的知識庫。但有時需要將知識分享給外部使用者（客戶、合作夥伴），這篇來實作**公開分享連結**功能：
