@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [Line Bot, FastAPI, NAS, 檔案處理, Python, ChingTech OS]
 ---
 
+![Line Bot 整合（二）：檔案處理與 NAS 自動儲存](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-31-linebot-part2-file-download.png)
+
 ## 前言
 
 在 [上一篇]({% post_url 2025-12-30-linebot-part1-webhook %}) 中，我們建立了 Line Bot 的 Webhook 架構與訊息儲存機制。這篇我們要實作**檔案處理**功能：
