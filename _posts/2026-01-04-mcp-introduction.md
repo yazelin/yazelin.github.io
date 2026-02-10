@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [MCP, Claude, AI, FastMCP, Python, ChingTech OS]
 ---
 
+![MCP 協議入門：讓 AI 使用你的工具](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-04-mcp-introduction.png)
+
 ## 前言
 
 在 [Line Bot AI 對話整合]({% post_url 2026-01-01-linebot-part3-ai-integration %}) 中，我們讓 AI 助理能夠調用 MCP 工具來操作專案、知識庫等功能。這篇來深入介紹 **MCP（Model Context Protocol）**——一個讓 AI 使用外部工具的標準協議。
