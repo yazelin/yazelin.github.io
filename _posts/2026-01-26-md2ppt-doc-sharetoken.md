@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, MD2PPT, MD2DOC, 分享, JavaScript, Vercel]
 ---
 
+![MD2PPT / MD2DOC 分享功能：shareToken 實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-26-md2ppt-doc-sharetoken.png)
+
 ## 前言
 
 [MD2PPT-Evolution](https://github.com/eric861129/MD2PPT-Evolution) 是一套將 Markdown 轉換為簡報（PPTX）的開源工具，[MD2DOC-Evolution](https://github.com/eric861129/MD2DOC-Evolution) 則是將 Markdown 轉換為文件（DOCX）的姊妹專案。兩者都是基於 React + Vite 的前端應用，支援即時預覽、主題切換和多種匯出格式。
