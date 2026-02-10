@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, AI, 圖片生成, Hugging Face, FLUX, 記憶功能, Line Bot]
 ---
 
+![ChingTech OS：AI 圖片生成與記憶功能](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-22-ctos-ai-image-memory.png)
+
 ## 前言
 
 ChingTech OS 的 Line Bot 從最初的文字對話，逐步加入了圖片生成、檔案處理、知識庫查詢等功能。但隨著功能變多，幾個問題也浮現了：
