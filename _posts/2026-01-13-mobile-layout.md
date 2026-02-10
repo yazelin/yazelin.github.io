@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [響應式設計, CSS, PWA, 手機優化, ChingTech OS]
 ---
 
+![手機版 App 佈局優化實戰](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-13-mobile-layout.png)
+
 ## 前言
 
 在前面的系列中，我們完成了 [知識庫公開分享]({% post_url 2026-01-12-knowledge-sharing %}) 等功能。這篇是 ChingTech OS 系列的最後一篇，來分享如何將這個桌面 OS 風格的 Web App 適配到手機螢幕：
