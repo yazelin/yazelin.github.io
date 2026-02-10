@@ -7,6 +7,8 @@ categories: [SMB/NAS]
 tags: [Python, SMB, NAS, smbprotocol, Synology]
 ---
 
+![SMB 協定入門：用 Python 連接公司 NAS](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-12-smb-nas-part1-protocol.png)
+
 > **📚 SMB/NAS 檔案系統系列**
 > 1. **SMB 協定入門：用 Python 連接公司 NAS** ← 目前閱讀
 > 2. [檔案管理 API：FastAPI 實作上傳下載刪除]({% post_url 2025-12-12-smb-nas-part2-api %})
