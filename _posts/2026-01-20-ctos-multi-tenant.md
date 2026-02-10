@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, 多租戶, SaaS, 架構設計, Python, FastAPI]
 ---
 
+![ChingTech OS 多租戶架構：從設計到實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-20-ctos-multi-tenant.png)
+
 ## 前言
 
 當一套系統需要同時服務多個組織時，「多租戶架構」（Multi-Tenant Architecture）是繞不過的課題。
