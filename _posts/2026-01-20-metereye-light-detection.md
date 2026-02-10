@@ -7,6 +7,8 @@ categories: [Computer Vision]
 tags: [Computer Vision, Python, AI, 工業自動化, MeterEye]
 ---
 
+![MeterEye：AI 指示燈與警報燈偵測](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-20-metereye-light-detection.png)
+
 > **適合讀者**：對工業自動化、電腦視覺有興趣的開發者
 >
 > **前置知識**：基本的 Python 與 OpenCV 概念
