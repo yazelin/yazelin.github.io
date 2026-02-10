@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [MCP, FastMCP, 專案管理, Python, ChingTech OS]
 ---
 
+![FastMCP 實作：專案管理工具開發](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-05-fastmcp-project-tools.png)
+
 ## 前言
 
 上一篇 [MCP 協議入門]({% post_url 2026-01-04-mcp-introduction %}) 介紹了 MCP 的基本概念和 FastMCP 框架。這篇來實作專案管理相關的 MCP 工具，讓用戶可以透過對話：
