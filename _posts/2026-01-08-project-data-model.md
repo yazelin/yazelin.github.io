@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [專案管理, PostgreSQL, 資料庫設計, Python, ChingTech OS]
 ---
 
+![內部專案管理系統：資料模型設計](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-08-project-data-model.png)
+
 ## 前言
 
 在前面的 MCP 工具系列中，我們使用了專案管理的各種功能。這篇來完整介紹專案管理系統的**資料模型設計**，包括：
