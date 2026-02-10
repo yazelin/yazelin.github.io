@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, 庫存管理, 廠商管理, ERP, Python, FastAPI]
 ---
 
+![ChingTech OS：庫存管理功能開發](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-16-ctos-inventory.png)
+
 ## 前言
 
 在製造業的日常運作中，**庫存管理**是一個繞不開的核心需求。工廠裡的 PLC、馬達、鋼板、螺絲，每一項物料都需要知道：
