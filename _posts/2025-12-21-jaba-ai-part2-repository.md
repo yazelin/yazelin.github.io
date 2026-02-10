@@ -8,6 +8,8 @@ tags: [Python, FastAPI, SQLAlchemy, Repository Pattern, 架構設計]
 series: jaba-ai
 ---
 
+![Repository Pattern 實作：讓資料層乾淨分離](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-21-jaba-ai-part2-repository.png)
+
 ## 前言
 
 這是 [Jaba AI 技術分享系列]({% post_url 2025-12-19-jaba-ai-index %}) 的第二篇文章。
