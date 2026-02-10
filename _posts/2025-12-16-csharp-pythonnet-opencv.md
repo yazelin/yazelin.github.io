@@ -7,6 +7,8 @@ categories: [C#, Python]
 tags: [C#, Python, OpenCV, Python.NET, WinForms, 影像處理]
 ---
 
+![C# WinForms 整合 Python OpenCV - Python.NET 完整教學](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2025-12-16-csharp-pythonnet-opencv.png)
+
 > **📖 前置知識**：本文假設你已熟悉 C# WinForms 基礎開發
 >
 > **🔧 替代方案**：如果不需要使用現有的 Python 程式碼，建議直接使用 [OpenCVSharp](https://github.com/shimat/opencvsharp)
