@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [MCP, FastMCP, 知識庫, Python, ChingTech OS]
 ---
 
+![FastMCP 實作：知識庫工具與 Scope 自動判定](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-06-fastmcp-knowledge-tools.png)
+
 ## 前言
 
 上一篇 [FastMCP 專案管理工具]({% post_url 2026-01-05-fastmcp-project-tools %}) 介紹了專案相關的 MCP 工具。這篇來實作知識庫工具，讓用戶可以透過對話：
