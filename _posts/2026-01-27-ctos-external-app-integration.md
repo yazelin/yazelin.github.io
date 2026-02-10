@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, postMessage, iframe, 整合, JavaScript, Frontend]
 ---
 
+![ChingTech OS 外部應用整合：postMessage + iframe](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-27-ctos-external-app-integration.png)
+
 ## 前言
 
 ChingTech OS 是一套以瀏覽器為基礎的企業作業系統，桌面上有檔案總管、終端機、AI 助手等內建應用。但實務上，團隊還會開發獨立的 Web 工具——例如 **MD2PPT**（Markdown 轉簡報）和 **MD2DOC**（Markdown 轉文件）。這些工具各自部署在不同的 domain，卻需要在 CTOS 的視窗系統裡「像原生應用一樣」被開啟和操作。
