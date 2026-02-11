@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, Gemini, catime, 故事生成, Python]
 ---
 
+![catime 故事貓：為每張 AI 貓咪圖加上微故事](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-03-catime-story.png)
+
 ## 前言
 
 catime 系列走到第四篇，專案已經能每小時自動產生一張 AI 貓咪圖、上傳 GitHub Release、在 Gallery 頁面瀏覽。
