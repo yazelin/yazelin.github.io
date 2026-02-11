@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, MCP, Python, 列印, PyPI]
 ---
 
+![printer-mcp — 讓 AI 幫你列印的 MCP Server](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-02-printer-mcp-server.png)
+
 ## 前言
 
 用 AI 寫程式、查資料已經很普遍了，但你有想過讓 AI 幫你列印文件嗎？
