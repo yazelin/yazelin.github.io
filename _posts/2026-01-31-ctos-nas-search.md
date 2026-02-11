@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, NAS, SMB, CIFS, 非同步, Python, 搜尋]
 ---
 
+![ChingTech OS：NAS 電路圖掛載與三階段非同步搜尋](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-31-ctos-nas-search.png)
+
 ## 前言
 
 ChingTech OS 原本只掛載了 `/mnt/nas/projects`（專案資料），AI 助理可以幫用戶搜尋專案相關檔案。但公司的電路圖放在另一個 NAS 共享資料夾，員工常常需要查「某台機器的線路圖在哪」。
