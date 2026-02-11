@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, Python, GitHub Actions, Gemini, 圖片生成, 自動化]
 ---
 
+![catime：自動化每小時 AI 貓咪圖片生成器](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-30-catime-birth.png)
+
 ## 前言
 
 某個深夜，一個念頭浮現：「如果每個小時都能自動生成一張 AI 貓咪圖片，那不是很棒嗎？」
