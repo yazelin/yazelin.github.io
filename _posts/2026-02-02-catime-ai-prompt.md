@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, Gemini, Prompt Engineering, catime, Python]
 ---
 
+![catime AI Prompt — 用 Gemini Flash 為每隻貓寫創意描述](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-02-catime-ai-prompt.png)
+
 ## 前言
 
 在 [catime 專案誕生]({% post_url 2026-01-30-catime-birth %}) 中，我們讓 GitHub Actions 每小時自動生成一張 AI 貓咪圖片。在 [catime Gallery]({% post_url 2026-02-01-catime-gallery %}) 中，我們搭建了一個瀑布流圖庫來展示這些作品。
