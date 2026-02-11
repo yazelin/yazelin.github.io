@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, Gemini, Google Search, catime, Grounding, Python]
 ---
 
+![catime 新聞貓：用 Google Search Grounding 讓貓咪反映時事](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-06-catime-news-cat.png)
+
 ## 前言
 
 catime 系列走到這裡，貓咪們已經擁有了自己的故事、自己的風格、自己的 Gallery。但始終少了一件事——**和這個世界的連結**。
