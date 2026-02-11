@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, 重構, 模組化, Python, 架構設計, 錯誤處理]
 ---
 
+![ChingTech OS：模組化重構](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-06-ctos-modular-refactor.png)
+
 ## 前言
 
 上一篇[移除多租戶架構]({% post_url 2026-02-05-ctos-remove-multi-tenant %})把系統從多租戶簡化為單租戶後，接下來要處理另一個技術債：**巨型檔案**。
