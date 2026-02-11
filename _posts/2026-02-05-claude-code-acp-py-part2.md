@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, ACP, Python, Proxy, Gemini, Copilot SDK, AI]
 ---
 
+![claude-code-acp-py（下）：ACP Proxy 橋接多 AI 後端](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-05-claude-code-acp-py-part2.png)
+
 ## 前言
 
 在[上篇]({% post_url 2026-02-04-claude-code-acp-py-part1 %})中，我們介紹了 `claude-code-acp-py` 專案的核心元件：`ClaudeAcpAgent`（ACP Server）、`ClaudeClient`（Python API）、以及 `AcpClient`（通用 ACP Client）。這三個元件解決了「讓編輯器用 Claude」和「用 Python 連接任意 ACP Agent」兩個需求。
