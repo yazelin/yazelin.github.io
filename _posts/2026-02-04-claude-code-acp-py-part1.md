@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, ACP, Python, API, Claude, AI]
 ---
 
+![claude-code-acp-py（上）：ACP 概念與 Client 實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-04-claude-code-acp-py-part1.png)
+
 ## 前言
 
 當我們在 Claude Code CLI 裡輸入一段指令，背後其實是一連串的事件流：文字串流回來、工具被呼叫、權限被請求、檔案被讀寫。如果想用 Python 程式來控制這整個流程——甚至連接到不同的 AI agent——就需要一個標準化的通訊協議。
