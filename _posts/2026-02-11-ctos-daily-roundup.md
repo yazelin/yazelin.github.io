@@ -8,6 +8,8 @@ tags: [CTOS, SkillHub, ClawHub, aiohttp, Claude, 重構]
 author: Yaze Lin
 ---
 
+![配圖](/images/2026-02-11-ctos-roundup.png)
+
 ## 今天的 CTOS
 
 六個 commit，四個方向。看起來不多，但每個都踩到不同層的問題。
