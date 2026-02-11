@@ -7,6 +7,8 @@ categories: [DevOps]
 tags: [GitHub, Cloudflare Workers, 圖床, CORS, DevOps]
 ---
 
+![用 GitHub Release 打造免費圖床](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-04-image-bed-github-release.png)
+
 ## 前言
 
 寫部落格最麻煩的事之一，就是圖片要放哪裡。
