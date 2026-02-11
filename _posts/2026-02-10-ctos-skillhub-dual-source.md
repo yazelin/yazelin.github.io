@@ -7,6 +7,9 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, SkillHub, ClawHub, FastAPI, asyncio, Python]
 ---
 
+![配圖](/images/2026-02-10-ctos-skillhub.png)
+
+
 ## 前言
 
 ChingTech OS 的 SkillHub 一開始只對接內部的技能庫 — 公司內部自行維護的 Skill 清單。但隨著 OpenClaw 生態系成長，公開的 ClawHub 上出現了大量社群貢獻的 Skill。使用者開始反映：「為什麼我在 ClawHub 上看到的 Skill，在 CTOS 搜不到？」

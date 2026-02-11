@@ -7,6 +7,9 @@ categories: [前端開發]
 tags: [Vite, JavaScript, IIFE, ES Module, 前端, 踩坑記]
 ---
 
+![配圖](/images/2026-02-10-vite-migration.png)
+
+
 ## 前言
 
 ChingTech OS 的前端是一個典型的「有機成長」專案 — 沒有框架、沒有 bundler，30 多個 IIFE（Immediately Invoked Function Expression）腳本用 `<script>` 標籤按順序載入。每個檔案把自己的功能掛在 `window` 上，下一個檔案再從 `window` 取用。

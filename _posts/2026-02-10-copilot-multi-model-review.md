@@ -7,6 +7,9 @@ categories: [AI 工具]
 tags: [GitHub Copilot, Claude, GPT, Gemini, Code Review, AI, 多模型]
 ---
 
+![配圖](/images/2026-02-10-copilot-review.png)
+
+
 ## 前言
 
 自己 review 自己的 PR，就像自己改自己的作文 — 寫的時候覺得完美，別人一看就發現問題。PR #49 就是血淋淋的例子：一個簡單的 race condition 藏在 session cleanup 邏輯裡，我反覆看了三遍都沒發現，最後是同事在 production 遇到問題才抓到。

@@ -7,6 +7,9 @@ categories: [AI]
 tags: [ClawHub, Agent Skills, Gemini, 圖片生成, Python, OpenClaw]
 ---
 
+![配圖](/images/2026-02-09-nanobanana-skill.png)
+
+
 ## 前言
 
 我之前已經寫了 [nanobanana-py](https://github.com/yazelin/nanobanana-py) — 一個用 Python + FastMCP 做的 Gemini 圖片生成 MCP Server，功能包含 auto model fallback（自動切換模型）。
