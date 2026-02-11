@@ -7,6 +7,9 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, Telegram, Bot, Python, AI, 多平台]
 ---
 
+![ChingTech OS：Telegram Bot 完整實作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-01-30-ctos-telegram-bot.png)
+
+
 ## 前言
 
 在前一篇文章中，我們完成了 [多平台 Bot Adapter 重構]({% post_url 2026-01-29-ctos-bot-adapter %})，將原本耦合 Line Bot 的程式碼抽象成平台無關的 `BotAdapter` Protocol。現在架構已經準備好了，是時候來實際加入第二個平台——Telegram。
