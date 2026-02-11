@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, 效能優化, WebP, 前端, catime, JavaScript]
 ---
 
+![catime 效能優化：WebP 遷移與資料架構重設計](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-07-catime-webp-optimization.png)
+
 ## 前言
 
 catime 專案從誕生到現在，每小時自動產生一張 AI 貓咪圖片，累積到第 154 號。隨著圖片數量持續增長，兩個效能問題逐漸浮現：
