@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, 架構設計, 重構, 多租戶, Python]
 ---
 
+![ChingTech OS：移除多租戶架構](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-05-ctos-remove-multi-tenant.png)
+
 ## 前言
 
 在 [多租戶架構設計]({% post_url 2026-01-20-ctos-multi-tenant %}) 中，我們花了相當大的力氣把 ChingTech OS 從單租戶改造成多租戶架構。當時的想法是：「未來也許會提供 SaaS 服務，讓多家公司共用同一套系統」。
