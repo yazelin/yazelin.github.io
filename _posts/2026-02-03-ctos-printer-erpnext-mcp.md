@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, MCP, 列印, ERPNext, ERP, AI, Python]
 ---
 
+![ChingTech OS：整合 Printer MCP 與 ERPNext MCP](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-03-ctos-printer-erpnext-mcp.png)
+
 ## 前言
 
 ChingTech OS（CTOS）過去的 MCP 工具都是自建的——專案管理、知識庫、檔案搜尋、簡報生成，全部定義在同一個 FastMCP Server 裡。但隨著需求擴展，有些能力不適合自己從頭寫：印表機控制需要跟系統 CUPS 互動，ERP 操作需要串接 ERPNext 的 REST API。
