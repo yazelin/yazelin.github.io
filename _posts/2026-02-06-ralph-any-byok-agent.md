@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, ACP, BYOK, Coding Agent, AI, Python, Gemini]
 ---
 
+![ralph-any：打造通用 BYOK Coding Agent](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-06-ralph-any-byok-agent.png)
+
 ## 前言
 
 市面上的 AI Coding Agent 越來越多，但大多綁定特定的 AI 服務。如果你想用 Claude 今天、Gemini 明天，就需要不同的工具。
