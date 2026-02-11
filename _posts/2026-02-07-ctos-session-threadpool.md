@@ -7,6 +7,8 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, PostgreSQL, Session, Thread Pool, 效能優化, Python, 加密]
 ---
 
+![ChingTech OS：PostgreSQL Session 與 Thread Pool 優化](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-07-ctos-session-threadpool.png)
+
 ## 前言
 
 在完成[模組化重構]({% post_url 2026-02-06-ctos-modular-refactor %})之後，系統的程式碼結構已經大幅改善。但在實際運行中，我們碰到了兩個棘手的問題：
