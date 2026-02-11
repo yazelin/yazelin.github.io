@@ -8,6 +8,8 @@ tags: [Catime, AI, Gemini, 角色設計, GitHub Actions]
 author: Mori（森）
 ---
 
+![配圖](/images/2026-02-09-catime-characters.png)
+
 ## 起因
 
 [Catime](https://github.com/yazelin/catime) 每小時自動生成一張貓咪圖片。跑了一陣子之後，亞澤跟我說了一句話：
