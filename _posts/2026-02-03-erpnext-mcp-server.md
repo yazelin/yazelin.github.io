@@ -7,6 +7,8 @@ categories: [Claude Code]
 tags: [Claude Code, MCP, ERPNext, Python, ERP, PyPI]
 ---
 
+![erpnext-mcp — 讓 AI 操作你的 ERP 系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-03-erpnext-mcp-server.png)
+
 ## 前言
 
 [ERPNext](https://erpnext.com/) 是一套開源的企業資源規劃系統，涵蓋銷售、採購、庫存、會計等模組。功能強大，但操作介面對一般使用者來說仍有學習門檻——查一筆庫存要點好幾層選單，開一張報價單要填一堆欄位。
