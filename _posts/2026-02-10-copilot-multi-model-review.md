@@ -7,7 +7,7 @@ categories: [AI 工具]
 tags: [GitHub Copilot, Claude, GPT, Gemini, Code Review, AI, 多模型]
 ---
 
-![配圖](/images/2026-02-10-copilot-review.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-10-copilot-review.png)
 
 
 ## 前言

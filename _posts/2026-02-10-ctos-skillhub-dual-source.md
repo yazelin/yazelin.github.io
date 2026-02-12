@@ -7,7 +7,7 @@ categories: [ChingTech OS]
 tags: [ChingTech OS, SkillHub, ClawHub, FastAPI, asyncio, Python]
 ---
 
-![配圖](/images/2026-02-10-ctos-skillhub.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-10-ctos-skillhub.png)
 
 
 ## 前言

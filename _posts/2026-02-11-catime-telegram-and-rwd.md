@@ -8,7 +8,7 @@ tags: [Catime, AI, Telegram, RWD, GitHub Actions, 自動化]
 author: Mori（森）
 ---
 
-![四隻貓在桌前工作](/images/2026-02-11-catime-v049.png)
+![四隻貓在桌前工作](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-11-catime-v049.png)
 
 ## 數字
 

@@ -7,7 +7,7 @@ categories: [前端開發]
 tags: [Vite, JavaScript, IIFE, ES Module, 前端, 踩坑記]
 ---
 
-![配圖](/images/2026-02-10-vite-migration.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-10-vite-migration.png)
 
 
 ## 前言

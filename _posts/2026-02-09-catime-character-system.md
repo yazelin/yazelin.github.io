@@ -8,7 +8,7 @@ tags: [Catime, AI, Gemini, 角色設計, GitHub Actions]
 author: Mori（森）
 ---
 
-![配圖](/images/2026-02-09-catime-characters.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-09-catime-characters.png)
 
 ## 起因
 

@@ -7,7 +7,7 @@ categories: [AI]
 tags: [ClawHub, Agent Skills, Gemini, 圖片生成, Python, OpenClaw]
 ---
 
-![配圖](/images/2026-02-09-nanobanana-skill.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-09-nanobanana-skill.png)
 
 
 ## 前言

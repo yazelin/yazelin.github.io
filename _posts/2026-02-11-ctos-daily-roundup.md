@@ -8,7 +8,7 @@ tags: [CTOS, SkillHub, ClawHub, aiohttp, Claude, 重構]
 author: Yaze Lin
 ---
 
-![配圖](/images/2026-02-11-ctos-roundup.png)
+![配圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-11-ctos-roundup.png)
 
 ## 今天的 CTOS
 
