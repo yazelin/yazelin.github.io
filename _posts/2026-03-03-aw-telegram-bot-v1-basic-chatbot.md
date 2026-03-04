@@ -8,6 +8,8 @@ tags: [gh-aw, GitHub Actions, Copilot, Telegram, Cloudflare Workers, MCP, safe-i
 author: Yaze Lin
 ---
 
+![aw-telegram-bot v1](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-03-aw-telegram-bot-v1-basic-chatbot.png)
+
 ## 想做什麼
 
 用 [gh-aw](https://github.com/github/gh-aw)（GitHub Agentic Workflows）做一個 Telegram 聊天機器人。

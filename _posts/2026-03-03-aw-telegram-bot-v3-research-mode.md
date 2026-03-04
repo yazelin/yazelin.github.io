@@ -8,9 +8,11 @@ tags: [gh-aw, GitHub Actions, Copilot, Telegram, MCP, Tavily, concurrency]
 author: Yaze Lin
 ---
 
+![aw-telegram-bot v3](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-03-aw-telegram-bot-v3-research-mode.png)
+
 ## 前情提要
 
-[v1](/2026/03/03/aw-telegram-bot/) 做了基本的文字聊天機器人，[v2](/2026/03/03/aw-telegram-bot-v2-image-generation/) 加上了 AI 繪圖。
+[v1](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/) 做了基本的文字聊天機器人，[v2](/2026/03/03/aw-telegram-bot-v2-image-generation/) 加上了 AI 繪圖。
 
 v3 的目標：**使用者傳「/research 台灣半導體產業最新發展」→ 收到一份研究報告，附來源連結**。
 
@@ -254,7 +256,7 @@ gh-aw compiler 自動加的 `concurrency: group: "gh-aw-${{ github.workflow }}"`
 ## Repo
 
 - [github.com/yazelin/aw-telegram-bot](https://github.com/yazelin/aw-telegram-bot)
-- `v1-basic-working` 分支：純文字版本（[v1 文章](/2026/03/03/aw-telegram-bot/)）
+- `v1-basic-working` 分支：純文字版本（[v1 文章](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/)）
 - `v2-image-generation` 分支：加上圖片生成（[v2 文章](/2026/03/03/aw-telegram-bot-v2-image-generation/)）
 - `v3-research-mode` 分支：研究模式 + 指令路由（本文）
 
