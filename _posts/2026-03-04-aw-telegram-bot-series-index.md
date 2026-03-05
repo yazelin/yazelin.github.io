@@ -12,7 +12,9 @@ author: Yaze Lin
 
 ## 關於這個系列
 
-這是一系列關於 **aw-telegram-bot** 的開發紀錄。用 [gh-aw](https://github.com/github/gh-aw)（GitHub Agentic Workflows）做了一個 Telegram 聊天機器人，從最基本的「收訊息 → AI 回覆」一路演化成能自動建 repo、寫程式、code review、部署網站的 **App Factory**。
+這是一系列關於 **aw-telegram-bot**（gh-aw 版）的開發紀錄。用 [gh-aw](https://github.com/github/gh-aw)（GitHub Agentic Workflows）做了一個 Telegram 聊天機器人，從最基本的「收訊息 → AI 回覆」一路演化成能自動建 repo、寫程式、code review、部署網站的 **App Factory**。
+
+> 另有功能完全相同的**無 gh-aw 輕量版**：[telegram-copilot-bot]({% post_url 2026-03-05-telegram-copilot-bot-no-ghaw %})
 
 每一篇都記錄了設計決策、踩坑過程和最終解法。
 
@@ -218,9 +220,25 @@ GitHub Actions（gh-aw + Copilot + MCP Servers）
 
 ---
 
+## 輕量版（無 gh-aw 依賴）
+
+如果你沒有 gh-aw 存取權限，可以使用功能完全相同的輕量版：
+
+| | aw-telegram-bot（本系列） | telegram-copilot-bot（輕量版） |
+|--|--------------------------|-------------------------------|
+| AI 引擎 | gh-aw 框架 | `npm install -g @github/copilot` |
+| 工具腳本 | Safe-Inputs（沙箱） | Python 腳本 |
+| 圖片生成 | Nanobanana MCP | Gemini REST API |
+| 功能 | 全部指令 | 完全相同 |
+
+詳細說明：[telegram-copilot-bot：不用 gh-aw 的輕量版]({% post_url 2026-03-05-telegram-copilot-bot-no-ghaw %})
+
+---
+
 ## Repo
 
-- [github.com/yazelin/aw-telegram-bot](https://github.com/yazelin/aw-telegram-bot)
+- **原版**：[github.com/yazelin/aw-telegram-bot](https://github.com/yazelin/aw-telegram-bot)
+- **輕量版**：[github.com/yazelin/telegram-copilot-bot](https://github.com/yazelin/telegram-copilot-bot)
 
 ---
 
