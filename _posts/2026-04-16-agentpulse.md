@@ -599,13 +599,22 @@ cycle.forEach(([delay, id, newState]) => {
 
 ## 接下來
 
-- [ ] macOS 程式碼簽章（消除 Gatekeeper 警告，免去 `xattr -cr` 步驟）
-- [ ] Windows 程式碼簽章（消除 SmartScreen 警告）
-- [ ] 自動更新機制（Tauri updater）
-- [ ] 支援更多 CLI（Cursor、Continue、Aider？）
-- [ ] Session 歷史紀錄查看
+目前桌面客戶端的功能對我自己已經夠用了。代碼簽章、自動更新、更多 CLI 支援這些雖然有用，但對我目前的痛點不重要，所以短期不會做。
 
-歡迎 [issues](https://github.com/yazelin/AgentPulse/issues) 或 PR。
+### 還在想的方向：區網 Session 管理中心
+
+之後可能會想做 **LAN 內的集中式 session 監控** — 同一個團隊所有開發者的 AI CLI 活動都送到一台內網主機集中顯示。
+
+不過這類工具其實 GitHub 上已經有人做了，記錄一下找到的幾個：
+
+| 專案 | 架構 |
+|------|------|
+| [bruceyxli/claude-code-monitor](https://github.com/bruceyxli/claude-code-monitor) | Express + WebSocket，最像 LAN 集中版的設計 |
+| [disler/claude-code-hooks-multi-agent-observability](https://github.com/disler/claude-code-hooks-multi-agent-observability) | 1.4k stars，Bun + SQLite + Vue，最多人 fork |
+| [ColeMurray/claude-code-otel](https://github.com/ColeMurray/claude-code-otel) | OpenTelemetry + Prometheus + Grafana，企業級 |
+| [RyanTech00/claude-telemetry](https://github.com/RyanTech00/claude-telemetry) | Python agent → Supabase → Cloudflare Pages |
+
+如果只是要團隊監控，這幾個直接用就夠了，不一定需要自己做。
 
 ---
 
