@@ -7,6 +7,14 @@ categories: [AI]
 tags: [Tauri, Rust, Cross-platform, Claude Code, Gemini CLI, Codex, Copilot, Desktop App]
 ---
 
+> **🔗 快速連結**
+> - 🌐 **官方網站 + 線上互動 Demo**：[yazelin.github.io/AgentPulse](https://yazelin.github.io/AgentPulse/)
+> - 📦 **下載最新版**：[GitHub Releases](https://github.com/yazelin/AgentPulse/releases/latest)
+> - 💻 **GitHub Repo**：[yazelin/AgentPulse](https://github.com/yazelin/AgentPulse)
+> - 📝 **CHANGELOG**：[查看更新紀錄](https://github.com/yazelin/AgentPulse/blob/main/CHANGELOG.md)
+
+---
+
 ## 這個工具在解決什麼問題
 
 你同時開了好幾個 terminal 跑不同的 AI CLI 工具 — 一個 Claude Code 在重構後端、一個 Gemini CLI 在改 UI、一個 Copilot 在寫測試。
@@ -14,8 +22,6 @@ tags: [Tauri, Rust, Cross-platform, Claude Code, Gemini CLI, Codex, Copilot, Des
 然後你切去看 Slack，回來才發現 Claude 5 分鐘前就卡在權限請求等你確認，另外兩個早就跑完了。
 
 **AgentPulse** 是一個常駐在桌面上的小膠囊（類似 iPhone Dynamic Island），即時顯示所有 AI CLI session 的狀態，跑完會發聲音通知。
-
-> **🎮 想直接玩玩看？** 官網有**完整的線上互動 demo**（瀏覽器裡就能 hover、開設定、試音效）：[yazelin.github.io/AgentPulse](https://yazelin.github.io/AgentPulse/)
 
 <video controls autoplay muted loop playsinline width="100%">
   <source src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/demo.mp4" type="video/mp4">
@@ -30,7 +36,7 @@ tags: [Tauri, Rust, Cross-platform, Claude Code, Gemini CLI, Codex, Copilot, Des
 
 ![AgentPulse 展開狀態](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/agentpulse-expanded.png)
 
-> **v0.2.0 已 release**：Linux / macOS / Windows 都有 zip 包可下載。詳見[最新 release](https://github.com/yazelin/AgentPulse/releases/latest)。
+> **v0.2.1 已 release**：Linux / macOS（ARM + Intel）/ Windows 都有 zip 包可下載。詳見[最新 release](https://github.com/yazelin/AgentPulse/releases/latest)。
 
 ---
 
