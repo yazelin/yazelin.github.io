@@ -350,56 +350,62 @@ bottom = tiles[(pos + 1) % 9]
 
 沒有 0.5 tile、沒有 translateY 動畫。暫停在任何 frame 都是 9 張完整的臉。
 
-### 多輪 spin-flash：保留「點一下停哪裡」的隨機玩法
+### Blur spin 永不停，撞到才畫線：保留「點一下停哪裡」的隨機玩法
 
-最初版本的 v2 我設計成「最後停定後 hold 1.9 秒」，結果被作者本人 review 秒打回票：
+最初版本的 v2 我設計成「最後停定後 hold 1.9 秒」，被作者本人 review 秒打回票：
 
 > 你設計讓他停下來的話不就失去了讓使用者點擊時才停下的玩法了嗎?????
 
-對。FB 這個 trick 的靈魂就是**暫停時機是隨機的**。如果結尾 hold 一條固定的線 40% 時長，暫停就變得太可預測 —— 基本上 10 次有 4 次會停在同一條線上。
+改過一次「多輪 spin-flash」，也被打回票：轉太慢、停太久，玩家看得太清楚，沒有「抽」的緊張感。
 
-改成 **多輪 spin-flash**：
+最後定案：**3 條 reel 永不停、各自速度、blur 到看不清**。
 
 ```
-第一輪：  spin ~3s → 閃現 Pattern A (2 frame) → 進入下一輪
-第二輪：  spin ~3s → 閃現 Pattern B (2 frame) → 進入下一輪
-第三輪：  spin ~3s → 閃現 Pattern C (最後輪 hold ~0.5s)
-                                                      ↓
-                                            loop 回第一輪
+reel 0: 1 frame/tile = 67 ms  @ fps=15 → strobe blur
+reel 1: 2 frame/tile = 133 ms
+reel 2: 3 frame/tile = 200 ms
 ```
 
-每輪從 45 種連線裡**無重複**抽一個。實作上很單純 —— 第 k 輪每條 reel 的 `startPos = patterns[k-1].stops[r]`（前輪落點），接下去再 spin：
+不同速是必要的 — 同速會讓 3 條 reel 相對位置鎖死（要嘛每 frame 都連線、要嘛永遠沒連線）。不同速才會**持續漂移**過整個 9³ 的狀態空間，偶爾撞到 45 種連線之一。
+
+LCM 週期：`LCM(1,2,3) × 9 = 54 frame`。一個 cycle 內，3 條 reel 的位置組合共會經過 54 種不同狀態。其中有幾個**剛好**撞到 45 種預設連線 —— 撞到的那 frame 就畫 payline，沒撞到就維持 blur。
 
 ```js
-const roundCount = Math.max(2, Math.min(4, Math.floor(repeats / 3)));
-const shuffled = [...WINNING_PATTERNS].sort(() => Math.random() - 0.5);
-const patterns = shuffled.slice(0, roundCount); // 無重複抽
+const stepFrames = [1, 2, 3];
+const seedPattern = WINNING_PATTERNS[rand(45)];
+const startPos = seedPattern.stops.slice();  // f=0 保證是連線 frame
 
-let currentStart = [0, 3, 6];
-for (let round = 0; round < roundCount; round++) {
-  const spins = [0, 1, 2].map(r => buildReelSpin({
-    startPos: currentStart[r],
-    targetPos: patterns[round].stops[r],
-    stepFrames: stepFrames[r],
-    baseCycles: 1,
-  }));
-  // ...寫進 schedules 陣列...
-  currentStart = [0, 1, 2].map(r => patterns[round].stops[r]);
+const posAt = (f, r) => (startPos[r] + Math.floor(f / stepFrames[r])) % 9;
+
+// precompute 每一 cycle frame 是否命中 45 種之一
+const patternForCycleFrame = new Array(cycleFrames).fill(null);
+for (let f = 0; f < cycleFrames; f++) {
+  const p = [posAt(f, 0), posAt(f, 1), posAt(f, 2)];
+  for (const pat of WINNING_PATTERNS) {
+    if (pat.stops[0] === p[0] && pat.stops[1] === p[1] && pat.stops[2] === p[2]) {
+      patternForCycleFrame[f] = pat;
+      break;
+    }
+  }
 }
 ```
 
-結果：
+渲染迴圈就是查表：
 
-- **非最後輪**閃 2 frame（約 0.13 秒 @ fps=15）→ 連線只是一瞥而已，暫停剛好抓到機率很低
-- **最後輪**閃 ~0.5 秒 → 讓影片 loop 有一個自然呼吸點
-- **整部 7-9 秒的影片裡 ~15% 時間有連線視覺**，其他 85% 時間看的是「3 條轉到不同進度的滾軸」
+```js
+if (patternForCycleFrame[cf]) {
+  drawPayline(ctx, patternForCycleFrame[cf], layout, 0.85);
+  drawWinningGlow(ctx, patternForCycleFrame[cf], layout, 0.55);
+}
+// 沒 match → 直接不畫，每 frame 等時
+```
 
-用戶 FB 暫停結果分布：
-- 大機率看到「拉霸機轉到一半」—— 3 欄不同 tiles，不同對齊程度
-- 小機率 (~15%) 撞到某輪的連線閃現 —— 桃色 payline + 3 個同款表情
-- 每次播放的 2-4 個連線位置**都不同**（隨機抽 pattern）
+一個 54-frame cycle 通常會命中 1-4 個連線 frame（視種子而定；frame 0 必中）。3.6 秒的影片裡，用戶 FB 點暫停：
 
-等於把原版「一次抽 1 次籤」升級成「一次抽 2-4 次籤」，**隨機性反而變多**而不是變少。
+- ~92-98% 落在 blur 的 3 條滾軸 → 看不清、有 slot machine 轉動感
+- ~2-8% 運氣好剛好停在某個連線 frame → 3 個同款表情 + 桃色 payline
+
+關鍵是**沒有 hold、沒有 pulse、沒有淡入淡出**。連線 frame 跟其他 blur frame 視覺權重**完全一樣**—— 用戶從視覺節奏看不出「快要停在線上了」，跟原版 v1「隨機停在某表情」同一個靈魂。
 
 ### 減速尾段 + 起始錯位（兩個小細節）
 
