@@ -271,6 +271,165 @@ for (let i = 0; i < repeats; i++) {
 
 ---
 
+## 進階版：3×3 真實拉霸滾軸（v2）
+
+上面那個是**全畫面閃 9 張**，視覺上像拉霸但其實不是。v2 做成真正的 3 條獨立滾軸、左中右各自速度、依序停下、最後一定連一條線。
+
+現在「生成影片」區塊多了「版本」下拉：**拉霸滾輪 3×3** / **經典 9 格閃爍**，預設前者。
+
+### 設計前提（跟 v1 同一個）：FB 暫停會停在某一 frame
+
+差別在：
+- v1 是「閃到哪停哪」，隨機表情
+- v2 要做到「可能停在連線狀態、也可能停在滾動中」—— **不管停在哪都不能看起來壞掉**
+
+兩件事：
+1. **連線一定要有**：每部影片最後都落在一條真實的連線
+2. **每一 frame 都 snap 到整數 tile**：不能讓用戶暫停時看到「臉滑到一半」
+
+### 9 張 × 5 線型 = 45 種預算好的連線
+
+我只有 9 張圖。在 3 條 reel **共用同一條順序** `[0, 1, 2, ..., 8]` 的前提下，想讓「中間橫線」或「左斜線」出現**同一個** emoji，其實只是讓 3 條 reel 停在不同的相對位置：
+
+| 線型 | Reel 0 停在 | Reel 1 | Reel 2 |
+|---|---|---|---|
+| 中橫線 E | E | E | E |
+| 上橫線 E | E+1 | E+1 | E+1 |
+| 下橫線 E | E−1 | E−1 | E−1 |
+| 左斜線 E | E+1 | E | E−1 |
+| 右斜線 E | E−1 | E | E+1 |
+
+（都是 mod 9。）
+
+5 種線型 × 9 種「贏的 emoji」= **45 種組合**，App 啟動時 precompute 完：
+
+```js
+const WINNING_PATTERNS = (function() {
+  const N = 9;
+  const lineTypes = [
+    { id: "mid", stops: (E) => [E, E, E] },
+    { id: "top", stops: (E) => [(E+1)%N, (E+1)%N, (E+1)%N] },
+    { id: "bot", stops: (E) => [(E-1+N)%N, (E-1+N)%N, (E-1+N)%N] },
+    { id: "diag-down", stops: (E) => [(E+1)%N, E, (E-1+N)%N] },
+    { id: "diag-up",   stops: (E) => [(E-1+N)%N, E, (E+1)%N] },
+  ];
+  const out = [];
+  for (const lt of lineTypes)
+    for (let E = 0; E < N; E++)
+      out.push({ emoji: E, lineId: lt.id, stops: lt.stops(E) });
+  return out;
+})();
+```
+
+每次生影片就從 45 個抽一個，把 3 條 reel 精準排程到對應位置。**每一部輸出都保證有一條連線**、不用 runtime 算機率。
+
+### 左中右速度不同 → 依序停止是免費的
+
+真實拉霸機左邊轉得快、右邊慢。這用 `stepFrames`（每幾個 video frame 切 1 個 tile）實作：
+
+```js
+// 目標每 tile 100 / 150 / 200 ms，依 fps 換算；fps=15 時變成 [2, 3, 4]
+const stepFrames = [100, 150, 200].map(
+  (ms) => Math.max(1, Math.round(ms * fps / 1000))
+);
+```
+
+Reel 0 每 2 frame 切 1 張（快），Reel 2 每 4 frame 切 1 張（慢）。
+
+因為每條 reel 都要轉完一樣多的圈數才停，慢的那條自然要跑更久 —— **「左 → 中 → 右 依序停下」直接是速度差的副作用**，不用另外排程。
+
+### 每 frame 都 snap 到整數
+
+每 frame 每 reel 都在**整數 tile 位置** `pos`，視覺上顯示的 3 格就是：
+
+```js
+top    = tiles[(pos - 1 + 9) % 9]
+middle = tiles[pos]
+bottom = tiles[(pos + 1) % 9]
+```
+
+沒有 0.5 tile、沒有 translateY 動畫。暫停在任何 frame 都是 9 張完整的臉。
+
+### 多輪 spin-flash：保留「點一下停哪裡」的隨機玩法
+
+最初版本的 v2 我設計成「最後停定後 hold 1.9 秒」，結果被作者本人 review 秒打回票：
+
+> 你設計讓他停下來的話不就失去了讓使用者點擊時才停下的玩法了嗎?????
+
+對。FB 這個 trick 的靈魂就是**暫停時機是隨機的**。如果結尾 hold 一條固定的線 40% 時長，暫停就變得太可預測 —— 基本上 10 次有 4 次會停在同一條線上。
+
+改成 **多輪 spin-flash**：
+
+```
+第一輪：  spin ~3s → 閃現 Pattern A (2 frame) → 進入下一輪
+第二輪：  spin ~3s → 閃現 Pattern B (2 frame) → 進入下一輪
+第三輪：  spin ~3s → 閃現 Pattern C (最後輪 hold ~0.5s)
+                                                      ↓
+                                            loop 回第一輪
+```
+
+每輪從 45 種連線裡**無重複**抽一個。實作上很單純 —— 第 k 輪每條 reel 的 `startPos = patterns[k-1].stops[r]`（前輪落點），接下去再 spin：
+
+```js
+const roundCount = Math.max(2, Math.min(4, Math.floor(repeats / 3)));
+const shuffled = [...WINNING_PATTERNS].sort(() => Math.random() - 0.5);
+const patterns = shuffled.slice(0, roundCount); // 無重複抽
+
+let currentStart = [0, 3, 6];
+for (let round = 0; round < roundCount; round++) {
+  const spins = [0, 1, 2].map(r => buildReelSpin({
+    startPos: currentStart[r],
+    targetPos: patterns[round].stops[r],
+    stepFrames: stepFrames[r],
+    baseCycles: 1,
+  }));
+  // ...寫進 schedules 陣列...
+  currentStart = [0, 1, 2].map(r => patterns[round].stops[r]);
+}
+```
+
+結果：
+
+- **非最後輪**閃 2 frame（約 0.13 秒 @ fps=15）→ 連線只是一瞥而已，暫停剛好抓到機率很低
+- **最後輪**閃 ~0.5 秒 → 讓影片 loop 有一個自然呼吸點
+- **整部 7-9 秒的影片裡 ~15% 時間有連線視覺**，其他 85% 時間看的是「3 條轉到不同進度的滾軸」
+
+用戶 FB 暫停結果分布：
+- 大機率看到「拉霸機轉到一半」—— 3 欄不同 tiles，不同對齊程度
+- 小機率 (~15%) 撞到某輪的連線閃現 —— 桃色 payline + 3 個同款表情
+- 每次播放的 2-4 個連線位置**都不同**（隨機抽 pattern）
+
+等於把原版「一次抽 1 次籤」升級成「一次抽 2-4 次籤」，**隨機性反而變多**而不是變少。
+
+### 減速尾段 + 起始錯位（兩個小細節）
+
+**減速尾段**：最後 2 張 tile 各多停 1–2 frame，做出「啪嗒、啪嗒……鏘」的感覺：
+
+```js
+for (let i = 0; i < stepFrames + 1; i++) seq.push(tail1);       // 倒數第二
+for (let i = 0; i < stepFrames + 2; i++) seq.push(targetPos);    // 落定
+```
+
+**起始錯位**：如果 3 條 reel 都從 pos 0 出發，第一 frame 的 3 欄會是**完全一樣的臉**（很醜）。讓它們從 `[0, 3, 6]` 出發，開場第一 frame 就是 9 張不同的臉：
+
+```
+Col 0 (pos 0): tiles[8, 0, 1]
+Col 1 (pos 3): tiles[2, 3, 4]
+Col 2 (pos 6): tiles[5, 6, 7]
+```
+
+### 總結
+
+v2 的邏輯比 v1 乾淨得多：
+- 45 種結局 precompute → 不用 runtime 骰
+- 每 frame 整數 snap → 不怕暫停
+- 速度差 → 依序停止免費附贈
+- 所有視覺決策都以「FB 暫停在任何一 frame 都要好看」為最高優先
+
+整件事只用 canvas + MediaRecorder，依然沒有任何影片庫。
+
+---
+
 ## PWA + Web Share API
 
 加了 `manifest.json` + `sw.js`，變成**可安裝**的 app：
