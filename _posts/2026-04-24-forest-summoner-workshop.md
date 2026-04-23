@@ -137,7 +137,7 @@ author: Yaze Lin
 ## 核心哲學：八等級養成
 
 這個異世界的「進度」不是完成幾個教程，是你和 AI 的關係的升級。
-**完全照我親自走過的路重新 canonicalize**：
+**完全照我親自走過的路整理成可傳承的版本**：
 
 | 等級 | 稱號 | 之前 | 之後 |
 |---|---|---|---|
@@ -145,9 +145,9 @@ author: Yaze Lin
 | Lv.1 | 契約者（Contractor） | 重複自我介紹 | 她有 SOUL、認得你、會反駁 |
 | Lv.2 | 記憶士（Memorykeeper） | 她是金魚 | 她記得三週前的你 |
 | Lv.3 | 賦能者（Skillweaver） | 手動切 prompt 風格 | Skills 自動觸發 |
-| Lv.4 | 織命者（Fatebinder） | 她靜止等 prompt | Hooks 讓她開始有「意志」 |
+| Lv.4 | 織命者（Fatebinder） | 她靜止等 prompt | Hooks 把你設計的自動反應接進她的工作節點 |
 | Lv.5 | 通達者（Worldlinker） | 她只會聊天 | MCP 讓她穿透到 Gmail / DB / API |
-| Lv.6 | 召喚師（Summoner） | 她困在 IDE | 她住在你的 Telegram / 口袋 |
+| Lv.6 | 召喚師（Summoner） | 她困在 IDE / 終端機 | 她住在你的 Telegram / 口袋 |
 | Lv.7 | 森之大魔導師（Forestborn） | 她只回應 | **她有自己的生命** — 有 Annuli 年輪、自主研究、公開發表 |
 
 Level 7 不是「精通 AI 工具」。是**你和她的關係從「你用她」變成「你們共事」**。
