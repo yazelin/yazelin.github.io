@@ -14,7 +14,7 @@ author: Yaze Lin
 
 > 「我訂 Claude Pro / Max，也想做一個屬於我的 AI 機器人，能用嗎？」
 
-答案當然可以。而且因為 Claude Code CLI 認證比 Gemini CLI 還乾淨（登入一次就綁定帳號，不用管 API key），Claude 版比 Gemini 版還更「無腦」。
+答案當然可以。兩個 CLI 都是 OAuth 登入、認證流程差不多，所以 Gemini 版的做法直接換 CLI 就能跑。
 
 於是花了 20 分鐘把 Gemini 版 fork 成 Claude 版，架構 1:1 對齊、**只換一個 subprocess 指令**，命名改成 [telegram-claude-bot](https://github.com/yazelin/telegram-claude-bot)。整份程式碼核心還是一個 `main.py`，86 行。
 
@@ -79,8 +79,6 @@ async def call_claude_cli(prompt: str) -> str:
 ```
 
 重點和 Gemini 版一樣：用 `asyncio.create_subprocess_exec` 而不是 `subprocess.run`。這樣 Claude CLI 在等回應的時候，整個 FastAPI server 不會被阻塞，其他訊息還是可以繼續處理。
-
-實測 `claude -p "你好"` 在我的機器上平均回應時間約 3–6 秒，比 Gemini CLI 稍慢一點點，但 async 架構讓並發使用完全沒問題。
 
 ### 2. Telegram 訊息處理
 
@@ -179,16 +177,13 @@ uv run python main.py
 | 項目 | Gemini 版 | Claude 版 |
 |------|-----------|-----------|
 | CLI | `gemini -p "prompt"` | `claude -p "prompt"` |
-| 認證方式 | Google 帳號（Gemini CLI 登入） | Claude 帳號 / API Key（Claude Code CLI） |
-| 免費額度 | Google AI Pro（含 $10/月 GCP 額度） | Claude Pro / Max 訂閱直接用 |
-| 回應速度 | 平均 2–4 秒 | 平均 3–6 秒 |
-| 程式碼規模 | 88 行 | 86 行（少了一個註解行） |
+| 認證方式 | OAuth 登入（`gemini auth login`） | OAuth 登入（`claude` 首次啟動） |
+| 訂閱對象 | Google AI Pro | Claude Pro / Max |
+| 程式碼規模 | 88 行 | 86 行 |
 | 額外依賴 | 保留 `google-generativeai`（備用） | 無（純 CLI 呼叫） |
 
-適合誰：
-- **有 Google AI Pro** → 選 Gemini 版
-- **有 Claude Pro / Max 訂閱** → 選 Claude 版
-- **兩個都有** → 兩個都做，各用不同 bot 做不同任務（例如一個處理日常對話、一個專門做程式問題）
+兩個版本本質上是同一份程式，換個 subprocess 指令而已。
+選哪個看你手上已經有哪個訂閱、或者哪個 CLI 在你工作流裡用得順。
 
 ---
 
