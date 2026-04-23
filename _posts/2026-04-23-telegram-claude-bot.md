@@ -234,7 +234,7 @@ uv run python main.py
 
 4. **延伸到其他通訊平台** — 同樣的 subprocess 呼叫模式，可以套用到 LINE Bot、Discord Bot、Matrix、Slack 上。你只需要換一個訊息接收層，核心邏輯（call_claude_cli）完全不動。
 
-這些練習我自己寫成了另一套專案（Hermes、AgentPulse 等），如果有興趣可以再看後續文章。
+這些練習我自己寫成了另一套專案（[Annuli](https://github.com/yazelin/Annuli)、[AgentPulse](https://github.com/yazelin/AgentPulse) 等），如果有興趣可以再看後續文章。
 
 ---
 
