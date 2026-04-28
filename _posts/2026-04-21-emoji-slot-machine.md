@@ -10,6 +10,7 @@ tags: [Gemini, Cloudflare Workers, Prompt Engineering, PWA, Facebook, JavaScript
 > **🔗 快速連結**
 > - 🌐 **Live demo**：[yazelin.github.io/emoji-slot-machine](https://yazelin.github.io/emoji-slot-machine/)
 > - 💻 **GitHub Repo**：[yazelin/emoji-slot-machine](https://github.com/yazelin/emoji-slot-machine)
+> - 🎨 **妹妹篇**：[LINE 貼圖製造機](https://yazelin.github.io/ai/2026/04/28/line-sticker-studio.html) — 同一套 Vertex + Workers 架構，做成可以上架賺錢的 LINE 貼圖工具
 > - ☕ **Buy me a coffee**：[buymeacoffee.com/yazelin](https://buymeacoffee.com/yazelin)（AI 功能的 Gemini quota 就靠這個續命 🙏）
 
 ---
@@ -557,6 +558,19 @@ App 的 step ① 可以直接收任何 3×3 圖。只要那張圖**三等分切*
 - **9 種餐點**：午餐選擇困難症的救星
 
 核心是 **FB 自動播 + 點擊即停** = **一支影片 = 一個互動 widget**。
+
+---
+
+## 衍生作：把 3×3 grid 換成 LINE 貼圖
+
+這套「reference image + Worker + Gemini 3.1 Flash Image + 客戶端後處理」的基底很值得複用。我接著拿同一套架構做了 [**LINE 貼圖製造機**](https://yazelin.github.io/ai/2026/04/28/line-sticker-studio.html)：
+
+- 同樣是上傳 1 張角色圖、AI 產一個 3×3 grid
+- 但**目的完全不同**：拉霸機是把 grid 合成 WebM 貼 FB 玩；貼圖機是把 grid 切成 8 張、客戶端 chroma-key 去背、打包 ZIP，**直接拖到 LINE Creators Market 就能上架賣錢**
+- 多了一些拉霸機沒做的東西：LINE Login PKCE auth + KV 配額、IndexedDB 歷史 + 收藏、LINE 6 個官方特輯活動 prompt override、phrase + action 配對讓無字模式也有對的姿勢
+- [**完整技術文章**](https://yazelin.github.io/ai/2026/04/28/line-sticker-studio.html) 寫了 LINE 規格的坑、為什麼用 chroma key 不用 ML 去背、跟「我把同一個 bug 寫了兩次、被作者打臉兩次」的故事
+
+如果你看完拉霸機覺得「這 trick 蠻有意思」，貼圖機是同一個套路換不同產品形態的延伸練習。
 
 ---
 
