@@ -304,17 +304,21 @@ return `  [${letter}] ${NAMES[i]} cell:
 
 ---
 
-## 一個真實 bug：「一個函式被呼叫兩次」騙到我自己
+## 一個真實 bug：「一個函式被呼叫兩次」差點害我去開 Google 的 issue
 
-完整經過值得單獨拿出來講，因為這是**「怪 AI 不聽話之前先驗自己 code」**的最佳教材。
+完整經過值得單獨拿出來講，因為這是**用 AI 寫 code 的時候最容易踩的反向陷阱**。
 
-某次測試短語「忠誠度」 — 我設好 8 個 custom phrase，按生成。回來：response 裡 `phrases` 欄寫著我設的 8 句，但**圖上印的字完全不一樣**。
+某次測試我設好 8 個自訂短語，按生成。回來看：UI 顯示這 8 張貼圖的「short phrase」標註是我設的那 8 句，但**圖上印的字完全是另一組**。
 
-我的第一反應是「Gemini 的 text fidelity 又出包了」，準備寫 issue 給 Google。
+我把這個現象貼給 Claude（這個專案 95% 的 code 是 Claude 寫的）：「Gemini 沒按 prompt 印字，你看看怎麼修。」
 
-但是這個專案的姊妹是 emoji-slot-machine，當時 Gemini 的 phrase fidelity 是 9/9 perfect。為什麼這次掉到 0/9？
+Claude 第一反應就是去**改 prompt**：把 `EXACT TEXT TO PRINT` 那條規則加更多強制語、加更多 caps、再多寫一條 OUTPUT RULE 強調 text fidelity。
 
-回去看 worker 程式碼：
+我攔下來。因為這個專案的姊妹工具 [emoji-slot-machine](https://yazelin.github.io/ai/2026/04/21/emoji-slot-machine.html) 用同一個 Gemini 3.1 Flash Image，當時 phrase fidelity 是 **9/9 perfect**，為什麼搬到貼圖工具就掉到 0/9？同一顆模型不會突然失智。
+
+我跟 Claude 說：「之前 emoji-slot 就是這樣，你寫錯還以為是 Gemini 問題。」
+
+Claude 才回去看 worker 程式：
 
 ```js
 // /generate endpoint
@@ -331,9 +335,11 @@ return json({
 });
 ```
 
-`pickNinePhrases` 內部用 `Math.random() + shuffle()`。**呼叫兩次得到兩個不同的 9 句**。Gemini 收到的是 call #1 的結果，response 回傳給前端的是 call #2 的結果。
+抓到了：`pickNinePhrases` 內部用 `Math.random() + shuffle()` 從 50 句 pool 裡抽 9 句。**這個函式被呼叫了兩次**：一次餵給 prompt 給 Gemini，一次寫到 response 給前端標註用。兩次的隨機結果**不同**。
 
-前端對照「response 寫 X，圖印 Y」 → 100% mismatch → 看起來是 Gemini text fidelity 爛掉。
+所以實際發生的事：Gemini 完美照 prompt 把 call #1 的 9 句印出來，但 response metadata 寫的是 call #2 的 9 句。前端對照「metadata 寫 X、圖印 Y」 → 100% mismatch → 看起來是 Gemini text fidelity 爛掉。
+
+**Gemini 一個字都沒錯。錯的是 worker 把同一個非確定性函式呼叫兩次。**
 
 修正：
 
@@ -347,7 +353,33 @@ return json({ data: imagePart.data, phrases: nine });  // 用同一份
 
 修完 retest：**9/9 perfect text fidelity**。
 
-教訓：**任何「AI 看起來很笨」的 bug，在去 issue tracker 之前，先確定自己餵給它的東西就是你以為的那個東西**。我的 case 是非確定性函式被呼叫兩次；其他人可能是 prompt template 字串拼接拼錯、可能是 cache 亂塞、可能是 retry 邏輯複用了 stale request body。
+### 為什麼這個 pattern 會反覆發生
+
+這是我**第二次**被同一個 pattern 燒到（emoji-slot-machine 開發時也踩過）。共通結構是：
+
+- worker 裡有個函式內部含 `Math.random()` / `shuffle()` / `Date.now()` 之類的非確定性操作
+- 這個函式的結果**同時要進兩個地方**：餵給 AI 的 prompt + 回給用戶看的 metadata
+- AI 寫 code 的人（包括我以前自己手寫的時候）會很自然地分兩次呼叫，因為 prompt 組合和 response 組裝在不同段、看起來不相干
+
+然後現象是：「AI 模型看起來不聽話」。看起來是 model 的問題，實際是 code 的問題。
+
+### 給 Claude 的指令模板（我現在會這樣講）
+
+幾次之後我學乖了，現在跟 Claude 講話會**先擋下「改 prompt」這個衝動**：
+
+> 「我看到 AI 輸出跟我給的指令對不上。**先不要改 prompt**。先做兩件事：
+> 1. 把 worker 真正送出的 payload log 出來、把回給前端的 metadata log 出來
+> 2. 逐字比對。一致才能 blame model；不一致就是我們的 code 把兩件事混了。
+>
+> 如果 (2) 裡面有任何一個函式被呼叫兩次而它含 random，那就是嫌犯。」
+
+這個 prompt 我已經存進 [Claude 的 memory](https://docs.claude.com/en/docs/claude-code/memory) 裡，之後不用每次都打。Claude 看到「AI 看起來沒照指令」的描述時會自動先驗 code 路徑、不會直奔 prompt engineering。
+
+### 給其他 AI 寫 code 的人的提醒
+
+- AI 寫 code 很愛「整潔分段」 — prompt 組合一段、response 組裝一段，乍看清楚實則踩雷
+- 任何**非確定性的選擇**（隨機抽樣、時間戳、UUID）都應該**只算一次**、把結果當參數傳遞給每個下游
+- 如果你看到「AI 模型不聽話」的現象，但同個 model 在別的地方表現正常 → **9 成是你自己 code bug，不是模型**
 
 ---
 
