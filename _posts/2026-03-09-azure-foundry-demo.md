@@ -8,6 +8,8 @@ tags: [Azure AI Foundry, Copilot SDK, BYOK, Python, Telegram, OpenAI]
 author: Yaze Lin
 ---
 
+![azure-foundry-demo：用 Copilot SDK 的 BYOK 模式連接 Azure AI Foundry](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-09-azure-foundry-demo.png)
+
 ## 想做什麼
 
 這是一個小測試專案，目的很單純：**驗證 Copilot SDK 的 BYOK 模式能不能順利連上 Azure AI Foundry**。

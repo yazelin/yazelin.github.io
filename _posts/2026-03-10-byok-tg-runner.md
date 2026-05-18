@@ -8,6 +8,8 @@ tags: [GitHub Actions, Copilot SDK, BYOK, Azure AI Foundry, Cloudflare Workers, 
 author: Yaze Lin
 ---
 
+![byok-tg-runner：用 GitHub Actions 當 AI Bot 的免費運算環境（實驗紀錄）](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-10-byok-tg-runner.png)
+
 ## 故事
 
 在 [azure-foundry-demo]({% post_url 2026-03-09-azure-foundry-demo %}) 驗證了 Copilot SDK 的 BYOK 模式確實能連上 Azure AI Foundry 之後，下一個問題自然就是：**能不能拿這套 SDK 做一個完整的 Telegram AI Bot？**

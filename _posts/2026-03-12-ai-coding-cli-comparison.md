@@ -8,6 +8,8 @@ tags: [Claude Code, Gemini CLI, Codex CLI, Copilot CLI, CLI, AI Coding, MCP, Com
 author: Yaze Lin
 ---
 
+![AI Coding CLI 指令對照表：Claude Code vs Gemini CLI vs Codex vs Copilot CLI](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-12-ai-coding-cli-comparison.png)
+
 ## 為什麼寫這篇
 
 2025 年下半年開始，各大 AI 廠商陸續推出 terminal-native 的程式開發 CLI 工具。到了 2026 年初，四個主要選手都已經成熟到可以日常使用：

@@ -7,6 +7,8 @@ categories: [AI]
 tags: [AI, Python, Gemini, Playwright, 圖片生成, PyPI]
 ---
 
+![gemini-web：用 Playwright 自動化 Gemini 圖片生成 + 去浮水印](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-31-gemini-web.png)
+
 ## 前言
 
 Google Gemini 的圖片生成能力越來越強，但官方 API 對內容有不少限制——人物、版權角色、敏感主題常常被擋。網頁版的限制相對寬鬆，但每次都要手動開瀏覽器、打字、下載圖片，很不方便。

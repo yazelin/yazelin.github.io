@@ -6,6 +6,8 @@ categories: [AI, 訪談]
 tags: [AI, Mosky, Prompt Engineering, AI 寫程式, 測試, Code Review, Google Apps Script]
 ---
 
+![Mosky 的 AI 寫程式心法：用 1% 關鍵知識跨過 99% 的坑](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-15-mosky-ai-coding-1percent-knowledge.png)
+
 > "AI 大幅降低入門門檻，但真正可靠的是設計、測試與驗證。"
 
 **訪談來源：** https://youtu.be/n3wZiJcOcRk

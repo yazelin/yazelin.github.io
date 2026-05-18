@@ -5,6 +5,8 @@ subtitle: "個人化 AI 新聞摘要 Telegram Bot"
 tags: [專案, Telegram, Cloudflare Workers, GitHub Actions, AI]
 ---
 
+![AI Digest TG](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-13-ai-digest-tg.png)
+
 ## 這是什麼？
 
 [AI Digest TG](https://github.com/yazelin/ai-digest-tg) 是一個自動化的 AI 新聞摘要系統，每天定時從多個來源抓取 AI 相關新聞，透過 AI 篩選和摘要後，推送到你的 Telegram。

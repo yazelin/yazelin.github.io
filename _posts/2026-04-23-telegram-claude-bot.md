@@ -8,6 +8,8 @@ tags: [Claude, Telegram, FastAPI, Python, CLI, Vibe Coding, Level-0]
 author: Yaze Lin
 ---
 
+![telegram-claude-bot：Claude Code 版的極簡 Telegram AI 機器人](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-23-telegram-claude-bot.png)
+
 ## 故事
 
 上個月[寫過 Gemini 版的 telegram-gemini-bot]({% post_url 2026-03-08-telegram-gemini-bot %}) — 一個檔案、88 行、教朋友 vibe coding 的起手式。那篇是為了有 Google AI Pro 的朋友寫的；但最近被問最多的是另一個問題：

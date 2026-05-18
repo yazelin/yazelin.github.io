@@ -7,6 +7,8 @@ categories: [AI]
 tags: [Gemini, Cloudflare Workers, LINE Login, OAuth, PKCE, Cloudflare KV, Prompt Engineering, Chroma Key, Canvas, IndexedDB, JavaScript, Vertex AI, LINE Creators Market]
 ---
 
+![LINE 貼圖製造機：一張角色圖變一整套可上架的 LINE 貼圖](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-28-line-sticker-studio.png)
+
 > **🔗 快速連結**
 > - 🌐 **Live demo**：[yazelin.github.io/line-sticker-studio](https://yazelin.github.io/line-sticker-studio/)
 > - 💻 **GitHub Repo**：[yazelin/line-sticker-studio](https://github.com/yazelin/line-sticker-studio)

@@ -8,6 +8,8 @@ tags: [ASR, Fcitx5, IME, Speech-to-Text, Whisper, Python, C++, LLM, copilot]
 author: Yaze Lin
 ---
 
+![asr-ime-fcitx 更新：Shift+F8 語音指令、砍掉 Vosk、簡化設定](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-03-asr-ime-fcitx-v2.png)
+
 ## 前情提要
 
 [上一篇](/chingtech/os/2026/02/14/asr-ime-fcitx/)介紹了 asr-ime-fcitx 的基本架構：C++ addon 攔截熱鍵、Python daemon 錄音辨識、FIFO 雙管道通訊。那時候的功能是「按 F8 說話，辨識結果送到游標」，加上 Copilot GPT-5 mini 自動補標點。

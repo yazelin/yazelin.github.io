@@ -8,6 +8,8 @@ tags: [Gemini, Telegram, FastAPI, Python, CLI, Vibe Coding]
 author: Yaze Lin
 ---
 
+![telegram-gemini-bot：一個檔案的 Telegram AI 機器人](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-08-telegram-gemini-bot.png)
+
 ## 故事
 
 3/7 星期六教朋友用 AI vibe coding，想找一個最簡單的起手式：**從零開始，用 AI 輔助寫出自己的 AI 助理**。

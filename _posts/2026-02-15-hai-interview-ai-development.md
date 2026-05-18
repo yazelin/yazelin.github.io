@@ -6,6 +6,8 @@ categories: [AI, 訪談]
 tags: [AI, 開發方法論, Snapshot, Claude Code, 訪談, 海總理, USPACE, 測試, Indie Hacker]
 ---
 
+![他開車也在寫程式，AI 做的產品還被買走了？海總理的 AI 開發實戰](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-15-hai-interview-ai-development.png)
+
 > 「現在狀態變成是：在等待的時間特別有靈感。我昨天在路上大概開發了二十幾個功能。」
 
 這是一場關於 AI 時代如何做產品的深度訪談。海總理（USPACE AI 長、前 StreetVoice 總經理）分享了他同時開發 5 個產品的秘密、用 AI 做出被收購產品的經驗，以及一套完整的 **Snapshot 原子化開發方法論**。

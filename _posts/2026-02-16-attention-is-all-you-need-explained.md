@@ -6,6 +6,8 @@ categories: [AI, 技術解析]
 tags: [AI, Transformer, Attention, 論文解析, NLP, GPT, BERT, 深度學習]
 ---
 
+![20 分鐘讀懂改變 AI 的論文：Attention Is All You Need 核心概念全解析](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-16-attention-is-all-you-need-explained.png)
+
 > "你就掌握了人工智能的核心思想"
 
 2017 年，Google 發表的《Attention Is All You Need》徹底改變了自然語言處理的遊戲規則。這篇論文提出的 Transformer 架構，成為 GPT、BERT 等現代大模型的基礎。

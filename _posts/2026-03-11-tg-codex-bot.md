@@ -8,6 +8,8 @@ tags: [GitHub Codespace, Codex CLI, Cloudflare Workers, Telegram, OpenAI, App Fa
 author: Yaze Lin
 ---
 
+![tg-codex-bot：用 GitHub Codespace + Codex CLI 當 Telegram Bot 的運算後端](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-03-11-tg-codex-bot.png)
+
 ## 故事
 
 上一篇 [byok-tg-runner]({% post_url 2026-03-10-byok-tg-runner %}) 把 GitHub Actions 當成 Telegram Bot 的免費運算環境，技術上跑起來了，但文章最後也直說了：**這踩在 GitHub Actions 的 ToS 邊界上，有違規風險**。雙 Runner 交錯、5.5 小時長跑、cloudflared tunnel 對外提供 API 服務 — 這些都不是 Actions 設計的用途。

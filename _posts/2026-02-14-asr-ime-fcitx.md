@@ -8,6 +8,8 @@ tags: [ASR, Fcitx5, IME, Speech-to-Text, Whisper, Python, C++, FIFO, LLM, copilo
 author: Yaze Lin
 ---
 
+![asr-ime-fcitx：用講的打字，Fcitx5 原生語音輸入法](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-14-asr-ime-fcitx.png)
+
 ## 為什麼要做這個
 
 Linux 桌面打中文，輸入法選擇不少，但**語音輸入**幾乎是空白。Windows 有內建語音辨識、macOS 有聽寫，Linux 上要嘛裝 Chrome 開 Google Docs、要嘛自己想辦法。

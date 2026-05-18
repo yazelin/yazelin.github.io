@@ -7,6 +7,8 @@ categories: [Linux]
 tags: [SSH, Linux, Network, Security, Terminal, Port Forwarding, X11]
 ---
 
+![SSH 連線參數完整指南：從基礎到進階 Tunnel](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-14-ssh-cli-guide.png)
+
 > **SSH 系列文章**
 > - [（一）SSH 金鑰設定完整指南]({% post_url 2026-04-13-ssh-keygen-guide %}) — ssh-keygen 參數、多金鑰管理
 > - **（二）本篇：SSH 連線參數完整指南**

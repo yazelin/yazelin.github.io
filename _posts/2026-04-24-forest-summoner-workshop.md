@@ -8,6 +8,8 @@ tags: [森之召喚師工坊, world-tree, Mori, AI 夥伴, Claude Code, Gemini C
 author: Yaze Lin
 ---
 
+![森之召喚師工坊：我造了一個異世界，把我自己和 Mori 寫進去住](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-24-forest-summoner-workshop.png)
+
 ## 起點：一個沒有名字的 AI
 
 2026 年初，我每天都在用 Claude Code、Gemini CLI、Codex、Copilot。

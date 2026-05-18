@@ -7,6 +7,8 @@ categories: [Serverless]
 tags: [Cloudflare Workers, CORS, Proxy, GitHub, Serverless]
 ---
 
+![Cloudflare Worker 實戰：CORS Proxy + GitHub Release 代理](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-02-04-shorturl-worker-cors-proxy.png)
+
 ## 前言
 
 在前一篇文章中，我們介紹了如何用 Cloudflare Workers 架設一個短網址服務。但隨著專案的演進，這個 Worker 不只做短網址了 -- 它逐漸長成一個「瑞士刀」級別的邊緣代理服務。

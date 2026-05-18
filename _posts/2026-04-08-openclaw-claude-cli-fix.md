@@ -7,6 +7,8 @@ categories: [AI]
 tags: [OpenClaw, Claude Code, Claude Max, Shell Script, Reverse Engineering, Bot]
 ---
 
+![OpenClaw + Claude Max 訂閱：為什麼你的 Bot 被 402 擋住？](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-08-openclaw-claude-cli-fix.png)
+
 ## 問題
 
 你用 [OpenClaw](https://openclaw.ai) 架了一個 Telegram Bot，後端選 `claude-cli` 接你的 **Claude Max 訂閱**。在 terminal 直接跑 `claude -p "hi"` 完全正常，但透過 OpenClaw 發送訊息時，收到：

@@ -7,6 +7,8 @@ categories: [Linux]
 tags: [SSH, Linux, Network, Tunnel, SOCKS Proxy, Port Forwarding]
 ---
 
+![SSH 實戰應用場景：咖啡廳連內網、翻牆、遠端 Demo](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-15-ssh-scenarios.png)
+
 > **SSH 系列文章**
 > - [（一）SSH 金鑰設定完整指南]({% post_url 2026-04-13-ssh-keygen-guide %}) — ssh-keygen 參數、多金鑰管理
 > - [（二）SSH 連線參數完整指南]({% post_url 2026-04-14-ssh-cli-guide %}) — X11、Tunnel、跳板機

@@ -7,6 +7,8 @@ categories: [AI]
 tags: [Gemini, Cloudflare Workers, Prompt Engineering, PWA, Facebook, JavaScript, Canvas, MediaRecorder, Vertex AI]
 ---
 
+![表情拉霸機：一張自拍變一支 FB 可自動播放、點擊即停的拉霸影片](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-21-emoji-slot-machine.png)
+
 > **🔗 快速連結**
 > - 🌐 **Live demo**：[yazelin.github.io/emoji-slot-machine](https://yazelin.github.io/emoji-slot-machine/)
 > - 💻 **GitHub Repo**：[yazelin/emoji-slot-machine](https://github.com/yazelin/emoji-slot-machine)

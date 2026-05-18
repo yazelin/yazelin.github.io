@@ -7,6 +7,8 @@ categories: [AI]
 tags: [Cloudflare Workers, Cloudflare D1, Groq, Whisper, Llama, OpenRouter, Gemini, OpenCC, Service Worker, Web Speech API, GitHub Pages, Prompt Engineering, Elderly UX]
 ---
 
+![AI 塔羅心靈陪伴站：把信義公益的提案做出來](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-30-ai-tarot-companion.png)
+
 > **🔗 快速連結**
 > - 🌐 **Live**：[yazelin.github.io/ai-tarot-companion](https://yazelin.github.io/ai-tarot-companion/)
 > - 💻 **GitHub**：[yazelin/ai-tarot-companion](https://github.com/yazelin/ai-tarot-companion)
