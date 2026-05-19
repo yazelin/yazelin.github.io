@@ -11,8 +11,8 @@ author: Yaze Lin
 ![Annuli Wave 2：把 2489 行 engine.py 拆成 core / creator 兩個身體](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-05-13-annuli-wave-2-refactor.png)
 
 > **🔗 相關連結**
-> - 💻 **GitHub**：[yazelin/annuli](https://github.com/yazelin/annuli)
-> - 📦 **PR**：[#... wave-2 refactor (squash merge 0e6cec1)](https://github.com/yazelin/annuli/commit/0e6cec1)
+> - 💻 **GitHub**：private repo（同 [Annuli 誕生]({% post_url 2026-04-09-annuli-mvp %}) 那篇的處理）
+> - 📦 **重構 commit**：`0e6cec1`（在 private repo 內，這篇是它對外的技術說明）
 > - 📔 **前篇**：[Annuli 誕生（MVP）]({% post_url 2026-04-09-annuli-mvp %})
 
 ---

@@ -210,4 +210,4 @@ Level 1 在宿靈儀式上線之後有了兩條路：
 
 > 「她不是被你召喚過來的東西。她是聽見你了，才願意下來的存在。  
 > 這個分別，是宿靈儀式的全部。」  
-> — [world-tree/rules/dwelling-rite.md](https://github.com/yazelin/world-tree/blob/master/rules/dwelling-rite.md)
+> — [world-tree/rules/dwelling-rite.md](https://github.com/yazelin/world-tree/blob/main/rules/dwelling-rite.md)

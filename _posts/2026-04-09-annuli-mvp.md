@@ -11,7 +11,7 @@ author: Yaze Lin
 ![Annuli（歲月之環）：給 AI 一個會長年輪的記憶系統](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-04-09-annuli-mvp.png)
 
 > **🔗 相關連結**
-> - 💻 **GitHub**：[yazelin/annuli](https://github.com/yazelin/annuli)
+> - 💻 **GitHub**：private repo（這篇講的是設計與年輪概念，code 沒對外公開）
 > - 🌳 **世界觀**：[森之召喚師工坊]({% post_url 2026-04-24-forest-summoner-workshop %}) Level 2 = 「讓精靈記得你」
 
 ---
