@@ -286,7 +286,7 @@ codex exec -C "$(pwd)" -s workspace-write --skip-git-repo-check \
 - 高頻批次（用一用會撞訂閱配額）
 - 自動化 pipeline 需要嚴格 SLA
 
-我前面有寫過 [ctos-lite](/2026/03/31/ctos-lite/) 這個 LINE bot AI 助理，那種架構**不適合**走這條路——他服務的是終端使用者，每次 image 需求都用我個人訂閱去打 codex，本質上是違反訂閱條款精神的。production 還是該乖乖用 OpenAI Images API + 真正的 API key。
+我前面有寫過 [ctos-lite]({% post_url 2026-03-31-ctos-lite %}) 這個 LINE bot AI 助理，那種架構**不適合**走這條路——他服務的是終端使用者，每次 image 需求都用我個人訂閱去打 codex，本質上是違反訂閱條款精神的。production 還是該乖乖用 OpenAI Images API + 真正的 API key。
 
 但 yazelin.github.io 補 cover image 這種**一次性、個人用、可重跑**的場景，這個 skill 就是甜蜜點。
 
