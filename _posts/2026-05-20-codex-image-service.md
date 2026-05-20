@@ -278,15 +278,15 @@ def _find_generated_in_session(stderr: str) -> Path | None:
 
 從 `git log` 看，今天 2026-05-20 的 7 個 commit：
 
-| 時間 (UTC) | SHA | 內容 |
+| 時間（台北 UTC+8）| SHA | 內容 |
 |---|---|---|
-| 01:47 | `1b17dd8` | Initial codex-image-service (FastAPI wrapper、bearer auth、SQLite history、admin UI、Docker compose) |
-| 02:28 | `ff91c48` | Refactor admin into 4-page dashboard; add local-testing compose |
-| 02:37 | `b16802e` | Make new-API-key reveal truly one-shot via PRG flash cookie |
-| 02:45 | `d53c6a5` | Clarify Handle vs bearer key on Keys page（避免 operator 把 `key_<last12>` handle 跟真正的 bearer key 搞混）|
-| 02:55 | `6ea829f` | Fix 500 on Delete API key: unlink history rows before deleting（上面那個 foreign key 雷）|
-| 03:11 | `4e52fd5` | Add OG and Twitter Card meta tags + 1200x630 social image |
-| 04:09 | `1906815` | Support image edit (reference_image_base64) on /v1/images/generate |
+| 09:47 | `1b17dd8` | Initial codex-image-service (FastAPI wrapper、bearer auth、SQLite history、admin UI、Docker compose) |
+| 10:28 | `ff91c48` | Refactor admin into 4-page dashboard; add local-testing compose |
+| 10:37 | `b16802e` | Make new-API-key reveal truly one-shot via PRG flash cookie |
+| 10:45 | `d53c6a5` | Clarify Handle vs bearer key on Keys page（避免 operator 把 `key_<last12>` handle 跟真正的 bearer key 搞混）|
+| 10:55 | `6ea829f` | Fix 500 on Delete API key: unlink history rows before deleting（上面那個 foreign key 雷）|
+| 11:11 | `4e52fd5` | Add OG and Twitter Card meta tags + 1200x630 social image |
+| 12:09 | `1906815` | Support image edit (reference_image_base64) on /v1/images/generate |
 
 從 Initial commit 到 image edit 完成，約 2 小時 22 分。
 
