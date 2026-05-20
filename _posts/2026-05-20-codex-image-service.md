@@ -20,6 +20,15 @@ tags: [ChatGPT, Codex CLI, FastAPI, Docker, Image Generation, Self-hosted, Homel
 
 `codex-image-service` 是一個 **FastAPI 包在 Codex CLI 的 `$imagegen` 工具外面**的小服務。掛在 homelab 裡，發 bearer API key 給內部 script、CI job、各種 side project，讓它們**共享同一個 ChatGPT 訂閱的 image-gen 額度**——透過一個乾淨的 HTTP endpoint，而不是每個 caller 各自 shell 進 host 或燒各自的 OpenAI Images API 額度。
 
+### 後台長什麼樣（19 秒實機操作）
+
+<video controls muted playsinline preload="metadata" style="width: 100%; max-width: 720px; border-radius: 8px; border: 1px solid #e6e8f5;">
+  <source src="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/admin-dashboard.mp4" type="video/mp4">
+  你的瀏覽器不支援影片：<a href="https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/admin-dashboard.mp4">直接下載 admin-dashboard.mp4</a>
+</video>
+
+實際看一下：API key 發放 / 停用 / 刪除、request 歷史含完整 prompt 與 stdout/stderr、test-generation 表單、手動清理觸發。整個後台沒做花俏設計，就是把日常運維需要的東西放出來。
+
 ## 重要 disclaimer
 
 這段直接引 README，因為這個專案的定位需要先講清楚：
@@ -104,6 +113,30 @@ curl -sS --fail --max-time 650 \
 ```
 
 PNG 直接公開可下載（透過上面那個 `url`）。`expires_at` 是 `created_at + IMAGE_RETENTION_DAYS`（預設 7 天）。
+
+### 多圖編輯（2026-05-20 更新）
+
+`/v1/images/generate` 支援 1–4 張參考圖，走 codex CLI 的 `--image` 變參 + gpt-image edit mode 做 composition / outfit-swap / scene-merge / style-transfer / text-localization。把每張圖 base64 後丟進 `reference_images_base64` 陣列：
+
+```bash
+A=$(base64 -w0 < person.png)
+B=$(base64 -w0 < kitchen.png)
+curl -sS --fail --max-time 650 \
+  -X POST https://images.example.com/codex-image/v1/images/generate \
+  -H "Authorization: Bearer $CODEX_IMAGE_KEY" \
+  -H "Content-Type: application/json" \
+  -d "$(jq -n --arg a "$A" --arg b "$B" '{
+    prompt: "place the person from image 1 into the kitchen scene from image 2, preserve their face and outfit",
+    reference_images_base64: [$a, $b],
+    size: "1024x1024",
+    quality: "medium"
+  }')"
+```
+
+注意事項：
+- `count` 在 edit 模式下強制 = 1（gpt-image edit 一次只回一張）
+- 舊的單張 `reference_image_base64` （字串）仍保留為 backwards-compat alias
+- 每張 ≤ 10 MB；總數上限 4 是服務端的保守設定，gpt-image 本身吃得更多
 
 ---
 
