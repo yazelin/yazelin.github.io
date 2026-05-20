@@ -371,6 +371,58 @@ exclude:
 
 ---
 
+## 2026-05-20 更新：多圖編輯（v? / commit `be282df`）
+
+最初版的 `codex-imagegen.sh` 只吃 2 個參數做純 text-to-image。實際用到 LINE bot 端到端串接時碰上需求：「使用者一次貼 3 張圖、要求 AI 自然合成」。Codex CLI 的 `--image` 本來就是變參（`-i, --image <FILE>...`），底下的 `gpt-image` 也支援多圖 edit；只是 script 原本沒把這條路線通出來。
+
+新版（[PR #1](https://github.com/yazelin/codex-imagegen-skill/pull/1)）加了第三組起的位置參數當參考圖：
+
+```bash
+# 純生圖（舊版用法，完全不變）
+~/.claude/skills/codex-imagegen/codex-imagegen.sh \
+  "a tiny shiba inu with a red bow tie, watercolor, no text" \
+  /tmp/shiba.png
+
+# 多圖編輯（1-4 張參考圖）
+~/.claude/skills/codex-imagegen/codex-imagegen.sh \
+  "place the subject from image 1 into the scene from image 2; match lighting and perspective" \
+  /tmp/composite.png \
+  ~/Pictures/person.png \
+  ~/Pictures/kitchen.png
+```
+
+腳本內部會自動：
+
+1. 對每張參考圖做存在性檢查 + 解析成絕對路徑
+2. 對 `codex exec` emit 一個 `--image <abs>` flag 給每張圖
+3. 把使用者的 prompt 包成 codex `image_gen` tool 認得的 canonical scaffolding：
+   ```
+   $imagegen
+   Use case: image-edit
+   Input images:
+   Image 1: /abs/path/person.png
+   Image 2: /abs/path/kitchen.png
+   Primary request: <你寫的英文 edit 指令>
+   Constraints: <單張或多張會給不同的 constraint 文字>
+   ```
+4. 在 `--` 分隔符後接 prompt（避免 prompt 被當成另一個 image filename 吃掉）
+
+對應的 5 個常見 use case（取自 codex skill 的 `references/sample-prompts.md`）：
+
+| Use case | prompt 寫法範例 |
+|---|---|
+| composition | place the subject from image 1 into the scene from image 2 |
+| outfit-swap | replace clothing on image 1 with garments from image 2 and image 3 |
+| style-transfer | apply the visual style of image 1 to the subject in image 2 |
+| text-localization | translate every text element in image 1 to Japanese; preserve typography |
+| sketch-to-render | turn the line drawing in image 1 into a photorealistic render |
+
+**為什麼 cap 在 4 張？** 不是 codex 限的——`gpt-image` edit API 規格上吃到 16 張，codex CLI 的 `--image` 完全沒文件上限。是我設的保守預設：實測超過 4 張，模型容易「忘記」要保留哪張的什麼特徵；2-3 張組合品質最好。需要更多 fork 改一下 script 的數字就行。
+
+更多用法跟 raw `codex exec --image` 範例（不裝 skill 直接打）：[updated 介紹頁](https://yazelin.github.io/codex-imagegen-skill/)（[繁中](https://yazelin.github.io/codex-imagegen-skill/zh-tw.html)）。
+
+---
+
 ## `$imagegen` 版本對照
 
 | 日期 | 事件 |
