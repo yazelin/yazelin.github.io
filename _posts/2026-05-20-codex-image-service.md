@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "codex-image-service：把 Codex \\$imagegen 包成內網共用的 HTTP 服務"
+title: "codex-image-service：把 Codex $imagegen 包成內網共用的 HTTP 服務"
 subtitle: "FastAPI + Docker + bearer API key — 從 Claude Code skill 進一步到多 caller 共享同一個 ChatGPT 訂閱"
 date: 2026-05-20
 categories: [AI]
@@ -12,7 +12,7 @@ tags: [ChatGPT, Codex CLI, FastAPI, Docker, Image Generation, Self-hosted, Homel
 > **🔗 快速連結**
 > - 💻 **GitHub**：[yazelin/codex-image-service](https://github.com/yazelin/codex-image-service)
 > - 🌐 **Polished guide**：[yazelin.github.io/codex-image-service](https://yazelin.github.io/codex-image-service/)（[繁中](https://yazelin.github.io/codex-image-service/zh-tw.html)）
-> - 📔 **昨天的相關文**：[把 Codex 的 \\$imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})
+> - 📔 **昨天的相關文**：[把 Codex 的 $imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})
 
 ---
 
@@ -332,4 +332,4 @@ def _find_generated_in_session(stderr: str) -> Path | None:
 - **Polished guide**：[yazelin.github.io/codex-image-service](https://yazelin.github.io/codex-image-service/)（含 Python / GitHub Actions 範例）
 - **繁中介紹頁**：[yazelin.github.io/codex-image-service/zh-tw.html](https://yazelin.github.io/codex-image-service/zh-tw.html)
 - **License**：MIT
-- **前一篇相關**：[把 Codex 的 \\$imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})——個人本機版本，這篇是 HTTP 服務版本
+- **前一篇相關**：[把 Codex 的 $imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})——個人本機版本，這篇是 HTTP 服務版本

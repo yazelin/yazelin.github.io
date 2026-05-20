@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "教學：用 Codex CLI 的 \\$imagegen 在 Claude Code 裡生圖（吃 ChatGPT 訂閱額度）"
+title: "教學：用 Codex CLI 的 $imagegen 在 Claude Code 裡生圖（吃 ChatGPT 訂閱額度）"
 subtitle: "從一行 TUI 指令到包成可分享的 Claude Code skill，6 個 step 帶你做完——含批次處理 + 常見踩雷"
 date: 2026-05-19
 categories: [AI]
