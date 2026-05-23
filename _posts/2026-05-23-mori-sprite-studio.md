@@ -35,9 +35,9 @@ author: Yaze Lin
 
 [Mori](https://github.com/yazelin/mori-desktop) 是我自己的 Jarvis-style AI 夥伴,住在桌面上。她需要可見的身體 — 不同情境下要有不同表情(在聽我說話 vs 思考中 vs 報錯時驚慌),不是一張靜態 PNG 能搞定的。
 
-最早我用 Photoshop 手刻 6 個 state × 16 frame = 96 張圖,做一輪要兩個下午。Mori 想升級服裝、改髮型、改風格,等於整套重來。
+一開始先求有 — bundled 的 sprite 是用 nanobanana 從一張 ref 圖直出的 256×256 PNG,**靜態**。後來把 sprite pipeline 升上 4×4(`steps(4)` + `background-size: 400% 400%`、`character-pack.md` v1.0 spec、1024×1024 sheet 規劃)— 架構先到位,內容還是塞靜態複製。
 
-於是寫了這個 studio。**一張 ref 圖丟進去,30 分鐘出整套**(視 AI provider + 多少 reroll)。不用 Photoshop、不用 Aseprite、不用會畫畫。當然有美感修正 / 對齊 / 手動 cell 排序的工具,但不是必須。
+這個 studio 就是把最後一塊補上:**一張 ref 圖丟進去,30 分鐘出整套真正會動的 4×4 sheet**(視 AI provider + 多少 reroll)。不用會畫畫,有美感修正 / 對齊 / 手動 cell 排序的工具,但不是必須。
 
 ## 怎麼用
 
