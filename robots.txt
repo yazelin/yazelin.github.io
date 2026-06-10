@@ -1,0 +1,33 @@
+# robots.txt — yazelin.github.io
+# 個人部落格與作品集,內容開放給搜尋引擎與 AI(要被找到、被引用)
+
+User-Agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# 明確歡迎主要 AI 爬蟲
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://yazelin.github.io/sitemap.xml
