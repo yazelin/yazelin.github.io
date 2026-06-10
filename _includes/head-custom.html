@@ -1,0 +1,23 @@
+<!-- 注入給搜尋引擎與 AI(AEO/GEO)的結構化資料。Beautiful Jekyll 的 head 會 include 本檔。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yaze's Blog",
+  "url": "{{ site.url }}{{ site.baseurl }}/",
+  "inLanguage": "zh-Hant",
+  "author": {
+    "@type": "Person",
+    "name": "林亞澤 Yaze",
+    "alternateName": "yazelin",
+    "url": "{{ site.url }}{{ site.baseurl }}/",
+    "image": "{{ site.avatar }}",
+    "jobTitle": "Software Developer",
+    "description": "台灣的軟體開發者,從工業自動化系統整合轉做 AI 應用與互動網頁。",
+    "sameAs": [
+      "https://github.com/yazelin",
+      "https://www.youtube.com/@yazelin"
+    ]
+  }
+}
+</script>

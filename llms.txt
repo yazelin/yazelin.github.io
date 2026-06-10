@@ -1,0 +1,45 @@
+# Yaze(林亞澤 / yazelin)
+
+> 台灣的軟體開發者,從工業自動化系統整合轉做 AI 應用與互動網頁。本站是個人部落格與作品集,以下索引主要的公開專案,方便人與 AI 快速找到對的入口。
+
+## 關於
+
+- [部落格首頁](https://yazelin.github.io/)
+- [關於我](https://yazelin.github.io/about/)
+- [作品集 Portfolio](https://yazelin.github.io/portfolio/)
+
+## 課程與教學
+
+- [AI 互動行銷頁實作課](https://yazelin.github.io/ai-marketing-pages-course/) — 教不會寫程式的行銷人,用 AI 做出會動、會玩、能上線的活動網頁
+- [Workshop](https://yazelin.github.io/workshop/)
+
+## 開源專案與工具
+
+- [web-effects-collector](https://yazelin.github.io/web-effects-collector/) — 90 個開源網頁特效彙整 + Playground
+- [mori-canvas](https://yazelin.github.io/mori-canvas/) — 自架 AI 會議白板(speech/transcribe)
+- [catime](https://yazelin.github.io/catime) — 每小時自動 AI 生成一張貓圖
+- [PromptFill](https://yazelin.github.io/PromptFill/) — prompt 填空工具
+- [AgentPulse](https://yazelin.github.io/AgentPulse/) — AI coding assistant 的 Dynamic Island 監控
+- [webgl-flow-simulation](https://yazelin.github.io/webgl-flow-simulation/) — WebGL 流體模擬
+
+## 範本 / Starter(可直接 fork)
+
+- [工業 AI 即時 dashboard](https://yazelin.github.io/industrial-ai-dashboard-starter/)
+- [公司內部 AI 助理範本](https://yazelin.github.io/company-ai-assistant-template/)
+- [Telegram AI agent](https://yazelin.github.io/telegram-ai-agent-starter/)
+- [LINE bot AI](https://yazelin.github.io/linebot-ai-starter/)
+- [MCP server](https://yazelin.github.io/mcp-server-starter/)
+- [Agent Skill](https://yazelin.github.io/agent-skill-starter/)
+- [Gemini 生圖入門](https://yazelin.github.io/gemini-image-starter/)
+
+## 互動 / 行銷頁作品
+
+- [樂攝 LeShePhoto](https://yazelin.github.io/LeShePhoto/)
+- [AI 塔羅心靈陪伴站](https://yazelin.github.io/ai-tarot-companion/)
+- [emoji 拉霸機](https://yazelin.github.io/emoji-slot-machine/)
+- [LINE 貼圖工作室](https://yazelin.github.io/line-sticker-studio/)
+
+## 聯絡
+
+- GitHub: https://github.com/yazelin
+- Email: yaze.lin.j303@gmail.com
