@@ -1,18 +1,22 @@
 ---
 layout: post
 title: "一段 prompt,讓 AI 做出一個 3D 互動的赤壁之戰"
-subtitle: "我給 Claude Code(Fable 5,effort medium)一段中文需求,它在一次對話裡交付了一個單一 HTML 檔的赤壁之戰 3D 戰場 —— 九幕時間軸、電影運鏡、火攻特效,還自己用瀏覽器逐幕檢查、抓修六個 bug。忠實記錄整個過程。"
+subtitle: "我給 Claude Code(Fable 5,effort medium)一段中文需求,它在一次對話裡交付了一個單一 HTML 檔的赤壁之戰 3D 戰場 —— 九幕時間軸、電影運鏡、火攻特效,還自己用瀏覽器逐幕檢查、抓修六個 bug。第二輪再加上配樂、旁白與音效:AI 沒有喇叭,所以它讓另一個 AI 代聽海選 CC0 配樂、用同音字替身馴服 TTS 破音字。忠實記錄整個過程。"
 date: 2026-06-11
 categories: [AI, 實驗]
-tags: [red-cliffs-3d, 赤壁之戰, 三國, Three.js, WebGL, 3D, Claude Code, Fable 5, AI 生成, GitHub Pages, Single HTML, 程序化地形, GPU 粒子]
+tags: [red-cliffs-3d, 赤壁之戰, 三國, Three.js, WebGL, 3D, Claude Code, Fable 5, AI 生成, GitHub Pages, Single HTML, 程序化地形, GPU 粒子, Web Audio, edge-tts, TTS, CC0, Freesound, Gemini]
 author: Yaze Lin
 ---
 
 ![火燒赤壁](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-06-11-red-cliffs-3d.png)
 
 > **快速連結**
-> - 線上玩(建議用電腦):[yazelin.github.io/red-cliffs-3d](https://yazelin.github.io/red-cliffs-3d/)
+> - 線上玩(建議用電腦、開聲音):[yazelin.github.io/red-cliffs-3d](https://yazelin.github.io/red-cliffs-3d/)
+> - 無聲原版(第一輪凍結保存):[classic.html](https://yazelin.github.io/red-cliffs-3d/classic.html)
+> - AI 選曲記錄(怎麼海選配樂的):[audition.html](https://yazelin.github.io/red-cliffs-3d/audition.html)
 > - GitHub(含原始 prompt + 實驗記錄):[yazelin/red-cliffs-3d](https://github.com/yazelin/red-cliffs-3d)
+>
+> **2026-06-12 更新**:加上聲音了 —— 配樂、旁白、音效,見文末[第二輪記錄](#第二輪更新加上聲音了)。
 
 ---
 
@@ -67,5 +71,39 @@ author: Yaze Lin
 一段中文需求 → 一個可玩的 3D 互動歷史節目,過程大約一次對話。不是零修正 —— 那六個 bug 都真的發生過,只是都被模型自己抓自己修。
 
 對我來說這比「AI 會寫 code」更有感的點是:它會**自己驗證**。寫完不是丟給我說「好了」,而是自己開瀏覽器、自己逐幕看、自己發現「欸這個城蓋在水上了」再回去修。原始 prompt、完整實驗記錄、原始碼都在 [repo](https://github.com/yazelin/red-cliffs-3d) 裡。
+
+---
+
+## 第二輪更新:加上聲音了
+
+(2026-06-12)隔天我追加了一段需求,大意是:加上電影級背景音樂、各幕配樂跟音效(行軍、馬蹄、燃燒、風、刀劍、計策靈光一閃),配旁白解說帶觀眾看完這段歷史,做完先讓我本機看過再決定要不要公開。
+
+現在的版本:九幕各自的配樂、旁白解說(男聲女聲可切換)、同步字幕、開場主題曲,加上戰鼓、馬蹄、箭雨、刀劍、鐵索、火船爆燃、風與火場的環境音。原本的無聲版凍結成 [classic.html](https://yazelin.github.io/red-cliffs-3d/classic.html) 保存。
+
+第二輪比第一輪更有意思的地方,是 AI 處理了三個它「天生做不到」的問題:
+
+### AI 沒有喇叭,怎麼選音樂?
+
+配樂不是 AI 憑空生成的。它自己寫了一條海選管線:用 Freesound API 撈 CC0 授權的候選曲,然後把音檔丟給另一個 AI(Gemini 2.5-flash 的音訊理解)「代聽」,要求回報實際樂器、節奏、有沒有人聲、有沒有時代違和(槍聲、合成器)、能不能 loop,打 0 到 10 的適配分 —— 連「結尾有人喊一聲,所以不能無縫循環」這種會咬到工程的細節都聽得出來。
+
+代聽立刻證明了自己的價值:下載榜第一名的 "war drums",實際上是 hip-hop 刮碟取樣包,被一耳淘汰。光看標題和下載數選曲必死。
+
+最後 88 首代聽、60 首入圍、11 首由我用耳朵終審定稿。整個海選過程(包括每首的 AI 代聽筆記)都公開在[選曲記錄頁](https://yazelin.github.io/red-cliffs-3d/audition.html),可以看到 AI 怎麼「聽」音樂。
+
+### TTS 的破音字之戰
+
+旁白用 edge-tts 的台灣腔神經語音。聽起來很像樣,但破音字會翻車,而且翻得毫無規律:「親率」的率唸對、「程普率三萬」的率卻唸成「律」;「曹操北還」唸成「北孩」;我們改寫成正字「揹草」,它連「揹」都唸成 bèi。
+
+解法是「同音字替身」:餵給 TTS 的文字用目標讀音的同音字(帥三萬、北環、杯草),畫面上的字幕做反向映射、永遠顯示正確的原字。這招對本來就唸對的字無害,可以無腦上保險。
+
+這些錯誤是兩路抓出來的:一半是我的耳朵,一半是 AI 把音檔丟給 Gemini 逐字聽寫 QA。有一個還衝突過 ——「北還」AI 說它聽到 huán、我聽到 hái,最後以人耳為準(後來發現 AI 聽聲調確實不穩,要换問法問「音高走向」才可靠)。
+
+### 「有一個合成音怪怪的」
+
+我聽的時候說火燒赤壁有個怪聲。排查出兩件事:一是艦隊移動被錯配了陸軍腳步聲 —— 三支艦隊在長江上「踏步」;二是刀劍的 FM 合成音太雷射。前者修掉,後者直接用同一條海選管線抓到一個 CC0 真實刀劍音效包(8 首全數入圍),取 4 個變體隨機輪播取代。
+
+這一輪的工作模式跟第一輪不同:第一輪是它自己開瀏覽器抓 bug,第二輪變成**我邊看邊回報、它即時修** —— 字幕被時間軸壓住、風聲蓋過旁白、幕長塞不下旁白、那個怪合成音,都是這樣修掉的。AI 的自我驗證迴圈管得了 console 和截圖,管不了「聽起來怪不怪」,這部分人耳還是不可替代。
+
+技術面:單一 AudioContext 三條匯流排(配樂/音效/旁白),旁白播放時其餘兩路自動 ducking;戰鼓、馬蹄、箭雨、爆燃、鐘磬、風、江水、火場全是 Web Audio 程序化合成,零素材;幕長改以旁白音檔長度為準、運鏡等比放慢。依然是單一 HTML、零 build。
 
 > **想支持持續開發?** 請我喝杯咖啡 → [buymeacoffee.com/yazelin](https://buymeacoffee.com/yazelin)
