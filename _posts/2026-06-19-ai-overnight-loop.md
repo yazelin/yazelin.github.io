@@ -253,7 +253,7 @@ DEADLINE=$(date -d 'today 07:00' +%s)
 
 ## 五、同哲學、不同粒度:battlefield-editor 的 in-session loop
 
-這套「把驗收做成機器 gate、讓 AI 在 gate 內自己 loop」的心法,我在另一個專案 battlefield-editor 上用過,但形態很不一樣。它不是整晚自己滾的,別搞混。
+這套「把驗收做成機器 gate、讓 AI 在 gate 內自己 loop」的心法,我在另一個專案 battlefield-editor 上用過,但形態很不一樣。它不是整晚自己滾的,別搞混。(battlefield-editor 自己的故事我另寫了一篇:[從一張赤壁,長成一台戰場引擎]({% post_url 2026-06-24-battlefield-editor %});這裡只談它跟 overnight loop 的對照。)
 
 battlefield-editor 是把一場歷史戰役編成一份資料 package(陣營/地形/建築/單位/分鏡/音訊),引擎只負責演出。它的 authoring skill(`skills/author-battlefield/SKILL.md`)規範的 loop 是這樣:
 
