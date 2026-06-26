@@ -11,8 +11,8 @@ author: Yaze Lin
 ![AI 戰場編輯器:赤壁、官渡、楚漢、秦晉](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-06-24-battlefield-editor.png)
 
 > **這篇講的專案**
-> - 線上戰役列表:https://yazelin.github.io/battlefield-editor/ — 點任一場進去看 3D 演出
-> - 原始碼:https://github.com/yazelin/battlefield-editor
+> - 線上戰役列表:<https://yazelin.github.io/battlefield-editor/> — 點任一場進去看 3D 演出
+> - 原始碼:<https://github.com/yazelin/battlefield-editor>
 
 之前用一段中文需求做了一個單一 HTML 的[赤壁之戰 3D 戰場]({% post_url 2026-06-11-red-cliffs-3d %}),後來又[加上配樂與旁白]({% post_url 2026-06-13-red-cliffs-audio %})。做完赤壁,下一步我沒有打算再手刻一個官渡。比較划算的做法是:把赤壁裡那些東西——地形、軍隊、分鏡、運鏡、火攻特效——抽出來變成一台引擎,然後**換一份資料就換一場戰役,引擎一行不改**。
 
@@ -70,6 +70,6 @@ SKILL 的金律是「任一關紅,AI 自己 loop 修,不交人」。等四關都
 
 ## 參考
 
-- battlefield-editor:https://github.com/yazelin/battlefield-editor
-- 線上戰役列表:https://yazelin.github.io/battlefield-editor/
+- battlefield-editor:<https://github.com/yazelin/battlefield-editor>
+- 線上戰役列表:<https://yazelin.github.io/battlefield-editor/>
 - 這台引擎的起點:[一段 prompt,讓 AI 做出 3D 互動的赤壁之戰]({% post_url 2026-06-11-red-cliffs-3d %})
