@@ -12,6 +12,8 @@ permalink: /about/
 
 工業現場常有預算或空間的限制，像是用軟體取代昂貴的感測器，久了就習慣找不同的解法。
 
+我的立場：AI 已經不是輔助，而是主力——就像電腦一樣，是所有人的基本工具。現在我以 AI 編碼代理（Claude Code / Codex）驅動整個開發流程：開規格、下發包、做驗收，一個人同時維護 30+ 個活躍專案。
+
 ---
 
 ## 核心專長
@@ -23,9 +25,9 @@ permalink: /about/
 - 工業通訊：Modbus、RS232/485、PLC 整合
 
 **軟體開發**
-- Web：Vanilla JS、Vue.js、Node.js、FastAPI
-- AI 應用：Claude API、LINE Bot、SDD 開發流程
-- 系統：Docker、PostgreSQL、WebSocket
+- Web：Vanilla JS、Vue.js、React、Node.js、FastAPI
+- AI 應用：Claude Code / Codex agent 工作流、MCP、Claude / Gemini API、LINE / Telegram Bot、本地 Whisper 語音
+- 桌面與系統：Tauri 2 / Rust、Docker、PostgreSQL、WebSocket、Cloudflare Pages / Workers
 
 **跨界整合**
 - Unity 3D：機器人模擬（RobotSim）、互動遊戲
@@ -43,7 +45,7 @@ permalink: /about/
 
 ## 寫了一些文章
 
-寫了一些文章當作記錄，也是怕自己忘記，順便分享一下踩過的坑。目前有 **75+ 篇**：
+寫了一些文章當作記錄，也是怕自己忘記，順便分享一下踩過的坑。目前有 **190+ 篇**，以下是幾個主要系列：
 
 | 系列 | 主題 | 數量 |
 |------|------|------|
@@ -86,6 +88,6 @@ permalink: /about/
 
 ## 其他地方找我
 
-- [GitHub](https://github.com/yazelin) - 40+ 個專案（工業應用、AGV、視覺檢測、教學專案）
+- [GitHub](https://github.com/yazelin) - 148+ 個原創專案（AI 產品、網頁遊戲、工業應用、AGV、視覺檢測、教學專案）
 - [YouTube](https://www.youtube.com/@yazelin) - 專案展示影片（RobotSim、互動遊戲、無人飛行船）
 - [台灣機器人資訊平台](http://forum.wtech.com.tw/) - 卓智時期的專案與技術文章
