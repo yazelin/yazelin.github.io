@@ -6,7 +6,7 @@ permalink: /portfolio/
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)
 
-立場轉變之後的產出爆發期：AI 已經不是輔助，而是主力。我用 AI 編碼代理（Claude Code / Codex）跑「開規格、下發包、做驗收」的流程，一個人同時推進 30+ 個活躍專案。以下全部可以直接線上體驗：
+我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力——產出也跟著爆發。我用 AI 編碼代理（Claude Code / Codex）跑「開規格、下發包、做驗收」的流程，一個人同時推進 30+ 個活躍專案。以下全部可以直接線上體驗：
 
 **個人 AI 生態 Mori universe**
 - [Mori Desktop](https://github.com/yazelin/mori-desktop)：Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要，加上耳朵（mori-ear）、喚醒詞（hey-mori）、白板（mori-canvas）等身體部件的 multi-repo 生態
