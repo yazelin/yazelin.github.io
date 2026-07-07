@@ -6,9 +6,9 @@ date: 2026-07-07
 categories: [AI, 課程]
 tags: [k-rider, K線騎手, 甲方思維, AI 發包法, 開規格, 下發包, 做驗收, Matter.js, Cloudflare Workers, GitHub Actions, 名單漏斗, AI 應用, Claude Code]
 author: Yaze Lin
-# cover 圖待補:依慣例上傳到 GitHub Releases 的 blog-images tag,檔名 2026-07-07-k-rider-case-study.png,再把下面這行取消註解
-# ![從點子到會動的股價遊戲](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-07-k-rider-case-study.png)
 ---
+
+![K 線騎手 K-Rider:騎上真實 K 線,盡量別摔車](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-07-k-rider-case-study.png)
 
 > **這篇講的東西**
 > - 線上即玩(建議用電腦):<https://yazelin.github.io/k-rider/>
@@ -65,7 +65,7 @@ author: Yaze Lin
 
 ## 三、做驗收:規格寫了不算數,要能重複跑
 
-發包出去、AI 交回東西,不能靠「我玩了一下感覺 OK」。K-Rider 的驗收是真的自動化測試(78 個),挑幾條代表性的:
+發包出去、AI 交回東西,不能靠「我玩了一下感覺 OK」。K-Rider 的驗收是真的自動化測試(83 個),挑幾條代表性的:
 
 - **機車落地穩定不抖、不穿地**:平地放 3 秒讓它靜止,車身位移要小於 2px、角度小於 0.3 弧度,人要在地面上方。
 - **爬坡力回歸測試**:35 度連續上坡全程油門,驗證車真的爬得過去 —— 之後誰改物理參數,不准把這條弄壞。
