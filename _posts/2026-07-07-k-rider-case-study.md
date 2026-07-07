@@ -3,8 +3,8 @@ layout: post
 title: "從一個點子到一個會動的股價遊戲:我怎麼用「甲方思維」發包給 AI"
 subtitle: "K-Rider 是一個騎機車衝真實股價 K 線的網頁遊戲,已經上線。但這篇不是要炫它多好玩,而是把它當一個示範:一個人怎麼靠「開規格、下發包、做驗收」這套甲方思維,把 AI 當外包團隊,從一句點子做到一個有真實資料、有物理、有漏斗的產品。點子和每一個決策是我的,寫程式的是 AI —— 這篇拆的是那條分工線。"
 date: 2026-07-07
-categories: [AI, 課程]
-tags: [k-rider, K線騎手, 甲方思維, AI 發包法, 開規格, 下發包, 做驗收, Matter.js, Cloudflare Workers, GitHub Actions, 名單漏斗, AI 應用, Claude Code]
+categories: [AI]
+tags: [k-rider, K線騎手, 課程, 甲方思維, AI 發包法, 開規格, 下發包, 做驗收, Matter.js, Cloudflare Workers, GitHub Actions, 名單漏斗, AI 應用, Claude Code]
 author: Yaze Lin
 ---
 
