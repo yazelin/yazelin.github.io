@@ -2,7 +2,7 @@
 layout: post
 title: "把一個 2003 年的 IIS 老站,重建成能撐 2 萬件商品的現代電商站"
 subtitle: "紅海釣具的官網還跑在 IIS + Classic ASP + FrontPage frameset 上。這篇不是「用新框架重寫」的炫技文,是老實記一次遷移裡真正踩到的坑:免費層差點被停權,以及一次 AI 自作主張改了品牌名、驗收時抓出來改回去的教訓。"
-date: 2026-07-08
+date: 2026-06-26
 categories: [AI]
 tags: [fishtool-tw, Astro, Vercel, Cloudflare Workers, 電商, 老站重建, AI 應用]
 author: Yaze Lin

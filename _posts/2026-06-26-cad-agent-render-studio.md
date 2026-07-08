@@ -2,7 +2,7 @@
 layout: post
 title: "拍一張零件照片,AI 建模、再渲染成產品圖"
 subtitle: "cad-agent 負責建模:描述一個零件,或直接拍張照片,AI 寫出參數化的 FreeCAD 腳本;render-studio 負責渲染:接手那個模型,轉成一張商品級產品圖。兩個獨立的工具,串起來是一條建模到出圖的產線。"
-date: 2026-07-08
+date: 2026-06-26
 categories: [AI]
 tags: [cad-agent, render-studio, FreeCAD, Blender, 3D建模, AI 應用, AgentOS]
 author: Yaze Lin
