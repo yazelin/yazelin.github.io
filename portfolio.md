@@ -15,7 +15,7 @@ permalink: /portfolio/
 - [AI 戰場編輯器](https://yazelin.github.io/battlefield-editor/)：資料驅動的單檔 3D 戰場引擎，每場歷史戰役是一份 package（內建六場）
 - [赤壁之戰 208](https://yazelin.github.io/red-cliffs-3d/)：單一 HTML + Three.js 的全 3D 電影式重現
 - [滾・福爾摩沙](https://yazelin.github.io/roll-formosa/)：台灣風味 Katamari，從圖釘滾到台北 101
-- [真.AI.咏唱魔法](https://yazelin.github.io/ai-chant-magic/)：對麥克風喊出法術名稱即時施法
+- [真.AI.咏唱魔法](https://yazelin.github.io/ai-chant-magic/)：對麥克風喊出法術名稱即時施法，四個原作世界、元素反應連段、2-4 人共鳴詠唱（[系列目錄]({% post_url 2026-07-08-ai-chant-magic-index %})）
 - [K 線騎手](https://yazelin.github.io/k-rider/)：騎機車衝真實股價 K 線
 
 **線上服務與工具**
