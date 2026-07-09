@@ -48,7 +48,45 @@ author: Yaze Lin
 
 整個流程拆開來只有三個元件:一個放 markdown 的知識庫、一個能讀寫它的 CLI、一個會用 CLI 的 AI agent。封面那張架構圖畫的就是這件事。
 
-我們公司這套叫 CTOS,但這個模式不綁任何特定產品。知識庫可以是一個 git repo 裡的 markdown 資料夾,CLI 可以是一支百來行的 Python 腳本,agent 用 Claude Code 或別家的都行。重點只有一個:**AI 的輸入跟輸出都要經過同一個有版本、可分享的地方,不要讓報告死在對話視窗裡。**
+我們公司這套叫 CTOS,但這個模式不綁任何特定產品。知識庫可以是一個 git repo 裡的 markdown 資料夾,CLI 可以是一支百來行的 Python 腳本,agent 用 Claude Code 或別家的都行。
+
+說 markdown 不是比喻,kb-210 從知識庫匯出來就真的是一個 `.md` 檔,YAML frontmatter 加內文:
+
+```markdown
+---
+id: kb-210
+title: QC Station 開發規格(Demo 用)
+type: note
+category: technical
+scope: personal
+owner: yazelin
+tags:
+  topics: [qc-station, 開發規格, demo]
+created_at: '2026-07-09'
+updated_at: '2026-07-09'
+---
+
+# QC Station 開發規格
+
+## 專案概述
+QC Station 是品質檢驗工作站系統,整合相機拍照、條碼掃描、檢驗流程自動化。
+
+(……規格與 API 端點略……)
+
+## 開發完成報告(2026-07-09)
+
+| 項目 | 說明 | 狀態 |
+|------|------|------|
+| VISOR 工業相機整合 | 透過 TCP 觸發拍照,影像直接進系統歸檔 | 完成,實機驗證 |
+| 即時預覽提速 | kiosk 即時畫面由 2fps 提升至 10fps | 完成 |
+| ……(共六項)| | |
+
+### 驗收方式
+1. 開啟設定頁 /settings,切換錄影 profile,確認自動重啟後生效
+2. 觸發 VISOR 拍照,確認影像正確歸檔
+```
+
+上半是人開的規格,下半是 AI 回寫的報告,同一個檔案。這就是「單一事實來源」的具體長相:不是一個系統截圖,是一個可以進 git、可以 diff、可以搜尋的純文字檔。重點只有一個:**AI 的輸入跟輸出都要經過同一個有版本、可分享的地方,不要讓報告死在對話視窗裡。**
 
 也講一下刻意不做什麼。沒有做自動觸發,沒有 webhook,沒有接 CI,AI 不會自己監聽知識庫然後擅自開工。每一步都是人下指令,人決定什麼時候讀、什麼時候寫、什麼時候分享。先把「人拍板、AI 執行」的迴圈跑順,自動化是之後的事,而且說真的,不一定需要。
 
