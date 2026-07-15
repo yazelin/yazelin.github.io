@@ -20,6 +20,10 @@ const shots = [
   ['roll-formosa', 'https://yazelin.github.io/roll-formosa/'],
   ['taigi', 'https://yazelin.github.io/mandarin-taigi/'],
   ['sprite-studio', 'https://yazelin.github.io/mori-sprite-studio/'],
+  ['red-cliffs', 'https://yazelin.github.io/red-cliffs-3d/'],
+  ['wish-pool', 'https://yazelin.github.io/wish-pool/'],
+  ['sticker-studio', 'https://yazelin.github.io/line-sticker-studio/'],
+  ['ipas-quiz', 'https://yazelin.github.io/ipas-ai-quiz/'],
 ];
 
 // 常見的「先按掉再截」選擇器（cookie/說明彈窗/開始畫面按鈕）
