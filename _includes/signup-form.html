@@ -1,0 +1,29 @@
+<div class="signup">
+  <h3>訂閱電子報</h3>
+  <p class="section-lead">甲方思維、AI 發包實戰、新作品上線通知。不灌水。</p>
+  <form data-signup data-source="{{ include.source | default: 'blog' }}">
+    <input type="email" name="email" placeholder="you@example.com" required>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="msg" aria-live="polite"></p>
+</div>
+<script>
+document.querySelectorAll('form[data-signup]').forEach(function (f) {
+  if (f.dataset.bound) return; f.dataset.bound = '1';
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var msg = f.parentElement.querySelector('.msg');
+    msg.textContent = '送出中…';
+    try {
+      var r = await fetch('https://k-rider-api.yazelinj303.workers.dev/signup', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: f.email.value, company: f.company.value, source: f.dataset.source })
+      });
+      var d = await r.json();
+      msg.textContent = d.ok ? (d.already ? '這個 email 已經訂閱過了。' : '訂閱成功,之後見。') : '出了點問題,再試一次。';
+      if (d.ok && !d.already) f.reset();
+    } catch (err) { msg.textContent = '網路怪怪的,稍後再試。'; }
+  });
+});
+</script>
