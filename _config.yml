@@ -86,6 +86,7 @@ giscus:
 
 # 排除檔案
 exclude:
+  - docs
   - Gemfile
   - Gemfile.lock
   - LICENSE
