@@ -41,4 +41,13 @@ author: Yaze Lin
 
 工作室化的方向、每個「要不要做」的取捨(例如拿掉登入、素材庫自主管理不自動清理)、驗收標準,是我定的;程式碼含測試是 AI 在這套規格下寫的。細節有興趣的話,repo 的 PR 紀錄就是完整的發包過程。
 
+## 想懂原理,自己蓋一遍
+
+工作室是拿來直接用的;如果你想懂「生圖之後」那條後處理管線是怎麼回事,有兩個免費的教學 starter,程式碼全開源,照 README 跑就能在自己電腦上把整條管線走一遍:
+
+- 生圖入門:<https://github.com/yazelin/gemini-image-starter> — 還不會呼叫 Gemini 生圖,從這裡開始
+- 貼圖管線:<https://github.com/yazelin/ai-sticker-starter> — 從一張綠幕九宮格,做到能直接上架的 LINE 規格 ZIP;天真版和正規版對照著教,綠邊 halo 為什麼會出現、怎麼消,都在裡面
+
+工作室的核心就是這條管線的產品化。學會了,你不只會用工具,還改得動它。
+
 先去做一張自己的貼圖:<https://yazelin.github.io/line-sticker-studio/>
