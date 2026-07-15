@@ -1,0 +1,9 @@
+<!-- _includes/nav.html -->
+<header class="site-nav">
+  <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <nav>
+    {% for item in site.navbar %}
+    <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
+    {% endfor %}
+  </nav>
+</header>
