@@ -6,6 +6,8 @@ date: 2026-06-19
 categories: [AI, 開發工具]
 tags: [AI, 甲方思維, Automation, bash, Claude Code, autopilot]
 author: Yaze Lin
+featured: true
+featured-why: "睡一覺起來 AI 自己跑完一整夜,怎麼排班讓它整晚不用人顧。"
 ---
 
 ![我睡覺,它整晚加城市](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-06-19-ai-overnight-loop.png)

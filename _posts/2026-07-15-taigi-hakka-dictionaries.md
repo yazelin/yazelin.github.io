@@ -6,6 +6,8 @@ date: 2026-07-15
 categories: [AI]
 tags: [mandarin-taigi, mandarin-hakka, 台語, 客語, 教育部辭典, PWA, 離線優先, 甲方思維, wish-pool]
 author: Yaze Lin
+featured: true
+featured-why: "願望池裡的一句話,兩天長成兩本教育部等級的離線辭典。"
 ---
 
 ![國台語詞語對照](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-15-taigi-hakka-dictionaries.png)

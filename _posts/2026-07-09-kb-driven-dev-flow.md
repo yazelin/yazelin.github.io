@@ -6,6 +6,8 @@ date: 2026-07-09
 categories: [AI]
 tags: [知識庫, Claude Code, CTOS, LINE Bot, CLI, 甲方思維, AI 開發流程]
 author: Yaze Lin
+featured: true
+featured-why: "AI 一行新程式都沒寫的 demo,規格放知識庫、AI 自己接單自己回報。"
 ---
 
 ![知識驅動開發流程架構](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-09-kb-driven-dev-flow-cover.jpg)

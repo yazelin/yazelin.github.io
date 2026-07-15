@@ -6,6 +6,8 @@ date: 2026-07-06
 categories: [Index]
 tags: [ai-chant-magic, 咏唱魔法, 目錄, 系列文章, 遊戲]
 author: Yaze Lin
+featured: true
+featured-why: "一款對著麥克風唸咒語的網頁生存遊戲,系列文章總入口。"
 ---
 
 ![真。AI。咏唱魔法](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-08-ai-chant-magic-four-worlds.png)
