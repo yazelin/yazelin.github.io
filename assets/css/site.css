@@ -12,6 +12,7 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+p a, li a, blockquote a { text-decoration: underline; text-underline-offset: 2px; }
 img { max-width: 100%; height: auto; }
 h1, h2, h3 { line-height: 1.3; letter-spacing: 0.02em; }
 code { background: var(--accent-weak); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
@@ -79,6 +80,7 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 
 /* signup */
 .signup { max-width: 30rem; margin: 0 auto; text-align: center; }
+.signup h2 { font-size: 1.25rem; }
 .signup form { display: flex; gap: 0.5rem; margin-top: 1rem; }
 .signup input[type=email] { flex: 1; padding: 0.65rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
 .signup button { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 0.65rem 1.4rem; font-size: 1rem; cursor: pointer; }

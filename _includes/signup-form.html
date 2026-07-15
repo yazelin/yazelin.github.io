@@ -1,9 +1,9 @@
 <div class="signup">
-  <h3>訂閱電子報</h3>
-  <p class="section-lead">甲方思維、AI 發包實戰、新作品上線通知。不灌水。</p>
+  <h2>保持聯絡</h2>
+  <p class="section-lead">留個 email,有新文章或新作品上線時告訴你。</p>
   <form data-signup data-source="{{ include.source | default: 'blog' }}">
-    <input type="email" name="email" placeholder="you@example.com" required>
-    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off">
+    <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">訂閱</button>
   </form>
   <p class="msg" aria-live="polite"></p>
