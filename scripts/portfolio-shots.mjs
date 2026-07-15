@@ -26,7 +26,6 @@ const shots = [
   ['sticker-studio', 'https://yazelin.github.io/line-sticker-studio/'],
   ['ipas-quiz', 'https://yazelin.github.io/ipas-ai-quiz/'],
   ['ai-font-styles', 'https://yazelin.github.io/ai-font-styles/'],
-  ['md2ppt', 'https://yazelin.github.io/MD2PPT-Evolution/'],
   ['catime', 'https://yazelin.github.io/catime/'],
 ];
 
