@@ -71,6 +71,12 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 .work-card .body { padding: 0.9rem 1.1rem 1.1rem; }
 .work-card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; color: var(--fg); }
 .work-card p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.work-card .card-main { display: block; color: inherit; }
+.work-card .card-main:hover { text-decoration: none; }
+.work-card .series { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; padding: 0 1.1rem 1rem; }
+.work-card .series .lbl { font-size: 0.8rem; color: var(--muted); }
+.work-card .series a { font-size: 0.8rem; color: var(--accent); background: var(--accent-weak); border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.7rem; text-decoration: none; }
+.work-card .series a:hover { text-decoration: underline; }
 .story { background: var(--accent-weak); border-radius: 16px; padding: 2.5rem 2rem; }
 .story p { max-width: var(--maxw); margin: 0 auto 1rem; }
 .featured-list { list-style: none; padding: 0; max-width: var(--maxw); margin: 0 auto; }
