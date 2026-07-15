@@ -1,10 +1,18 @@
 // 作品牆截圖腳本 — 留在 repo 供日後更新
-// 用法（因 worktree 內未裝 playwright，借用已裝 playwright 的 repo 的 node_modules）：
-//   cd /home/ct/fb-photo-dl && node /home/ct/yazelin-blog-rebrand/scripts/portfolio-shots.mjs
-// 輸出固定寫絕對路徑，與執行時的 cwd 無關。
-import { chromium } from 'playwright';
+// 用法（任何 cwd 皆可）：
+//   node scripts/portfolio-shots.mjs
+// 本 repo 未裝 playwright，動態借用 /home/ct/fb-photo-dl 裝的 playwright；
+// 若該 repo 沒裝，把下面 createRequire 的錨點路徑換成任一有裝 playwright 的 repo。
+// 輸出路徑相對腳本自身推導，與執行時的 cwd 無關。
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-const OUT_DIR = '/home/ct/yazelin-blog-rebrand/images/portfolio';
+const require = createRequire('/home/ct/fb-photo-dl/package.json');
+const { chromium } = require('playwright');
+
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const OUT_DIR = path.join(SCRIPT_DIR, '..', 'images', 'portfolio');
 
 const shots = [
   ['ai-chant-magic', 'https://yazelin.github.io/ai-chant-magic/'],
