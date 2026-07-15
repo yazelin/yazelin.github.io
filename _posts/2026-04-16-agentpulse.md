@@ -17,7 +17,7 @@ tags: [Tauri, Rust, Cross-platform, Claude Code, Gemini CLI, Codex, Copilot, Des
 
 ## 這個工具在解決什麼問題
 
-你同時開了好幾個 terminal 跑不同的 AI CLI 工具 — 一個 Claude Code 在重構後端、一個 Gemini CLI 在改 UI、一個 Copilot 在寫測試。
+你同時開了好幾個 terminal 跑不同的 AI CLI 工具：一個 Claude Code 在重構後端、一個 Gemini CLI 在改 UI、一個 Copilot 在寫測試。
 
 然後你切去看 Slack，回來才發現 Claude 5 分鐘前就卡在權限請求等你確認，另外兩個早就跑完了。
 
@@ -42,12 +42,12 @@ tags: [Tauri, Rust, Cross-platform, Claude Code, Gemini CLI, Codex, Copilot, Des
 
 ## 靈感來源：ClaudePulse
 
-這個專案的起點是 [@tzangms](https://github.com/tzangms) 的 [ClaudePulse](https://github.com/tzangms/ClaudePulse) — 一個用 Swift/SwiftUI 寫的 macOS 原生應用。很漂亮、很好用，**但只支援 macOS，也只支援 Claude Code**。
+這個專案的起點是 [@tzangms](https://github.com/tzangms) 的 [ClaudePulse](https://github.com/tzangms/ClaudePulse)，一個用 Swift/SwiftUI 寫的 macOS 原生應用。很漂亮、很好用，**但只支援 macOS，也只支援 Claude Code**。
 
 我想要的是：
 
-1. **跨平台** — 我自己用 Linux，但同事用 Windows，想要一套大家都能用的工具
-2. **多 provider** — Claude、Gemini、Codex、Copilot 都要支援
+1. **跨平台**：我自己用 Linux，但同事用 Windows，想要一套大家都能用的工具
+2. **多 provider**：Claude、Gemini、Codex、Copilot 都要支援
 
 所以就用 Tauri v2 重寫了一版，叫 **AgentPulse**。
 
@@ -136,7 +136,7 @@ curl -s -X POST http://localhost:{port}/hook/{provider} -d @-
 
 ### 解法：Sidecar binary
 
-Tauri v2 有 **sidecar binary** 的概念 — 跟主程式一起打包的獨立執行檔，主程式可以直接呼叫它。我用這個機制加了一個 `agent-pulse-hook` sidecar：
+Tauri v2 有 **sidecar binary** 的概念：跟主程式一起打包的獨立執行檔，主程式可以直接呼叫它。我用這個機制加了一個 `agent-pulse-hook` sidecar：
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -172,10 +172,10 @@ Hook command 變成統一的：
 
 好處：
 
-- **Shell 無關** — 不管主機是 bash / PowerShell / cmd / fish / zsh，都是直接 spawn process
-- **不依賴 curl** — Windows 再也不用煩惱
-- **引號問題消失** — 路徑用雙引號包起來就夠了
-- **Hook 失敗 silent fail** — sidecar 錯誤全部吞掉，確保不會讓 Claude 跑到一半掛掉
+- **Shell 無關**：不管主機是 bash / PowerShell / cmd / fish / zsh，都是直接 spawn process
+- **不依賴 curl**：Windows 再也不用煩惱
+- **引號問題消失**：路徑用雙引號包起來就夠了
+- **Hook 失敗 silent fail**：sidecar 錯誤全部吞掉，確保不會讓 Claude 跑到一半掛掉
 
 ### Sidecar 的核心實作
 
@@ -258,8 +258,8 @@ SessionStart ──▶ Idle
 
 一開始我用 HTML5 的 `<audio>`，遇到兩個問題：
 
-1. **CSP 限制** — Tauri 的 webview 對載入本機音訊檔有嚴格限制
-2. **音量控制** — 瀏覽器的音量 API 在不同平台行為不一致
+1. **CSP 限制**：Tauri 的 webview 對載入本機音訊檔有嚴格限制
+2. **音量控制**：瀏覽器的音量 API 在不同平台行為不一致
 
 最後改成 **Rust 端用 [rodio](https://github.com/RustAudio/rodio) 播放**：
 
@@ -273,8 +273,8 @@ sink.sleep_until_end();
 
 音檔放在 `~/.config/agentpulse/sounds/`，每個 provider 可以**獨立設定兩種聲音**：
 
-- **Completion** — Working → Idle 時播（任務跑完）
-- **Waiting for user** — 進入 WaitingForUser 狀態時播（Claude 卡在權限請求等你確認）
+- **Completion**：Working → Idle 時播（任務跑完）
+- **Waiting for user**：進入 WaitingForUser 狀態時播（Claude 卡在權限請求等你確認）
 
 預設用 Microsoft Edge TTS 產生中文語音：
 
@@ -317,13 +317,13 @@ LLM 在 pixel-perfect 的向量圖形上真的不行。
 
 ### 解法：[@lobehub/icons](https://lobehub.com/icons)
 
-在 GitHub 上亂搜，發現 [lobehub/lobe-icons](https://github.com/lobehub/lobe-icons) — **專門收集 AI 品牌 SVG logo 的開源專案**。
+在 GitHub 上亂搜，發現 [lobehub/lobe-icons](https://github.com/lobehub/lobe-icons)，**專門收集 AI 品牌 SVG logo 的開源專案**。
 
-- **200+ 個 AI 品牌 logo** — OpenAI、Anthropic、Google、Meta、Mistral、Cohere、DeepSeek、Perplexity 什麼都有
-- **MIT License** — 商用個人都免費
-- **多種格式** — React 元件、React Native、純 SVG、PNG（light/dark）、WebP、Avatar
+- **200+ 個 AI 品牌 logo**：OpenAI、Anthropic、Google、Meta、Mistral、Cohere、DeepSeek、Perplexity 什麼都有
+- **MIT License**：商用個人都免費
+- **多種格式**：React 元件、React Native、純 SVG、PNG（light/dark）、WebP、Avatar
 - **6 個 npm 套件**可選
-- **每個品牌有多種變體** — Mono、Color、Brand、Text、Combine
+- **每個品牌有多種變體**：Mono、Color、Brand、Text、Combine
 
 對我來說 Tauri 前端就是純 HTML/JS，不需要整包 React 進來。直接從 [static-svg](https://github.com/lobehub/lobe-icons/tree/master/packages/static-svg/icons) 複製 SVG path，當常數寫在 `main.js`：
 
@@ -351,22 +351,22 @@ function providerIconHtml(id, size) {
 
 ## 功能一覽
 
-- **Dynamic Island 風格** — 膠囊形狀、hover 展開
-- **多 Provider 同時監控** — Claude、Gemini、Codex、Copilot
-- **獨立兩種聲音** — 每個 provider 的「完成」和「等待確認」可以設不同聲音
-- **Single Instance** — 第二次啟動會 focus 既有視窗，不會跑出第二個 tray icon
-- **狀態顏色指示** — 綠色跑中、橘色等權限、灰色閒置
-- **智慧 re-render** — 只有結構改變才重繪，計時器獨立更新
-- **可拖拉** — 想擺哪就擺哪
-- **Light / Dark 主題** — 跟隨系統或手動切換
-- **System Tray** — 最小化到工作列
-- **自動偵測已安裝的 CLI** — 第一次開啟用 `which` 檢查
+- **Dynamic Island 風格**：膠囊形狀、hover 展開
+- **多 Provider 同時監控**：Claude、Gemini、Codex、Copilot
+- **獨立兩種聲音**：每個 provider 的「完成」和「等待確認」可以設不同聲音
+- **Single Instance**：第二次啟動會 focus 既有視窗，不會跑出第二個 tray icon
+- **狀態顏色指示**：綠色跑中、橘色等權限、灰色閒置
+- **智慧 re-render**：只有結構改變才重繪，計時器獨立更新
+- **可拖拉**：想擺哪就擺哪
+- **Light / Dark 主題**：跟隨系統或手動切換
+- **System Tray**：最小化到工作列
+- **自動偵測已安裝的 CLI**：第一次開啟用 `which` 檢查
 
 ---
 
 ## 安裝（v0.2.1：解壓即用）
 
-v0.2 改成單純的 zip 包 — **不用安裝程式，下載解壓直接跑**。zip 裡有兩個檔案：主程式 `agent-pulse` + sidecar `agent-pulse-hook`，**兩個必須放在同一個資料夾**（主程式會找同層的 sidecar）。
+v0.2 改成單純的 zip 包：**不用安裝程式，下載解壓直接跑**。zip 裡有兩個檔案：主程式 `agent-pulse` + sidecar `agent-pulse-hook`，**兩個必須放在同一個資料夾**（主程式會找同層的 sidecar）。
 
 每次 release 會產生 **4 個 zip**：
 
@@ -415,30 +415,30 @@ xattr -cr agent-pulse agent-pulse-hook
 
 ## Settings 介面
 
-### Providers — 啟用 / 停用 CLI
+### Providers：啟用 / 停用 CLI
 
 ![AgentPulse Settings - Providers](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/agentpulse-settings-providers.png)
 
 第一次開啟會自動偵測安裝了哪些 CLI（標 `detected`），勾選後 AgentPulse 會把 hooks 寫入對應的設定檔。右邊的檔案圖示可以直接打開那個 CLI 的設定檔（debug 用）。
 
-### Sounds — 完成音 + 等待音
+### Sounds：完成音 + 等待音
 
 ![AgentPulse Settings - Sounds](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/agentpulse-settings-sounds.png)
 
 兩個區塊分別管理：
-- **ON COMPLETE** — Working → Idle 時播
-- **ON WAITING FOR USER** — 進入等待狀態時播
+- **ON COMPLETE**：Working → Idle 時播
+- **ON WAITING FOR USER**：進入等待狀態時播
 
 每個 provider 各有一個下拉選單，可以選 `~/.config/agentpulse/sounds/` 裡的任何 mp3/wav/ogg。右邊的 ▶ 可以預覽。
 
-### Appearance — 主題、色彩、大小
+### Appearance：主題、色彩、大小
 
 ![AgentPulse Settings - Appearance](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/agentpulse-settings-appearance.png)
 
-- **Light Theme** — 淺色 / 深色切換
-- **Keep Expanded** — 不用 hover 也保持展開（同時看多個 session 時很有用）
-- **Accent Color** — 五個強調色可選
-- **Size** — 膠囊大小（S / M / L）
+- **Light Theme**：淺色 / 深色切換
+- **Keep Expanded**：不用 hover 也保持展開（同時看多個 session 時很有用）
+- **Accent Color**：五個強調色可選
+- **Size**：膠囊大小（S / M / L）
 
 ---
 
@@ -480,13 +480,13 @@ AgentPulse/
 剛 release 的小版號，重點：
 
 **新增**
-- **Intel Mac builds** — 每次 tag 現在會產生 4 個 zip（Linux / macOS ARM / macOS Intel / Windows）。GitHub 把 macos-13 runner 收掉了，改成在 `macos-latest` 上 cross-compile。
-- **CHANGELOG + 自動 release notes** — release workflow 會從 CHANGELOG.md 抓對應 tag 的內容，自動填到 release 描述裡。
-- **CLAUDE.md** — Project context 文件 commit 到 repo，讓 clone 下來的人或 AI 助手有完整背景。
+- **Intel Mac builds**：每次 tag 現在會產生 4 個 zip（Linux / macOS ARM / macOS Intel / Windows）。GitHub 把 macos-13 runner 收掉了，改成在 `macos-latest` 上 cross-compile。
+- **CHANGELOG + 自動 release notes**：release workflow 會從 CHANGELOG.md 抓對應 tag 的內容，自動填到 release 描述裡。
+- **CLAUDE.md**：Project context 文件 commit 到 repo，讓 clone 下來的人或 AI 助手有完整背景。
 
 **改進**
-- **CSS 動畫取代 Rust window shim** — 收合膠囊的彈跳動畫從 Rust 端的 `bounce_window`（移動視窗位置）改成純 CSS `@keyframes`。Transform-only + 260ms，跑在 GPU 上，順便修掉 X11 ghosting。
-- **官方 Landing Page** — `docs/` 變成完整的 GitHub Pages 站。內嵌的 iframe 用 mock Tauri IPC shim 直接跑真實的 `src/main.js`，所以**線上就能玩完整的互動 demo**（詳見下面）。
+- **CSS 動畫取代 Rust window shim**：收合膠囊的彈跳動畫從 Rust 端的 `bounce_window`（移動視窗位置）改成純 CSS `@keyframes`。Transform-only + 260ms，跑在 GPU 上，順便修掉 X11 ghosting。
+- **官方 Landing Page**：`docs/` 變成完整的 GitHub Pages 站。內嵌的 iframe 用 mock Tauri IPC shim 直接跑真實的 `src/main.js`，所以**線上就能玩完整的互動 demo**（詳見下面）。
 
 **修正**
 - 當所有 session 都 active 時，`3/3` 會被擠成 `33`（少了斜線）。
@@ -551,11 +551,11 @@ await listen("task-completed", (event) => {
 })();
 ```
 
-`main.js` 不知道也不在乎自己跑在哪 — 它呼叫 `invoke("get_app_state")`，shim 接住，回傳一個假的 state，前端正常 render。
+`main.js` 不知道也不在乎自己跑在哪：它呼叫 `invoke("get_app_state")`，shim 接住，回傳一個假的 state，前端正常 render。
 
 ### 還要讓 Demo 看起來有生命
 
-光有靜態 state 不夠 — demo 要看起來有 session 在跑。Mock 裡藏了一個**狀態機輪播**：
+光有靜態 state 不夠，demo 要看起來有 session 在跑。Mock 裡藏了一個**狀態機輪播**：
 
 ```javascript
 const cycle = [
@@ -577,16 +577,16 @@ cycle.forEach(([delay, id, newState]) => {
 });
 ```
 
-每次狀態改變都 `emit("app-state-changed")`，前端就會重 render — 跟真的後端送事件一模一樣。
+每次狀態改變都 `emit("app-state-changed")`，前端就會重 render，跟真的後端送事件一模一樣。
 
 ### iframe 環境的微調
 
 `docs/demo-app/index.html` 是稍微改過的 HTML（不是直接用 `src/index.html`）：
 
-- **背景透明** — `background: transparent` 讓膠囊浮在 landing page 的漸層上
-- **固定寬度 300px** — 真的 Tauri app 跑在 300px 寬的視窗，瀏覽器沒有這個限制，所以手動 pin
-- **scroll bar 細化** — Settings 太長時可以在 iframe 內捲動
-- **禁用文字選取** — 拖膠囊時不會 highlight 文字
+- **背景透明**：`background: transparent` 讓膠囊浮在 landing page 的漸層上
+- **固定寬度 300px**：真的 Tauri app 跑在 300px 寬的視窗，瀏覽器沒有這個限制，所以手動 pin
+- **scroll bar 細化**：Settings 太長時可以在 iframe 內捲動
+- **禁用文字選取**：拖膠囊時不會 highlight 文字
 
 但 **`main.js` 和 `app.css` 完全是同一份**（從 `src/` 複製到 `docs/demo-app/` 由 build script 同步），所以前端任何 UI 改動，官網 demo 自動更新。
 
@@ -599,7 +599,7 @@ cycle.forEach(([delay, id, newState]) => {
 | 寫一個獨立的 web 版 | ✗ 兩份程式碼要同步維護，會 drift |
 | **Mock IPC + 真實前端** | ✓ 一份程式碼、可互動、改 UI 自動同步 |
 
-對使用者來說：點 Settings 開得起來、改 Accent Color 真的會變色、按 ▶ 試聽真的有聲音 — 因為跑的就是真的 app，只是**後端被偷換成假的**。
+對使用者來說：點 Settings 開得起來、改 Accent Color 真的會變色、按 ▶ 試聽真的有聲音，因為跑的就是真的 app，只是**後端被偷換成假的**。
 
 ---
 
@@ -609,7 +609,7 @@ cycle.forEach(([delay, id, newState]) => {
 
 ### 還在想的方向：區網 Session 管理中心
 
-之後可能會想做 **LAN 內的集中式 session 監控** — 同一個團隊所有開發者的 AI CLI 活動都送到一台內網主機集中顯示。
+之後可能會想做 **LAN 內的集中式 session 監控**：同一個團隊所有開發者的 AI CLI 活動都送到一台內網主機集中顯示。
 
 不過這類工具其實 GitHub 上已經有人做了，記錄一下找到的幾個：
 

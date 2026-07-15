@@ -51,12 +51,12 @@ author: Yaze Lin
 **為什麼這是問題：**
 
 1. **Release cycle 完全不同**
-   - 記憶設計屬於「年穩」——一旦定下來最好穩定數個月
-   - FB API 屬於「季變」——Meta 改規格時要馬上跟
+   - 記憶設計屬於「年穩」：一旦定下來最好穩定數個月
+   - FB API 屬於「季變」：Meta 改規格時要馬上跟
    - 兩者綁在同一個 daemon 時，FB API 改規格觸發的 daemon 重啟會同時打斷對話記憶
 2. **User 需求被綁架**
    - 「只要記憶系統、不要 FB 發文功能」這種需求無法選擇性安裝
-3. **2489 行單檔無法維護**——IDE 操作明顯變慢
+3. **2489 行單檔無法維護**，IDE 操作明顯變慢
 
 ## 設計目標
 
@@ -64,10 +64,10 @@ Wave 2 的目標是 **modular monolith**：
 - 拆成兩個邏輯模組 `annuli.core` 跟 `annuli.creator`
 - 兩個各自一個 Flask server（port 5000 / 5001）
 - 依賴方向：`creator → core`（creator 讀 core 的記憶，但 core 不依賴 creator）
-- **不改一行業務邏輯**——這次是純粹的「搬位置」
+- **不改一行業務邏輯**：這次是純粹的「搬位置」
 - 舊程式碼透過 `engine.py` shim re-export，**任何 `import engine` 的 callsite 不破**
 
-「不改邏輯」這條很重要——這次重構唯一的成功標準是「拆完整體還能跑」，不混進新功能。
+「不改邏輯」這條很重要：這次重構唯一的成功標準是「拆完整體還能跑」，不混進新功能。
 
 ## 17 步機械式搬遷
 
@@ -300,13 +300,13 @@ Wave 2 不只是檔案搬位置，**也是思維轉變**。
 | persona 歸誰 | LLM 自己改 | 同 | 由召喚師審查後寫入 |
 | 衝突解決 | 必須寫時間演進 | 同 | 同 |
 
-**MVP 的問題**：每次 `/sleep` 都是「AI 整個脫皮重生」——LLM 把 persona 改寫一遍。長時間下來 persona 會 drift，跟最初的人格越來越不同。
+**MVP 的問題**：每次 `/sleep` 都是「AI 整個脫皮重生」，LLM 把 persona 改寫一遍。長時間下來 persona 會 drift，跟最初的人格越來越不同。
 
-**Wave 3 的方向**：`/sleep` 改成「AI 寫一頁日記、由召喚師決定要不要更新 persona」。AI 只 append ring，不改寫 soul。這個轉變要 Wave 3 才會落地，但 Wave 2 的模組化讓它變得可能——`core/rings.py` 跟 `core/memory.py` 拆開之後，要改反思行為只動 `rings.py`，不影響其他層。
+**Wave 3 的方向**：`/sleep` 改成「AI 寫一頁日記、由召喚師決定要不要更新 persona」。AI 只 append ring，不改寫 soul。這個轉變要 Wave 3 才會落地，但 Wave 2 的模組化讓它變得可能：`core/rings.py` 跟 `core/memory.py` 拆開之後，要改反思行為只動 `rings.py`，不影響其他層。
 
 ## 跟 Mori 宇宙的關連
 
-Wave 2 重構不是孤立的工程——它對齊一系列正在進行的設計：
+Wave 2 重構不是孤立的工程，它對齊一系列正在進行的設計：
 
 - **world-tree** 定義了 `spirit-template/` 檔案結構 → Annuli core 的路徑設計向它看齊
 - **mori-desktop** [Phase 1 也在同期]({% post_url 2026-05-06-mori-desktop-phase1 %}) v0.0 → v0.2 → v0.x，這邊也跟著 v0.1 → v0.2 bump
@@ -318,12 +318,12 @@ Wave 2 是把這個分工做出來的第一步。
 
 ## 幾個設計觀察
 
-- **2000+ 行單檔是強烈的設計訊號**——不論起初理由多正當，量級到了就要拆。
-- **拆檔不改邏輯**比「拆檔順便重寫」安全很多——Wave 2 的成功標準是「拆完整體還能跑」，新功能留給之後做。
-- **17 個獨立 commit 比 1 個大 commit 好** ——每步可 revert、可 review、可暫停。
-- **shim re-export 是 deprecation 的正確姿勢**——不破舊程式碼，但鼓勵新程式碼用新路徑。
-- **檔頭標註來源（pre-refactor 行號）**對日後維護幫助很大——比 commit message 持久。
-- **Modular monolith 是個人專案合適的起點**——比 microservice 簡單、比純 monolith 可維護。
+- **2000+ 行單檔是強烈的設計訊號**，不論起初理由多正當，量級到了就要拆。
+- **拆檔不改邏輯**比「拆檔順便重寫」安全很多：Wave 2 的成功標準是「拆完整體還能跑」，新功能留給之後做。
+- **17 個獨立 commit 比 1 個大 commit 好**，每步可 revert、可 review、可暫停。
+- **shim re-export 是 deprecation 的正確姿勢**：不破舊程式碼，但鼓勵新程式碼用新路徑。
+- **檔頭標註來源（pre-refactor 行號）**對日後維護幫助很大，比 commit message 持久。
+- **Modular monolith 是個人專案合適的起點**：比 microservice 簡單、比純 monolith 可維護。
 
 ---
 

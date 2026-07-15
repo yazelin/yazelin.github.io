@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.share-description | default: page.subtitle | default: page.excerpt | default: site.description | strip_html | truncate: 150 }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.share-description | default: page.subtitle | default: site.description | strip_html | truncate: 150 }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  {% if page.cover %}<meta property="og:image" content="{{ page.cover }}">{% endif %}
+  <link rel="icon" href="https://avatars1.githubusercontent.com/u/6235553?s=460&v=4">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  {% include head-custom.html %}
+</head>
+<body>
+  {% include nav.html %}
+  <main>{{ content }}</main>
+  {% include footer.html %}
+</body>
+</html>

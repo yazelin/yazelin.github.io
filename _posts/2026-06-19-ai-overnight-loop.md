@@ -6,13 +6,15 @@ date: 2026-06-19
 categories: [AI, 開發工具]
 tags: [AI, 甲方思維, Automation, bash, Claude Code, autopilot]
 author: Yaze Lin
+featured: true
+featured-why: "睡一覺起來 AI 自己跑完一整夜,怎麼排班讓它整晚不用人顧。"
 ---
 
 ![我睡覺,它整晚加城市](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-06-19-ai-overnight-loop.png)
 
 > **這篇講的兩個專案**
-> - Roll Formosa(搖滾・福爾摩沙)—— 台灣風滾球遊戲,有整晚自動加城市的 autopilot:<https://yazelin.github.io/roll-formosa/>
-> - battlefield-editor —— 把歷史戰役編成資料 package 的戰場編輯器(同哲學、不同粒度的對照組):repo 在文末
+> - Roll Formosa(搖滾・福爾摩沙),台灣風滾球遊戲,有整晚自動加城市的 autopilot:<https://yazelin.github.io/roll-formosa/>
+> - battlefield-editor,把歷史戰役編成資料 package 的戰場編輯器(同哲學、不同粒度的對照組):repo 在文末
 > - repo:<https://github.com/yazelin/roll-formosa> ／ <https://github.com/yazelin/battlefield-editor>
 
 我睡覺,AI 整晚加城市。早上起床,GitHub 上躺著一排開好、各自跑過 `npm test`、等我按 merge 的 Pull Request。讓它整晚跑的舞台小得好笑:**約一百行 bash 加一個 backlog 檔**。
@@ -52,24 +54,24 @@ author: Yaze Lin
 
 每一條都帶著創作錨點:終點地標、主題食物、目標數字。範圍寫死在這裡,doer 照它發揮,但不能自己決定要加哪座城、要把目標壓到多少。哪座城配哪個地標、台中該換成宮原冰淇淋杯而不是隨便一個甜點,都鎖在 backlog 這一行裡。
 
-> 後面會看到,doer 做事時還能順手回報「發現的待辦」變成 GitHub issue——但那只是**提案**,要進 `NEXT.md` 還是得人工核准。最終要做什麼,握在 backlog 手上。
+> 後面會看到,doer 做事時還能順手回報「發現的待辦」變成 GitHub issue,但那只是**提案**,要進 `NEXT.md` 還是得人工核准。最終要做什麼,握在 backlog 手上。
 
 ## 三、把 loop 拆開看
 
 有兩支腳本,刻意分成兩種班別:
 
-- `scripts/autopilot.sh`(82 行)—— **單條版**:挑一條做掉、開一個 PR、停手。手動跑、或掛 cron 定時跑一條。
-- `scripts/autopilot-drain.sh`(123 行)—— **整晚版**:把 backlog 裡每一條都跑掉,各開一個 PR,跑到天亮為止。
+- `scripts/autopilot.sh`(82 行),**單條版**:挑一條做掉、開一個 PR、停手。手動跑、或掛 cron 定時跑一條。
+- `scripts/autopilot-drain.sh`(123 行),**整晚版**:把 backlog 裡每一條都跑掉,各開一個 PR,跑到天亮為止。
 
 整晚版是這篇的主角。我們一段一段看它怎麼運作。
 
-### 3-1. 一次抓完 backlog —— 一個非抓不可的坑
+### 3-1. 一次抓完 backlog:一個非抓不可的坑
 
 第一晚跑完,早上一看傻眼:十六個 PR,全是台東。
 
 backlog 上明明排了一打城市,結果整晚的勞動成果是同一座城被重做十六次。它沒罷工,測試也每條都過了——它一整晚老老實實做了十六遍「最上面那條未打勾的」。問題是,那條從頭到尾都是台東。
 
-順著線索倒推真因:腳本每跑完一條,就回 `main` 重新 grep「最上面未打勾的」當下一條。直覺上這沒問題——doer 不是會在它那條 branch 上把台東從 `- [ ]` 改成 `- [x]` 嗎?改了,但**那個打勾關在還沒 merge 的 PR 裡**。因為 **PR 不會被自動 merge**(我堅持人工 merge),所以 **`main` 上的 `NEXT.md` 從頭到尾沒變**,每次回去 grep 抓到的永遠是同一條台東。drain 腳本的註解後來把這個教訓記得很清楚:
+順著線索倒推真因:腳本每跑完一條,就回 `main` 重新 grep「最上面未打勾的」當下一條。直覺上這沒問題,doer 不是會在它那條 branch 上把台東從 `- [ ]` 改成 `- [x]` 嗎?改了,但**那個打勾關在還沒 merge 的 PR 裡**。因為 **PR 不會被自動 merge**(我堅持人工 merge),所以 **`main` 上的 `NEXT.md` 從頭到尾沒變**,每次回去 grep 抓到的永遠是同一條台東。drain 腳本的註解後來把這個教訓記得很清楚:
 
 ```bash
 # ponytail: 一夜性 driver。沿用 autopilot.sh 的 doer prompt,但一次抓完清單再逐條跑
@@ -100,17 +102,17 @@ run_doer(){
 
 幾個關鍵:
 
-1. `claude -p "<prompt>"` 是 **headless 模式**——不開互動視窗,給一段 prompt、它做完吐出文字就結束。這是能塞進 shell loop 的前提。
-2. `--dangerously-skip-permissions`:無人值守,不能每跑一個指令就停下來等人按「允許」。這個旗標的代價就是它名字寫的那樣——所以前面那道 shell 防線(不准 commit/push/merge)和後面的 test gate 才如此重要:**權限放寬了,圍欄就得自己搭好**。
-3. `timeout 3600`:單條最多跑一小時,避免某條卡住把整晚耗光。後面 `|| true` 是故意的——逾時也不讓整個腳本 `set -e` 掛掉,讓外層繼續處理下一條。
-4. prompt 裡反覆強調「**不要 git commit/push、不要開 PR、不要 merge(外層腳本會處理)**」——git 動作的權力,一概收回 shell 手上。
+1. `claude -p "<prompt>"` 是 **headless 模式**:不開互動視窗,給一段 prompt、它做完吐出文字就結束。這是能塞進 shell loop 的前提。
+2. `--dangerously-skip-permissions`:無人值守,不能每跑一個指令就停下來等人按「允許」。這個旗標的代價就是它名字寫的那樣。所以前面那道 shell 防線(不准 commit/push/merge)和後面的 test gate 才如此重要:**權限放寬了,圍欄就得自己搭好**。
+3. `timeout 3600`:單條最多跑一小時,避免某條卡住把整晚耗光。後面 `|| true` 是故意的:逾時也不讓整個腳本 `set -e` 掛掉,讓外層繼續處理下一條。
+4. prompt 裡反覆強調「**不要 git commit/push、不要開 PR、不要 merge(外層腳本會處理)**」:git 動作的權力,一概收回 shell 手上。
 
 prompt 本身內建了**兩種工作模式**,靠任務那行的開頭字判斷:
 
 - 「加 XX」=加一座新城市:照 `docs/ADD-A-CITY.md` 全流程跑(scaffold → 地標/收藏在地化 → 7 階街頭物換成在地小物 → 終點地標 → 河流在地化 → 旁白/tier 名在地化)。
 - 「加深 XX」=既有城市磨深:**只動** `archetypes/tN.js` 的街頭小物,把「還照抄台北」的換成在地版,保留真・全台通用物(機車/紅綠燈/便利商店/路樹這類)。明令不准動 landmarks/collectibles/manifest。
 
-這個「同一個 doer、靠 backlog 那行的開頭切換模式」的設計,不必維護兩套 prompt——舞台是一套,劇本由 backlog 那行決定。
+這個「同一個 doer、靠 backlog 那行的開頭切換模式」的設計,不必維護兩套 prompt:舞台是一套,劇本由 backlog 那行決定。
 
 ### 3-3. test gate:壞掉的 PR 連門都進不來
 
@@ -131,7 +133,7 @@ fi
 
 這套測試不是擺好看的。它裡面有幾道專為這個遊戲寫的「在地化守衛」:`localization.test.js` 會自動量每座 ready 城市的街頭物還跟台北重複幾個,超過門檻就紅;`city-content-localization.test.js` 會擋「地標還借用台北的故宮/中山堂」「landmark 檔頭還寫 `@file packs/taipei/`」這種偷懶。所以 doer 想交差,光把幾何畫出來不夠,得真的在地化到測試認可的深度。
 
-> 這裡有兩個盲點,順手記一下,都是 doer 在 gate 內踩出來、讓我回頭把規則補硬的:`npx vitest run src/packs/<id>` 這種「只測單城」的測試**不會 import `active.js`**,所以 `active.js` 裡多打一個逗號這種語法錯,單城測試抓不到、只有完整 `npm test` 會紅;doer 就踩過一次,只跑單城以為過了。另外地標的三角面上限(tri cap)是 DEV 開機期的 assert,vitest 也抓不到,得另跑 `node scripts/check-hero-tris.mjs <id>`。為了堵這兩個洞,我在 prompt 裡明令 doer「改完 active.js 一定要再跑一次完整 npm test」「一定要跑 check-hero-tris」——但最後一道閘還是 shell 這裡的完整 `npm test`。
+> 這裡有兩個盲點,順手記一下,都是 doer 在 gate 內踩出來、讓我回頭把規則補硬的:`npx vitest run src/packs/<id>` 這種「只測單城」的測試**不會 import `active.js`**,所以 `active.js` 裡多打一個逗號這種語法錯,單城測試抓不到、只有完整 `npm test` 會紅;doer 就踩過一次,只跑單城以為過了。另外地標的三角面上限(tri cap)是 DEV 開機期的 assert,vitest 也抓不到,得另跑 `node scripts/check-hero-tris.mjs <id>`。為了堵這兩個洞,我在 prompt 裡明令 doer「改完 active.js 一定要再跑一次完整 npm test」「一定要跑 check-hero-tris」,但最後一道閘還是 shell 這裡的完整 `npm test`。
 
 ### 3-4. 自動開 PR,然後停手
 
@@ -188,11 +190,11 @@ done
 2. 抽出重置時間 `resets 7:00pm` 裡的 `7:00pm`,用 `date -d` 換算成 epoch 秒。
 3. `d=$((tgt-now+120))`:算出距離重置還有幾秒,**多加 120 秒緩衝**(別在重置的瞬間就重試)。
 4. `[ "$d" -lt 0 ] && d=$((d+86400))`:**跨午夜的修正**。如果重置時間算出來是負的(例如現在凌晨一點、重置寫的是「7:00am」但 `date -d` 解成今天已過的時點),就 +86400(一天的秒數),指向明天那個時間。
-5. `[ "$d" -ge 60 ] && [ "$d" -le 21600 ] && sl=$d`:**clamp 在 60 秒到 6 小時之間**。解析出怪數字就退回預設的一小時,絕不睡超過六小時——防呆。
+5. `[ "$d" -ge 60 ] && [ "$d" -le 21600 ] && sl=$d`:**clamp 在 60 秒到 6 小時之間**。解析出怪數字就退回預設的一小時,絕不睡超過六小時,防呆。
 6. `if [ $((now+sl)) -ge "$DEADLINE" ]; then ... break 2; fi`:**睡醒會超過早上七點的話,別睡了,整批收工**(`break 2` 跳出內外兩層迴圈)。
 7. `sleep "$sl"` → 重新 `run_doer "$ITEM"` 同一條。
 
-整段讀起來像一個會打瞌睡的工人:做著做著沒力氣了(撞額度),看一眼時鐘算出幾點能恢復,趴下睡到那個點,醒來接著做剛才那一城。而且睡前還會看一眼「醒來會不會太晚」——太晚就乾脆不睡了,把場子收乾淨等人來。
+整段讀起來像一個會打瞌睡的工人:做著做著沒力氣了(撞額度),看一眼時鐘算出幾點能恢復,趴下睡到那個點,醒來接著做剛才那一城。而且睡前還會看一眼「醒來會不會太晚」,太晚就乾脆不睡了,把場子收乾淨等人來。
 
 ### 3-6. 07:00 deadline:讓早上回來時是停手狀態
 
@@ -206,7 +208,7 @@ DEADLINE=$(date -d 'today 07:00' +%s)
 
 如果現在還沒到今天七點,deadline 就是今天七點;如果已經過了(例如我半夜十一點開跑),就指向明天七點。loop 每跑一條前會檢查 `date +%s -ge DEADLINE`,過線就 `break`,不再開新城。
 
-為什麼要這條線?因為我希望**早上醒來時,系統是「停手等我」的狀態,而不是「正在做到一半」**。停手狀態我能從容 review、決定哪些 PR 要 merge;做到一半我得先搞清楚它停在哪、有沒有半截的 branch。一條 deadline,把「整晚跑」收束成「我作息可預測的一夜」。
+為什麼要這條線?因為我希望**早上醒來時,系統是「停手等我」的狀態**。停手狀態我能從容 review、決定哪些 PR 要 merge;做到一半我得先搞清楚它停在哪、有沒有半截的 branch。一條 deadline,把「整晚跑」收束成「我作息可預測的一夜」。
 
 ## 四、成果:那一夜到底做了什麼
 
@@ -237,7 +239,7 @@ DEADLINE=$(date -d 'today 07:00' +%s)
 + // wafer stick poked in at an angle (宮原的招牌插著威化餅)
 ```
 
-同一個 commit 裡,它還把「停車塔」換成了「審計新村」——把一棟機械式停車塔的幾何,改寫成審計新村那種兩層翻修宿舍 + 彩色雨棚 + 市集攤位的造型,連紅綠雙色雨棚、走廊立柱、掛燈都用 box 拼了出來:
+同一個 commit 裡,它還把「停車塔」換成了「審計新村」:把一棟機械式停車塔的幾何,改寫成審計新村那種兩層翻修宿舍 + 彩色雨棚 + 市集攤位的造型,連紅綠雙色雨棚、走廊立柱、掛燈都用 box 拼了出來:
 
 ```
 - /* ---- slot 4: 停車塔 parking_tower ---- */
@@ -249,7 +251,7 @@ DEADLINE=$(date -d 'today 07:00' +%s)
 + box(4.0, 0.1, 0.6, 0x3f8a52, { y: 1.35, z: 1.35 }), // green lower canopy band
 ```
 
-這是真的 Three.js 幾何在地化——華夫餅錐、三球冰淇淋、斜插的威化餅,一根一根 box 拼出來。一夜之間,二十座城市裡像這樣的替換有上百處。我醒來的工作,是逐個 PR 點開、看截圖、判斷「這顆冰淇淋杯看起來像不像」,然後 merge。
+這是真的 Three.js 幾何在地化:華夫餅錐、三球冰淇淋、斜插的威化餅,一根一根 box 拼出來。一夜之間,二十座城市裡像這樣的替換有上百處。我醒來的工作,是逐個 PR 點開、看截圖、判斷「這顆冰淇淋杯看起來像不像」,然後 merge。
 
 ## 五、同哲學、不同粒度:battlefield-editor 的 in-session loop
 
@@ -272,13 +274,13 @@ battlefield-editor 是把一場歷史戰役編成一份資料 package(陣營/地
 
 但關鍵的不同在這:**battlefield-editor 沒有 overnight driver、沒有 `NEXT.md` backlog 佇列、沒有撞額度睡到重置這套東西。**它是一個**單一 session 內、由人一場一場手動觸發**的 loop:AI 在同一次對話裡自改、過四道 gate、紅了自己修、綠了交人。一場戰役可能要編好幾個小時,人在旁邊推。對照 Roll Formosa 那種**一整晚、無人值守、自動滾一打城市**(撞額度會睡、到七點會停、開完 PR 等人 merge),粒度差很多。
 
-可以說它是 overnight loop 的**前身**:同一個「機器 gate + AI 在 gate 內自循環」的內核,一個還握在人手上一場一場推,一個被那一百行 bash 包成了能整晚自己跑的班。它最自豪的成績是「零 context 的 agent 也能照 SKILL 從 scaffold 編出官渡、垓下兩場完整戰役」;dogfood 時 doer 還踩出一個 residue-scan 的 bug——它把跨戰役共用的「襄陽/江陵」誤判成赤壁殘留,被抓出來修掉(至於「長江」這種跨戰役共用地名,則是我設計 gate 時就刻意排除的白名單)。
+可以說它是 overnight loop 的**前身**:同一個「機器 gate + AI 在 gate 內自循環」的內核,一個還握在人手上一場一場推,一個被那一百行 bash 包成了能整晚自己跑的班。它最自豪的成績是「零 context 的 agent 也能照 SKILL 從 scaffold 編出官渡、垓下兩場完整戰役」;dogfood 時 doer 還踩出一個 residue-scan 的 bug:它把跨戰役共用的「襄陽/江陵」誤判成赤壁殘留,被抓出來修掉(至於「長江」這種跨戰役共用地名,則是我設計 gate 時就刻意排除的白名單)。
 
 ## 六、踩雷與心法
 
 把這套東西交給整晚跑,有幾條規矩是用教訓換來的:
 
-- **切 branch 前工作樹必須乾淨**。autopilot.sh 開頭就檢查 `git status --porcelain`,不乾淨就大聲中止——否則切 branch 會把未提交內容帶過去、和別的東西相撞污染 build。寧可中止,不要默默弄壞。
+- **切 branch 前工作樹必須乾淨**。autopilot.sh 開頭就檢查 `git status --porcelain`,不乾淨就大聲中止,否則切 branch 會把未提交內容帶過去、和別的東西相撞污染 build。寧可中止,不要默默弄壞。
 - **driver 腳本要放 repo 外跑**。因為 doer 會跑 `git add -A`,腳本放 repo 裡會被包進某個 PR。drain 腳本的註解特別記了這條。
 - **`main` ≠ 上線,merge 永遠人工**。這是我對「AI 整晚自己做完」設的天花板。它能做到「擺好一個待審的 PR」,最後拍板是人的事。
 - **跑的那台機器當唯讀**。整晚 loop 在哪台機器跑,那台就別同時拿來做別的會動工作樹的事。
@@ -289,9 +291,9 @@ battlefield-editor 是把一場歷史戰役編成一份資料 package(陣營/地
 
 繞了一圈,回收開頭那個質疑。它真的不是 agent 框架——再講一次:沒有 orchestrator、沒有 state machine、沒有 multi-agent 調度,就是約一百行 bash(`autopilot.sh` 82 行 + `autopilot-drain.sh` 123 行)加一個 `NEXT.md` backlog 檔。
 
-敢把它放整晚的底氣,從來不是腳本多聰明,而是**「什麼叫做對了」被做成了機器能跑、會回紅綠的 gate**。`npm test` 的紅綠信得過,在地化深度有測試守衛量得出來,三角面超標有 check 腳本擋得住。驗收標準是客觀、可執行、不通融的,才敢讓 loop 在這些 gate 之間整晚自己跑,不必整夜守著。一百行 bash 不是把 agent 框架做小,是硬度全押在 gate 上,編排根本不必聰明。
+敢把它放整晚的底氣,從來不靠腳本聰明:**「什麼叫做對了」被做成了機器能跑、會回紅綠的 gate**。`npm test` 的紅綠信得過,在地化深度有測試守衛量得出來,三角面超標有 check 腳本擋得住。驗收標準是客觀、可執行、不通融的,才敢讓 loop 在這些 gate 之間整晚自己跑,不必整夜守著。一百行 bash 把硬度全押在 gate 上,編排根本不必聰明。
 
-說到這就得戳破一個常見的誤會:**很多人以為「會用 AI」等於「會下 prompt」**——以為把需求講得夠漂亮、prompt 工程做得夠細,AI 就會替你把事做對。這話不能說錯,prompt 確實要寫清楚。但這一夜真正花時間的,完全不是雕 prompt;是把「怎樣算做對了」一條條寫成 `npm test` 跑得出紅綠的東西:在地化守衛、三角面 check、跨檔語法驗。prompt 寫得再美,也只是「聽起來像做對了」。gate 紅綠才是「真的做對了」。
+說到這就得戳破一個常見的誤會:**很多人以為「會用 AI」等於「會下 prompt」**:以為把需求講得夠漂亮、prompt 工程做得夠細,AI 就會替你把事做對。這話不能說錯,prompt 確實要寫清楚。但這一夜真正花時間的,是把「怎樣算做對了」一條條寫成 `npm test` 跑得出紅綠的東西:在地化守衛、三角面 check、跨檔語法驗;雕 prompt 反而沒佔多少。prompt 寫得再美,也只是「聽起來像做對了」。gate 紅綠才是「真的做對了」。
 
 核心不在「會不會下 prompt」,在**「驗收標準能不能變成一個機器幫你跑的關卡」**。能,你就能睡覺;不能,你就得整晚盯著。整晚做的事值不值得早上按那顆 merge 鈕,取決於前一天晚上把 gate 設得夠不夠硬。
 

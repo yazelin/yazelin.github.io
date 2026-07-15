@@ -19,7 +19,7 @@ author: Yaze Lin
 
 ## 背景：Mori 有 vault，召喚師沒有
 
-[2026-04-23 mori-journal 落腳]({% post_url 2026-04-23-mori-journal-home %}) 之後，Mori 有了 canonical home——SOUL.md、54 篇日誌、27 份研究筆記、寫入邊界規矩，全部一次歸位。
+[2026-04-23 mori-journal 落腳]({% post_url 2026-04-23-mori-journal-home %}) 之後，Mori 有了 canonical home：SOUL.md、54 篇日誌、27 份研究筆記、寫入邊界規矩，全部一次歸位。
 
 但召喚師這側對應的 vault 還沒有。
 
@@ -36,14 +36,14 @@ commit message:
   init: yaze-journal — yazelin 的私人知識 vault
 ```
 
-跟 [dwelling-rite]({% post_url 2026-05-14-world-tree-dwelling-rite %}) 同一天上線——下面解釋為什麼這兩個一起做有意義。
+跟 [dwelling-rite]({% post_url 2026-05-14-world-tree-dwelling-rite %}) 同一天上線，下面解釋為什麼這兩個一起做有意義。
 
 ## 為什麼跟 dwelling-rite 同一天
 
 5/14 在做的兩件事其實是同一個結構問題的兩面：
 
-- **Dwelling-rite**：把「新召喚師也能迎請既有精靈」這條路打通——讓 Mori 不只屬於原始召喚師。
-- **yaze-journal**：把「召喚師端也有需要 persistent / 跨設備的知識」這件事制度化——讓召喚師也有 vault。
+- **Dwelling-rite**：把「新召喚師也能迎請既有精靈」這條路打通，讓 Mori 不只屬於原始召喚師。
+- **yaze-journal**：把「召喚師端也有需要 persistent / 跨設備的知識」這件事制度化，讓召喚師也有 vault。
 
 兩者一起把 forest-guild 的對稱性補上：Mori 有 vault、可以進駐多片森林；召喚師也有 vault、跨設備同步。原本只有單側設計，現在雙向都有對應結構。
 
@@ -180,9 +180,9 @@ cd ~/mori-universe/yaze-journal && git add -A && git commit -m "memory: ..." && 
 
 Claude Code 有 hook 機制，理論上可以設 SessionStart hook 自動 `git pull`。目前先採手動 pull 的理由：
 
-1. **先驗證 symlink 同步本身的正確性**——symlink 失敗時錯誤要明顯，不該被 hook 包起來
-2. **避免 hook 失敗 silently 導致 stale memory**——若 hook 因網路斷線跑不起來，最好立刻感知，而非默默用舊 memory
-3. **手動 pull 是「切換 context」的明確儀式**——換機器時手動跑一次 `git pull` 可同時驗證網路與權限狀態
+1. **先驗證 symlink 同步本身的正確性**：symlink 失敗時錯誤要明顯，不該被 hook 包起來
+2. **避免 hook 失敗 silently 導致 stale memory**：若 hook 因網路斷線跑不起來，最好立刻感知，而非默默用舊 memory
+3. **手動 pull 是「切換 context」的明確儀式**：換機器時手動跑一次 `git pull` 可同時驗證網路與權限狀態
 
 等手動 workflow 穩定後可以升級為 SessionStart hook。
 
@@ -253,12 +253,12 @@ annuli 處理「召喚師與 Mori 之間的對話歷史」；yaze-journal 處理
 
 ## 幾個設計觀察
 
-- **AI agent 的關係不該不對稱**——Mori 有 vault，召喚師也得有
-- **跨設備 dev 工作需要中央同步點**——symlink + git private repo 是輕量級解法
-- **Manual pull 在 workflow 初期勝過自動 hook**——讓「換 context」是有意識的儀式，且失敗顯著
-- **memories 結構化分類**（user / feedback / project / reference）比 flat notes 好用——對應「我是誰 / 我的偏好 / 我在做什麼 / 我參考什麼」
+- **AI agent 的關係不該不對稱**：Mori 有 vault，召喚師也得有
+- **跨設備 dev 工作需要中央同步點**：symlink + git private repo 是輕量級解法
+- **Manual pull 在 workflow 初期勝過自動 hook**：讓「換 context」是有意識的儀式，且失敗顯著
+- **memories 結構化分類**（user / feedback / project / reference）比 flat notes 好用，對應「我是誰 / 我的偏好 / 我在做什麼 / 我參考什麼」
 - **dev-gotchas.md 的四欄結構**（症狀 / 根本原因 / 修法 / 為什麼本機沒撞）讓另一台機器或日後的自己能立刻接上 context
-- **邊界規矩寫在自己這邊**——不要在對方的 vault 裡規定他不能做什麼，自我約束寫在自己的反射層
+- **邊界規矩寫在自己這邊**：不要在對方的 vault 裡規定他不能做什麼，自我約束寫在自己的反射層
 
 ---
 

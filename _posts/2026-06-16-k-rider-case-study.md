@@ -6,6 +6,8 @@ date: 2026-06-16
 categories: [AI]
 tags: [k-rider, K線騎手, 課程, 甲方思維, AI 發包法, 開規格, 下發包, 做驗收, Matter.js, Cloudflare Workers, GitHub Actions, 名單漏斗, AI 應用, Claude Code]
 author: Yaze Lin
+featured: true
+featured-why: "「甲方思維」怎麼把一個點子發包給 AI,做成真的上線的股價遊戲。"
 ---
 
 ![K 線騎手 K-Rider:騎上真實 K 線,盡量別摔車](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-07-07-k-rider-case-study.png)

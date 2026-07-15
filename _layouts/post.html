@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="post container">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="section-lead" style="text-align:left">{{ page.subtitle }}</p>{% endif %}
+    <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}{% if page.author %} · {{ page.author }}{% endif %}</p>
+  </header>
+
+  {{ content }}
+
+  {% if page.tags.size > 0 %}
+  <div class="post-tags">
+    {% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag }}">{{ tag }}</a>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% assign related = "" | split: "" %}
+  {% for p in site.posts %}
+    {% if p.url != page.url and related.size < 3 %}
+      {% assign common = p.tags | where_exp: "t", "page.tags contains t" %}
+      {% if common.size > 0 %}{% assign related = related | push: p %}{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if related.size > 0 %}
+  <aside class="related">
+    <h2>相關文章</h2>
+    <ul>{% for p in related %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
+  </aside>
+  {% endif %}
+
+  <div class="related">{% include signup-form.html source="post" %}</div>
+  {% include giscus.html %}
+</article>

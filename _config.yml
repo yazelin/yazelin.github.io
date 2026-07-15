@@ -1,28 +1,7 @@
-# Beautiful Jekyll 設定
-remote_theme: daattali/beautiful-jekyll@6.0.1
-
 # 網站基本資訊
 title: Yaze
 author: Yaze
 description: Software Developer from Taiwan
-
-# 頭像設定
-avatar: "https://avatars1.githubusercontent.com/u/6235553?s=460&v=4"
-round-avatar: true
-
-# 導航列連結
-navbar-links:
-  About: "about"
-  Workshop: "workshop"
-  Portfolio: "portfolio"
-  Projects:
-    - 咏唱魔法(語音遊戲): "/index/2026/07/08/ai-chant-magic-index.html"
-    - ChingTech OS(企業系統): "/index/2025/12/13/ching-tech-os-index.html"
-    - 呷爸 Jaba(訂便當 Bot): "/index/2025/12/19/jaba-ai-index.html"
-    - 魚苗計數系統: "/projects/2025/11/27/fish-cv.html"
-    - AnalyzerUI(氣體檢測): "/projects/2025/01/08/AnalyzerUI.html"
-    - 擎添工業官網: "https://ching-tech.com/"
-  Tags: "tags"
 
 # 社群連結（顯示在頁尾）
 social-network-links:
@@ -30,18 +9,10 @@ social-network-links:
   github: yazelin
   youtube: "@yazelin"
 
-# 分享按鈕
-share-links-active:
-  twitter: true
-  facebook: true
-  linkedin: true
-
 # 文章設定
 future: true
-excerpt_length: 100
 feed_show_excerpt: true
 feed_show_tags: true
-post_search: true
 
 # 網站網址
 url: "https://yazelin.github.io"
@@ -63,6 +34,20 @@ plugins:
 
 # 分頁設定
 paginate: 10
+paginate_path: "/blog/page:num/"
+
+# 導航列
+navbar:
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
+  - title: Portfolio
+    url: /portfolio/
+  - title: Workshop
+    url: /workshop/
+  - title: Tags
+    url: /tags/
 
 # 預設值設定 - 讓所有文章都啟用評論
 defaults:

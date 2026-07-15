@@ -18,7 +18,7 @@ tags: [ChatGPT, Codex CLI, FastAPI, Docker, Image Generation, Self-hosted, Homel
 
 ## 這個服務是什麼
 
-`codex-image-service` 是一個 **FastAPI 包在 Codex CLI 的 `$imagegen` 工具外面**的小服務。掛在 homelab 裡，發 bearer API key 給內部 script、CI job、各種 side project，讓它們**共享同一個 ChatGPT 訂閱的 image-gen 額度**——透過一個乾淨的 HTTP endpoint，而不是每個 caller 各自 shell 進 host 或燒各自的 OpenAI Images API 額度。
+`codex-image-service` 是一個 **FastAPI 包在 Codex CLI 的 `$imagegen` 工具外面**的小服務。掛在 homelab 裡，發 bearer API key 給內部 script、CI job、各種 side project，讓它們**共享同一個 ChatGPT 訂閱的 image-gen 額度**，透過一個乾淨的 HTTP endpoint，而不是每個 caller 各自 shell 進 host 或燒各自的 OpenAI Images API 額度。
 
 ### 後台長什麼樣（19 秒實機操作）
 
@@ -46,13 +46,13 @@ tags: [ChatGPT, Codex CLI, FastAPI, Docker, Image Generation, Self-hosted, Homel
 
 ## 為什麼需要這個服務
 
-[昨天的 codex-imagegen-skill]({% post_url 2026-05-19-claude-codex-imagegen %}) 處理的是「**個人本機**生圖」——你坐在 Claude Code 前面、想生圖、skill 跑一下、PNG 落地。一個人一台機器一次一張，沒問題。
+[昨天的 codex-imagegen-skill]({% post_url 2026-05-19-claude-codex-imagegen %}) 處理的是「**個人本機**生圖」：你坐在 Claude Code 前面、想生圖、skill 跑一下、PNG 落地。一個人一台機器一次一張，沒問題。
 
 但接下來這些情境 skill 模式應付不來：
 
-- **多個 script / CI job 都想生圖**——它們不會坐在 Claude Code 前面、不能交互式跑
-- **跨機器的工具想用**——例如 GitHub Actions runner、家用 NAS 上的小工具
-- **想集中管理 quota**——所有 caller 共用一個訂閱，希望知道誰用了多少、哪些 prompt 失敗了
+- **多個 script / CI job 都想生圖**，它們不會坐在 Claude Code 前面、不能交互式跑
+- **跨機器的工具想用**，例如 GitHub Actions runner、家用 NAS 上的小工具
+- **想集中管理 quota**：所有 caller 共用一個訂閱，希望知道誰用了多少、哪些 prompt 失敗了
 
 這就是 codex-image-service 解決的場景：**把 `$imagegen` 從本機 shell 拉到 HTTP 服務**。掛在 homelab、給每個 caller 一把 bearer key、所有 request 都記在 SQLite history、定期自動清過期檔案。
 
@@ -174,10 +174,10 @@ codex-image-service/
 
 幾個比較關鍵的子模組：
 
-- **`app/services/codex_image.py`**——核心。呼叫 codex 子進程、從 stderr 抓 `session id: <uuid>`、到 `$CODEX_HOME/generated_images/<session_id>/` 撈 PNG / JPG / WebP。和 [skill 那邊]({% post_url 2026-05-19-claude-codex-imagegen %}) 概念一樣，但用 Python `asyncio.subprocess` + 結構化的 dataclass 包起來。
-- **`app/services/job_queue.py`**——asyncio queue + 多 worker。requests 進 queue，worker 排隊跑 `codex exec`。並發數靠 `CODEX_WORKER_CONCURRENCY` 控（預設 2）。
-- **`app/services/cleanup.py`**——startup + 定期掃 SQLite，把過期 row 對應的 PNG 跟 workdir 刪掉、row 標 `expired`。
-- **`app/security.py`**——API key 進 DB 時 sha256 hash、原始值只在發 key 那一刻回傳一次。admin session 走 HMAC-signed cookie。
+- **`app/services/codex_image.py`**：核心。呼叫 codex 子進程、從 stderr 抓 `session id: <uuid>`、到 `$CODEX_HOME/generated_images/<session_id>/` 撈 PNG / JPG / WebP。和 [skill 那邊]({% post_url 2026-05-19-claude-codex-imagegen %}) 概念一樣，但用 Python `asyncio.subprocess` + 結構化的 dataclass 包起來。
+- **`app/services/job_queue.py`**：asyncio queue + 多 worker。requests 進 queue，worker 排隊跑 `codex exec`。並發數靠 `CODEX_WORKER_CONCURRENCY` 控（預設 2）。
+- **`app/services/cleanup.py`**：startup + 定期掃 SQLite，把過期 row 對應的 PNG 跟 workdir 刪掉、row 標 `expired`。
+- **`app/security.py`**：API key 進 DB 時 sha256 hash、原始值只在發 key 那一刻回傳一次。admin session 走 HMAC-signed cookie。
 
 ---
 
@@ -265,7 +265,7 @@ Request 進來會先進內部 queue，背景 worker 跑 `codex exec`。HTTP requ
 
 admin 也可以從 dashboard 觸發即時 cleanup 或逐筆 delete。
 
-> ⚠️ **Foreign key gotcha**：今天踩到一個雷，刪 API key 時報 500——`connect()` 會跑 `PRAGMA foreign_keys=ON`，所以直接 DELETE api_key row 會因為 history 表還參考它而失敗。修法是 history 的 row 要先 unlink 才能刪 key（commit `6ea829f`）。
+> ⚠️ **Foreign key gotcha**：今天踩到一個雷，刪 API key 時報 500。`connect()` 會跑 `PRAGMA foreign_keys=ON`，所以直接 DELETE api_key row 會因為 history 表還參考它而失敗。修法是 history 的 row 要先 unlink 才能刪 key（commit `6ea829f`）。
 
 ---
 
@@ -280,7 +280,7 @@ admin 也可以從 dashboard 觸發即時 cleanup 或逐筆 delete。
 }
 ```
 
-帶上之後 codex 進 image edit 模式——用 reference image 當 visual seed 而不是純文字 prompt 生成。底層的 `image_gen` 工具在 edit mode 有時會跳過 follow-up copy 步驟，所以 `codex_image.py` 自己用 stderr 的 session id 撈檔（這就是為什麼程式碼裡有 `_find_generated_in_session()` 這個函式）：
+帶上之後 codex 進 image edit 模式，用 reference image 當 visual seed 而不是純文字 prompt 生成。底層的 `image_gen` 工具在 edit mode 有時會跳過 follow-up copy 步驟，所以 `codex_image.py` 自己用 stderr 的 session id 撈檔（這就是為什麼程式碼裡有 `_find_generated_in_session()` 這個函式）：
 
 ```python
 _SESSION_ID_RE = re.compile(r"^session id:\s*([0-9a-fA-F-]+)\s*$", re.MULTILINE)
@@ -351,11 +351,11 @@ def _find_generated_in_session(stderr: str) -> Path | None:
 
 **不適合**：
 
-- **服務終端使用者的 production app**——LINE bot、SaaS、面向客戶的 web app 都不該用個人 ChatGPT 訂閱 quota，請用 OpenAI Images API + 真 API key
-- **需要 SLA、有 audit log 要求、需要 per-tenant rate limit** 的情境——這個服務沒這些東西
-- **想完全 air-gapped 跑**——還是要 codex CLI 連 OpenAI，不是離線方案
+- **服務終端使用者的 production app**：LINE bot、SaaS、面向客戶的 web app 都不該用個人 ChatGPT 訂閱 quota，請用 OpenAI Images API + 真 API key
+- **需要 SLA、有 audit log 要求、需要 per-tenant rate limit** 的情境，這個服務沒這些東西
+- **想完全 air-gapped 跑**：還是要 codex CLI 連 OpenAI，不是離線方案
 
-簡單講：**個人 / 內部 / homelab**——OK；**對外服務終端使用者**——換成 OpenAI Images API 比較對。
+簡單講：**個人 / 內部 / homelab**——OK；**對外服務終端使用者**，換成 OpenAI Images API 比較對。
 
 ---
 
@@ -365,4 +365,4 @@ def _find_generated_in_session(stderr: str) -> Path | None:
 - **Polished guide**：[yazelin.github.io/codex-image-service](https://yazelin.github.io/codex-image-service/)（含 Python / GitHub Actions 範例）
 - **繁中介紹頁**：[yazelin.github.io/codex-image-service/zh-tw.html](https://yazelin.github.io/codex-image-service/zh-tw.html)
 - **License**：MIT
-- **前一篇相關**：[把 Codex 的 $imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})——個人本機版本，這篇是 HTTP 服務版本
+- **前一篇相關**：[把 Codex 的 $imagegen 包成 Claude Code skill]({% post_url 2026-05-19-claude-codex-imagegen %})（個人本機版本，這篇是 HTTP 服務版本）
