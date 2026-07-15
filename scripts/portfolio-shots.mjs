@@ -25,6 +25,9 @@ const shots = [
   ['wish-pool', 'https://yazelin.github.io/wish-pool/'],
   ['sticker-studio', 'https://yazelin.github.io/line-sticker-studio/'],
   ['ipas-quiz', 'https://yazelin.github.io/ipas-ai-quiz/'],
+  ['ai-font-styles', 'https://yazelin.github.io/ai-font-styles/'],
+  ['md2ppt', 'https://yazelin.github.io/MD2PPT-Evolution/'],
+  ['catime', 'https://yazelin.github.io/catime/'],
 ];
 
 // 常見的「先按掉再截」選擇器（cookie/說明彈窗/開始畫面按鈕）
