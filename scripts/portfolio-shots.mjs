@@ -21,6 +21,7 @@ const shots = [
   ['taigi', 'https://yazelin.github.io/mandarin-taigi/'],
   ['sprite-studio', 'https://yazelin.github.io/mori-sprite-studio/'],
   ['red-cliffs', 'https://yazelin.github.io/red-cliffs-3d/'],
+  ['battlefield-editor', 'https://yazelin.github.io/battlefield-editor/'],
   ['wish-pool', 'https://yazelin.github.io/wish-pool/'],
   ['sticker-studio', 'https://yazelin.github.io/line-sticker-studio/'],
   ['ipas-quiz', 'https://yazelin.github.io/ipas-ai-quiz/'],
