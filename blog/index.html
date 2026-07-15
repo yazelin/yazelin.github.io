@@ -1,0 +1,23 @@
+---
+layout: default
+title: Blog
+---
+<div class="container">
+  <h1>Blog</h1>
+  <input id="blog-search" type="search" placeholder="搜尋文章標題或 tag…" autocomplete="off">
+  <ul class="post-list" id="post-list">
+    {% for post in paginator.posts %}
+    <li>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      {% if post.subtitle %}<p class="excerpt">{{ post.subtitle | truncate: 120 }}</p>{% endif %}
+      <p class="meta">{{ post.date | date: "%Y-%m-%d" }}{% if post.tags.size > 0 %} · {{ post.tags | join: ", " | truncate: 60 }}{% endif %}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <ul class="post-list" id="search-results" hidden></ul>
+  <nav class="pagination">
+    {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← 較新文章</a>{% else %}<span></span>{% endif %}
+    {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">較舊文章 →</a>{% endif %}
+  </nav>
+</div>
+<script src="{{ '/assets/js/blog-search.js' | relative_url }}"></script>
