@@ -45,7 +45,7 @@ permalink: /about/
 
 上面說的好奇心，落到專案上就是挑還不太會的東西來做：想研究 FK/IK，就用 Unity 寫個機器人模擬器；想玩 ROS2 生態系，就拿 AGV 車隊管理來試。
 
-有了 AI 之後範圍更亂。像許願池的誕生現場，是 LINE C# 社群裡的這段對話：
+有了 AI 之後，隨時的靈感就可以開工。像許願池的誕生現場，是 LINE C# 社群裡的這段對話：
 
 <div class="line-chat">
   <div class="msg">
