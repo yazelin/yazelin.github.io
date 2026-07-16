@@ -53,7 +53,11 @@ permalink: /about/
     <div class="mbody"><span class="who">中年攻城屍</span><p>現在有AI 是有點想做side project 只是不知道要做什麼</p><span class="time">下午3:42</span></div>
   </div>
   <div class="skip"><span>⋯⋯大家熱烈討論(略)⋯⋯</span></div>
-  <div class="msg me"><p>可以做一個許願池發社群上給大家許願</p></div>
+  <div class="msg">
+    <img class="av" src="{{ '/images/about/line-av-lsa.png' | relative_url }}" alt="">
+    <div class="mbody"><span class="who">LSa</span><p><span class="q"><strong>中年攻城屍</strong>現在有AI 是有點想做side project 只是不知道要做什麼</span>~寫個sideproject 幫你想做甚麼sideproject~</p><span class="time">下午4:04</span></div>
+  </div>
+  <div class="msg me"><span class="time">下午4:06</span> <p><span class="q"><strong>LSa</strong>~寫個sideproject 幫你想做甚麼sideproject~</span>做一個許願池發社群上給大家許願</p></div>
   <div class="msg">
     <img class="av" src="{{ '/images/about/line-av-bai.png' | relative_url }}" alt="">
     <div class="mbody"><span class="who">小白++ 愛瓜 吃瓜 好吃瓜</span><p>欸 好耶</p><span class="time">下午4:06</span></div>
