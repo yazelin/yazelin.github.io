@@ -85,6 +85,14 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 .featured-list .why { color: var(--muted); font-size: 0.9rem; margin: 0.15rem 0 0; }
 
 /* signup */
+/* LINE 風對話框(About 許願池誕生現場) */
+.line-chat { background: #7d9bc1; border-radius: 12px; padding: 1rem 1rem 0.5rem; max-width: 26rem; margin: 1.5rem 0; }
+.line-chat .who { display: block; font-size: 0.75rem; color: #eef3f9; margin: 0 0 0.15rem 0.3rem; }
+.line-chat .msg { margin-bottom: 0.6rem; }
+.line-chat .msg p { display: inline-block; background: #fff; border-radius: 14px; padding: 0.4rem 0.8rem; margin: 0; max-width: 85%; font-size: 0.9rem; line-height: 1.5; color: #1c1917; text-align: left; }
+.line-chat .msg.me { text-align: right; }
+.line-chat .msg.me p { background: #8de055; }
+
 .signup { max-width: 30rem; margin: 0 auto; text-align: center; }
 .signup h2 { font-size: 1.25rem; }
 .signup form { display: flex; gap: 0.5rem; margin-top: 1rem; }
