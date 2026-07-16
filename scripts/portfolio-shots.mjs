@@ -15,6 +15,7 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = path.join(SCRIPT_DIR, '..', 'images', 'portfolio');
 
 const shots = [
+  ['line-chat-maker', 'https://yazelin.github.io/line-chat-maker/'],
   ['ai-chant-magic', 'https://yazelin.github.io/ai-chant-magic/'],
   ['k-rider', 'https://yazelin.github.io/k-rider/'],
   ['roll-formosa', 'https://yazelin.github.io/roll-formosa/'],
