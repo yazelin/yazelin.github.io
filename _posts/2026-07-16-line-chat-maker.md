@@ -64,13 +64,15 @@ author: Yaze Lin
 .lcm-embed .phone-backlight{ position: absolute; inset: -130px; z-index: 0; filter: blur(60px); pointer-events: none; }
 .lcm-embed .phone{ width: 100%; max-width: 24rem; position: relative; }
 .lcm-embed .phone .screen{ overflow: hidden; display: flex; flex-direction: column; }
-.lcm-embed .phone.level-screen .screen{ border-radius: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.lcm-embed .phone.level-chat .screen,.lcm-embed .phone.level-screen .screen{ border-radius: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
 .lcm-embed .phone.level-chat [data-ui],.lcm-embed .phone.level-chat [data-hw],.lcm-embed .phone.level-screen [data-hw]{ display: none; }
+.lcm-embed .phone.level-phone{ background: #1a1a1e; border-radius: 40px; padding: 8px; box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08) inset; }
 .lcm-embed .phone .notch{ position: absolute; left: 50%; transform: translateX(-50%); background: #0a0a0c; z-index: 3; }
 .lcm-embed .phone .notch.island{ top: 17px; width: 78px; height: 20px; border-radius: 11px; }
 .lcm-embed .phone .notch.notch{ top: 8px; width: 132px; height: 24px; border-radius: 0 0 16px 16px; }
 .lcm-embed .phone .notch.punch{ top: 15px; width: 13px; height: 13px; border-radius: 50%; }
 .lcm-embed .phone .notch.none{ display: none; }
+.lcm-embed .phone .sbtn{ position: absolute; width: 3px; background: #2a2a30; border-radius: 2px; }
 .lcm-embed .phone .sbtn.vol1{ left: -3px; top: 18%; height: 34px; }
 .lcm-embed .phone .sbtn.vol2{ left: -3px; top: calc(18% + 44px); height: 34px; }
 .lcm-embed .phone .sbtn.pwr{ right: -3px; top: 24%; height: 52px; }
@@ -87,6 +89,7 @@ author: Yaze Lin
 .lcm-embed .inputbar{ display: flex; align-items: center; gap: 0.6rem; background: #fff; padding: 0.4rem 0.8rem 0.3rem; color: #555; }
 .lcm-embed .inputbar .plus{ font-size: 1.1rem; color: #8a8a8a; }
 .lcm-embed .inputbar .fakein{ flex: 1; background: #f1f0ee; border-radius: 999px; padding: 0.2rem 0.8rem; color: #999; }
+.lcm-embed .line-chat{ background: #7d9bc1; padding: 1rem 1rem 0.5rem; min-height: 14rem; }
 .lcm-embed .line-chat .who{ display: block; font-size: 0.75rem; color: #eef3f9; margin: 0 0 0.15rem 0.3rem; }
 .lcm-embed .line-chat .msg{ position: relative; display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.6rem; }
 .lcm-embed .line-chat .av{ width: 36px; height: 36px; border-radius: 50%; flex: none; margin-top: 2px; cursor: pointer; background: #cfd8e3; object-fit: cover; }
@@ -102,7 +105,9 @@ author: Yaze Lin
 .lcm-embed .line-chat .skip,.lcm-embed .line-chat .date{ position: relative; text-align: center; margin: 0.7rem 0; }
 .lcm-embed .line-chat .skip span,.lcm-embed .line-chat .date span{ display: inline-block; font-size: 0.72rem; color: #f0f4f9; background: rgba(0,0,0,0.18); border-radius: 999px; padding: 0.12rem 0.8rem; }
 .lcm-embed .line-chat .btxt:hover{ outline: 1px dashed rgba(0,0,0,0.3); }
+.lcm-embed .phone.fixedh .line-chat{ flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
 .lcm-embed .phone.fixedh .line-chat::-webkit-scrollbar{ display: none; }
+.lcm-embed .line-chat .imgmsg{ display: inline-block; border-radius: 14px; overflow: hidden; max-width: 70%; cursor: pointer; }
 .lcm-embed .line-chat .imgmsg img{ display: block; width: 100%; }
 .lcm-embed .line-chat .sticker{ display: inline-block; width: 120px; cursor: pointer; }
 .lcm-embed .line-chat .sticker img{ display: block; width: 100%; }
@@ -114,8 +119,10 @@ author: Yaze Lin
 .lcm-embed .line-chat .file .fmeta{ display: flex; flex-direction: column; }
 .lcm-embed .line-chat .file .fname{ font-size: 0.88rem; }
 .lcm-embed .line-chat .file .fsize{ font-size: 0.7rem; color: #8a8a8a; }
+.lcm-embed .inputbar .fakein:empty::before{ content: attr(data-ph); color: #999; }
 .lcm-embed .inputbar .fakein{ color: #333; outline: none; }
 .lcm-embed .line-chat .appear{ animation: lcmIn 0.3s ease-out; }
+.lcm-embed .announce{ display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.92); padding: 0.3rem 0.7rem; font-size: 0.75rem; color: #555; border-bottom: 1px solid rgba(0,0,0,0.06); }
 .lcm-embed .announce #announce-text{ flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; outline: none; }
 .lcm-embed .announce .achev{ color: #999; }
 @keyframes lcmIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
