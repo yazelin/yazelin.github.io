@@ -6,7 +6,7 @@ permalink: /portfolio/
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)
 
-我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力。我把做系統整合的老流程原封不動搬過來用在 AI 身上：開規格、下發包、做驗收，一個人同時推進 30+ 個活躍專案。除了 Mori Desktop 是桌面程式，以下都可以直接點開用：
+我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力。做了十幾年系統整合的乙方，現在換邊當甲方，把當年業主跟我合作的方式拿來用在 AI 身上：開規格、下發包、做驗收，一個人同時推進 30+ 個活躍專案。除了 Mori Desktop 是桌面程式，以下都可以直接點開用：
 
 **個人 AI 生態 Mori universe**
 - [Mori Desktop](https://github.com/yazelin/mori-desktop)：Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要，加上耳朵（mori-ear）、喚醒詞（hey-mori）、白板（mori-canvas）等身體部件的 multi-repo 生態
