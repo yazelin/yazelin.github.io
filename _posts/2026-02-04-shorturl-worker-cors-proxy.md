@@ -11,7 +11,7 @@ tags: [Cloudflare Workers, CORS, Proxy, GitHub, Serverless]
 
 ## 前言
 
-在前一篇文章中，我們介紹了如何用 Cloudflare Workers 架設一個短網址服務。但隨著專案的演進，這個 Worker 不只做短網址了 -- 它逐漸長成一個「瑞士刀」級別的邊緣代理服務。
+在前一篇文章中，我們介紹了如何用 Cloudflare Workers 架設一個短網址服務。但隨著專案的演進，這個 Worker 不只做短網址了 -- 它逐漸變成一個「瑞士刀」級別的邊緣代理服務。
 
 起因很簡單：在開發 [GitHub Release 圖床]({% post_url 2026-02-04-image-bed-github-release %})時，前端直接呼叫 GitHub API 會被瀏覽器的 CORS 政策擋下來。GitHub 的上傳端點 `uploads.github.com` 不回傳 `Access-Control-Allow-Origin` header，瀏覽器就直接拒絕了。
 

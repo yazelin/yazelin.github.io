@@ -11,7 +11,7 @@ tags: [AI, GitHub Pages, Frontend, JavaScript, catime]
 
 ## 前言
 
-[catime](https://github.com/yazelin/catime) 是一個每小時自動生成 AI 貓咪圖片的專案，靠 GitHub Actions cron 排程 + Gemini 圖片生成，每天會長出大約 20 隻新貓咪。專案跑了幾天之後，catlist.json 裡面就累積了好幾十筆紀錄，光靠 CLI 一隻隻看實在不夠過癮。
+[catime](https://github.com/yazelin/catime) 是一個每小時自動生成 AI 貓咪圖片的專案，靠 GitHub Actions cron 排程 + Gemini 圖片生成，每天會多出大約 20 隻新貓咪。專案跑了幾天之後，catlist.json 裡面就累積了好幾十筆紀錄，光靠 CLI 一隻隻看實在不夠過癮。
 
 於是我決定幫這些貓咪蓋一座展覽館 — 一個部署在 GitHub Pages 上的靜態網頁，用瀑布流的方式把所有貓咪排排站好，還要加上篩選、日期選擇器、lightbox 預覽這些功能。既然是貓咪畫廊，當然要走 **kawaii** 路線：粉紅色系、圓角、漸層，越可愛越好。
 

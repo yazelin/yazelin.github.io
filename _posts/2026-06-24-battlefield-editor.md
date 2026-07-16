@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "從一張赤壁,長成一台戰場引擎 —— 換一份資料就換一場戰役"
+title: "從一張赤壁,到一台戰場引擎 —— 換一份資料就換一場戰役"
 subtitle: "用一段 prompt 做完赤壁 3D 戰場後,把裡面的地形、單位、分鏡、特效抽出來,變成一台引擎:一場戰役 = 一份 JSON 資料,引擎只負責演出,AI 編資料、機器把關、人驗收。目前 6 場,從官渡的陸戰到水淹七軍的水攻,還跨出三國,到楚漢垓下、秦晉淝水。"
 date: 2026-06-24
 categories: [AI, 實驗]
@@ -22,7 +22,7 @@ author: Yaze Lin
 
 核心契約只有一句:**一場戰役是一份 JSON package,引擎只負責「載入 + 演出」。** 一份 package 把一場戰役拆成幾層資料——陣營、地形、建築、單位、分鏡(每一幕誰在哪、往哪移動、發生什麼事)、音訊。引擎讀這份資料,把 3D 場景、運鏡、字幕、音效全演出來。
 
-所以「再加一場官渡」不是改程式,是寫一份新的 `packages/guandu/battlefield.json`。線上的戰役列表也是讀 `packages/` 自動長出來的:
+所以「再加一場官渡」不是改程式,是寫一份新的 `packages/guandu/battlefield.json`。線上的戰役列表也是讀 `packages/` 自動產生的:
 
 ```
 play.html?pkg=packages/guandu/battlefield.json   # 換這個參數就換一場戰役
