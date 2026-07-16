@@ -6,27 +6,31 @@ permalink: /portfolio/
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)
 
-我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力——產出也跟著爆發。我用 AI 編碼代理（Claude Code / Codex）跑「開規格、下發包、做驗收」的流程，一個人同時推進 30+ 個活躍專案。以下全部可以直接線上體驗：
+我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力。我把做系統整合的老流程原封不動搬過來用在 AI 身上：開規格、下發包、做驗收，一個人同時推進 30+ 個活躍專案。除了 Mori Desktop 是桌面程式，以下都可以直接點開用：
 
 **個人 AI 生態 Mori universe**
 - [Mori Desktop](https://github.com/yazelin/mori-desktop)：Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要，加上耳朵（mori-ear）、喚醒詞（hey-mori）、白板（mori-canvas）等身體部件的 multi-repo 生態
 
 **網頁遊戲與 3D**
-- [AI 戰場編輯器](https://yazelin.github.io/battlefield-editor/)：資料驅動的單檔 3D 戰場引擎，每場歷史戰役是一份 package（內建六場）
-- [赤壁之戰 208](https://yazelin.github.io/red-cliffs-3d/)：單一 HTML + Three.js 的全 3D 電影式重現
+- [AI 戰場編輯器](https://yazelin.github.io/battlefield-editor/)：資料驅動的單檔 3D 戰場引擎，每場歷史戰役是一份 package（內建六場，含赤壁）
+- [赤壁之戰 3D](https://yazelin.github.io/red-cliffs-3d/)：單一 HTML + Three.js 的全 3D 電影式重現
 - [滾・福爾摩沙](https://yazelin.github.io/roll-formosa/)：台灣風味 Katamari，從圖釘滾到台北 101
 - [真.AI.咏唱魔法](https://yazelin.github.io/ai-chant-magic/)：對麥克風喊出法術名稱即時施法，四個原作世界、元素反應連段、2-4 人共鳴詠唱（[系列目錄]({% post_url 2026-07-06-ai-chant-magic-index %})）
 - [K 線騎手](https://yazelin.github.io/k-rider/)：騎機車衝真實股價 K 線
 
 **線上服務與工具**
-- [iPAS AI 模擬考](https://yazelin.github.io/ipas-ai-quiz/)：611 題歷屆考古題，純前端 + Cloudflare 同步
+- [台語辭典](https://yazelin.github.io/mandarin-taigi/)＋[客語辭典](https://yazelin.github.io/mandarin-hakka/)：朋友一句「怎麼沒有台語的？」，兩天長出兩本教育部資料的離線辭典
+- [iPAS AI 模擬考](https://yazelin.github.io/ipas-ai-quiz/)：790 題歷屆考古題，純前端 + Cloudflare 同步
 - [AI 社團許願池](https://yazelin.github.io/wish-pool/)：AI 對話引導 + 協作公開牆，伺服器簽章防繞過
-- [LINE 貼圖工房](https://yazelin.github.io/line-sticker-studio/)：一張圖生成 8 張可上架的 LINE 貼圖
+- [LINE 貼圖製造機](https://yazelin.github.io/line-sticker-studio/)：上傳一張角色圖，AI 產出一整組可上架的 LINE 貼圖，長成含素材庫、組包出貨的小工作室
+- [Mori Sprite Studio](https://yazelin.github.io/sprite-studio/)：一張角色圖生成整包透明背景動畫 sprite
+- [Catime](https://yazelin.github.io/catime/)：每小時自動生一隻 AI 貓，已累積 2300+ 隻
+- [AI 生圖字體風格庫](https://yazelin.github.io/ai-font-styles/)：上百種字體風格提示詞，每天自動多一種
 - [行銷頁健檢器](https://yazelin.github.io/marketing-page-checker/)：貼網址自動檢查 OG/SEO/CTA/速度
 - [紅海釣具 fishtool.tw](https://fishtool-tw.vercel.app/)：把 IIS + Classic ASP 老站重建成 Astro v5，2 萬+ 商品
 
 **AI 課程與自架基礎設施**
-- AI 線上課程：「AI 互動行銷頁課」「目標九宮格課」，從課綱、demo、行銷頁到金流後端完整自建
+- AI 線上課程（互動行銷頁課、目標九宮格課）：課綱、demo、行銷頁、金流後端全部自己做
 - [gemini-web](https://github.com/yazelin/gemini-web) + [codex-image-service](https://github.com/yazelin/codex-image-service)：自架圖像生成服務，多個產品共用的內部 infra
 
 ---
