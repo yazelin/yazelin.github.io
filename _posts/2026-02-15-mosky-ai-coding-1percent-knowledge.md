@@ -92,7 +92,7 @@ Takeaways:
 - 把日誌與最小可重現程式片段貼給 AI 做初步 triage，並納入測試流程。
 - 公司應指定工程師支援小組，從規劃到部署共同協作。
 
-相關資源:
+相關資源：
 - 訪談影片： https://youtu.be/n3wZiJcOcRk
 - 提到的工具：GPT、Puppeteer、Playwright、Google Apps Script、Jest、Prometheus/Grafana
 

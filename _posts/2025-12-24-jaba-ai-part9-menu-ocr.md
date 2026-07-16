@@ -189,7 +189,7 @@ DEFAULT_PROMPTS = {
         {
           "id": "item-1",
           "name": "品項名稱",
-          "price": 數字價格,
+          "price": 數字價格，
           "variants": [{"name": "M", "price": 50}, {"name": "L", "price": 60}],
           "description": "描述（如有）",
           "available": true,
