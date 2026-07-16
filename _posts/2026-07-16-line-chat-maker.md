@@ -58,7 +58,7 @@ author: Yaze Lin
 <script>(function(){var s=document.currentScript,r=s.closest('.lcm-embed');s.remove();var c=r.querySelector('.line-chat');function bottom(){if(c)c.scrollTop=c.scrollHeight}bottom();})();</script>
 </div>
 <style>
-.lcm-embed *{margin:0;padding:0;border:0;box-sizing:border-box;background:none;font:inherit;color:inherit;}
+.lcm-embed *{margin:0;padding:0;border:0;border-radius:0;box-shadow:none;box-sizing:border-box;background:none;font:inherit;color:inherit;}
 .lcm-embed .phone-wrap{ position: relative; width: 100%; max-width: 24rem; }
 .lcm-embed .phone-wrap .phone{ position: relative; z-index: 1; }
 .lcm-embed .phone-backlight{ position: absolute; inset: -130px; z-index: 0; filter: blur(60px); pointer-events: none; }
@@ -142,7 +142,7 @@ author: Yaze Lin
 
 ## 一個晚上,幾十輪驗收
 
-流程還是那套[甲方思維]({% post_url 2026-07-07-wish-pool %}):我開規格、下發包、做驗收,程式是 AI 寫的。第一版半小時就能用,剩下的整個晚上都在當一個囉唆的甲方:
+流程還是那套[甲方思維]({% post_url 2026-06-16-k-rider-case-study %}):我開規格、下發包、做驗收,程式是 AI 寫的。第一版半小時就能用,剩下的整個晚上都在當一個囉唆的甲方:
 
 - 手機不像,參考我們家官網的樣機重做:瀏海、動態島、挖孔、滿版四種鏡頭,螢幕圓角、側邊按鈕、手勢條全部可調(每個人的手機長得不一樣,示意圖要像「你的手機」才行)
 - 狀態列的電量數字應該在電池旁邊,不是 WiFi 左邊
