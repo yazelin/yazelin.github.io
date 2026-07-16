@@ -52,6 +52,7 @@ permalink: /about/
     <img class="av" src="{{ '/images/about/line-av-gong.png' | relative_url }}" alt="">
     <div class="mbody"><span class="who">中年攻城屍</span><p>現在有AI 是有點想做side project 只是不知道要做什麼</p><span class="time">下午3:42</span></div>
   </div>
+  <div class="skip"><span>⋯⋯大家熱烈討論(略)⋯⋯</span></div>
   <div class="msg me"><p>可以做一個許願池發社群上給大家許願</p></div>
   <div class="msg">
     <img class="av" src="{{ '/images/about/line-av-bai.png' | relative_url }}" alt="">
