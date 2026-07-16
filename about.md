@@ -48,9 +48,17 @@ permalink: /about/
 有了 AI 之後範圍更亂。像許願池的誕生現場，是 LINE C# 社群裡的這段對話：
 
 <div class="line-chat">
-  <div class="msg"><span class="who">中年攻城屍</span><p>現在有 AI 是有點想做 side project 只是不知道要做什麼</p></div>
+  <div class="msg">
+    <img class="av" src="{{ '/images/about/line-av-gong.png' | relative_url }}" alt="">
+    <div class="mbody"><span class="who">中年攻城屍</span><p>現在有AI 是有點想做side project 只是不知道要做什麼</p><span class="time">下午3:42</span></div>
+  </div>
   <div class="msg me"><p>可以做一個許願池發社群上給大家許願</p></div>
-  <div class="msg"><span class="who">小白++</span><p>許願池side project 自動由ai寫</p></div>
+  <div class="msg">
+    <img class="av" src="{{ '/images/about/line-av-bai.png' | relative_url }}" alt="">
+    <div class="mbody"><span class="who">小白++ 愛瓜 吃瓜 好吃瓜</span><p>欸 好耶</p><span class="time">下午4:06</span></div>
+  </div>
+  <div class="msg cont"><div class="mbody"><p>我要許願(x</p><span class="time">下午4:06</span></div></div>
+  <div class="msg cont"><div class="mbody"><p>然後許願池side project自動由ai寫</p><span class="time">下午4:08</span></div></div>
 </div>
 
 許願池就這樣誕生了（謝啦，兩位）。結果池子裡有人許願『正宗台灣國語與台語語音系統』，做著做著，先完成了兩本離線辭典（台語＋客語），語音系統本體還在池子裡繼續孵。自己要做線上課、想搞懂行銷，就做出一整排行銷小工具；想知道對著麥克風唸咒語能不能變成遊戲，就有了咏唱魔法。
