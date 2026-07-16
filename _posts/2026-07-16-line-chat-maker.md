@@ -175,6 +175,6 @@ author: Yaze Lin
 
 ## 之後
 
-工具已經收進[行銷工具箱](https://yazelin.github.io/marketing-toolbox/)。MIT 開源,歡迎 fork 延伸:想加深色佈景、表情回應,或整套搬去做別的通訊軟體的樣式,改出得意的回來讓我看看。
+工具已經收進[行銷工具箱](https://yazelin.github.io/marketing-toolbox/)。MIT 開源,想加深色佈景、表情回應,或整套搬去做別的通訊軟體的樣式,直接 fork 拿去改,它就是你的了。
 
 一句話總結這一天:靈感的保存期限很短,現在的工具鏈短到可以在它過期前把東西做出來。
