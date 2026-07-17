@@ -14,6 +14,7 @@ author: Yaze Lin
 > - 工具(免費、免註冊、離線可用):<https://yazelin.github.io/line-chat-maker/>
 > - 原始碼(MIT):<https://github.com/yazelin/line-chat-maker>
 > - 許願池的設計細節在另一篇：[AI 願望池：一個人許願，一群人(或 AI)幫它成真]({% post_url 2026-07-07-wish-pool %})
+> - 續集(工具加了 AI 之後)：[教一個 AI 小劇組寫出「值得截圖」的對話]({% post_url 2026-07-17-line-chat-maker-ai %})
 
 ## 誕生現場
 
