@@ -23,7 +23,7 @@ permalink: /portfolio/
 - [iPAS AI 模擬考](https://yazelin.github.io/ipas-ai-quiz/)：790 題歷屆考古題，純前端 + Cloudflare 同步
 - [AI 社團許願池](https://yazelin.github.io/wish-pool/)：AI 對話引導 + 協作公開牆，伺服器簽章防繞過
 - [LINE 貼圖製造機](https://yazelin.github.io/line-sticker-studio/)：上傳一張角色圖，AI 產出一整組可上架的 LINE 貼圖，一路擴充成含素材庫、組包出貨的小工作室
-- [Mori Sprite Studio](https://yazelin.github.io/sprite-studio/)：一張角色圖生成整包透明背景動畫 sprite
+- [Mori Sprite Studio](https://yazelin.github.io/mori-sprite-studio/)：一張角色圖生成整包透明背景動畫 sprite
 - [Catime](https://yazelin.github.io/catime/)：每小時自動生一隻 AI 貓，已累積 2300+ 隻
 - [AI 生圖字體風格庫](https://yazelin.github.io/ai-font-styles/)：上百種字體風格提示詞，每天自動多一種
 - [行銷頁健檢器](https://yazelin.github.io/marketing-page-checker/)：貼網址自動檢查 OG/SEO/CTA/速度
