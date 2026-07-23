@@ -30,11 +30,11 @@
 </style>
 <div class="signup event-signup" id="register">
   <h2>報名這場</h2>
-  <p class="section-lead">留下稱呼和 Email,名額有限,報名後我們會寄邀請連結給你。</p>
+  <p class="section-lead">留下稱呼和 Email，名額有限。我會親自寄邀請連結給你。</p>
   <form data-register data-batch="{{ include.batch }}">
     <input type="text" name="name" placeholder="你的稱呼" aria-label="稱呼" maxlength="40" required>
     <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
-    <textarea name="note" placeholder="你想學貼圖做什麼?(可留空)" aria-label="你想學什麼" maxlength="500" rows="3"></textarea>
+    <textarea name="note" placeholder="你想學貼圖做什麼？（可留空）" aria-label="你想學什麼" maxlength="500" rows="3"></textarea>
     <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">送出報名</button>
   </form>
@@ -48,7 +48,7 @@ document.querySelectorAll('form[data-register]').forEach(function (f) {
     var msg = f.parentElement.querySelector('.msg');
     var btn = f.querySelector('button');
     var el = f.elements; // 用 elements 取值:表單有名為 name 的欄位,f.name 會被 HTMLFormElement.name 遮蔽
-    if (!f.dataset.batch) { msg.textContent = '這場活動設定有誤,請稍後再試。'; return; }
+    if (!f.dataset.batch) { msg.textContent = '這場活動設定有誤，請稍後再試。'; return; }
     msg.textContent = '送出中…'; btn.disabled = true;
     try {
       var r = await fetch('https://k-rider-api.yazelinj303.workers.dev/register', {
@@ -60,12 +60,12 @@ document.querySelectorAll('form[data-register]').forEach(function (f) {
       });
       var d = await r.json();
       if (d.ok) {
-        msg.textContent = d.already ? '你已經報名過這場了,我們會再和你聯絡。' : '報名成功,記得留意信箱的邀請連結。';
+        msg.textContent = d.already ? '你已經報名過這場了，我會再和你聯絡。' : '報名成功，我會親自寄邀請連結給你。';
         if (!d.already) f.reset();
       } else {
-        msg.textContent = '出了點問題,請確認欄位後再試一次。';
+        msg.textContent = '出了點問題，請確認欄位後再試一次。';
       }
-    } catch (err) { msg.textContent = '網路怪怪的,稍後再試。'; }
+    } catch (err) { msg.textContent = '網路怪怪的，稍後再試。'; }
     finally { btn.disabled = false; }
   });
 });

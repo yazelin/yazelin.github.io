@@ -46,6 +46,8 @@ navbar:
     url: /portfolio/
   - title: Workshop
     url: /workshop/
+  - title: 活動
+    url: /events/
   - title: Tags
     url: /tags/
 

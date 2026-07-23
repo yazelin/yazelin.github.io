@@ -1,0 +1,24 @@
+---
+layout: default
+title: 活動
+permalink: /events/
+---
+<div class="container">
+  <h1>活動</h1>
+  <p class="section-lead" style="text-align:left; margin:0 0 2rem;">線上實作營與講座。每一場都是跟著做，離開時手上有東西。</p>
+  <ul class="post-list">
+    {% comment %}
+      ponytail: 用 event_batch(slug 尾巴帶日期)反向排序當「新的在上面」,沒有分「即將/已結束」。
+      等真的辦過幾場、頁面長到需要分段再說。
+    {% endcomment %}
+    {% assign events = site.pages | where: "layout", "event" | sort: "event_batch" | reverse %}
+    {% for e in events %}
+    <li>
+      <h2><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h2>
+      {% if e.subtitle %}<p class="excerpt">{{ e.subtitle }}</p>{% endif %}
+      <p class="meta">{{ e.event_datetime }}{% if e.event_location %} · {{ e.event_location }}{% endif %}{% if e.event_price %} · {{ e.event_price }}{% endif %}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if events.size == 0 %}<p class="excerpt">目前沒有安排中的場次。</p>{% endif %}
+</div>
