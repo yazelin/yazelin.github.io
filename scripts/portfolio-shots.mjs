@@ -64,6 +64,20 @@ for (const [name, url] of shots) {
   await tryDismiss(page);
   // 有些 dismiss 選擇器的 actionability 檢查會把頁面捲走，截圖前強制拉回頂部
   await page.evaluate(() => window.scrollTo(0, 0));
+  // 等 CSS background-image（sprite sheet）真的解碼完；沒等到會拍出 sheet
+  // 錯位（例:mori-sprite-studio 的 thinking / error 變成身體在上、臉在下）
+  await page.evaluate(() => {
+    const urls = new Set();
+    for (const el of document.querySelectorAll('*')) {
+      const m = getComputedStyle(el).backgroundImage.match(/url\("?(.+?)"?\)/);
+      if (m) urls.add(m[1]);
+    }
+    return Promise.all([...urls].map((u) => {
+      const img = new Image();
+      img.src = u;
+      return img.decode().catch(() => {});
+    }));
+  });
   await page.waitForTimeout(500);
   await page.screenshot({ path: `${OUT_DIR}/${name}.png` });
   console.log(name, 'done');
