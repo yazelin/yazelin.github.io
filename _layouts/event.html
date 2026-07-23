@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% comment %}
+  通用免費活動報名頁 layout。
+  換一場活動 = 複製 events/ 底下任一頁,改 front matter 即可,不用動這裡:
+    event_batch      梯次 slug(必填,對應 Worker registrations.batch,如 sticker-2026-08-05)
+    event_datetime   時間字串
+    event_duration   時長
+    event_location   形式(線上/實體)
+    event_price      費用
+    event_access     參加方式
+  正文(Markdown)寫在頁面 front matter 之後,會顯示在資訊列與報名表單之間。
+{% endcomment %}
+<article class="page container">
+  <h1>{{ page.title }}</h1>
+  {% if page.subtitle %}<p class="section-lead" style="text-align:left; margin:0 0 2rem;">{{ page.subtitle }}</p>{% endif %}
+
+  <ul class="event-meta">
+    {% if page.event_datetime %}<li><span>時間</span>{{ page.event_datetime }}</li>{% endif %}
+    {% if page.event_duration %}<li><span>時長</span>{{ page.event_duration }}</li>{% endif %}
+    {% if page.event_location %}<li><span>形式</span>{{ page.event_location }}</li>{% endif %}
+    {% if page.event_price %}<li><span>費用</span>{{ page.event_price }}</li>{% endif %}
+    {% if page.event_access %}<li><span>參加</span>{{ page.event_access }}</li>{% endif %}
+  </ul>
+
+  {{ content }}
+
+  {% include event-register-form.html batch=page.event_batch %}
+</article>
