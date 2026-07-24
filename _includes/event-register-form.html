@@ -1,7 +1,8 @@
 {% comment %}
   通用活動報名表單。用法:
-    {% include event-register-form.html batch=page.event_batch %}
+    {% include event-register-form.html batch=page.event_batch community=page.event_community_url %}
   batch 必填(梯次 slug),POST 到 k-rider-api Worker 的 /register。
+  community 選填(LINE 社群邀請連結):有給則報名成功當下秀「加入社群」按鈕(防走丟)。
   沿用 blog 既有 .signup token,額外欄位樣式 scoped 在 .event-signup 內。
 {% endcomment %}
 <style>
@@ -23,6 +24,9 @@
   .event-signup button:hover { filter: brightness(1.1); }
   .event-signup button:disabled { opacity: 0.6; cursor: default; }
   .event-signup .msg { min-height: 1.5rem; font-size: 0.9rem; color: var(--accent); text-align: center; margin-top: 0.75rem; }
+  .event-signup .community-cta { display: block; width: fit-content; margin: 0.5rem auto 0; padding: 0.55rem 1.3rem;
+    background: #06c755; color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
+  .event-signup .community-cta:hover { filter: brightness(1.08); }
   .event-signup .hp { position: absolute; left: -9999px; }
   .event-meta { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 0.5rem; }
   .event-meta li { display: flex; gap: 0.75rem; align-items: baseline; }
@@ -39,6 +43,7 @@
     <button type="submit">送出報名</button>
   </form>
   <p class="msg" aria-live="polite"></p>
+  {% if include.community %}<a class="community-cta" href="{{ include.community }}" target="_blank" rel="noopener" hidden>加入實作營 LINE 社群</a>{% endif %}
 </div>
 <script>
 document.querySelectorAll('form[data-register]').forEach(function (f) {
@@ -62,6 +67,9 @@ document.querySelectorAll('form[data-register]').forEach(function (f) {
       if (d.ok) {
         msg.textContent = d.already ? '你已經報名過這場了，我會再和你聯絡。' : '報名成功，我會親自寄邀請連結給你。';
         if (!d.already) f.reset();
+        // 防走丟:報名成功當下就把人接進 LINE 社群,不等 email
+        var cta = f.parentElement.querySelector('.community-cta');
+        if (cta) cta.hidden = false;
       } else {
         msg.textContent = '出了點問題，請確認欄位後再試一次。';
       }
