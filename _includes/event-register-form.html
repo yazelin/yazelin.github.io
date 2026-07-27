@@ -33,14 +33,16 @@
   .event-meta li span { flex: 0 0 3.5rem; color: var(--muted); font-size: 0.9rem; }
 </style>
 <div class="signup event-signup" id="register">
-  <h2>報名這場</h2>
-  <p class="section-lead">留下稱呼和 Email，名額有限。我會親自寄邀請連結給你。</p>
-  <form data-register data-batch="{{ include.batch }}">
-    <input type="text" name="name" placeholder="你的稱呼" aria-label="稱呼" maxlength="40" required>
+  <h2>{{ include.heading | default: '報名這場' }}</h2>
+  <p class="section-lead">{{ include.lead | default: '留下稱呼和 Email，名額有限。我會親自寄邀請連結給你。' }}</p>
+  <form data-register data-batch="{{ include.batch }}"
+        data-success="{{ include.success_msg | default: '報名成功，我會親自寄邀請連結給你。' }}"
+        data-already="{{ include.already_msg | default: '你已經報名過這場了，我會再和你聯絡。' }}">
+    <input type="text" name="name" placeholder="{{ include.name_placeholder | default: '你的稱呼' }}" aria-label="稱呼" maxlength="40" required>
     <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
-    <textarea name="note" placeholder="你想學貼圖做什麼？（可留空）" aria-label="你想學什麼" maxlength="500" rows="3"></textarea>
+    <textarea name="note" placeholder="{{ include.note_placeholder | default: '你想學貼圖做什麼？（可留空）' }}" aria-label="{{ include.note_label | default: '你想學什麼' }}" maxlength="500" rows="{{ include.note_rows | default: 3 }}"></textarea>
     <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button type="submit">送出報名</button>
+    <button type="submit">{{ include.submit_label | default: '送出報名' }}</button>
   </form>
   <p class="msg" aria-live="polite"></p>
   {% if include.community %}<a class="community-cta" href="{{ include.community }}" target="_blank" rel="noopener" hidden>加入實作營 LINE 社群</a>{% endif %}
@@ -65,7 +67,7 @@ document.querySelectorAll('form[data-register]').forEach(function (f) {
       });
       var d = await r.json();
       if (d.ok) {
-        msg.textContent = d.already ? '你已經報名過這場了，我會再和你聯絡。' : '報名成功，我會親自寄邀請連結給你。';
+        msg.textContent = d.already ? f.dataset.already : f.dataset.success;
         if (!d.already) f.reset();
         // 防走丟:報名成功當下就把人接進 LINE 社群,不等 email
         var cta = f.parentElement.querySelector('.community-cta');
