@@ -9,3 +9,5 @@ node_modules
 package.json
 vendor/
 .claude/skills/
+_drafts/
+eterna/
