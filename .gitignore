@@ -11,3 +11,5 @@ vendor/
 .claude/skills/
 _drafts/
 eterna/
+
+__pycache__/

@@ -3,6 +3,9 @@ title: Yaze
 author: Yaze
 description: Software Developer from Taiwan
 
+# 分享卡預設圖(頁面可用 front matter 的 cover 覆蓋);由 scripts/make_og.py 產生
+og_image: /images/og-default.png
+
 # 社群連結（顯示在頁尾）
 social-network-links:
   email: "yaze.lin.j303@gmail.com"
