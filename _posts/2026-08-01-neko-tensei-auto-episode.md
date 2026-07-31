@@ -155,4 +155,4 @@ cron 到現在還關著。workflow 裡那三行排程被我註解掉，只留手
 
 **想自己蓋一條**：<https://github.com/yazelin/neko-tensei>，上面那三個檔案換掉就開始了。授權分兩份：漫畫本身（圖、角色、站上文字）是 CC BY-NC 4.0，署名給我和社群群友、別拿去商用；產線那些程式碼是 MIT，拿去改成你自己的題材完全沒問題。
 
-**想有人帶著走一遍**：8 月 19 日晚上我會辦一場線上分享，主題就是這條線，從創作規範怎麼寫、參考圖怎麼鎖，到把它接成一條會自己出下一話的產線。這場的門檻會比我 8/5 的[貼圖實作營]({% post_url 2026-07-15-line-sticker-studio-workshop %})高一些，需要你電腦上有 Claude Code 或 Codex CLI 這類 AI 編碼工具，也需要你不排斥看 JSON 和 YAML。時間、報名方式我會公告在 [LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default)，想來的先進來卡位。
+**想有人帶著走一遍**：8 月 19 日（週三）晚上 8 點，我會辦一場線上分享，主題就是這條線，從創作規範怎麼寫、參考圖怎麼鎖，到把它接成一條會自己出下一話的產線。這場的門檻會比我 8/5 的[貼圖實作營]({% post_url 2026-07-15-line-sticker-studio-workshop %})高一些，需要你電腦上有 Claude Code 或 Codex CLI 這類 AI 編碼工具，也需要你不排斥看 JSON 和 YAML。報名方式我會公告在 [LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default)，想來的先進來卡位。
