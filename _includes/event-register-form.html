@@ -46,7 +46,7 @@
     <input type="text" name="name" placeholder="{{ include.name_placeholder | default: '你的稱呼' }}" aria-label="稱呼" maxlength="40" required>
     <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
     <textarea name="note" placeholder="{{ include.note_placeholder | default: '你想學貼圖做什麼？（可留空）' }}" aria-label="{{ include.note_label | default: '你想學什麼' }}" maxlength="500" rows="{{ include.note_rows | default: 3 }}"></textarea>
-    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="company" value="">
     <button type="submit">{{ include.submit_label | default: '送出報名' }}</button>
   </form>
   <p class="msg" aria-live="polite"></p>
