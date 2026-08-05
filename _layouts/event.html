@@ -10,6 +10,7 @@ layout: default
     event_location   形式(線上/實體)
     event_price      費用
     event_access     參加方式
+    event_closed     true 時顯示額滿訊息、不輸出表單
   正文(Markdown)寫在頁面 front matter 之後,會顯示在資訊列與報名表單之間。
 {% endcomment %}
 <article class="page container">
@@ -28,5 +29,5 @@ layout: default
 
   {{ content }}
 
-  {% include event-register-form.html batch=page.event_batch community=page.event_community_url heading=page.form_heading lead=page.form_lead name_placeholder=page.form_name_placeholder note_placeholder=page.form_note_placeholder note_label=page.form_note_label note_rows=page.form_note_rows submit_label=page.form_submit_label success_msg=page.form_success_msg already_msg=page.form_already_msg %}
+  {% include event-register-form.html batch=page.event_batch community=page.event_community_url heading=page.form_heading lead=page.form_lead name_placeholder=page.form_name_placeholder note_placeholder=page.form_note_placeholder note_label=page.form_note_label note_rows=page.form_note_rows submit_label=page.form_submit_label success_msg=page.form_success_msg already_msg=page.form_already_msg closed=page.event_closed closed_heading=page.form_closed_heading closed_message=page.form_closed_message %}
 </article>
