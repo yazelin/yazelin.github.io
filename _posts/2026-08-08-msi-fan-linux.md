@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CPU 燒到 97 度，風扇只轉 3600 轉，因為出廠設定叫它別太吵"
-subtitle: "MSI 筆電在 Ubuntu 上沒有 MSI Center，效能設定檔就停在出廠的 comfort，風扇上限被壓在最高轉速的 57%。我做了一支 Tauri 2 的小程式去切它，同一台同樣負載，CPU 從 96 度掉到 68 度。"
+subtitle: "MSI 筆電在 Ubuntu 上沒有 MSI Center，效能設定檔就停在出廠的 comfort，風扇上限被壓在最高轉速的 57%。我做了一支 Tauri 2 的小程式去切它，那次量到 CPU 從 96 度掉到 68 度（一次觀察，不是規格，溫度會隨負載大幅移動）。"
 date: 2026-08-08
 categories: [Linux]
 tags: [msi-fan, MSI, Ubuntu, Tauri 2, Rust, msi-ec, 風扇控制, 硬體]
