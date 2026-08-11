@@ -13,7 +13,11 @@ permalink: /events/
       原本排 event_batch,但 slug 是「主題-日期」,主題在前面會蓋過日期,新場次會被壓在舊場次下面。
       等真的辦過幾場、頁面長到需要分段再說。
     {% endcomment %}
-    {% assign events = site.pages | where: "layout", "event" | sort: "event_date" | reverse %}
+    {% comment %}
+      回饋頁跟活動頁用同一個 layout,不濾掉的話會混在場次清單裡,而且活動還沒開始
+      就有人看得到回饋表單。回饋頁一律 sitemap: false,拿它當條件最省事。
+    {% endcomment %}
+    {% assign events = site.pages | where: "layout", "event" | where_exp: "e", "e.sitemap != false" | sort: "event_date" | reverse %}
     {% for e in events %}
     <li>
       <h2><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h2>
