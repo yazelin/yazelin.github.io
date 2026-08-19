@@ -37,6 +37,7 @@
   {% if include.closed %}
   <h2>{{ include.closed_heading | default: '本場已額滿' }}</h2>
   <p class="section-lead">{{ include.closed_message | default: '謝謝大家，報名已截止。' }}</p>
+  {% if include.community %}<a class="community-cta" href="{{ include.community }}" target="_blank" rel="noopener">加入 AI 許願池社群</a>{% endif %}
   {% else %}
   <h2>{{ include.heading | default: '報名這場' }}</h2>
   <p class="section-lead">{{ include.lead | default: '留下稱呼和 Email，名額有限。我會親自寄邀請連結給你。' }}</p>
