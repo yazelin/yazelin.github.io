@@ -11,6 +11,9 @@ permalink: /portfolio/
 **個人 AI 生態 Mori universe**
 - [Mori Desktop](https://github.com/yazelin/mori-desktop)：Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要，加上耳朵（mori-ear）、喚醒詞（hey-mori）、白板（mori-canvas）等身體部件的 multi-repo 生態
 
+**原創角色**
+- [角色圖鑑]({{ '/characters/' | relative_url }})：格莉奇、黑洞先生、阿蕊、Mori、優理、小擎，加上貓貓漫畫、catime 與《token 無限》的群像。散在各個作品裡的角色，一頁看完
+
 **網頁遊戲與 3D**
 - [AI 戰場編輯器](https://yazelin.github.io/battlefield-editor/)：資料驅動的單檔 3D 戰場引擎，每場歷史戰役是一份 package（內建六場，含赤壁）
 - [赤壁之戰 3D](https://yazelin.github.io/red-cliffs-3d/)：單一 HTML + Three.js 的全 3D 電影式重現

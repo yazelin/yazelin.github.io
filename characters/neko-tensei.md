@@ -3,7 +3,8 @@ layout: character
 title: 轉生成貓貓的我們
 name_en: Neko Tensei
 permalink: /characters/neko-tensei/
-order: 7
+order: 8
+cover: /images/og/characters-neko-tensei.jpg
 image: /images/characters/neko-tensei.webp
 image_wide: true
 subtitle: 四個工程師轉生成貓，加一個魔王。誕生於 LINE C# 社群的一場閒聊。

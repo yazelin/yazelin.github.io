@@ -4,6 +4,7 @@ title: 阿蕊
 name_en: A-luí
 permalink: /characters/alui/
 order: 3
+cover: /images/og/characters-alui.jpg
 image: /images/characters/alui.webp
 subtitle: 「台灣人代表」的形象大使。頭上永遠有一朵花，花跟著地方換。
 share-description: 阿蕊（A-luí），「台灣人代表」的形象大使。名字取自台語「一蕊花」，頭上永遠有一朵花，花跟著縣市換。

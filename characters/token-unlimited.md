@@ -3,7 +3,8 @@ layout: character
 title: 轉生異世界的我 token 無限
 name_en: Token Unlimited
 permalink: /characters/token-unlimited/
-order: 9
+order: 10
+cover: /images/og/characters-token-unlimited.jpg
 image: /images/characters/token-unlimited.webp
 image_wide: true
 subtitle: 加班練出來的耐力，在這裡是最強的天賦。而沒有人派工作給他的那天，最難熬。

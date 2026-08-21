@@ -4,6 +4,7 @@ title: 格莉奇
 name_en: Glitch
 permalink: /characters/glitch/
 order: 1
+cover: /images/og/characters-glitch.jpg
 image: /images/characters/glitch.webp
 subtitle: 只有 4KB 記憶體的 AI 機器人少女，話說得很滿，下一秒就當機。
 share-description: 格莉奇（Glitch），只有 4KB 記憶體的 AI 機器人少女，誕生於一場貼圖實作營。她有自己的網站、貼圖與單曲。

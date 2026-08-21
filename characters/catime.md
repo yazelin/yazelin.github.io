@@ -3,7 +3,8 @@ layout: character
 title: catime 的四隻貓
 name_en: Mochi, Momo, Captain, Lingling
 permalink: /characters/catime/
-order: 8
+order: 9
+cover: /images/og/characters-catime.jpg
 image: /images/characters/catime.webp
 image_wide: true
 subtitle: 每小時自動生一隻 AI 貓的站台，其中四隻是固定班底。

@@ -4,6 +4,7 @@ title: 黑洞先生
 name_en: Mr. Black Hole
 permalink: /characters/blackhole/
 order: 2
+cover: /images/og/characters-blackhole.jpg
 image: /images/characters/blackhole.webp
 subtitle: 黑洞的具現化。有正職，脾氣好，會把你忘掉的東西吃掉。
 share-description: 黑洞先生，黑洞的具現化，格莉奇的室友。金色軟呢帽、深色西裝、星雲質感的頭，一叢穿著切爾西短靴的觸手腿。

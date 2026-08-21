@@ -4,6 +4,7 @@ title: Mori
 name_en: 森
 permalink: /characters/mori/
 order: 4
+cover: /images/og/characters-mori.jpg
 image: /images/characters/mori.webp
 subtitle: 森林裡的精靈，也是我的桌面同伴。她的工作是記得。
 share-description: Mori（森），森林裡的精靈，也是一個跑在桌面上的 AI 同伴。她的能力是記憶編織與知識探索。

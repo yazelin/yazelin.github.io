@@ -118,6 +118,12 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 }
 
 /* characters */
+/* ponytail: 首頁那排用橫向捲動,不做輪播。手機上直接用手指撥,零 JS。 */
+.char-strip { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem; scroll-snap-type: x proximity; }
+.char-strip a { flex: 0 0 132px; scroll-snap-align: start; text-align: center; color: var(--fg); }
+.char-strip a:hover { text-decoration: none; color: var(--accent); }
+.char-strip img { width: 132px; aspect-ratio: 3/4; object-fit: cover; object-position: top center; border-radius: 10px; border: 1px solid var(--border); background: var(--accent-weak); display: block; }
+.char-strip span { display: block; font-size: 0.85rem; margin-top: 0.4rem; }
 /* ponytail: 卡片沿用 .work-card,只改圖的比例與貼齊方式 —— 立繪是直的,16/10 裁切會切掉頭。 */
 .char-grid .work-card { align-self: start; }
 .char-grid .work-card img { aspect-ratio: 3/4; object-fit: contain; background: var(--accent-weak); }
@@ -142,5 +148,9 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 .char-links li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
 .char-links .note { display: block; color: var(--muted); font-size: 0.88rem; }
 .char-license { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
-.char-back { margin-top: 1.5rem; }
+.char-nav { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; flex-wrap: wrap; margin-top: 1.5rem; }
+.char-nav a { font-size: 0.95rem; }
+.char-nav span { display: block; color: var(--muted); font-size: 0.78rem; }
+.char-nav .next { text-align: right; margin-left: auto; }
+.char-nav .index { color: var(--muted); order: 3; flex-basis: 100%; text-align: center; padding-top: 0.75rem; }
 @media (max-width: 520px) { .char-portrait { width: 160px; } }
