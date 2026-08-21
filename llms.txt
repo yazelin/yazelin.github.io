@@ -7,6 +7,7 @@
 - [部落格首頁](https://yazelin.github.io/)
 - [關於我](https://yazelin.github.io/about/)
 - [作品集 Portfolio](https://yazelin.github.io/portfolio/)
+- [角色圖鑑](https://yazelin.github.io/characters/) — 原創角色索引:格莉奇、黑洞先生、阿蕊、Mori、優理、小擎 Jinn,以及貓貓漫畫、catime、token 無限的群像
 
 ## 課程與教學
 

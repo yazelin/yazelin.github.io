@@ -116,3 +116,31 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
   .hero { padding: 3rem 1.25rem 2.5rem; }
   .signup form { flex-direction: column; }
 }
+
+/* characters */
+/* ponytail: 卡片沿用 .work-card,只改圖的比例與貼齊方式 —— 立繪是直的,16/10 裁切會切掉頭。 */
+.char-grid .work-card { align-self: start; }
+.char-grid .work-card img { aspect-ratio: 3/4; object-fit: contain; background: var(--accent-weak); }
+.char-grid .work-card img.wide { aspect-ratio: 16/10; object-fit: cover; background: none; }
+.char-grid .work-card h3 .en { color: var(--muted); font-size: 0.85rem; font-weight: 400; }
+.char-head { display: flex; gap: 1.75rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem; }
+.char-portrait { width: 240px; flex: none; border-radius: 12px; background: var(--accent-weak); }
+.char-intro { flex: 1 1 18rem; min-width: 0; }
+.char-intro h1 { margin: 0 0 0.15rem; }
+.char-en { color: var(--muted); margin: 0 0 0.75rem; letter-spacing: 0.08em; }
+.char-sub { margin: 0 0 1.25rem; }
+.char-profile { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; margin: 0; font-size: 0.92rem; }
+.char-profile dt { color: var(--muted); white-space: nowrap; }
+.char-profile dd { margin: 0; }
+.char-members { list-style: none; padding: 0; }
+.char-members li { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.char-members img { width: 88px; flex: none; border-radius: 8px; background: var(--accent-weak); }
+.char-members.wide img { width: 150px; }
+.char-members h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.char-members p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.char-links { list-style: none; padding: 0; }
+.char-links li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
+.char-links .note { display: block; color: var(--muted); font-size: 0.88rem; }
+.char-license { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.25rem; }
+.char-back { margin-top: 1.5rem; }
+@media (max-width: 520px) { .char-portrait { width: 160px; } }

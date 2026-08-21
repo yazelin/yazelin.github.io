@@ -1,0 +1,25 @@
+---
+layout: default
+title: 角色
+permalink: /characters/
+description: 林亞澤創作的原創角色圖鑑，各自散在不同的網站、漫畫、小說與工具裡。
+---
+<div class="container">
+  <h1>角色</h1>
+  <p class="section-lead" style="text-align:left; margin:0 0 2rem;">這些角色各自住在不同的作品裡。這一頁是入口，點進去看她們是誰、以及在哪裡遇得到。</p>
+  {% comment %} ponytail: 用 order 手動排序，不分「AI 助手／漫畫／小說」這種分類。九頁而已，分類只會多一個要維護的欄位。 {% endcomment %}
+  {% assign chars = site.pages | where: "layout", "character" | sort: "order" %}
+  <div class="work-grid char-grid">
+    {% for c in chars %}
+    <div class="work-card">
+      <a class="card-main" href="{{ c.url | relative_url }}">
+        {% if c.image %}<img class="{% if c.image_wide %}wide{% endif %}" src="{{ c.image | relative_url }}" alt="{{ c.title }}" loading="lazy">{% endif %}
+        <div class="body">
+          <h3>{{ c.title }}{% if c.name_en %} <span class="en">{{ c.name_en }}</span>{% endif %}</h3>
+          <p>{{ c.subtitle }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
