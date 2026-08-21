@@ -1,0 +1,59 @@
+---
+layout: default
+---
+{% comment %}
+  角色圖鑑單頁 layout。加一隻角色 = 複製 characters/ 底下任一頁,改 front matter,不用動這裡:
+    name_en      英文/羅馬字名(顯示在中文名下方)
+    subtitle     一句話介紹
+    image        立繪或代表圖(相對站台根目錄)
+    order        列表頁排序,小的在前
+    profile      基本資料,list of {label, value}
+    members      群像頁的成員,list of {name, role, image, url};單一角色頁不填
+    members_wide true 時成員縮圖放大(對照圖那種橫幅內容看得清楚)
+    appearances  在哪裡遇得到,list of {title, url, note}
+  正文(Markdown)寫在 front matter 之後,顯示在基本資料與成員/連結之間。
+{% endcomment %}
+<article class="page container">
+  <div class="char-head">
+    {% if page.image %}<img class="char-portrait" src="{{ page.image | relative_url }}" alt="{{ page.title }}">{% endif %}
+    <div class="char-intro">
+      <h1>{{ page.title }}</h1>
+      {% if page.name_en %}<p class="char-en">{{ page.name_en }}</p>{% endif %}
+      {% if page.subtitle %}<p class="char-sub">{{ page.subtitle }}</p>{% endif %}
+      {% if page.profile %}
+      <dl class="char-profile">
+        {% for row in page.profile %}<dt>{{ row.label }}</dt><dd>{{ row.value }}</dd>{% endfor %}
+      </dl>
+      {% endif %}
+    </div>
+  </div>
+
+  {{ content }}
+
+  {% if page.members %}
+  <h2>登場人物</h2>
+  <ul class="char-members{% if page.members_wide %} wide{% endif %}">
+    {% for m in page.members %}
+    <li>
+      {% if m.image %}<img src="{{ m.image | relative_url }}" alt="{{ m.name }}" loading="lazy">{% endif %}
+      <div>
+        <h3>{% if m.url %}<a href="{{ m.url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</h3>
+        <p>{{ m.role }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if page.appearances %}
+  <h2>在哪裡遇得到</h2>
+  <ul class="char-links">
+    {% for a in page.appearances %}
+    <li><a href="{{ a.url }}">{{ a.title }}</a>{% if a.note %}<span class="note">{{ a.note }}</span>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <p class="char-license">{{ page.license | default: "角色設定與圖像著作權屬林亞澤，圖文以 CC BY-NC 4.0 釋出：非商業用途可自由分享與改作，需標示出處；商業使用或角色授權請先來信。" }}</p>
+  <p class="char-back"><a href="{{ '/characters/' | relative_url }}">← 回角色列表</a></p>
+</article>
