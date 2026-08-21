@@ -89,6 +89,22 @@ head-extra:
 </section>
 
 <section class="section container-wide">
+  <h2 class="section-title">我創作的角色</h2>
+  <p class="section-lead">她們各自住在不同的作品裡，這一排是入口。</p>
+  {% comment %} ponytail: 直接吃角色頁的 front matter,不另外維護一份名單。 {% endcomment %}
+  <div class="char-strip">
+    {% assign cs = site.pages | where: "layout", "character" | sort: "order" %}
+    {% for c in cs %}
+    <a href="{{ c.url | relative_url }}" title="{{ c.title }}">
+      <img src="{{ c.image | relative_url }}" alt="{{ c.title }}" loading="lazy">
+      <span>{{ c.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <p style="text-align:center; margin-top:1.5rem"><a href="{{ '/characters/' | relative_url }}">全部角色 →</a></p>
+</section>
+
+<section class="section container-wide">
   <div class="story">
     <h2 class="section-title">從工廠到 AI</h2>
     <p>我在工業自動化做了十幾年：機器人、視覺檢測、AGV 車隊。工業現場預算有限，習慣了用軟體取代昂貴的感測器、用不一樣的解法把事情做成。</p>

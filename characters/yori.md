@@ -4,6 +4,7 @@ title: 優理
 name_en: Yori
 permalink: /characters/yori/
 order: 5
+cover: /images/og/characters-yori.jpg
 image: /images/characters/yori.webp
 subtitle: 森林宇宙裡的年輕學徒，正在把「有理」一點點練出來。
 share-description: 優理（Yori），森林宇宙裡的年輕數位學徒。她練工具、整理 reference、檢查產出，把每天的錯誤折成下一條規則。

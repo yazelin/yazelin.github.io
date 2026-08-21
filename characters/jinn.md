@@ -4,6 +4,7 @@ title: 小擎
 name_en: Jinn
 permalink: /characters/jinn/
 order: 6
+cover: /images/og/characters-jinn.jpg
 image: /images/characters/jinn.webp
 subtitle: 擎添工業的 LINE AI 助理，也當過森林宇宙的對外公關。目前停更。
 share-description: 小擎（Jinn），擎添工業的 LINE AI 助理，也當過森林宇宙的對外公關，會以自己的人格署名寫文章。目前停更。

@@ -55,5 +55,21 @@ layout: default
   {% endif %}
 
   <p class="char-license">{{ page.license | default: "角色設定與圖像著作權屬林亞澤，圖文以 CC BY-NC 4.0 釋出：非商業用途可自由分享與改作，需標示出處；商業使用或角色授權請先來信。" }}</p>
-  <p class="char-back"><a href="{{ '/characters/' | relative_url }}">← 回角色列表</a></p>
+  {% comment %}
+    ponytail: 前後導覽用 order 排序後找自己的位置,不另外在 front matter 寫 prev/next。
+    寫死的話插一個新角色就要回頭改兩個檔,而 order 本來就存在。頭尾不繞回去。
+  {% endcomment %}
+  {% assign all_chars = site.pages | where: "layout", "character" | sort: "order" %}
+  <nav class="char-nav">
+    {% for c in all_chars %}{% if c.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+    {% assign pi = idx | minus: 1 %}{% assign ni = idx | plus: 1 %}
+    {% if idx > 0 %}{% assign prev = all_chars[pi] %}
+      <a class="prev" href="{{ prev.url | relative_url }}"><span>上一位</span>{{ prev.title }}</a>
+    {% endif %}
+    <a class="index" href="{{ '/characters/' | relative_url }}">角色列表</a>
+    {% assign last = all_chars.size | minus: 1 %}
+    {% if idx < last %}{% assign next = all_chars[ni] %}
+      <a class="next" href="{{ next.url | relative_url }}"><span>下一位</span>{{ next.title }}</a>
+    {% endif %}
+  </nav>
 </article>

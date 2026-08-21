@@ -5,6 +5,7 @@ shared card looks like the site it links to.
 
   python3 scripts/make_og.py                      # site default → images/og-default.png
   python3 scripts/make_og.py --title "…" --subtitle "…" -o images/og/foo.png
+  python3 scripts/make_og.py --title "…" --art images/characters/x.webp -o images/og/x.png
 
 Titles wrap on their own; CJK breaks per character, Latin/number runs stay
 whole. If a title still overflows the card the font steps down until it fits.
@@ -80,6 +81,8 @@ def main() -> None:
     ap.add_argument("--subtitle", default=SITE_SUBTITLE)
     ap.add_argument("--eyebrow", default=BYLINE,
                     help="small pill above the title (e.g. a category)")
+    ap.add_argument("--art", default="",
+                    help="portrait pasted flush right; the text column narrows to match")
     ap.add_argument("-o", "--out", default="images/og-default.png")
     args = ap.parse_args()
 
@@ -90,6 +93,29 @@ def main() -> None:
     od = ImageDraw.Draw(overlay)
     od.ellipse((W - 420, H - 380, W + 240, H + 260), fill=ACCENT + (18,))
     canvas = Image.alpha_composite(canvas, overlay)
+
+    # Optional portrait on the right. Bleeds off the top and bottom edges so a
+    # 3:4 character sheet fills the column instead of floating in it.
+    text_w = MAX_TEXT_W
+    if args.art:
+        art_path = Path(args.art)
+        if not art_path.is_absolute():
+            art_path = ROOT / art_path
+        art = Image.open(art_path).convert("RGBA")
+        col_w = 430
+        scale = max(col_w / art.width, H / art.height)
+        art = art.resize((round(art.width * scale), round(art.height * scale)),
+                         Image.LANCZOS)
+        # Portraits: anchor to the top so the face survives. Landscape art
+        # (the group pages) has nothing at the top worth keeping, so centre it.
+        top = 0 if art.height >= art.width else max(0, (art.height - H) // 2)
+        art = art.crop((0, top, col_w, top + H))
+        canvas.alpha_composite(art, (W - col_w, 0))
+        # Feather the inner edge so the crop does not read as a hard seam
+        fade = Image.new("RGBA", (72, H), BG + (255,))
+        mask = Image.linear_gradient("L").rotate(270, expand=True).resize((72, H))
+        canvas.paste(fade, (W - col_w, 0), mask)
+        text_w = W - col_w - MARGIN - 48
 
     d = ImageDraw.Draw(canvas)
 
@@ -106,7 +132,7 @@ def main() -> None:
            args.eyebrow, fill=ACCENT, font=eyebrow_font)
 
     # Title — grows to fill the card, shrinks when the text is long
-    title_font, title_lines, size = fit_title(d, args.title, MAX_TEXT_W, 3)
+    title_font, title_lines, size = fit_title(d, args.title, text_w, 3)
     y = 224
     for line in title_lines:
         d.text((MARGIN, y), line, fill=FG, font=title_font)
@@ -115,12 +141,12 @@ def main() -> None:
     # Subtitle
     if args.subtitle:
         sub_font = ImageFont.truetype(FONT_REG, 30)
-        for line in wrap(d, args.subtitle, sub_font, MAX_TEXT_W)[:2]:
+        for line in wrap(d, args.subtitle, sub_font, text_w)[:2]:
             d.text((MARGIN, y + 30), line, fill=MUTED, font=sub_font)
             y += 42
 
     # Footer: hairline + URL
-    d.line((MARGIN, H - 108, W - MARGIN, H - 108), fill=BORDER, width=2)
+    d.line((MARGIN, H - 108, MARGIN + text_w, H - 108), fill=BORDER, width=2)
     url_font = ImageFont.truetype(FONT_BOLD, 27)
     d.text((MARGIN, H - 82), SITE_URL, fill=ACCENT, font=url_font)
 
@@ -128,7 +154,13 @@ def main() -> None:
     if not out_path.is_absolute():
         out_path = ROOT / out_path
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    canvas.convert("RGB").save(out_path, "PNG", optimize=True)
+    # Format follows the extension. Cards with artwork on them are photographic
+    # enough that PNG costs 4-10x for no visible gain, and these go into git.
+    if out_path.suffix.lower() in (".jpg", ".jpeg"):
+        canvas.convert("RGB").save(out_path, "JPEG", quality=88, optimize=True,
+                                   progressive=True)
+    else:
+        canvas.convert("RGB").save(out_path, "PNG", optimize=True)
     print(f"saved {out_path} ({out_path.stat().st_size // 1024} KB)")
 
 
