@@ -161,6 +161,7 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
   border-radius:999px;padding:5px 15px;cursor:pointer;opacity:.72}
 .char-say:hover,.char-say[aria-pressed=true]{opacity:1}
 .char-say b{font-weight:400;font-size:.74rem}
-.char-said{margin:10px 0 0;font-size:.92rem;line-height:1.9;opacity:.75;
-  border-left:2px solid currentColor;padding-left:13px;display:none}
-.char-said[data-on]{display:block}
+/* **逐字稿一直顯示**，不要按了才出現：那段文字本身就是內容。 */
+.char-said{margin:10px 0 0;font-size:.92rem;line-height:1.9;opacity:.7;
+  border-left:2px solid currentColor;padding-left:13px}
+.char-said[data-on]{opacity:1}
