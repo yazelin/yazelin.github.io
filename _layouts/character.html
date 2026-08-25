@@ -11,6 +11,8 @@ layout: default
     members      群像頁的成員,list of {name, role, image, url};單一角色頁不填
     members_wide true 時成員縮圖放大(對照圖那種橫幅內容看得清楚)
     appearances  在哪裡遇得到,list of {title, url, note}
+    voice        自我介紹配音的檔案路徑(相對站台根目錄)。填了才長出播放鈕
+    voice_text   那段配音的逐字稿。跟 voice 一起填,聽不到的人也讀得到
   正文(Markdown)寫在 front matter 之後,顯示在基本資料與成員/連結之間。
 {% endcomment %}
 <article class="page container">
@@ -20,6 +22,10 @@ layout: default
       <h1>{{ page.title }}</h1>
       {% if page.name_en %}<p class="char-en">{{ page.name_en }}</p>{% endif %}
       {% if page.subtitle %}<p class="char-sub">{{ page.subtitle }}</p>{% endif %}
+      {% if page.voice %}
+      <button class="char-say" data-src="{{ page.voice | relative_url }}" aria-pressed="false"><b>▶</b>聽{{ page.title }}說</button>
+      {% if page.voice_text %}<p class="char-said">{{ page.voice_text }}</p>{% endif %}
+      {% endif %}
       {% if page.profile %}
       <dl class="char-profile">
         {% for row in page.profile %}<dt>{{ row.label }}</dt><dd>{{ row.value }}</dd>{% endfor %}
@@ -73,3 +79,31 @@ layout: default
     {% endif %}
   </nav>
 </article>
+{% if page.voice %}
+<script>
+/* 角色自介。**一次只播一個**（列表頁之外這裡其實只有一顆，但同一顆再按要能停）。
+   檔案掉了也要把按鈕收回去，不然它會一直停在「播放中」。 */
+(function () {
+  var cur = null;
+  document.querySelectorAll('.char-say').forEach(function (b) {
+    var t = b.parentNode.querySelector('.char-said');
+    function stop() {
+      if (cur) { cur.pause(); cur.currentTime = 0; cur = null; }
+      b.setAttribute('aria-pressed', 'false');
+      b.firstChild.textContent = '\u25b6';
+      if (t) t.removeAttribute('data-on');
+    }
+    b.addEventListener('click', function () {
+      if (cur) return stop();
+      cur = new Audio(b.dataset.src);
+      b.setAttribute('aria-pressed', 'true');
+      b.firstChild.textContent = '\u25a0';
+      if (t) t.setAttribute('data-on', '1');
+      cur.addEventListener('ended', stop);
+      cur.addEventListener('error', stop);
+      cur.play().catch(stop);
+    });
+  });
+})();
+</script>
+{% endif %}

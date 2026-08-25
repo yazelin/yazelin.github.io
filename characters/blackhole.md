@@ -32,6 +32,8 @@ appearances:
   - title: AI 漫畫入門樣板
     url: https://github.com/yazelin/ai-comic-starter
     note: 他是樣板附的搭檔角色
+voice: /assets/audio/intro-blackhole.mp3
+voice_text: "我住在她家。沙發那一邊。我吃被忘掉的事。吃進去的永遠在我裡面，可是拿不出來。她從來沒有為這件事跟我道過歉。這樣很好。"
 ---
 
 他誕生在 2026 年 8 月 5 日的貼圖實作營現場，是當天用來示範「怎麼從一句話做出一個角色」的例子。學員看著他被生出來，當晚就順手做了一組「黑洞先生上班摸魚」的貼圖。

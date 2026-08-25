@@ -154,3 +154,13 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 .char-nav .next { text-align: right; margin-left: auto; }
 .char-nav .index { color: var(--muted); order: 3; flex-basis: 100%; text-align: center; padding-top: 0.75rem; }
 @media (max-width: 520px) { .char-portrait { width: 160px; } }
+
+/* 角色自介配音。填了 front matter 的 voice 才會長出來。 */
+.char-say{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;
+  font:inherit;font-size:.86rem;background:none;border:1px solid currentColor;
+  border-radius:999px;padding:5px 15px;cursor:pointer;opacity:.72}
+.char-say:hover,.char-say[aria-pressed=true]{opacity:1}
+.char-say b{font-weight:400;font-size:.74rem}
+.char-said{margin:10px 0 0;font-size:.92rem;line-height:1.9;opacity:.75;
+  border-left:2px solid currentColor;padding-left:13px;display:none}
+.char-said[data-on]{display:block}
