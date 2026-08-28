@@ -1,3 +1,18 @@
+{% if site.line_community_url %}
+<style>
+  .community-join { max-width: 30rem; margin: 0 auto 2.5rem; text-align: center; }
+  .community-join h2 { font-size: 1.25rem; }
+  .community-join .community-cta { display: block; width: fit-content; margin: 1rem auto 0; padding: 0.65rem 1.4rem;
+    background: #06c755; color: #fff; border-radius: 8px; text-decoration: none; font-size: 1rem; }
+  .community-join .community-cta:hover { filter: brightness(1.08); }
+</style>
+<div class="community-join">
+  <h2>來 AI 許願池社群</h2>
+  <p class="section-lead">這裡的東西大多是被許願出來的。想看我做什麼、或想丟一個願望進來,社群比 email 快。</p>
+  <a class="community-cta" href="{{ site.line_community_url }}" target="_blank" rel="noopener">加入 AI 許願池社群</a>
+</div>
+{% endif %}
+
 <div class="signup">
   <h2>保持聯絡</h2>
   <p class="section-lead">留個 email,有新文章或新作品上線時告訴你。</p>

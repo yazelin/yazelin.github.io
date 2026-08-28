@@ -6,6 +6,9 @@ description: Software Developer from Taiwan
 # 分享卡預設圖(頁面可用 front matter 的 cover 覆蓋);由 scripts/make_og.py 產生
 og_image: /images/og-default.png
 
+# AI 許願池 LINE 社群邀請連結(文章頁尾與活動頁共用同一個來源)
+line_community_url: "https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+
 # 社群連結（顯示在頁尾）
 social-network-links:
   email: "yaze.lin.j303@gmail.com"
