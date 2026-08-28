@@ -14,14 +14,17 @@ author: Yaze Lin
 
 先講最重要的一件事：**這個功能沒有雲端主機。**
 
-算力節點是你自己的機器。伺服器跑在本機，用 Cloudflare Edge Tunnel 穿出去，每隔一段時間對一個 Cloudflare KV 註冊中心送心跳。前端從那個註冊中心撈目前有哪些節點活著，再挑一個連。我寫這篇的時候查了一下註冊中心：
+算力節點是你自己的機器。伺服器跑在本機，用 Cloudflare Edge Tunnel 穿出去，每隔一段時間對一個 Cloudflare KV 註冊中心送心跳。前端從那個註冊中心撈目前有哪些節點活著，再挑一個連。
 
-```
-$ curl https://glitch-chat.yazelinj303.workers.dev/voice/nodes
-{"nodes":[]}
+我把節點跑起來，然後從外面問註冊中心有誰在線上：
+
+```json
+{"nodes":[{"id":"node-yaze-4060","name":"林亞澤的 RTX 4060 節點 (台北)",
+ "url":"https://chancellor-watched-feelings-monitoring.trycloudflare.com",
+ "engine":"F5-TTS (CosyVoice3 蒸餾底模)","version":"1.1","is_default":true}]}
 ```
 
-零個節點。因為我沒開機。這是這種設計誠實的地方，也是它最尷尬的地方：沒人開節點的時候，這個功能就是打不通。
+那個 `trycloudflare.com` 的網址是 cloudflared 當場配的，關掉就沒了。這是這種設計誠實的地方，也是它最尷尬的地方：**沒人開節點的時候，這個功能就是打不通。**我停掉之後再查一次，回的就是 `{"nodes":[]}`。
 
 ## 兩個引擎，一個講電話一個錄音
 
@@ -64,16 +67,54 @@ $ curl https://glitch-chat.yazelinj303.workers.dev/voice/nodes
 
 今天早上還修了一條相關的。`零失誤` 要換成 `靈失誤`，我原本以為那是為了聲調。實際上它擋的是**數字解析**：模型看到「零」會把它當數字處理，整句的斷詞就歪了。同一張替身表裡，有些條目治的是讀音，有些治的是解析，混在一起看會以為規則不一致。
 
-## 我沒有驗的部分
+## 真的打一次看看
 
-這篇要講清楚界線。
+只看註冊中心有節點不算數，那只證明它登記過。所以從公網那一頭真的打進來，全程走 Cloudflare 通道，不是打 localhost。
 
-上面那張延遲表是 repo 裡量的，條件寫得很清楚，但**我沒有在寫這篇的當下重量一次**。全雙工通話我也沒有在今天跑起來錄一段給你聽，節點現在是零，前面那個 `curl` 就是證據。
+先確認接到的是誰：
 
-換句話說，這篇能拍胸脯的是設計跟數字的來源，不是「你現在點進去就能打給她」。真的要聽，得自己把節點跑起來。
+```
+GET /health
+{"status":"ok","active_engine":"f5_distilled","tts_engine":"f5_distilled (NFE=12)",
+ "character":"格莉奇 (Glitch)","memory":"4KB"}
+```
+
+再送一句 23 字的話進去合成。**1.11 秒**拿回 186 KB 的 wav，音訊長 3.88 秒。這個秒數是從公網發出請求到收完檔案，包含來回的網路時間。
+
+然後打完整的通話端點，就是前端真正用的那條：
+
+```
+POST /api/glitch-call   {"message":"你今天過得怎麼樣"}
+
+reply_text : 欸嘿嘿，今天也好忙喔，但抄完守則本啦，開心！
+duration   : 4.50 秒
+emotion    : laugh
+latency_ms : 3082
+```
+
+端到端 3.45 秒，伺服器自報 3082 毫秒，差的那 0.37 秒是網路跟傳檔。一句話進去，回來的是文字、語音、還有一個表情標籤，前端拿那個標籤換她的表情差分。
+
+至於延遲表本身，我在另一篇裡用一份比較長的參考音（10.45 秒）把 F5 跟 CosyVoice 3 在這台機器上重量了一次。方向一樣、絕對值不同：參考音越長工越多，CosyVoice 3 的短句從這裡寫的 RTF 1.50 掉到 2.24。但那次也量出一件這張表沒有的事，CosyVoice 3 的**聲紋快取每輪省 1.2 秒**，開了之後短句 RTF 變 0.60，從「追不上即時」翻成「追得上」。所以上面那句「即時通話請用 F5」要補一個條件：**在沒開聲紋快取的前提下**。
+
+## 「已成功註冊」是假的
+
+第一次啟動的時候，畫面上是這樣：
+
+```
+[TunnelManager] Cloudflare Tunnel 已上線: https://api.trycloudflare.com
+[KV Registry]   節點已成功註冊到 Cloudflare KV 中心: https://api.trycloudflare.com
+```
+
+看起來兩件事都成功了。實際上：註冊中心回 `{"nodes":[]}`，而且 `pgrep cloudflared` 是空的，通道根本沒起來。
+
+`api.trycloudflare.com` 不是配給節點的網址，正常長得像 `chancellor-watched-feelings-monitoring.trycloudflare.com`。抓網址那段是掃 cloudflared 的輸出、比對 `https://xxx.trycloudflare.com` 這個樣子，**取到第一個就收工**（`if match and not self.tunnel_url`），所以只要輸出裡先出現任何一個對得上樣子的字串，它就當成中獎了。
+
+註冊那段也一樣鬆：`urlopen` 回 200 就印「已成功註冊」，沒有回頭問註冊中心「你真的有我嗎」。POST 收下了不等於那筆資料活著。
+
+重開一次就正常了，所以這是偶發的。但這兩行 log 在它壞掉的時候會斬釘截鐵地告訴你一切正常，那比直接報錯還糟。修法很直白：網址過濾掉 `api.` 開頭那個，註冊完回頭 GET 一次確認自己在名單上。
 
 ## 分工線
 
-要不要做語音通話、算力放誰的機器上、快慢兩個引擎怎麼分工、字幕跟發音要不要拆成兩軌，是我定的。伺服器、雙引擎切換、`taiwanize.py` 的兩套規則、心跳註冊跟前端的節點選擇器，是 AI 寫的。那張延遲表是真的跑出來的，量測條件連參考音長度都記在 repo 裡，我沒有拿別人的數字充數。
+要不要做語音通話、算力放誰的機器上、快慢兩個引擎怎麼分工、字幕跟發音要不要拆成兩軌，是我定的。伺服器、雙引擎切換、`taiwanize.py` 的兩套規則、心跳註冊跟前端的節點選擇器，是 AI 寫的。那張延遲表是真的跑出來的，量測條件連參考音長度都記在 repo 裡。上面那次公網通話也是真的打的，回傳的字、秒數、表情標籤都照抄，沒有美化。
 
 格莉奇在這裡：<https://yazelin.github.io/ai-brain-site/>，語音節點的原始碼在 <https://github.com/yazelin/glitch-voice-server>。同一週我還做了三套桌面版的語音對話迴圈，比的是別的引擎，寫在這裡：[同一天做了三套語音對話迴圈，只為了換掉中間那一段]({% post_url 2026-08-26-three-voice-loops %})。她是怎麼被生出來的寫在這裡：[格莉奇OS]({% post_url 2026-08-05-glitch-os %})。
