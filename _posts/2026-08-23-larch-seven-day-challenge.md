@@ -95,4 +95,4 @@ diff 長這樣：
 
 作品在這裡：[在 Larch 上玩](https://larch.yapiflow.com/play/market/a2a10427-7326-4a86-b806-c2476fc1c22a)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
 
-去玩[別人的參賽作品](https://larch.yapiflow.com/market)也算數，那 18 件每一件都是有人做了七天的。
+這一週去玩[別人的參賽作品](https://larch.yapiflow.com/market)是真的會影響結果的：評審期間的人氣分數，愛心算 5 分、留言 3 分、遊玩 2 分、瀏覽 1 分。那 18 件每一件都是有人做了七天的，玩完留一句具體的話，比按一顆愛心有用。
