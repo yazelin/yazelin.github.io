@@ -10,7 +10,7 @@ author: Yaze Lin
 
 ![格莉奇與黑洞先生](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-08-23-larch-seven-day-challenge.png)
 
-先講規格。[Larch 七日創作者挑戰](https://larch.yapiflow.com/events/creator-challenge) 的題目是「奇幻、魔法、日常」，**遊戲長度約 3 到 5 分鐘**，投稿 8 月 16 日到 23 日，8 月 30 日公布結果。
+先講規格。[Larch 七日創作者挑戰](https://larch.ink/events/creator-challenge) 的題目是「奇幻、魔法、日常」，**遊戲長度約 3 到 5 分鐘**，投稿 8 月 16 日到 23 日，8 月 30 日公布結果。
 
 我交出去的東西是七章、一萬兩千字、六百多句配音，程式自動玩一次錄下來的完整遊玩影片是 60 分鐘。
 
@@ -18,7 +18,7 @@ author: Yaze Lin
 
 ## 交的是什麼
 
-[《格莉奇與黑洞先生》](https://larch.yapiflow.com/play/market/a2a10427-7326-4a86-b806-c2476fc1c22a)。一個老是自嘲只有 4KB 記憶體的虛擬主播，開台第一天來了七個人，她說她要記住每一個來的人。兩年後她記得六個。第七行一直空著。
+[《格莉奇與黑洞先生》](https://larch.ink/play/market/yaze/glitch)。一個老是自嘲只有 4KB 記憶體的虛擬主播，開台第一天來了七個人，她說她要記住每一個來的人。兩年後她記得六個。第七行一直空著。
 
 這篇是寫給想在一週內做完一個作品的人看的。下面全是可以查證的東西：時間、數字、還有我在按下送出前幾分鐘抓到的兩個假數字。
 
@@ -93,6 +93,6 @@ diff 長這樣：
 
 點子、七個人的設定、每一句定稿、什麼時候算完成、每一個對外的數字要不要信，是我定的，也是我逐項核的。文字是我跟 AI 一起寫的；立繪、場景、配樂是 AI 生成之後我挑選跟修版；配音走自架的 CosyVoice3 加平台提供的 MiniMax，每一句都聽過。build 腳本、去背工具、錄影腳本是 AI 寫的。
 
-作品在這裡：[在 Larch 上玩](https://larch.yapiflow.com/play/market/a2a10427-7326-4a86-b806-c2476fc1c22a)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
+作品在這裡：[在 Larch 上玩](https://larch.ink/play/market/yaze/glitch)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
 
-這一週去玩[別人的參賽作品](https://larch.yapiflow.com/market)是真的會影響結果的：評審期間的人氣分數，愛心算 5 分、留言 3 分、遊玩 2 分、瀏覽 1 分。那 18 件每一件都是有人做了七天的，玩完留一句具體的話，比按一顆愛心有用。
+這一週去玩[別人的參賽作品](https://larch.ink/market)是真的會影響結果的：評審期間的人氣分數，愛心算 5 分、留言 3 分、遊玩 2 分、瀏覽 1 分。那 18 件每一件都是有人做了七天的，玩完留一句具體的話，比按一顆愛心有用。
