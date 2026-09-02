@@ -3,21 +3,95 @@ layout: default
 title: 活動
 permalink: /events/
 ---
-<div class="container">
+<style>
+  .ev-wrap { max-width: var(--maxw-wide); margin: 0 auto; }
+  .ev-lead { color: var(--muted); margin: 0 0 2rem; }
+  .ev-lead strong { color: var(--fg); }
+
+  .ev-sec { margin: 2.5rem 0 0; }
+  .ev-sec > h2 { font-size: 1.05rem; letter-spacing: .08em; color: var(--muted);
+                 border-bottom: 1px solid var(--border); padding-bottom: .5rem; margin: 0 0 1.1rem; }
+
+  /* 下一場:大卡 */
+  .ev-next { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: 0;
+             background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+             overflow: hidden; }
+  .ev-next .cover { aspect-ratio: 16/9; background: var(--accent-weak); }
+  .ev-next .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ev-next .body { padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: .55rem; }
+  .ev-when { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent);
+             font-weight: 700; font-size: .95rem; }
+  .ev-when .count { background: var(--accent-weak); border-radius: 999px; padding: .1rem .7rem; }
+  .ev-next h3 { margin: 0; font-size: 1.45rem; line-height: 1.35; }
+  .ev-next h3 a { color: var(--fg); text-decoration: none; }
+  .ev-next h3 a:hover { color: var(--accent); }
+  .ev-next .sub { color: var(--muted); margin: 0; }
+  .ev-next .cta { margin-top: auto; padding-top: .8rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+  .ev-btn { display: inline-block; border-radius: 8px; padding: .45rem 1rem; font-size: .92rem;
+            text-decoration: none; border: 1px solid var(--accent); }
+  .ev-btn.solid { background: var(--accent); color: #fff; }
+  .ev-btn.line { color: var(--accent); }
+  .ev-btn:hover { opacity: .88; }
+  @media (max-width: 640px) { .ev-next { grid-template-columns: 1fr; } }
+
+  /* 之後的場次:小卡 */
+  .ev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .9rem; }
+  .ev-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+             padding: .9rem 1rem; }
+  .ev-chip { display: inline-block; background: var(--accent-weak); color: var(--accent);
+             border-radius: 6px; font-size: .8rem; font-weight: 700; padding: .1rem .55rem;
+             margin-bottom: .45rem; }
+  .ev-card h3 { margin: 0 0 .3rem; font-size: 1.02rem; line-height: 1.45; }
+  .ev-card h3 a { color: var(--fg); text-decoration: none; }
+  .ev-card h3 a:hover { color: var(--accent); }
+  .ev-card p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.6;
+               display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* 已辦:壓灰列表 */
+  .ev-past { list-style: none; padding: 0; margin: 0; }
+  .ev-past li { display: flex; gap: 1rem; align-items: baseline; padding: .65rem 0;
+                border-bottom: 1px solid var(--border); }
+  .ev-past .d { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums;
+                white-space: nowrap; }
+  .ev-past a { color: var(--fg); text-decoration: none; }
+  .ev-past a:hover { color: var(--accent); }
+  .ev-past .rec { font-size: .78rem; color: var(--accent); background: var(--accent-weak);
+                  border-radius: 6px; padding: .05rem .5rem; white-space: nowrap; }
+  .ev-vote { margin: 2.5rem 0 0; padding: 1rem 1.2rem; background: var(--accent-weak);
+             border-radius: 10px; color: var(--fg); }
+  .ev-vote a { color: var(--accent); font-weight: 700; }
+</style>
+
+<div class="container ev-wrap">
   <h1>活動</h1>
-  {% comment %} ponytail: 不列「實作營與講座」這種分類,每開一種新型態的場次就要回來改一次。 {% endcomment %}
-  <p class="section-lead" style="text-align:left; margin:0 0 2rem;">每一場都是跟著做，離開時手上有東西。</p>
-  <ul class="post-list">
-    {% comment %}
-      ponytail: 用 event_date(ISO 日期)反向排序當「新的在上面」,沒有分「即將/已結束」。
-      原本排 event_batch,但 slug 是「主題-日期」,主題在前面會蓋過日期,新場次會被壓在舊場次下面。
-      等真的辦過幾場、頁面長到需要分段再說。
-    {% endcomment %}
-    {% comment %}
-      回饋頁跟活動頁用同一個 layout,不濾掉的話會混在場次清單裡,而且活動還沒開始
-      就有人看得到回饋表單。回饋頁一律 sitemap: false,拿它當條件最省事。
-    {% endcomment %}
-    {% assign events = site.pages | where: "layout", "event" | where_exp: "e", "e.sitemap != false" | sort: "event_date" | reverse %}
+  <p class="ev-lead"><strong>每週三晚上八點的免費直播</strong>，每一場都是跟著做，離開時手上有東西。開播連結當天在
+    <a href="https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=events&utm_medium=link&utm_campaign=index">AI 許願池社群</a>公布。</p>
+
+  {% comment %}
+    資料來源:layout 為 event 的頁面(回饋頁 sitemap:false 濾掉,理由同前版)。
+    「下一場/之後/已辦」的分組交給瀏覽器用當下日期算:GitHub Pages 只在 push 時重建,
+    用 site.time 分組的話,場次辦完卻沒推新 commit 就會一直掛在「即將」。
+    沒有 JS 時退回下面這份完整清單(新的在上),跟改版前一樣。
+  {% endcomment %}
+  {% assign events = site.pages | where: "layout", "event" | where_exp: "e", "e.sitemap != false" | sort: "event_date" | reverse %}
+
+  <div id="ev-rich" hidden>
+    <section class="ev-sec" id="ev-next-sec" hidden>
+      <h2>下一場</h2>
+      <div class="ev-next" id="ev-next"></div>
+    </section>
+    <section class="ev-sec" id="ev-up-sec" hidden>
+      <h2>之後的場次</h2>
+      <div class="ev-grid" id="ev-up"></div>
+    </section>
+    <section class="ev-sec" id="ev-past-sec" hidden>
+      <h2>已辦的場次</h2>
+      <ul class="ev-past" id="ev-past"></ul>
+    </section>
+    <p class="ev-vote">想聽什麼自己點：<a href="https://forms.gle/AY9Cgp5dzho8EyX49">下個月主題投票</a>（可複選，也可以自己寫題目，票多的先開）。</p>
+  </div>
+
+  <ul class="post-list" id="ev-fallback">
     {% for e in events %}
     <li>
       <h2><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h2>
@@ -28,3 +102,88 @@ permalink: /events/
   </ul>
   {% if events.size == 0 %}<p class="excerpt">目前沒有安排中的場次。</p>{% endif %}
 </div>
+
+<script type="application/json" id="ev-data">[
+{% for e in events %}  { "date": {{ e.event_date | jsonify }}, "title": {{ e.title | jsonify }},
+    "sub": {{ e.subtitle | default: "" | jsonify }}, "when": {{ e.event_datetime | default: "" | jsonify }},
+    "url": {{ e.url | relative_url | jsonify }}, "cover": {{ e.cover | default: "" | relative_url | jsonify }},
+    "rec": {{ e.recording_url | default: "" | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endfor %}]</script>
+<script>
+(function () {
+  var data;
+  try { data = JSON.parse(document.getElementById('ev-data').textContent); }
+  catch (e) { return; } // 解析失敗就維持原本的清單
+  if (!data.length) return;
+
+  // 以瀏覽器當地日期分組:活動日整天都算「下一場」,隔天才進歷史
+  var now = new Date();
+  var today = now.getFullYear() + '-' +
+    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+    String(now.getDate()).padStart(2, '0');
+
+  var future = data.filter(function (e) { return e.date >= today; })
+                   .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+  var past = data.filter(function (e) { return e.date < today; })
+                 .sort(function (a, b) { return a.date > b.date ? -1 : 1; });
+  var next = future.shift();
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function dayLabel(iso) {
+    var d = new Date(iso + 'T00:00:00');
+    var diff = Math.round((d - new Date(today + 'T00:00:00')) / 86400000);
+    if (diff === 0) return '就是今晚';
+    if (diff === 1) return '明天';
+    return diff + ' 天後';
+  }
+  function mmdd(iso) {
+    var p = iso.split('-');
+    return parseInt(p[1], 10) + '/' + parseInt(p[2], 10) +
+      '（' + '日一二三四五六'[new Date(iso + 'T00:00:00').getDay()] + '）';
+  }
+
+  var community = 'https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=events&utm_medium=link&utm_campaign=next';
+
+  if (next) {
+    document.getElementById('ev-next').innerHTML =
+      (next.cover ? '<div class="cover"><a href="' + esc(next.url) + '"><img src="' + esc(next.cover) +
+        '" alt="' + esc(next.title) + ' 場次視覺"></a></div>' : '') +
+      '<div class="body">' +
+        '<span class="ev-when">' + esc(next.when || mmdd(next.date)) +
+          '<span class="count">' + dayLabel(next.date) + '</span></span>' +
+        '<h3><a href="' + esc(next.url) + '">' + esc(next.title) + '</a></h3>' +
+        (next.sub ? '<p class="sub">' + esc(next.sub) + '</p>' : '') +
+        '<div class="cta">' +
+          '<a class="ev-btn solid" href="' + esc(next.url) + '">看這場的內容</a>' +
+          '<a class="ev-btn line" href="' + community + '">加社群收開播連結</a>' +
+        '</div>' +
+      '</div>';
+    document.getElementById('ev-next-sec').hidden = false;
+  }
+
+  if (future.length) {
+    document.getElementById('ev-up').innerHTML = future.map(function (e) {
+      return '<div class="ev-card"><span class="ev-chip">' + mmdd(e.date) + ' 20:00</span>' +
+        '<h3><a href="' + esc(e.url) + '">' + esc(e.title) + '</a></h3>' +
+        (e.sub ? '<p>' + esc(e.sub) + '</p>' : '') + '</div>';
+    }).join('');
+    document.getElementById('ev-up-sec').hidden = false;
+  }
+
+  if (past.length) {
+    document.getElementById('ev-past').innerHTML = past.map(function (e) {
+      return '<li><span class="d">' + esc(e.date) + '</span>' +
+        '<span><a href="' + esc(e.url) + '">' + esc(e.title) + '</a></span>' +
+        (e.rec ? '<a class="rec" href="' + esc(e.rec) + '">看錄影</a>' : '') + '</li>';
+    }).join('');
+    document.getElementById('ev-past-sec').hidden = false;
+  }
+
+  document.getElementById('ev-fallback').hidden = true;
+  document.getElementById('ev-rich').hidden = false;
+})();
+</script>
