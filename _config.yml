@@ -50,8 +50,6 @@ navbar:
     url: /about/
   - title: Portfolio
     url: /portfolio/
-  - title: Workshop
-    url: /workshop/
   - title: 角色
     url: /characters/
   - title: 活動

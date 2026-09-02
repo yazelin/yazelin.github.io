@@ -6,10 +6,19 @@ permalink: /portfolio/
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)
 
-我一直看好 AI，而 AI 變強了之後，它已經不是輔助，而是主力。做了十幾年系統整合的乙方，現在換邊當甲方，把當年業主跟我合作的方式拿來用在 AI 身上：開規格、下發包、做驗收，一個人同時推進 30+ 個活躍專案。除了 Mori Desktop 是桌面程式，以下都可以直接點開用：
+我一直看好 AI，而 AI 變強了之後，它成了主力。做了十幾年系統整合的乙方，現在換邊當甲方，把當年業主跟我合作的方式拿來用在 AI 身上：開規格、下發包、做驗收，一個人同時推進 30+ 個活躍專案。除了 Mori Desktop 是桌面程式，以下都可以直接點開用：
 
 **個人 AI 生態 Mori universe**
-- [Mori Desktop](https://github.com/yazelin/mori-desktop)：Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要，加上耳朵（mori-ear）、喚醒詞（hey-mori）、白板（mori-canvas）等身體部件的 multi-repo 生態
+
+同一隻森林精靈 Mori 的一整組 repo：桌面是身體，其餘是拆開獨立版控的身體部件，加上一層共享世界觀。
+- [Mori Desktop](https://github.com/yazelin/mori-desktop)：身體。Tauri 2 + Rust + React 的桌面 AI 管家，本地 Whisper 語音輸入、會議錄音摘要
+- [mori-ear](https://github.com/yazelin/mori-ear)：耳朵。Whisper / ASR 語音轉文字模組，也能當獨立轉譯服務
+- [hey-mori](https://github.com/yazelin/hey-mori)：喚醒詞。openWakeWord 訓練的「Hey Mori」ONNX 模型，獨立版控以便重訓追蹤
+- [mori-canvas](https://github.com/yazelin/mori-canvas)：白板。講話或貼逐字稿，AI 即時整理成便利貼與關係圖的多人會議白板，自架零授權成本
+- [mori-meeting-recorder](https://github.com/yazelin/mori-meeting-recorder)：會議錄音。雙軌獨立錄音，宇宙裡唯一的轉錄入口
+- [mori-sprite-studio](https://yazelin.github.io/mori-sprite-studio/)：造型工坊。一張角色圖生成整包透明背景動畫 sprite，打包成 .moripack 換裝給桌面用
+- [world-tree](https://github.com/yazelin/world-tree)：世界觀。這組的共享 lore 知識庫，把 AI 精靈寫成一個可入住的異世界（精靈、器物、任務、入住儀式）
+- annuli：核心排程層，Mori 的心跳與定時任務所在（私有 repo，不對外開放）
 
 **原創角色**
 - [角色圖鑑]({{ '/characters/' | relative_url }})：格莉奇、黑洞先生、阿蕊、Mori、優理、小擎，加上貓貓漫畫、catime 與《token 無限》的群像。散在各個作品裡的角色，一頁看完
@@ -26,7 +35,6 @@ permalink: /portfolio/
 - [iPAS AI 模擬考](https://yazelin.github.io/ipas-ai-quiz/)：790 題歷屆考古題，純前端 + Cloudflare 同步
 - [AI 社團許願池](https://yazelin.github.io/wish-pool/)：AI 對話引導 + 協作公開牆，伺服器簽章防繞過
 - [LINE 貼圖製造機](https://yazelin.github.io/line-sticker-studio/)：上傳一張角色圖，AI 產出一整組可上架的 LINE 貼圖，一路擴充成含素材庫、組包出貨的小工作室
-- [Mori Sprite Studio](https://yazelin.github.io/mori-sprite-studio/)：一張角色圖生成整包透明背景動畫 sprite
 - [Catime](https://yazelin.github.io/catime/)：每小時自動生一隻 AI 貓，已累積 2300+ 隻
 - [AI 生圖字體風格庫](https://yazelin.github.io/ai-font-styles/)：上百種字體風格提示詞，每天自動多一種
 - [行銷頁健檢器](https://yazelin.github.io/marketing-page-checker/)：貼網址自動檢查 OG/SEO/CTA/速度
@@ -89,7 +97,7 @@ permalink: /portfolio/
 - **ROS 2 Jazzy + Zenoh RMW**：解決跨網段通訊痛點
 - **雙環境架構**：車載系統（host 網路）+ 管理系統（bridge 網路）
 - **17 個專用工作空間**：模組化設計，功能清楚分離
-- **Docker 容器化**：一鍵部署，環境一致性保證
+- **Docker 容器化**：按一下部署，環境一致性保證
 
 **系統特色：**
 - **多車型支援**：Cargo Mover、Loader、Unloader 三種 AGV
