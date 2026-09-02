@@ -17,7 +17,7 @@ permalink: /portfolio/
 - [mori-canvas](https://github.com/yazelin/mori-canvas)：白板。講話或貼逐字稿，AI 即時整理成便利貼與關係圖的多人會議白板，自架零授權成本
 - [mori-meeting-recorder](https://github.com/yazelin/mori-meeting-recorder)：會議錄音。雙軌獨立錄音，宇宙裡唯一的轉錄入口
 - [mori-sprite-studio](https://yazelin.github.io/mori-sprite-studio/)：造型工坊。一張角色圖生成整包透明背景動畫 sprite，打包成 .moripack 換裝給桌面用
-- [world-tree](https://github.com/yazelin/world-tree)：世界觀。這組的共享 lore 知識庫，把 AI 精靈寫成一個可入住的異世界（精靈、器物、任務、入住儀式）
+- [world-tree](https://github.com/yazelin/world-tree)：世界觀。這組的共享 lore 知識庫，把 AI 精靈寫成一個可入住的異世界。裡面有一套召喚儀式，帶人花二三十分鐘一步步生出自己的 AI 精靈：命名、寫下它的靈魂設定、建一個私有 repo 當它永久的家
 - annuli：反思引擎。定時把互動整理成人格演化與記憶的服務層，資料存在使用者自己的 vault（私有 repo，不對外開放）
 
 **原創角色**
