@@ -18,7 +18,7 @@ permalink: /portfolio/
 - [mori-meeting-recorder](https://github.com/yazelin/mori-meeting-recorder)：會議錄音。雙軌獨立錄音，宇宙裡唯一的轉錄入口
 - [mori-sprite-studio](https://yazelin.github.io/mori-sprite-studio/)：造型工坊。一張角色圖生成整包透明背景動畫 sprite，打包成 .moripack 換裝給桌面用
 - [world-tree](https://github.com/yazelin/world-tree)：世界觀。這組的共享 lore 知識庫，把 AI 精靈寫成一個可入住的異世界（精靈、器物、任務、入住儀式）
-- annuli：核心排程層，Mori 的心跳與定時任務所在（私有 repo，不對外開放）
+- annuli：反思引擎。定時把互動整理成人格演化與記憶的服務層，資料存在使用者自己的 vault（私有 repo，不對外開放）
 
 **原創角色**
 - [角色圖鑑]({{ '/characters/' | relative_url }})：格莉奇、黑洞先生、阿蕊、Mori、優理、小擎，加上貓貓漫畫、catime 與《token 無限》的群像。散在各個作品裡的角色，一頁看完
