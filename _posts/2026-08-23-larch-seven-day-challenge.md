@@ -112,4 +112,4 @@ diff 長這樣：
 
 作品在這裡：[在 Larch 上玩](https://larch.ink/play/market/yaze/glitch)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
 
-[得獎作品頁](https://larch.ink/events/creator-challenge)只公開七天，想看那 18 件別人做了七天的東西要趁早。下一場 9 月 6 日公布主題。
+[得獎作品頁](https://larch.ink/events/creator-challenge)只公開七天，想看那 18 件別人做了七天的東西要趁早。過期之後，Larch 首頁的[社群玩家作品區](https://larch.ink/#community)還找得到，這部目前排在那裡的第一個。下一場挑戰 9 月 6 日公布主題。
