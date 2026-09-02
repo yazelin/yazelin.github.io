@@ -17,6 +17,10 @@ layout: default
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<p class="section-lead" style="text-align:left; margin:0 0 2rem;">{{ page.subtitle }}</p>{% endif %}
 
+  {% comment %} 場次視覺:cover 原本只餵 og:image,頁面內看不到,補渲染在資訊列上方 {% endcomment %}
+  {% if page.cover %}<img src="{{ page.cover | relative_url }}" alt="{{ page.title }} 場次視覺"
+    style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid var(--border); margin:0 0 1.6rem; display:block;">{% endif %}
+
   {% if page.event_datetime or page.event_duration or page.event_location or page.event_price or page.event_access %}
   <ul class="event-meta">
     {% if page.event_datetime %}<li><span>時間</span>{{ page.event_datetime }}</li>{% endif %}
