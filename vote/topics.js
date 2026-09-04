@@ -32,3 +32,13 @@ window.VOTE_TOPICS = {
     { slug: 'web-effects', title: '幫你的網頁加點特效',      date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
   ],
 };
+
+// 「你用 AI 到什麼程度」的選項。刻意做成複選的工具清單而不是自評分級:
+// 人對自己的程度判斷很不準,但「你用過 Suno 嗎」一秒就答得出來。照深度排,勾到哪裡就是程度。
+// key 一旦公開就不要改,改了先前的回答會對不上。
+window.VOTE_USES = [
+  { key: 'chat',  title: '聊天',         eg: 'ChatGPT、Claude、Gemini' },
+  { key: 'media', title: '生圖／生音樂',   eg: 'Midjourney、Suno 這類' },
+  { key: 'agent', title: 'Agent',        eg: 'Claude Code、Codex 這類會自己動手的' },
+  { key: 'build', title: '自建 Agent',    eg: '自己接 API、自己組工作流' },
+];

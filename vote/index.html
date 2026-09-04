@@ -107,6 +107,22 @@ textarea { min-height:3.2rem; }
 .send[disabled] { opacity:.45; cursor:default; }
 .thanks { font-size:.86rem; color:var(--all); }
 
+/* ---- 你用 AI 到什麼程度 ---- */
+.uses { display:flex; flex-direction:column; gap:.35rem; }
+.use {
+  width:100%; text-align:left; background:var(--paper); border:1px solid var(--rule);
+  border-radius:8px; padding:.45rem .6rem; font:inherit; color:inherit; cursor:pointer;
+  display:grid; grid-template-columns:1.2rem 1fr; gap:0 .5rem; align-items:baseline;
+}
+.use .box { grid-column:1; color:var(--ink-3); font-size:.92rem; line-height:1.4; }
+.use .t { grid-column:2; font-size:.9rem; font-weight:700; line-height:1.4; }
+.use .eg { grid-column:2; font-size:.75rem; color:var(--ink-3); line-height:1.45; }
+.use[aria-pressed="true"] { border-color:var(--all); background:var(--card); }
+.use[aria-pressed="true"] .box { color:var(--all); }
+.use[aria-pressed="true"] .t { color:var(--all); }
+@media (hover:hover) { .use:hover { border-color:var(--ink-3); } }
+#uses-n { font-size:.75rem; color:var(--ink-3); margin-top:.45rem; min-height:1.1em; }
+
 /* ---- 提案 ---- */
 details.ask { border-top:1px solid var(--rule-soft); padding:.55rem 0 0; }
 details.ask:first-of-type { border-top:0; padding-top:0; }
@@ -119,6 +135,16 @@ details.ask[open] > summary::after { content:"−"; }
 .ask input[type=text] { margin-top:.4rem; }
 
 /* ---- 檔期封面卡 ---- */
+.card .cap2 { display:flex; align-items:flex-start; gap:.4rem; justify-content:space-between; }
+.card .t { flex:1 1 auto; min-width:0; text-decoration:none; color:inherit; }
+.heart {
+  flex:0 0 auto; background:none; border:1px solid var(--rule); border-radius:999px;
+  color:var(--ink-3); font:inherit; font-size:.74rem; padding:.12rem .42rem; cursor:pointer;
+  display:flex; align-items:center; gap:.2rem; line-height:1.5;
+}
+.heart[aria-pressed="true"] { background:var(--mine); border-color:var(--mine); color:#fff; }
+@media (hover:hover) { .heart:hover { border-color:var(--mine); color:var(--mine); }
+                       .heart[aria-pressed="true"]:hover { color:#fff; } }
 h2.head { font-size:.95rem; font-weight:700; margin:1.6rem 0 .1rem; padding-bottom:.4rem; border-bottom:1px solid var(--rule); }
 .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; margin-top:.7rem; }
 .card { display:block; text-decoration:none; color:inherit; border:1px solid var(--rule);
@@ -144,10 +170,11 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   body { max-width:66rem; }
   .stats { grid-template-columns:repeat(4,1fr); }
   .cols { display:grid; grid-template-columns:1.5fr 1fr; gap:0 1rem; align-items:start;
-          grid-template-areas:"rank ballot" "rank fb" "rank ask" "rank ."; }
+          grid-template-areas:"rank ballot" "rank fb" "rank uses" "rank ask" "rank ."; }
   .cols > .p-rank   { grid-area:rank; }
   .cols > .p-ballot { grid-area:ballot; }
   .cols > .p-fb     { grid-area:fb; }
+  .cols > .p-uses   { grid-area:uses; }
   .cols > .p-ask    { grid-area:ask; }
   .cards { grid-template-columns:repeat(4,1fr); }
 }
@@ -188,6 +215,13 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     <p class="note">依票數排序。投一票下去，那個主題會往上爬。</p>
     <ol class="rank" id="open"></ol>
     <p id="empty" hidden>還沒有人投。第一票由你開始。</p>
+  </section>
+
+  <section class="panel p-uses">
+    <header><h2>你用 AI 到什麼程度</h2></header>
+    <p class="note">用過哪些就勾哪些，隨時可以改。這只是讓我知道台下大概是什麼組成，好決定講多深。</p>
+    <div class="uses" id="uses"></div>
+    <p id="uses-n"></p>
   </section>
 
   <section class="panel p-ask">
@@ -261,6 +295,8 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   })();
 
   var mine = [], tally = {}, voters = 0;
+  var myUses = [], answered = 0;
+  var myLikes = [], likeCounts = {};
   var listEl = document.getElementById('open');
   var stateEl = document.getElementById('state');
   var $ = function (id) { return document.getElementById(id); };
@@ -371,24 +407,64 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
                                 mine.length ? '還可以選 ' + (MAX - mine.length) + ' 個' : '還沒選';
   }
 
+  // 已經講過的場次可以按愛心。一人一場一顆,再按取消,存在自己那一列。
+  var hearts = {};        // slug -> button
+  var likeTimer = null;
+  function heartFor(slug) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'heart';
+    b.setAttribute('aria-label', '喜歡這一場');
+    b.addEventListener('click', function () {
+      var i = myLikes.indexOf(slug);
+      if (i >= 0) { myLikes.splice(i, 1); likeCounts[slug] = Math.max(0, (likeCounts[slug] || 0) - 1); }
+      else { myLikes.push(slug); likeCounts[slug] = (likeCounts[slug] || 0) + 1; }
+      renderHearts();
+      clearTimeout(likeTimer);
+      likeTimer = setTimeout(saveLikes, 400);
+    });
+    hearts[slug] = b;
+    return b;
+  }
+  function renderHearts() {
+    Object.keys(hearts).forEach(function (slug) {
+      var on = myLikes.indexOf(slug) >= 0;
+      var n = likeCounts[slug] || 0;
+      hearts[slug].setAttribute('aria-pressed', on ? 'true' : 'false');
+      hearts[slug].textContent = n ? '♥ ' + n : '♥';
+    });
+  }
+  function saveLikes() {
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' },
+                 body: JSON.stringify({ voter: voter, likes: myLikes }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.error) { likeCounts = d.likeCounts || {}; renderHearts(); } })
+      .catch(function () { setTimeout(saveLikes, 4000); });
+  }
+
   // 檔期用封面卡。封面就是該場簡報第一頁的截圖,路徑寫在 topics.js 的 img。
   function renderCards(id, list, isNext) {
     var box = $(id);
     box.innerHTML = '';
     list.forEach(function (t) {
-      var a = document.createElement(t.url ? 'a' : 'div');
+      var a = document.createElement('div');
       a.className = 'card' + (isNext ? ' next' : '');
-      if (t.url) a.href = t.url;
       if (t.img) {
         var im = document.createElement('img');
         im.src = t.img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
-        a.appendChild(im);
+        if (t.url) { var lk = document.createElement('a'); lk.href = t.url; lk.appendChild(im); a.appendChild(lk); }
+        else a.appendChild(im);
       }
       var cap = document.createElement('div');
       cap.className = 'cap';
       var d = document.createElement('div'); d.className = 'd8'; d.textContent = t.date;
-      var ti = document.createElement('div'); ti.className = 't'; ti.textContent = t.title;
-      cap.appendChild(d); cap.appendChild(ti);
+      var row2 = document.createElement('div'); row2.className = 'cap2';
+      var ti = document.createElement(t.url ? 'a' : 'span');
+      ti.className = 't'; ti.textContent = t.title;
+      if (t.url) ti.href = t.url;
+      row2.appendChild(ti);
+      // 已經講過的可以按愛心。排定但還沒講的不給按,那還沒有東西可以喜歡。
+      if (!isNext) row2.appendChild(heartFor(t.slug));
+      cap.appendChild(d); cap.appendChild(row2);
       a.appendChild(cap);
       box.appendChild(a);
     });
@@ -413,6 +489,44 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     timer = setTimeout(save, 400);   // 連點幾下只送一次
   }
 
+  // 「你用 AI 到什麼程度」。跟票存在同一列,所以「程度 x 想聽什麼」是一句 SQL。
+  var USES = window.VOTE_USES || [];
+  var usesTimer = null;
+  function mountUses() {
+    var box = $('uses');
+    USES.forEach(function (u) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'use'; b.dataset.k = u.key;
+      b.innerHTML = '<span class="box"></span><span class="t"></span><span class="eg"></span>';
+      b.querySelector('.t').textContent = u.title;
+      b.querySelector('.eg').textContent = u.eg;
+      b.addEventListener('click', function () {
+        var i = myUses.indexOf(u.key);
+        if (i >= 0) myUses.splice(i, 1); else myUses.push(u.key);
+        renderUses();
+        clearTimeout(usesTimer);
+        usesTimer = setTimeout(saveUses, 400);
+      });
+      box.appendChild(b);
+    });
+  }
+  function renderUses() {
+    document.querySelectorAll('.use').forEach(function (b) {
+      var on = myUses.indexOf(b.dataset.k) >= 0;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.querySelector('.box').textContent = on ? '☑' : '☐';
+    });
+    var n = (myUses.length && !answered) ? 1 : answered;
+    $('uses-n').textContent = n ? n + ' 人回答過' : '還沒有人回答';
+  }
+  function saveUses() {
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' },
+                 body: JSON.stringify({ voter: voter, uses: myUses }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.error) { answered = d.answered || 0; renderUses(); } })
+      .catch(function () { setTimeout(saveUses, 4000); });
+  }
+
   function apply(d) {
     if (Array.isArray(d.mine)) {
       // 講過的主題會從 topics.js 的 open 搬到 done。投過它的人手上那一票要退回來,
@@ -427,7 +541,13 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     }
     tally = d.tally || {};
     voters = d.voters || 0;
+    if (Array.isArray(d.uses)) myUses = d.uses;
+    if (Array.isArray(d.likes)) myLikes = d.likes;
+    likeCounts = d.likeCounts || {};
+    answered = d.answered || 0;
     render();
+    renderUses();
+    renderHearts();
   }
 
   function save() {
@@ -515,6 +635,8 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   }
 
   build();
+  mountUses();
+  renderUses();
   mountFeedback();
   mountAsk('wish-send', 'wish', 'wish-text', null, 'wish-ok');
   mountAsk('offer-send', 'offer', 'offer-text', 'offer-contact', 'offer-ok');
