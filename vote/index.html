@@ -7,6 +7,7 @@
 <meta name="description" content="每週三晚上八點的免費直播主題投票。最多選三個，隨時可以改，不用留任何資料。">
 <meta property="og:title" content="週三晚上八點，想聽什麼？">
 <meta property="og:description" content="最多選三個，隨時可以改，不用留任何資料。">
+<meta property="og:image" content="https://yazelin.github.io/images/events/og-design-teardown.jpg">
 <link rel="canonical" href="https://yazelin.github.io/vote/">
 <link rel="stylesheet" href="theme.css">
 <style>
@@ -15,208 +16,204 @@ html { -webkit-text-size-adjust:100%; }
 body {
   background:var(--paper); color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
-  font-size:16px; line-height:1.65;
-  padding:1.6rem 1.1rem 3rem; max-width:40rem; margin:0 auto;
-  font-variant-numeric:tabular-nums;
+  font-size:16px; line-height:1.65; font-variant-numeric:tabular-nums;
+  max-width:42rem; margin:0 auto; padding:0 1rem 3rem;
 }
 a { color:var(--all); }
-:focus-visible { outline:2px solid var(--all); outline-offset:2px; border-radius:3px; }
+:focus-visible { outline:2px solid var(--all); outline-offset:2px; border-radius:4px; }
 
-/* ---- 頁首 ---- */
-.topline { display:flex; align-items:center; justify-content:space-between; gap:.6rem; }
-.when { color:var(--ink-3); font-size:.82rem; letter-spacing:.02em; }
-#theme {
-  flex:0 0 auto; background:none; border:1px solid var(--rule); color:var(--ink-3);
-  font:inherit; font-size:.72rem; padding:.2rem .55rem; border-radius:999px; cursor:pointer;
+/* ---- 頂欄 ---- */
+.topbar {
+  position:sticky; top:0; z-index:20; margin:0 -1rem 1.1rem; padding:.6rem 1rem;
+  background:var(--card); border-bottom:1px solid var(--rule);
+  display:flex; align-items:center; gap:.7rem; justify-content:space-between;
 }
-@media (hover:hover) { #theme:hover { color:var(--ink); border-color:var(--ink-3); } }
-h1 { font-size:1.85rem; line-height:1.2; font-weight:800; letter-spacing:-.02em; margin:.1rem 0 .5rem; }
-.sub { color:var(--ink-2); font-size:.88rem; max-width:32em; }
+.brand { display:flex; align-items:center; gap:.45rem; font-size:.86rem; font-weight:700; }
+.brand i { width:9px; height:9px; border-radius:50%; background:var(--all); flex:0 0 auto; }
+.topbar .right { display:flex; align-items:center; gap:.45rem; }
+#theme {
+  background:var(--paper); border:1px solid var(--ink-3); color:var(--ink);
+  font:inherit; font-size:.8rem; font-weight:600; padding:.32rem .7rem;
+  border-radius:999px; cursor:pointer; white-space:nowrap;
+}
+@media (hover:hover) { #theme:hover { border-color:var(--all); color:var(--all); } }
+
+h1 { font-size:1.9rem; line-height:1.2; font-weight:800; letter-spacing:-.02em; margin-bottom:.35rem; }
+.lede { color:var(--ink-2); font-size:.9rem; max-width:34em; }
+
+/* ---- 四格數字 ---- */
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin:1.2rem 0 1.4rem; }
+.stat { background:var(--card); border:1px solid var(--rule); border-radius:9px; padding:.6rem .75rem; min-width:0; }
+.stat .k { font-size:.72rem; color:var(--ink-3); }
+.stat .v { font-size:1.3rem; font-weight:800; line-height:1.25; margin-top:.05rem;
+           overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.stat .s { font-size:.74rem; color:var(--ink-3); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.stat.hi .v { color:var(--mine); }
+
+/* ---- 面板 ---- */
+.panel { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:.85rem .9rem; margin-bottom:.9rem; }
+.panel > header { display:flex; align-items:baseline; justify-content:space-between; gap:.6rem; margin-bottom:.15rem; }
+.panel h2 { font-size:.95rem; font-weight:700; }
+.panel .note { font-size:.76rem; color:var(--ink-3); margin-bottom:.5rem; }
+.key { display:flex; gap:.6rem; font-size:.72rem; color:var(--ink-3); white-space:nowrap; }
+.key i { display:inline-block; width:13px; height:4px; border-radius:2px; vertical-align:.12em; margin-right:.22rem; }
+.key .k-all { background:var(--all); } .key .k-mine { background:var(--mine); }
 
 /* ---- 你的票 ---- */
-.ballot { margin:1.5rem 0 1.8rem; }
-.ballot-head {
-  display:flex; align-items:baseline; justify-content:space-between; gap:.6rem;
-  padding-bottom:.45rem; border-bottom:1px solid var(--rule);
-}
-.ballot-head strong { font-size:.9rem; font-weight:700; }
-.ballot-head em { font-style:normal; color:var(--ink-3); font-size:.8rem; }
-.slots { display:flex; flex-direction:column; gap:.3rem; margin-top:.55rem; }
-.slot {
-  min-height:2.3rem; border-radius:7px;
-  display:flex; align-items:center; gap:.4rem; padding:.35rem .6rem;
-  font-size:.86rem; line-height:1.35;
-}
-.slot.filled { background:var(--card); border:1px solid var(--mine); box-shadow:var(--shadow); }
+.slots { display:flex; flex-direction:column; gap:.3rem; }
+.slot { min-height:2.3rem; border-radius:7px; display:flex; align-items:center; gap:.4rem;
+        padding:.35rem .6rem; font-size:.86rem; line-height:1.35; }
+.slot.filled { background:var(--paper); border:1px solid var(--mine); }
 .slot.filled span { flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600; }
 .slot.empty { border:1px dashed var(--rule); color:var(--ink-3); min-height:2rem; font-size:.82rem; }
-.drop {
-  flex:0 0 auto; border:0; background:none; cursor:pointer; padding:0 .1rem;
-  color:var(--ink-3); font:inherit; font-size:1rem; line-height:1;
-}
+.drop { flex:0 0 auto; border:0; background:none; cursor:pointer; padding:0 .1rem; color:var(--ink-3); font:inherit; font-size:1rem; line-height:1; }
 @media (hover:hover) { .drop:hover { color:var(--mine); } }
 
 /* ---- 排行 ---- */
-.section-head {
-  display:flex; align-items:baseline; justify-content:space-between; gap:.6rem;
-  margin:0 0 .2rem; padding-bottom:.45rem; border-bottom:1px solid var(--rule);
-}
-.section-head h2 { font-size:.9rem; font-weight:700; }
-.key { display:flex; gap:.7rem; font-size:.74rem; color:var(--ink-3); }
-.key i { display:inline-block; width:14px; height:4px; border-radius:2px; vertical-align:.12em; margin-right:.25rem; }
-.key .k-all { background:var(--all); }
-.key .k-mine { background:var(--mine); }
-
 ol.rank { list-style:none; }
 ol.rank li { border-bottom:1px solid var(--rule-soft); }
-
-.row {
-  width:100%; display:grid; grid-template-columns:1.9rem 1fr auto; gap:0 .6rem;
-  align-items:baseline; text-align:left; cursor:pointer;
-  background:none; border:0; color:inherit; font:inherit;
-  padding:.6rem .1rem .5rem; position:relative;
-}
-@media (hover:hover) { .row:hover { background:var(--card); } }
-.row .pos { grid-column:1; font-size:.9rem; font-weight:700; color:var(--ink-3); }
+ol.rank li:last-child { border-bottom:0; }
+.row { width:100%; display:grid; grid-template-columns:1.7rem 1fr auto; gap:0 .55rem;
+       align-items:baseline; text-align:left; cursor:pointer; background:none; border:0;
+       color:inherit; font:inherit; padding:.6rem .1rem .5rem; position:relative; }
+@media (hover:hover) { .row:hover { background:var(--paper); } }
+.row .pos { grid-column:1; font-size:.88rem; font-weight:700; color:var(--ink-3); }
 .row .title { grid-column:2; font-size:1rem; font-weight:700; line-height:1.35; }
-.row .count { grid-column:3; font-size:.9rem; font-weight:700; color:var(--ink-2); white-space:nowrap; }
-.row .track {
-  grid-column:2 / span 2; height:7px; background:var(--track);
-  border-radius:0 4px 4px 0; margin-top:.3rem; overflow:hidden;
-}
-.row .desc { grid-column:2 / span 2; font-size:.79rem; color:var(--ink-3); line-height:1.5; margin-top:.3rem; }
+.row .count { grid-column:3; font-size:.88rem; font-weight:700; color:var(--ink-2); white-space:nowrap; }
+.row .track { grid-column:2 / span 2; height:7px; background:var(--track); border-radius:0 4px 4px 0; margin-top:.3rem; overflow:hidden; }
 .row .track b { display:block; height:100%; background:var(--all); border-radius:0 4px 4px 0; transition:width .45s cubic-bezier(.2,.8,.2,1); }
-
-.row.mine .pos { color:var(--mine); }
+.row .desc { grid-column:2 / span 2; font-size:.79rem; color:var(--ink-3); line-height:1.5; margin-top:.3rem; }
+.row.mine .pos, .row.mine .count { color:var(--mine); }
 .row.mine .title::after { content:"　✓"; color:var(--mine); font-weight:700; }
-.row.mine .count { color:var(--mine); }
 .row.mine .track b { background:var(--mine); }
-.row.mine::before {
-  content:""; position:absolute; left:-1.1rem; top:.55rem; bottom:.45rem;
-  width:3px; background:var(--mine); border-radius:0 2px 2px 0;
-}
+.row.mine::before { content:""; position:absolute; left:-.9rem; top:.55rem; bottom:.45rem; width:3px; background:var(--mine); border-radius:0 2px 2px 0; }
 .row.blocked { opacity:.5; }
-
-/* ---- 已排 / 已講 ---- */
-.strip { display:flex; flex-direction:column; }
-.strip a, .strip span {
-  display:flex; gap:.7rem; align-items:baseline; text-decoration:none; color:var(--ink-2);
-  padding:.3rem .1rem; border-bottom:1px solid var(--rule-soft); font-size:.83rem; line-height:1.5;
-}
-@media (hover:hover) { .strip a:hover { color:var(--ink); } }
-.strip .d8 { color:var(--ink-3); font-size:.76rem; flex:0 0 2.9rem; }
-.strip .up .d8 { color:var(--all); font-weight:700; }
-
-h2.head { font-size:.86rem; font-weight:700; margin:1.7rem 0 .1rem; padding-bottom:.35rem; border-bottom:1px solid var(--rule); }
+#empty { color:var(--ink-3); font-size:.86rem; padding:1rem .1rem; }
 
 /* ---- 心得卡 ---- */
-.fb {
-  background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--mine);
-  border-radius:8px; padding:.85rem .9rem; margin:1.4rem 0 1.6rem; box-shadow:var(--shadow);
-}
-.fb .who { font-size:.76rem; color:var(--ink-3); }
-.fb h3 { font-size:1rem; font-weight:700; line-height:1.35; margin:.1rem 0 .55rem; }
-.fb .q { font-size:.82rem; color:var(--ink-2); margin-bottom:.35rem; }
-.pace { display:flex; gap:.4rem; margin-bottom:.8rem; }
-.pace button {
-  flex:1 1 0; padding:.45rem .3rem; border:1px solid var(--rule); background:var(--paper);
-  color:var(--ink-2); border-radius:7px; font:inherit; font-size:.84rem; cursor:pointer;
-}
+.panel.fb { border-left:3px solid var(--mine); }
+.fb .who { font-size:.74rem; color:var(--ink-3); }
+.fb h3 { font-size:.98rem; font-weight:700; line-height:1.35; margin:.05rem 0 .5rem; }
+.fb .q { font-size:.8rem; color:var(--ink-2); margin-bottom:.3rem; }
+.pace { display:flex; gap:.35rem; margin-bottom:.7rem; }
+.pace button { flex:1 1 0; padding:.42rem .2rem; border:1px solid var(--rule); background:var(--paper);
+               color:var(--ink-2); border-radius:7px; font:inherit; font-size:.83rem; cursor:pointer; }
 .pace button[aria-pressed="true"] { background:var(--mine); border-color:var(--mine); color:#fff; font-weight:700; }
-textarea, input[type=text] {
-  width:100%; border:1px solid var(--rule); background:var(--paper); color:var(--ink);
-  border-radius:7px; padding:.5rem .6rem; font:inherit; font-size:.88rem; line-height:1.6;
-  resize:vertical;
-}
-textarea { min-height:3.4rem; }
-.send {
-  margin-top:.6rem; padding:.5rem 1.1rem; border:0; border-radius:7px; cursor:pointer;
-  background:var(--all); color:#fff; font:inherit; font-size:.86rem; font-weight:700;
-}
+textarea, input[type=text] { width:100%; border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+  border-radius:7px; padding:.5rem .6rem; font:inherit; font-size:.88rem; line-height:1.6; resize:vertical; }
+textarea { min-height:3.2rem; }
+.send { margin-top:.55rem; padding:.48rem 1.05rem; border:0; border-radius:7px; cursor:pointer;
+        background:var(--all); color:#fff; font:inherit; font-size:.85rem; font-weight:700; }
 .send[disabled] { opacity:.45; cursor:default; }
-.fb .thanks, .ask .thanks { font-size:.86rem; color:var(--all); }
+.thanks { font-size:.86rem; color:var(--all); }
 
-/* ---- 提案 / 想來講 ---- */
-.ask { border:1px dashed var(--rule); border-radius:8px; padding:.7rem .9rem; margin-top:.7rem; }
-.ask > summary {
-  cursor:pointer; font-size:.88rem; font-weight:700; list-style:none;
-  display:flex; align-items:center; justify-content:space-between; gap:.5rem;
-}
-.ask > summary::-webkit-details-marker { display:none; }
-.ask > summary::after { content:"＋"; color:var(--ink-3); font-weight:400; }
-.ask[open] > summary::after { content:"−"; }
-.ask .hint { font-size:.78rem; color:var(--ink-3); margin:.5rem 0 .45rem; }
-.ask input[type=text] { margin-top:.45rem; }
+/* ---- 提案 ---- */
+details.ask { border-top:1px solid var(--rule-soft); padding:.55rem 0 0; }
+details.ask:first-of-type { border-top:0; padding-top:0; }
+details.ask > summary { cursor:pointer; font-size:.9rem; font-weight:700; list-style:none;
+  display:flex; align-items:center; justify-content:space-between; gap:.5rem; padding:.15rem 0; }
+details.ask > summary::-webkit-details-marker { display:none; }
+details.ask > summary::after { content:"＋"; color:var(--ink-3); font-weight:400; }
+details.ask[open] > summary::after { content:"−"; }
+.ask .hint { font-size:.78rem; color:var(--ink-3); margin:.35rem 0 .4rem; }
+.ask input[type=text] { margin-top:.4rem; }
 
-/* ---- 狀態 ---- */
-#state { font-size:.78rem; color:var(--ink-3); min-height:1.2em; margin-top:.5rem; }
+/* ---- 檔期封面卡 ---- */
+h2.head { font-size:.95rem; font-weight:700; margin:1.6rem 0 .1rem; padding-bottom:.4rem; border-bottom:1px solid var(--rule); }
+.cards { display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; margin-top:.7rem; }
+.card { display:block; text-decoration:none; color:inherit; border:1px solid var(--rule);
+        border-radius:9px; overflow:hidden; background:var(--card); }
+@media (hover:hover) { .card:hover { border-color:var(--all); } }
+.card img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:var(--track); }
+.card .cap { padding:.45rem .6rem .55rem; }
+.card .d8 { font-size:.72rem; color:var(--ink-3); }
+.card.next .d8 { color:var(--all); font-weight:700; }
+.card .t { font-size:.84rem; font-weight:600; line-height:1.4; }
+
+#state { font-size:.78rem; color:var(--ink-3); min-height:1.2em; margin-top:.45rem; }
 #state.ok { color:var(--all); }
 #state.err { color:#c0392b; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #state.err { color:#f08a7d; } }
 :root[data-theme="dark"] #state.err { color:#f08a7d; }
 
-#empty { color:var(--ink-3); font-size:.88rem; padding:1.4rem .1rem; }
-
-footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule);
+footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
          color:var(--ink-3); font-size:.78rem; line-height:1.9; }
 
-@media (prefers-reduced-motion: reduce) {
-  .row .track b { transition:none; }
+/* ---- 桌機兩欄 ---- */
+@media (min-width:62rem) {
+  body { max-width:66rem; }
+  .stats { grid-template-columns:repeat(4,1fr); }
+  .cols { display:grid; grid-template-columns:1.5fr 1fr; gap:0 1rem; align-items:start;
+          grid-template-areas:"rank ballot" "rank fb" "rank ask" "rank ."; }
+  .cols > .p-rank   { grid-area:rank; }
+  .cols > .p-ballot { grid-area:ballot; }
+  .cols > .p-fb     { grid-area:fb; }
+  .cols > .p-ask    { grid-area:ask; }
+  .cards { grid-template-columns:repeat(4,1fr); }
 }
+@media (prefers-reduced-motion: reduce) { .row .track b { transition:none; } }
 </style>
 </head>
 <body>
 
-<div class="topline">
-  <p class="when">每週三 20:00・線上・免費</p>
-  <button id="theme" type="button" title="切換亮色／深色／跟隨系統">跟隨系統</button>
+<div class="topbar">
+  <span class="brand"><i></i>週三直播 · 主題投票</span>
+  <span class="right"><button id="theme" type="button">跟隨系統</button></span>
 </div>
+
 <h1>想聽什麼？</h1>
-<p class="sub">選三個你最想聽的，隨時可以回來換。不用留 email、不用登入。</p>
+<p class="lede">選三個你最想聽的，隨時可以回來改。不用留 email、不用登入。</p>
 
-<section class="ballot">
-  <div class="ballot-head">
-    <strong>你的三張票</strong>
-    <em id="tally-note">載入中</em>
-  </div>
-  <div class="slots" id="slots"></div>
-  <p id="state"></p>
-</section>
-
-<section class="fb" id="fb" hidden></section>
-
-<div class="section-head">
-  <h2>還沒排的主題</h2>
-  <div class="key">
-    <span><i class="k-all"></i>大家</span>
-    <span><i class="k-mine"></i>你投的</span>
-  </div>
+<div class="stats">
+  <div class="stat"><div class="k">投票人數</div><div class="v" id="s-voters">—</div><div class="s">最多選三個</div></div>
+  <div class="stat"><div class="k">目前第一名</div><div class="v" id="s-top">—</div><div class="s" id="s-top-n">還沒有票</div></div>
+  <div class="stat hi"><div class="k">你的票</div><div class="v" id="s-mine">0 / 3</div><div class="s" id="s-mine-s">還沒選</div></div>
+  <div class="stat"><div class="k">下一場</div><div class="v" id="s-next">—</div><div class="s" id="s-next-t"></div></div>
 </div>
-<ol class="rank" id="open"></ol>
-<p id="empty" hidden>還沒有人投。第一票由你開始。</p>
 
-<details class="ask" id="ask-wish">
-  <summary>想聽的不在上面</summary>
-  <p class="hint">寫下來就好，不用留名字。想解決什麼、卡在哪，寫得越具體越容易被排進來。</p>
-  <textarea id="wish-text" maxlength="500" placeholder="例：想學怎麼把一份 Word 變成能發出去的網頁"></textarea>
-  <button class="send" id="wish-send" type="button">送出</button>
-  <p class="thanks" id="wish-ok" hidden>收到了，謝謝。想到別的可以再寫一則。</p>
-</details>
+<div class="cols">
+  <section class="panel p-ballot">
+    <header><h2>你的三張票</h2></header>
+    <div class="slots" id="slots"></div>
+    <p id="state"></p>
+  </section>
 
-<details class="ask" id="ask-offer">
-  <summary>想來講一場</summary>
-  <p class="hint">你做過什麼想拿出來聊的？留個怎麼找你，我再私下聯絡。</p>
-  <textarea id="offer-text" maxlength="500" placeholder="想講什麼"></textarea>
-  <input type="text" id="offer-contact" maxlength="60" placeholder="怎麼稱呼你、怎麼找你（選填）">
-  <button class="send" id="offer-send" type="button">送出</button>
-  <p class="thanks" id="offer-ok" hidden>收到了，我會找你。</p>
-</details>
+  <section class="panel fb p-fb" id="fb" hidden></section>
 
-<h2 class="head">已經排好日期</h2>
-<div class="strip" id="scheduled"></div>
+  <section class="panel p-rank">
+    <header>
+      <h2>還沒排的主題</h2>
+      <span class="key"><span><i class="k-all"></i>大家</span><span><i class="k-mine"></i>你投的</span></span>
+    </header>
+    <p class="note">依票數排序。投一票下去，那個主題會往上爬。</p>
+    <ol class="rank" id="open"></ol>
+    <p id="empty" hidden>還沒有人投。第一票由你開始。</p>
+  </section>
 
-<h2 class="head">已經講過的</h2>
-<div class="strip" id="done"></div>
+  <section class="panel p-ask">
+    <details class="ask" id="ask-wish">
+      <summary>想聽的不在上面</summary>
+      <p class="hint">寫下來就好，不用留名字。想解決什麼、卡在哪，寫得越具體越容易被排進來。</p>
+      <textarea id="wish-text" maxlength="500" placeholder="例：想學怎麼把一份 Word 變成能發出去的網頁"></textarea>
+      <button class="send" id="wish-send" type="button">送出</button>
+      <p class="thanks" id="wish-ok" hidden>收到了，謝謝。想到別的可以再寫一則。</p>
+    </details>
+    <details class="ask" id="ask-offer">
+      <summary>想來講一場</summary>
+      <p class="hint">你做過什麼想拿出來聊的？留個怎麼找你，我再私下聯絡。</p>
+      <textarea id="offer-text" maxlength="500" placeholder="想講什麼"></textarea>
+      <input type="text" id="offer-contact" maxlength="60" placeholder="怎麼稱呼你、怎麼找你（選填）">
+      <button class="send" id="offer-send" type="button">送出</button>
+      <p class="thanks" id="offer-ok" hidden>收到了，我會找你。</p>
+    </details>
+  </section>
+</div>
+
+<h2 class="head">接下來</h2>
+<div class="cards" id="scheduled"></div>
+
+<h2 class="head">講過的</h2>
+<div class="cards" id="done"></div>
 
 <footer>
   不收 email、不設 cookie、不記 IP。身分是你的瀏覽器自己產生的一組亂碼，存在你自己的裝置上，
@@ -266,7 +263,7 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
   var mine = [], tally = {}, voters = 0;
   var listEl = document.getElementById('open');
   var stateEl = document.getElementById('state');
-  var noteEl = document.getElementById('tally-note');
+  var $ = function (id) { return document.getElementById(id); };
   var emptyEl = document.getElementById('empty');
   var rows = {};            // slug -> <li>
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -336,7 +333,7 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
     });
     reorder(list);
 
-    var box = document.getElementById('slots');
+    var box = $('slots');
     box.innerHTML = '';
     for (var i = 0; i < MAX; i++) {
       var d = document.createElement('div');
@@ -363,21 +360,36 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
 
     // 伺服器回來之前先把自己算進去,免得畫面上某個主題有 1 票、上面卻寫「還沒有人投」
     var shown = (mine.length && !voters) ? 1 : voters;
-    noteEl.textContent = shown ? shown + ' 人投過' : '還沒有人投';
     emptyEl.hidden = shown > 0;
+
+    $('s-voters').textContent = shown || '—';
+    var best = list[0], bestN = best ? (tally[best.slug] || 0) : 0;
+    $('s-top').textContent = bestN ? best.title : '—';
+    $('s-top-n').textContent = bestN ? bestN + ' 票' : '還沒有票';
+    $('s-mine').textContent = mine.length + ' / ' + MAX;
+    $('s-mine-s').textContent = mine.length >= MAX ? '用完了，可以換' :
+                                mine.length ? '還可以選 ' + (MAX - mine.length) + ' 個' : '還沒選';
   }
 
-  function renderStrip(id, list, up) {
-    var box = document.getElementById(id);
+  // 檔期用封面卡。封面就是該場簡報第一頁的截圖,路徑寫在 topics.js 的 img。
+  function renderCards(id, list, isNext) {
+    var box = $(id);
     box.innerHTML = '';
     list.forEach(function (t) {
-      var a = document.createElement(t.url ? 'a' : 'span');
+      var a = document.createElement(t.url ? 'a' : 'div');
+      a.className = 'card' + (isNext ? ' next' : '');
       if (t.url) a.href = t.url;
-      if (up) a.className = 'up';
-      var d = document.createElement('span');
-      d.className = 'd8'; d.textContent = t.date;
-      a.appendChild(d);
-      a.appendChild(document.createTextNode(t.title));
+      if (t.img) {
+        var im = document.createElement('img');
+        im.src = t.img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+        a.appendChild(im);
+      }
+      var cap = document.createElement('div');
+      cap.className = 'cap';
+      var d = document.createElement('div'); d.className = 'd8'; d.textContent = t.date;
+      var ti = document.createElement('div'); ti.className = 't'; ti.textContent = t.title;
+      cap.appendChild(d); cap.appendChild(ti);
+      a.appendChild(cap);
       box.appendChild(a);
     });
   }
@@ -496,8 +508,10 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
   mountFeedback();
   mountAsk('wish-send', 'wish', 'wish-text', null, 'wish-ok');
   mountAsk('offer-send', 'offer', 'offer-text', 'offer-contact', 'offer-ok');
-  renderStrip('scheduled', T.scheduled, true);
-  renderStrip('done', T.done);
+  renderCards('scheduled', T.scheduled, true);
+  renderCards('done', T.done);
+  // 下一場那格
+  if (T.scheduled[0]) { $('s-next').textContent = T.scheduled[0].date; $('s-next-t').textContent = T.scheduled[0].title; }
   render();
 
   fetch(API + '?voter=' + encodeURIComponent(voter))
