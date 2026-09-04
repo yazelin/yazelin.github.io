@@ -285,8 +285,10 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
       box.appendChild(rest);
     }
 
-    noteEl.textContent = voters ? voters + ' 人投過' : '還沒有人投';
-    emptyEl.hidden = voters > 0;
+    // 伺服器回來之前先把自己算進去,免得畫面上某個主題有 1 票、上面卻寫「還沒有人投」
+    var shown = (mine.length && !voters) ? 1 : voters;
+    noteEl.textContent = shown ? shown + ' 人投過' : '還沒有人投';
+    emptyEl.hidden = shown > 0;
   }
 
   function renderStrip(id, list, up) {
