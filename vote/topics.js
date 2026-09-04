@@ -11,7 +11,6 @@ window.VOTE_TOPICS = {
   open: [
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片' },
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖' },
-    { slug: 'city-monster', title: '家鄉小怪物',          desc: '幫你的家鄉養一隻專屬小怪物' },
     { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖' },
     { slug: 'editor-night', title: '小編工具夜',          desc: '抽獎、UTM 連結、簡體稿台灣化、分享卡預覽一次打包' },
     { slug: 'wish-night',   title: '許願之夜',            desc: '手機許願，看 AI 把願望變規格' },
