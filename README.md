@@ -15,4 +15,8 @@
   加 `feedback: true` 讓心得卡出現;下一場開始前把那個旗標拿掉。
   票按 slug 算,搬走就自然退出排行。slug 一旦公開就不要改,改了那個主題的票會歸零。
   `open` 那幾項的文字照 `yaze-journal/projects/wednesday-live/選題-2026-10.md` 的
-  「建議的投票選項文字」原文,要改先改那份
+  「建議的投票選項文字」原文,要改先改那份。
+  **換顏色改 `vote/theme.css`**(色票獨立成一支,不用動 index.html);頁面右上角有
+  亮色/深色/跟隨系統的切換,選擇存 localStorage。`--all` 與 `--mine` 是唯二帶資料
+  意義的顏色,換之前先對 theme.css 開頭寫的三個條件(明度帶、彩度地板、色盲分離)。
+  送上來的東西在 k-rider 後台 `admin.html` 的「回饋」分頁看
