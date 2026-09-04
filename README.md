@@ -7,3 +7,7 @@
 - 205+ 篇文章 permalink 維持 `/:categories/:year/:month/:day/:title.html`,舊網址不斷
 - 作品牆截圖:`node scripts/portfolio-shots.mjs` 重截後以 Pillow 轉 webp(<100KB 走本地路徑)
 - 訂閱表單打 k-rider-api Worker(D1,`source: "blog"`)
+- `/vote/` 是週三直播主題投票(取代 Google 表單):零登入、限選三項、隨時可改。
+  純靜態,沒有 front matter 所以 Jekyll 原樣輸出;後端是 k-rider-api 的 `/vote`。
+  **每辦完一場要手動改 `vote/topics.js`**:把該主題從 `open` 搬到 `done` 並補錄影連結,
+  票按 slug 算,搬走就自然退出排行。slug 一旦公開就不要改,改了那個主題的票會歸零
