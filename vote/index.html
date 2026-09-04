@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>週三晚上八點，想聽什麼？</title>
+<meta name="description" content="每週三晚上八點的免費直播主題投票。最多選三個，隨時可以改，不用留任何資料。">
+<meta property="og:title" content="週三晚上八點，想聽什麼？">
+<meta property="og:description" content="最多選三個，隨時可以改，不用留任何資料。">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg:#0d0c0a; --surface:#1a1712; --surface-2:#232019; --border:#332d20;
+    --amber:#f4b53a; --cream:#f3efe6; --muted:#8c846f; --cyan:#22d3ee;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--cream); line-height:1.7;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif;
+    padding:1.4rem 1rem 3rem; max-width:44rem; margin:0 auto;
+    -webkit-text-size-adjust:100%;
+  }
+  h1 { font-size:1.5rem; line-height:1.35; margin-bottom:.5rem; }
+  .lede { color:var(--muted); font-size:.9rem; margin-bottom:1.4rem; }
+  .lede b { color:var(--amber); font-weight:700; }
+
+  .bar {
+    position:sticky; top:0; z-index:5; margin:0 -1rem 1.2rem; padding:.6rem 1rem;
+    background:rgba(13,12,10,.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:.6rem; justify-content:space-between;
+    font-size:.84rem;
+  }
+  #picked { font-weight:700; font-variant-numeric:tabular-nums; }
+  #picked.full { color:var(--amber); }
+  #saved { color:var(--muted); font-size:.78rem; }
+  #saved.ok { color:#22c55e; }
+  #saved.err { color:#ef4444; }
+
+  h2 { font-size:.78rem; letter-spacing:.2em; color:var(--muted); font-weight:700;
+       margin:2rem 0 .7rem; text-transform:uppercase; }
+  h2:first-of-type { margin-top:0; }
+
+  ul { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+
+  .topic {
+    position:relative; width:100%; text-align:left; cursor:pointer; overflow:hidden;
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    color:inherit; font:inherit; padding:.75rem .9rem; display:block;
+    transition:border-color .12s, background .12s;
+  }
+  .topic:hover { border-color:#4a4130; }
+  .topic.on { border-color:var(--amber); background:var(--surface-2); }
+  .topic.off { opacity:.45; }
+  .topic .fill {
+    position:absolute; inset:0 auto 0 0; background:rgba(244,181,58,.09);
+    transition:width .3s ease; pointer-events:none;
+  }
+  .topic .row { position:relative; display:flex; align-items:baseline; gap:.5rem; }
+  .topic .t { font-weight:700; font-size:1rem; flex:1 1 auto; }
+  .topic .n { color:var(--amber); font-size:.82rem; font-variant-numeric:tabular-nums; flex-shrink:0; }
+  .topic .d { position:relative; color:var(--muted); font-size:.82rem; line-height:1.6; margin-top:.15rem; }
+  .topic .tick { position:relative; color:var(--amber); font-weight:700; flex-shrink:0; }
+
+  .past { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .past a, .past span {
+    font-size:.82rem; padding:.35rem .6rem; border-radius:999px; text-decoration:none;
+    background:var(--surface); border:1px solid var(--border); color:var(--muted);
+  }
+  .past a:hover { color:var(--cream); border-color:#4a4130; }
+  .past .d8 { color:var(--amber); font-variant-numeric:tabular-nums; }
+  .past .next { border-color:var(--cyan); color:var(--cream); }
+  .past .next .d8 { color:var(--cyan); }
+
+  footer { margin-top:2.4rem; padding-top:1.2rem; border-top:1px solid var(--border);
+           color:var(--muted); font-size:.78rem; line-height:1.8; }
+  footer a { color:var(--amber); }
+</style>
+</head>
+<body>
+
+<h1>週三晚上八點，想聽什麼？</h1>
+<p class="lede">每週三晚上八點的免費直播。<b>最多選三個</b>，<b>隨時可以回來改</b>。不用留 email、不用登入，選了就存。</p>
+
+<div class="bar">
+  <span id="picked">載入中</span>
+  <span id="saved"></span>
+</div>
+
+<h2>還沒排的主題</h2>
+<ul id="open"></ul>
+
+<h2>已經排好日期</h2>
+<div class="past" id="scheduled"></div>
+
+<h2>已經講過的</h2>
+<div class="past" id="done"></div>
+
+<footer>
+  這頁不收 email、不設 cookie、不記 IP。身分是你的瀏覽器自己產生的一組亂碼，存在你自己的裝置上，
+  所以換一台裝置或清掉瀏覽器資料就會重新開始。<br>
+  講過的主題會從投票清單搬到下面並附上錄影，票就自然集中到還沒排的那幾個。<br>
+  <a href="/">回首頁</a> · <a href="/events/">所有場次</a>
+</footer>
+
+<script src="topics.js"></script>
+<script>
+(function(){
+  var API = 'https://k-rider-api.yazelinj303.workers.dev/vote';
+  var MAX = 3;
+  var T = window.VOTE_TOPICS || { open: [], done: [], scheduled: [] };
+
+  // 匿名身分。crypto.randomUUID 在所有現行瀏覽器都有,舊環境退回時間戳加亂數。
+  var voter = '';
+  try { voter = localStorage.getItem('wed_voter') || ''; } catch (e) {}
+  if (!/^[a-z0-9-]{8,64}$/.test(voter)) {
+    voter = (crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : (Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10));
+    try { localStorage.setItem('wed_voter', voter); } catch (e) {}
+  }
+
+  var mine = [], tally = {}, voters = 0;
+  var pickedEl = document.getElementById('picked');
+  var savedEl = document.getElementById('saved');
+
+  function say(text, cls) { savedEl.textContent = text; savedEl.className = cls || ''; }
+
+  function render() {
+    var maxN = 1;
+    for (var k in tally) if (tally[k] > maxN) maxN = tally[k];
+
+    var ul = document.getElementById('open');
+    ul.innerHTML = '';
+    T.open.forEach(function (t) {
+      var on = mine.indexOf(t.slug) >= 0;
+      var full = mine.length >= MAX && !on;
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'topic' + (on ? ' on' : '') + (full ? ' off' : '');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var n = tally[t.slug] || 0;
+
+      var fill = document.createElement('div');
+      fill.className = 'fill';
+      fill.style.width = (n / maxN * 100) + '%';
+
+      var row = document.createElement('div');
+      row.className = 'row';
+      var title = document.createElement('span');
+      title.className = 't'; title.textContent = t.title;
+      var tick = document.createElement('span');
+      tick.className = 'tick'; tick.textContent = on ? '✓' : '';
+      var num = document.createElement('span');
+      num.className = 'n'; num.textContent = n + ' 票';
+      row.appendChild(title); row.appendChild(tick); row.appendChild(num);
+
+      var d = document.createElement('div');
+      d.className = 'd'; d.textContent = t.desc;
+
+      b.appendChild(fill); b.appendChild(row); b.appendChild(d);
+      b.onclick = function () { toggle(t.slug); };
+      li.appendChild(b); ul.appendChild(li);
+    });
+
+    pickedEl.textContent = '你選了 ' + mine.length + ' / ' + MAX +
+                           (voters ? '　·　' + voters + ' 人投過' : '');
+    pickedEl.className = mine.length >= MAX ? 'full' : '';
+  }
+
+  function renderPast(id, list, cls) {
+    var box = document.getElementById(id);
+    box.innerHTML = '';
+    list.forEach(function (t) {
+      var a = document.createElement(t.url ? 'a' : 'span');
+      if (t.url) a.href = t.url;
+      if (cls) a.className = cls;
+      var d = document.createElement('span');
+      d.className = 'd8'; d.textContent = t.date + '　';
+      a.appendChild(d);
+      a.appendChild(document.createTextNode(t.title));
+      box.appendChild(a);
+    });
+  }
+
+  var timer = null;
+  function toggle(slug) {
+    var i = mine.indexOf(slug);
+    if (i >= 0) mine.splice(i, 1);
+    else if (mine.length >= MAX) { say('最多三個，先取消一個', 'err'); return; }
+    else mine.push(slug);
+    render();                       // 先動畫面,不等伺服器
+    say('儲存中…');
+    clearTimeout(timer);
+    timer = setTimeout(save, 400);  // 連點幾下只送一次
+  }
+
+  function apply(data) {
+    if (Array.isArray(data.mine)) mine = data.mine;
+    tally = data.tally || {};
+    voters = data.voters || 0;
+    render();
+  }
+
+  function save() {
+    fetch(API, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ voter: voter, topics: mine })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) { say('存不進去：' + d.error, 'err'); return; }
+        apply(d); say('已儲存', 'ok');
+      })
+      .catch(function () { say('連不上，等一下會再試', 'err'); setTimeout(save, 4000); });
+  }
+
+  renderPast('scheduled', T.scheduled, 'next');
+  renderPast('done', T.done);
+  render();
+
+  fetch(API + '?voter=' + encodeURIComponent(voter))
+    .then(function (r) { return r.json(); })
+    .then(function (d) { apply(d); say(''); })
+    .catch(function () { say('讀不到目前票數，選了還是存得進去', 'err'); });
+})();
+</script>
+</body>
+</html>
