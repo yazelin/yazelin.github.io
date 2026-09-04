@@ -121,6 +121,45 @@ ol.rank li { border-bottom:1px solid var(--rule-soft); }
 
 h2.head { font-size:.86rem; font-weight:700; margin:1.7rem 0 .1rem; padding-bottom:.35rem; border-bottom:1px solid var(--rule); }
 
+/* ---- 心得卡 ---- */
+.fb {
+  background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--mine);
+  border-radius:8px; padding:.85rem .9rem; margin:1.4rem 0 1.6rem; box-shadow:var(--shadow);
+}
+.fb .who { font-size:.76rem; color:var(--ink-3); }
+.fb h3 { font-size:1rem; font-weight:700; line-height:1.35; margin:.1rem 0 .55rem; }
+.fb .q { font-size:.82rem; color:var(--ink-2); margin-bottom:.35rem; }
+.pace { display:flex; gap:.4rem; margin-bottom:.8rem; }
+.pace button {
+  flex:1 1 0; padding:.45rem .3rem; border:1px solid var(--rule); background:var(--paper);
+  color:var(--ink-2); border-radius:7px; font:inherit; font-size:.84rem; cursor:pointer;
+}
+.pace button[aria-pressed="true"] { background:var(--mine); border-color:var(--mine); color:#fff; font-weight:700; }
+textarea, input[type=text] {
+  width:100%; border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+  border-radius:7px; padding:.5rem .6rem; font:inherit; font-size:.88rem; line-height:1.6;
+  resize:vertical;
+}
+textarea { min-height:3.4rem; }
+.send {
+  margin-top:.6rem; padding:.5rem 1.1rem; border:0; border-radius:7px; cursor:pointer;
+  background:var(--all); color:#fff; font:inherit; font-size:.86rem; font-weight:700;
+}
+.send[disabled] { opacity:.45; cursor:default; }
+.fb .thanks, .ask .thanks { font-size:.86rem; color:var(--all); }
+
+/* ---- 提案 / 想來講 ---- */
+.ask { border:1px dashed var(--rule); border-radius:8px; padding:.7rem .9rem; margin-top:.7rem; }
+.ask > summary {
+  cursor:pointer; font-size:.88rem; font-weight:700; list-style:none;
+  display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+}
+.ask > summary::-webkit-details-marker { display:none; }
+.ask > summary::after { content:"＋"; color:var(--ink-3); font-weight:400; }
+.ask[open] > summary::after { content:"−"; }
+.ask .hint { font-size:.78rem; color:var(--ink-3); margin:.5rem 0 .45rem; }
+.ask input[type=text] { margin-top:.45rem; }
+
 /* ---- 狀態 ---- */
 #state { font-size:.78rem; color:var(--ink-3); min-height:1.2em; margin-top:.5rem; }
 #state.ok { color:var(--all); }
@@ -152,6 +191,8 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
   <p id="state"></p>
 </section>
 
+<section class="fb" id="fb" hidden></section>
+
 <div class="section-head">
   <h2>還沒排的主題</h2>
   <div class="key">
@@ -161,6 +202,23 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
 </div>
 <ol class="rank" id="open"></ol>
 <p id="empty" hidden>還沒有人投。第一票由你開始。</p>
+
+<details class="ask" id="ask-wish">
+  <summary>想聽的不在上面</summary>
+  <p class="hint">寫下來就好，不用留名字。想解決什麼、卡在哪，寫得越具體越容易被排進來。</p>
+  <textarea id="wish-text" maxlength="500" placeholder="例：想學怎麼把一份 Word 變成能發出去的網頁"></textarea>
+  <button class="send" id="wish-send" type="button">送出</button>
+  <p class="thanks" id="wish-ok" hidden>收到了，謝謝。想到別的可以再寫一則。</p>
+</details>
+
+<details class="ask" id="ask-offer">
+  <summary>想來講一場</summary>
+  <p class="hint">你做過什麼想拿出來聊的？留個怎麼找你，我再私下聯絡。</p>
+  <textarea id="offer-text" maxlength="500" placeholder="想講什麼"></textarea>
+  <input type="text" id="offer-contact" maxlength="60" placeholder="怎麼稱呼你、怎麼找你（選填）">
+  <button class="send" id="offer-send" type="button">送出</button>
+  <p class="thanks" id="offer-ok" hidden>收到了，我會找你。</p>
+</details>
 
 <h2 class="head">已經排好日期</h2>
 <div class="strip" id="scheduled"></div>
@@ -178,6 +236,7 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
 <script>
 (function () {
   var API = 'https://k-rider-api.yazelinj303.workers.dev/vote';
+  var NOTE = 'https://k-rider-api.yazelinj303.workers.dev/note';
   var MAX = 3;
   var T = window.VOTE_TOPICS || { open: [], done: [], scheduled: [] };
   var byslug = {};
@@ -347,7 +406,83 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
       .catch(function () { say('連不上，等一下自動再試', 'err'); setTimeout(save, 4000); });
   }
 
+  // ---- 三種文字回饋。共用同一個 voter id,所以同一個人的票與心得對得起來。----
+  function post(body, okFn, btn) {
+    if (btn) btn.disabled = true;
+    fetch(NOTE, { method: 'POST', headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(Object.assign({ voter: voter }, body)) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (btn) btn.disabled = false;
+        if (d.error) { alert('送不出去（' + d.error + '），再試一次'); return; }
+        okFn();
+      })
+      .catch(function () { if (btn) btn.disabled = false; alert('連不上，等一下再送一次'); });
+  }
+
+  // 心得卡:只在 topics.js 裡某一場掛了 feedback:true 的時候出現,送過就收起來。
+  function mountFeedback() {
+    var box = document.getElementById('fb');
+    var s = null;
+    for (var i = 0; i < T.done.length; i++) if (T.done[i].feedback) { s = T.done[i]; break; }
+    if (!s) return;
+    var key = 'wed_fb_' + s.slug, sent = false;
+    try { sent = !!localStorage.getItem(key); } catch (e) {}
+    if (sent) return;
+
+    box.hidden = false;
+    box.innerHTML =
+      '<p class="who">' + s.date + '　剛講完</p><h3></h3>' +
+      '<p class="q">節奏如何？</p>' +
+      '<div class="pace">' +
+        '<button type="button" data-p="fast" aria-pressed="false">太快</button>' +
+        '<button type="button" data-p="ok" aria-pressed="false">剛好</button>' +
+        '<button type="button" data-p="slow" aria-pressed="false">太慢</button>' +
+      '</div>' +
+      '<p class="q">最有收穫的是哪一段？（可留空）</p>' +
+      '<textarea id="fb-text" maxlength="500"></textarea>' +
+      '<button class="send" id="fb-send" type="button">送出</button>';
+    box.querySelector('h3').textContent = s.title;
+
+    var pace = null;
+    box.querySelectorAll('.pace button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        pace = (pace === b.dataset.p) ? null : b.dataset.p;
+        box.querySelectorAll('.pace button').forEach(function (x) {
+          x.setAttribute('aria-pressed', x.dataset.p === pace ? 'true' : 'false');
+        });
+      });
+    });
+    var send = box.querySelector('#fb-send');
+    send.addEventListener('click', function () {
+      var t = box.querySelector('#fb-text').value.trim();
+      if (!pace && !t) { alert('選一個節奏，或寫一句話'); return; }
+      post({ kind: 'feedback', ref: s.slug, pace: pace, text: t }, function () {
+        try { localStorage.setItem(key, '1'); } catch (e) {}
+        box.innerHTML = '<p class="thanks">收到了，謝謝。這會影響下一場怎麼講。</p>';
+      }, send);
+    });
+  }
+
+  function mountAsk(id, kind, textId, contactId, okId) {
+    var btn = document.getElementById(id);
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(textId);
+      var t = el.value.trim();
+      if (!t) { el.focus(); return; }
+      var c = contactId ? document.getElementById(contactId).value.trim() : '';
+      post({ kind: kind, text: t, contact: c }, function () {
+        el.value = '';
+        if (contactId) document.getElementById(contactId).value = '';
+        document.getElementById(okId).hidden = false;
+      }, btn);
+    });
+  }
+
   build();
+  mountFeedback();
+  mountAsk('wish-send', 'wish', 'wish-text', null, 'wish-ok');
+  mountAsk('offer-send', 'offer', 'offer-text', 'offer-contact', 'offer-ok');
   renderStrip('scheduled', T.scheduled, true);
   renderStrip('done', T.done);
   render();
