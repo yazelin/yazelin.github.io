@@ -219,11 +219,15 @@ footer { margin-top:2.6rem; padding-top:1.1rem; border-top:1px solid var(--rule)
     });
   }
 
+  var order = {};
+  T.open.forEach(function (t, i) { order[t.slug] = i; });
+
+  // 票數優先;同票數照 topics.js 裡的編排順序,不用筆畫。
+  // 全部零票的時候(剛清空、剛換一輪),看到的就是編排順序而不是「小」開頭的排第一。
   function ordered() {
     return T.open.slice().sort(function (a, b) {
       var d = (tally[b.slug] || 0) - (tally[a.slug] || 0);
-      if (d) return d;
-      return a.title.localeCompare(b.title, 'zh-Hant');
+      return d || (order[a.slug] - order[b.slug]);
     });
   }
 
