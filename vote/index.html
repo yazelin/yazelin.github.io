@@ -414,7 +414,17 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   }
 
   function apply(d) {
-    if (Array.isArray(d.mine)) mine = d.mine;
+    if (Array.isArray(d.mine)) {
+      // 講過的主題會從 topics.js 的 open 搬到 done。投過它的人手上那一票要退回來,
+      // 否則名額被一個畫不出來的幽靈佔著:數字說 3/3、票匣只有 2 張、再投被擋且沒有說明。
+      var kept = d.mine.filter(function (sl) { return !!byslug[sl]; });
+      var back = d.mine.length - kept.length;
+      mine = kept;
+      if (back) {
+        say('有 ' + back + ' 張票投的主題已經講過了，退回來給你', 'ok');
+        setTimeout(save, 0);   // 順手把乾淨的清單存回去,伺服器那邊的票數也跟著退
+      }
+    }
     tally = d.tally || {};
     voters = d.voters || 0;
     render();
