@@ -9,6 +9,7 @@
 // 「建議的投票選項文字」原文,一字不加。要改先改那份。
 window.VOTE_TOPICS = {
   open: [
+    { slug: 'larch-puzzle', title: 'Larch 解謎視覺小說創作', desc: '第二屆創作者挑戰主題是解謎，用背包與場景往返做一款 5 到 10 分鐘的謎案' },
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片' },
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖' },
     { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖' },
