@@ -14,9 +14,7 @@ window.VOTE_TOPICS = {
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖' },
     { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖' },
     { slug: 'editor-night', title: '小編工具夜',          desc: '抽獎、UTM 連結、簡體稿台灣化、分享卡預覽一次打包' },
-    { slug: 'wish-night',   title: '許願之夜',            desc: '手機許願，看 AI 把願望變規格' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話' },
-    { slug: 'slide-bg',     title: '簡報背景怎麼做',       desc: 'AI 生的圖為什麼放不了字，配方現場驗' },
   ],
   done: [
     { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', feedback: true , img: '/images/events/og-web-deck.jpg'},
