@@ -16,7 +16,6 @@ window.VOTE_TOPICS = {
     { slug: 'wish-night',   title: '許願之夜',            desc: '手機許願，看 AI 把願望變規格' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話' },
     { slug: 'slide-bg',     title: '簡報背景怎麼做',       desc: 'AI 生的圖為什麼放不了字，配方現場驗' },
-    { slug: 'visual-novel', title: '視覺小說之夜',         desc: '一天一圈的視覺小說是怎麼做出來的' },
   ],
   done: [
     { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', feedback: true , img: '/images/events/og-web-deck.jpg'},
@@ -26,7 +25,7 @@ window.VOTE_TOPICS = {
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'brand-site',  title: '做自己的個人品牌站',      date: '09-09', url: '/events/site-2026-09-09/' , img: '/images/events/og-design-teardown.jpg'},
+    { slug: 'larch-vn',    title: '今晚做一部視覺小說',       date: '09-09', url: '/events/site-2026-09-09/', img: '/images/events/og-larch-vn.jpg' },
     { slug: 'novel-canon', title: '用 AI 寫長篇不崩壞的設定', date: '09-16', url: '/events/novel-2026-09-16/' , img: '/images/events/og-novel-canon.jpg'},
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg'},
     { slug: 'web-effects', title: '幫你的網頁加點特效',      date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
