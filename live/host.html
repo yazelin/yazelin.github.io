@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>主持台・一起做一部視覺小說</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../vote/theme.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--paper); color:var(--ink); font-variant-numeric:tabular-nums;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;
+  font-size:16px; line-height:1.6; max-width:34rem; margin:0 auto; padding:1rem 1rem 3rem; }
+h1 { font-size:1.2rem; font-weight:800; margin-bottom:.15rem; }
+.sub { color:var(--ink-3); font-size:.8rem; margin-bottom:1rem; }
+.card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:.85rem; margin-bottom:.8rem; }
+h2 { font-size:.86rem; font-weight:700; margin-bottom:.5rem; }
+input, textarea { width:100%; background:var(--paper); border:1px solid var(--rule); color:var(--ink);
+  border-radius:8px; padding:.5rem .6rem; font:inherit; font-size:.92rem; margin-bottom:.4rem; }
+button { font:inherit; font-weight:700; border:0; border-radius:8px; cursor:pointer; padding:.55rem 1rem; font-size:.9rem; }
+.go { background:var(--all); color:#fff; width:100%; }
+.close { background:var(--mine); color:#fff; width:100%; }
+.ghost { background:none; border:1px solid var(--rule); color:var(--ink-3); }
+.danger { background:none; border:1px solid #c0392b; color:#c0392b; font-size:.78rem; padding:.35rem .7rem; }
+.msg { font-size:.8rem; color:var(--ink-3); min-height:1.2em; margin-top:.4rem; }
+.msg.ok { color:var(--all); } .msg.err { color:#c0392b; }
+.row { display:flex; align-items:center; gap:.5rem; padding:.35rem 0; border-bottom:1px solid var(--rule-soft); font-size:.9rem; }
+.row .bar { flex:1 1 auto; height:8px; background:var(--track); border-radius:4px; overflow:hidden; }
+.row .bar b { display:block; height:100%; background:var(--all); }
+.row .n { flex:0 0 2.2rem; text-align:right; font-weight:700; }
+.row.win .bar b { background:var(--mine); }
+.idea { display:flex; gap:.5rem; align-items:flex-start; padding:.4rem 0; border-bottom:1px solid var(--rule-soft); font-size:.88rem; }
+.idea span { flex:1 1 auto; }
+.q { font-size:1.02rem; font-weight:700; line-height:1.4; margin-bottom:.5rem; }
+.seq { font-size:.75rem; color:var(--ink-3); }
+.hint { font-size:.76rem; color:var(--ink-3); margin-top:.5rem; line-height:1.6; }
+</style>
+</head>
+<body>
+<h1>主持台</h1>
+<p class="sub" id="sub">一起做一部視覺小說</p>
+
+<div class="card">
+  <h2>ADMIN_TOKEN</h2>
+  <input id="tok" type="password" placeholder="貼上 token，存在這台裝置的瀏覽器裡">
+  <p class="msg" id="msg"></p>
+</div>
+
+<div class="card">
+  <h2>推一題</h2>
+  <input id="q" maxlength="120" placeholder="題目，例：主角在哪裡遇到對方？">
+  <input class="o" maxlength="40" placeholder="選項 1">
+  <input class="o" maxlength="40" placeholder="選項 2">
+  <input class="o" maxlength="40" placeholder="選項 3（可空）">
+  <input class="o" maxlength="40" placeholder="選項 4（可空）">
+  <button class="go" id="push">推出去</button>
+  <p class="hint">推新題會自動把上一題關掉。一場同時只有一題開著。</p>
+</div>
+
+<div class="card">
+  <h2>現在這一題</h2>
+  <p class="seq" id="nseq"></p>
+  <p class="q" id="nq">（還沒有題目）</p>
+  <div id="tally"></div>
+  <button class="close" id="closebtn" style="margin-top:.6rem">關票，把最高票定案</button>
+</div>
+
+<div class="card">
+  <h2>大家的提議</h2>
+  <div id="ideas"></div>
+</div>
+
+<div class="card">
+  <h2>彩排完清乾淨</h2>
+  <button class="danger" id="reset">刪掉這場的所有題目與票</button>
+  <p class="hint">只影響這一場（<span id="evname"></span>），不會動到主題投票那邊的資料。</p>
+</div>
+
+<script>
+(function () {
+  var API = 'https://k-rider-api.yazelinj303.workers.dev/live';
+  var EV = new URLSearchParams(location.search).get('e') || 'larch0909';
+  var $ = function (id) { return document.getElementById(id); };
+  $('evname').textContent = EV;
+  $('sub').textContent = '一起做一部視覺小說　·　' + EV;
+
+  try { $('tok').value = localStorage.getItem('krider-admin-token') || ''; } catch (e) {}
+  $('tok').addEventListener('change', function () {
+    try { localStorage.setItem('krider-admin-token', $('tok').value.trim()); } catch (e) {}
+  });
+  function msg(t, c) { $('msg').textContent = t || ''; $('msg').className = 'msg ' + (c || ''); }
+
+  function admin(body) {
+    var tok = $('tok').value.trim();
+    if (!tok) { msg('先貼 token', 'err'); return Promise.reject(); }
+    try { localStorage.setItem('krider-admin-token', tok); } catch (e) {}
+    return fetch(API + '/admin', { method: 'POST',
+      headers: { 'content-type': 'application/json', Authorization: 'Bearer ' + tok },
+      body: JSON.stringify(Object.assign({ event: EV }, body)) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) { msg(d.error === 'unauthorized' ? 'token 不對' : d.error, 'err'); throw new Error(d.error); }
+        msg('好了', 'ok'); render(d); return d;
+      });
+  }
+
+  function render(d) {
+    var r = d.round;
+    $('nseq').textContent = r ? ('第 ' + r.seq + ' 題' + (r.state === 'open' ? '・開著' : '・已定案')) : '';
+    $('nq').textContent = r ? r.question : '（還沒有題目）';
+    var tb = $('tally'); tb.innerHTML = '';
+    if (r) {
+      var top = Math.max(1, Math.max.apply(null, d.tally.concat([1])));
+      r.options.forEach(function (o, i) {
+        var e = document.createElement('div');
+        e.className = 'row' + (r.state !== 'open' && r.winner === i ? ' win' : '');
+        e.innerHTML = '<span style="flex:0 0 7rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>' +
+                      '<span class="bar"><b></b></span><span class="n"></span>';
+        e.children[0].textContent = o;
+        e.querySelector('b').style.width = (d.tally[i] / top * 100) + '%';
+        e.querySelector('.n').textContent = d.tally[i];
+        tb.appendChild(e);
+      });
+    }
+    var ib = $('ideas'); ib.innerHTML = '';
+    if (!(d.ideas || []).length) ib.innerHTML = '<p class="hint">還沒有人提議。</p>';
+    (d.ideas || []).forEach(function (x) {
+      var e = document.createElement('div'); e.className = 'idea';
+      var s = document.createElement('span'); s.textContent = x.text;
+      var b = document.createElement('button'); b.className = 'ghost'; b.textContent = '刪';
+      b.style.padding = '.2rem .55rem'; b.style.fontSize = '.76rem';
+      b.onclick = function () { admin({ action: 'drop_idea', id: x.id }).catch(function () {}); };
+      e.appendChild(s); e.appendChild(b); ib.appendChild(e);
+    });
+  }
+
+  $('push').addEventListener('click', function () {
+    var q = $('q').value.trim();
+    var opts = [].slice.call(document.querySelectorAll('.o')).map(function (i) { return i.value.trim(); }).filter(Boolean);
+    if (!q || opts.length < 2) { msg('要有題目跟至少兩個選項', 'err'); return; }
+    admin({ action: 'push', question: q, options: opts }).then(function () {
+      $('q').value = '';
+      document.querySelectorAll('.o').forEach(function (i) { i.value = ''; });
+    }).catch(function () {});
+  });
+
+  $('closebtn').addEventListener('click', function () {
+    if (!confirm('關票並把最高票定案？')) return;
+    admin({ action: 'close' }).catch(function () {});
+  });
+
+  $('reset').addEventListener('click', function () {
+    if (!confirm('刪掉「' + EV + '」的所有題目與票？彩排完才按。')) return;
+    admin({ action: 'reset' }).catch(function () {});
+  });
+
+  function pull() {
+    fetch(API + '?e=' + encodeURIComponent(EV)).then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.error) render(d); }).catch(function () {});
+  }
+  pull(); setInterval(pull, 2500);
+})();
+</script>
+</body>
+</html>

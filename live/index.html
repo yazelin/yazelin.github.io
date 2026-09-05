@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一起做一部視覺小說</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../vote/theme.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--paper); color:var(--ink); font-variant-numeric:tabular-nums;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  font-size:16px; line-height:1.6; max-width:40rem; margin:0 auto; padding:0 1rem 3rem; }
+:focus-visible { outline:2px solid var(--all); outline-offset:2px; border-radius:4px; }
+
+.topbar { position:sticky; top:0; z-index:5; margin:0 -1rem 1rem; padding:.55rem 1rem;
+  background:var(--card); border-bottom:1px solid var(--rule);
+  display:flex; align-items:center; gap:.6rem; justify-content:space-between; font-size:.84rem; }
+.topbar .l { display:flex; align-items:center; gap:.45rem; font-weight:700; }
+.topbar i { width:9px; height:9px; border-radius:50%; background:var(--all); }
+.topbar .r { color:var(--ink-3); font-size:.78rem; }
+
+.qwrap { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:1rem; }
+.seq { font-size:.74rem; color:var(--ink-3); }
+h1 { font-size:1.4rem; line-height:1.35; font-weight:800; margin:.15rem 0 .9rem; letter-spacing:-.01em; }
+.opts { display:flex; flex-direction:column; gap:.5rem; }
+.opt { position:relative; overflow:hidden; width:100%; text-align:left; cursor:pointer;
+  background:var(--paper); border:1px solid var(--rule); border-radius:9px; color:inherit;
+  font:inherit; padding:.7rem .85rem; display:flex; align-items:center; gap:.6rem; }
+.opt .fill { position:absolute; inset:0 auto 0 0; background:color-mix(in srgb, var(--all) 16%, transparent);
+  transition:width .4s cubic-bezier(.2,.8,.2,1); }
+.opt .t { position:relative; flex:1 1 auto; font-size:.98rem; font-weight:700; }
+.opt .n { position:relative; flex:0 0 auto; font-size:.9rem; font-weight:700; color:var(--ink-2); }
+.opt.on { border-color:var(--mine); }
+.opt.on .fill { background:color-mix(in srgb, var(--mine) 20%, transparent); }
+.opt.on .t::after { content:"　✓"; color:var(--mine); }
+.opt.on .n { color:var(--mine); }
+.opt.win { border-color:var(--all); }
+.opt.win .t::before { content:"定案　"; color:var(--all); font-weight:700; }
+body.closed .opt { cursor:default; }
+
+.state { font-size:.78rem; color:var(--ink-3); margin-top:.6rem; min-height:1.2em; }
+.state.ok { color:var(--all); } .state.err { color:#c0392b; }
+
+h2 { font-size:.88rem; font-weight:700; margin:1.5rem 0 .1rem; padding-bottom:.35rem; border-bottom:1px solid var(--rule); }
+#say { display:flex; gap:.4rem; margin-top:.6rem; }
+#say input { flex:1 1 auto; min-width:0; background:var(--card); border:1px solid var(--rule);
+  color:var(--ink); border-radius:8px; padding:.5rem .6rem; font:inherit; font-size:.88rem; }
+#say button { flex:0 0 auto; background:var(--all); color:#fff; border:0; border-radius:8px;
+  padding:.5rem .85rem; font:inherit; font-size:.86rem; font-weight:700; cursor:pointer; }
+.ideas { display:flex; flex-direction:column; gap:.35rem; margin-top:.6rem; }
+.idea { background:var(--card); border:1px solid var(--rule); border-radius:8px;
+  padding:.4rem .6rem; font-size:.86rem; line-height:1.5; }
+.story { display:flex; flex-direction:column; gap:.3rem; margin-top:.6rem; }
+.step { display:flex; gap:.6rem; font-size:.86rem; padding:.3rem 0; border-bottom:1px solid var(--rule-soft); }
+.step b { flex:0 0 1.4rem; color:var(--ink-3); font-weight:700; }
+.step span { color:var(--ink-2); }
+.step em { font-style:normal; color:var(--all); font-weight:700; }
+.empty { color:var(--ink-3); font-size:.86rem; padding:1rem .1rem; }
+
+/* 給簡報內嵌:只留題目與長條,字放大 */
+body.display { max-width:none; padding:1.2rem 1.6rem; }
+body.display .topbar, body.display #ask, body.display h2, body.display .ideas, body.display #say, body.display .state { display:none; }
+body.display .qwrap { border:0; background:none; padding:0; }
+body.display h1 { font-size:2.6rem; margin-bottom:1.2rem; }
+body.display .opt { padding:1.1rem 1.2rem; }
+body.display .opt .t { font-size:1.6rem; }
+body.display .opt .n { font-size:1.5rem; }
+body.display .storywrap { display:none; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="l"><i></i>一起做一部視覺小說</span>
+  <span class="r" id="who"></span>
+</div>
+
+<div class="qwrap">
+  <p class="seq" id="seq"></p>
+  <h1 id="q">等講者出題</h1>
+  <div class="opts" id="opts"></div>
+  <p class="state" id="state"></p>
+</div>
+
+<div id="ask">
+  <h2>有更好的點子？</h2>
+  <form id="say"><input id="idea" maxlength="200" placeholder="寫下你的提議，講者看得到" autocomplete="off"><button type="submit">送出</button></form>
+  <div class="ideas" id="ideas"></div>
+</div>
+
+<div class="storywrap">
+  <h2>目前為止的故事</h2>
+  <div class="story" id="story"></div>
+</div>
+
+<script>
+(function () {
+  var API = 'https://k-rider-api.yazelinj303.workers.dev/live';
+  var qs = new URLSearchParams(location.search);
+  var EV = qs.get('e') || 'larch0909';
+  var DISPLAY = qs.get('display') === '1';
+  if (DISPLAY) document.body.classList.add('display');
+
+  var voter = '';
+  try { voter = localStorage.getItem('wed_voter') || ''; } catch (e) {}
+  if (!/^[a-z0-9-]{8,64}$/.test(voter)) {
+    voter = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : (Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10));
+    try { localStorage.setItem('wed_voter', voter); } catch (e) {}
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var builtRound = '', optEls = [], inflight = 0;
+  function say(t, c) { $('state').textContent = t || ''; $('state').className = 'state ' + (c || ''); }
+
+  function render(d) {
+    var r = d.round;
+    if (!r) {
+      $('seq').textContent = '';
+      $('q').textContent = '等講者出題';
+      $('opts').innerHTML = '';
+      $('who').textContent = '';
+    } else {
+      var closed = r.state !== 'open';
+      document.body.classList.toggle('closed', closed);
+      $('seq').textContent = '第 ' + r.seq + ' 題' + (closed ? '・已定案' : '');
+      $('q').textContent = r.question;
+      $('who').textContent = d.voters ? d.voters + ' 人投過' : '還沒有人投';
+
+      // 只有換題才重建節點。每兩秒重建一次的話,正在點的人那一下會打在被換掉的
+      // 節點上,票就不見了(2026-09-05 實測)。現場五十個人同時點,這個一定會發生。
+      var key = r.id + '|' + r.options.join('\u0001');
+      if (key !== builtRound) {
+        builtRound = key;
+        optEls = [];
+        $('opts').innerHTML = '';
+        r.options.forEach(function (o, i) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'opt';
+          b.innerHTML = '<span class="fill"></span><span class="t"></span><span class="n"></span>';
+          b.querySelector('.t').textContent = o;
+          if (!DISPLAY) b.addEventListener('click', function () { if (r.state === 'open') vote(i); });
+          $('opts').appendChild(b);
+          optEls.push(b);
+        });
+      }
+      var top = Math.max(1, Math.max.apply(null, d.tally.concat([1])));
+      optEls.forEach(function (b, i) {
+        b.className = 'opt' + (d.mine === i ? ' on' : '') + (closed && r.winner === i ? ' win' : '');
+        b.querySelector('.n').textContent = d.tally[i];
+        b.querySelector('.fill').style.width = (d.tally[i] / top * 100) + '%';
+      });
+    }
+
+    var ib = $('ideas');
+    ib.innerHTML = '';
+    (d.ideas || []).forEach(function (x) {
+      var e = document.createElement('div'); e.className = 'idea'; e.textContent = x.text; ib.appendChild(e);
+    });
+    $('ask').style.display = (r && r.state === 'open' && !DISPLAY) ? '' : 'none';
+
+    var sb = $('story');
+    sb.innerHTML = '';
+    if (!(d.decided || []).length) sb.innerHTML = '<p class="empty">還沒有定案的段落。第一題出來就開始了。</p>';
+    (d.decided || []).forEach(function (s) {
+      var e = document.createElement('div'); e.className = 'step';
+      e.innerHTML = '<b></b><span></span>';
+      e.querySelector('b').textContent = s.seq;
+      var sp = e.querySelector('span');
+      sp.textContent = s.question + '　';
+      var em = document.createElement('em'); em.textContent = s.answer;
+      sp.appendChild(em);
+      sb.appendChild(e);
+    });
+  }
+
+  function pull() {
+    fetch(API + '?e=' + encodeURIComponent(EV) + '&voter=' + encodeURIComponent(voter))
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.error && !inflight) render(d); })   // 送出途中不要被輪詢蓋掉
+      .catch(function () {});
+  }
+
+  function vote(i) {
+    // 先動畫面再送,不要等伺服器。改票的人看得到自己那一票立刻搬過去。
+    optEls.forEach(function (b, k) { b.classList.toggle('on', k === i); });
+    say('送出中…');
+    inflight += 1;
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' },
+                 body: JSON.stringify({ voter: voter, event: EV, choice: i }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        inflight -= 1;
+        if (d.error) { say(d.error === 'no_open_round' ? '這一題已經關了' : '送不出去：' + d.error, 'err'); return; }
+        render(d); say('已投給「' + d.round.options[d.mine] + '」，關票前都可以改', 'ok');
+      })
+      .catch(function () { inflight -= 1; say('連不上，再按一次', 'err'); });
+  }
+
+  $('say').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var el = $('idea'), t = el.value.trim();
+    if (!t) return;
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' },
+                 body: JSON.stringify({ voter: voter, event: EV, action: 'idea', text: t }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.error) { el.value = ''; render(d); say('提議送出了', 'ok'); } });
+  });
+
+  pull();
+  setInterval(pull, 2000);   // 沒有 WebSocket,兩秒拉一次就夠
+})();
+</script>
+</body>
+</html>
