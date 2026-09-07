@@ -40,6 +40,8 @@ a { color:var(--all); }
 
 h1 { font-size:1.9rem; line-height:1.2; font-weight:800; letter-spacing:-.02em; margin-bottom:.35rem; }
 .lede { color:var(--ink-2); font-size:.9rem; max-width:34em; }
+.note { margin:.8rem 0 0; padding:.6rem .8rem; border-left:3px solid var(--rule); color:var(--ink-2); font-size:.86rem; line-height:1.7; max-width:34em; }
+.note .k { display:block; font-size:.72rem; color:var(--ink-3); margin-bottom:.15rem; }
 
 /* ---- 四格數字 ---- */
 .stats { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin:1.2rem 0 1.4rem; }
@@ -190,6 +192,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 
 <h1>想聽什麼？</h1>
 <p class="lede">選三個你最想聽的，隨時可以回來改。不用留 email、不用登入。</p>
+<p class="note"><span class="k">講者的話</span>模型越來越強，技巧會越來越不值錢。模型公司會一直加強 Agent，日常的工作流也會有很多人做出來給大家參考。我們該練的是另一件事：把自己的需求講清楚，交給 AI 去做，最後驗收。這是一般人最省力的用法。只有要自己打造 Agent 的工程師，才需要深入研究怎麼設計；一般人知道大概就夠了。</p>
 
 <div class="stats">
   <div class="stat"><div class="k">投票人數</div><div class="v" id="s-voters">—</div><div class="s">最多選三個</div></div>
