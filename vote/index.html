@@ -90,6 +90,8 @@ ol.rank li:last-child { border-bottom:0; }
 .row.mine .track b { background:var(--mine); }
 .row.mine::before { content:""; position:absolute; left:-.9rem; top:.55rem; bottom:.45rem; width:3px; background:var(--mine); border-radius:0 2px 2px 0; }
 .row.blocked { opacity:.5; }
+.peek { display:inline-block; margin:-.25rem 0 .35rem 2.25rem; font-size:.76rem; color:var(--ink-3); text-decoration:none; border-bottom:1px solid var(--rule); }
+@media (hover:hover) { .peek:hover { color:var(--all); border-color:var(--all); } }
 #empty { color:var(--ink-3); font-size:.86rem; padding:1rem .1rem; }
 
 /* ---- 心得卡 ---- */
@@ -322,6 +324,12 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
       b.querySelector('.desc').textContent = t.desc;
       b.addEventListener('click', function () { toggle(t.slug); });
       li.appendChild(b);
+      if (t.url) {
+        var a = document.createElement('a');
+        a.className = 'peek'; a.href = t.url; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = '看作品 ↗';
+        li.appendChild(a);
+      }
       rows[t.slug] = li;
       listEl.appendChild(li);
     });

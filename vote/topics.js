@@ -3,18 +3,19 @@
 // 每辦完一場:把該主題從 open 搬到 done、補上 url 與 img(封面)、加 feedback:true 讓心得卡出現。
 // 封面就是該場簡報第一頁的截圖,放 yazelin.github.io/images/events/,640x360 的 jpg。
 // 下一場開始之前把 feedback 拿掉,心得卡就收起來。
+// open 的 url 是「看作品」連結(Pages 或市集頁),可省略。
 // 票是按 slug 算的,搬走就自然退出排行,舊票不受影響。slug 一旦公開就不要改。
 //
 // open 的九項照 yaze-journal/projects/wednesday-live/選題-2026-10.md 的
 // 「建議的投票選項文字」原文,一字不加。要改先改那份。
 window.VOTE_TOPICS = {
   open: [
-    { slug: 'larch-puzzle', title: 'Larch 解謎視覺小說創作', desc: '第二屆創作者挑戰主題是解謎，用背包與場景往返做一款 5 到 10 分鐘的謎案' },
-    { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片' },
-    { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖' },
-    { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖' },
-    { slug: 'editor-night', title: '小編工具夜',          desc: '抽獎、UTM 連結、簡體稿台灣化、分享卡預覽一次打包' },
-    { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話' },
+    { slug: 'larch-puzzle', title: 'Larch 解謎視覺小說創作', desc: '第二屆創作者挑戰主題是解謎，用背包與場景往返做一款 5 到 10 分鐘的謎案', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
+    { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
+    { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖', url: 'https://yazelin.github.io/mori-sprite-studio/' },
+    { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖', url: 'https://yazelin.github.io/token-unlimited-comic/' },
+    { slug: 'editor-night', title: '小編工具夜',          desc: '抽獎、UTM 連結、簡體稿台灣化、分享卡預覽一次打包', url: 'https://yazelin.github.io/marketing-toolbox/' },
+    { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
   ],
   done: [
     { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', feedback: true , img: '/images/events/og-web-deck.jpg'},
