@@ -193,7 +193,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 </div>
 
 <h1>想聽什麼？</h1>
-<p class="lede">選三個你最想聽的，隨時可以回來改。不用留 email、不用登入。</p>
+<p class="lede">選三個你最想聽的，隨時可以回來改。不用留 email、不用登入。<br>每週三晚上八點免費直播，開播連結當天在 <a href="https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=vote&utm_medium=link&utm_campaign=vote">AI 許願池社群</a> 公布。</p>
 <p class="note"><span class="k">講者的話</span>模型越來越強，技巧會越來越不值錢。模型公司會一直加強 Agent，日常的工作流也會有很多人做出來給大家參考。我們該練的是另一件事：把自己的需求講清楚，交給 AI 去做，最後驗收。這是一般人最省力的用法。只有要自己打造 Agent 的工程師，才需要深入研究怎麼設計；一般人知道大概就夠了。</p>
 
 <div class="stats">
@@ -257,7 +257,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 <footer>
   不收 email、不設 cookie、不記 IP。身分是你的瀏覽器自己產生的一組亂碼，存在你自己的裝置上，
   換裝置或清掉瀏覽器資料就會重新開始。<br>
-  <a href="/">回首頁</a>　<a href="/events/">所有場次</a>
+  <a href="/">回首頁</a>　<a href="/events/">所有場次</a>　<a href="https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=vote&utm_medium=link&utm_campaign=vote">AI 許願池社群</a>
 </footer>
 
 <script src="topics.js"></script>
@@ -266,6 +266,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   var API = 'https://k-rider-api.yazelinj303.workers.dev/vote';
   var NOTE = 'https://k-rider-api.yazelinj303.workers.dev/note';
   var MAX = 3;
+  var LINE = 'https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=vote&utm_medium=link&utm_campaign=vote';
   var T = window.VOTE_TOPICS || { open: [], done: [], scheduled: [] };
   var byslug = {};
   T.open.forEach(function (t) { byslug[t.slug] = t; });
@@ -567,7 +568,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d.error) { say('存不進去（' + d.error + '），再按一次試試', 'err'); return; }
-        apply(d); say('已存好', 'ok');
+        apply(d); say('已存好', 'ok'); stateEl.innerHTML += '。開播連結當天在 <a href="'+LINE+'">AI 許願池社群</a> 公布';
       })
       .catch(function () { say('連不上，等一下自動再試', 'err'); setTimeout(save, 4000); });
   }
