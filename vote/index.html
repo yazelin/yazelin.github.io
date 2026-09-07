@@ -116,11 +116,13 @@ textarea { min-height:3.2rem; }
 .use {
   width:100%; text-align:left; background:var(--paper); border:1px solid var(--rule);
   border-radius:8px; padding:.45rem .6rem; font:inherit; color:inherit; cursor:pointer;
-  display:grid; grid-template-columns:1.2rem 1fr; gap:0 .5rem; align-items:baseline;
+  display:grid; grid-template-columns:1.2rem 1fr auto; gap:0 .5rem; align-items:baseline;
 }
 .use .box { grid-column:1; color:var(--ink-3); font-size:.92rem; line-height:1.4; }
 .use .t { grid-column:2; font-size:.9rem; font-weight:700; line-height:1.4; }
 .use .eg { grid-column:2; font-size:.75rem; color:var(--ink-3); line-height:1.45; }
+.use .n { grid-column:3; grid-row:1 / 3; align-self:center; font-size:.85rem; font-weight:700; color:var(--ink-2); white-space:nowrap; }
+.use[aria-pressed="true"] .n { color:var(--all); }
 .use[aria-pressed="true"] { border-color:var(--all); background:var(--card); }
 .use[aria-pressed="true"] .box { color:var(--all); }
 .use[aria-pressed="true"] .t { color:var(--all); }
@@ -224,7 +226,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 
   <section class="panel p-uses">
     <header><h2>你用 AI 到什麼程度</h2></header>
-    <p class="note">用過哪些就勾哪些，隨時可以改。這只是讓我知道台下大概是什麼組成，好決定講多深。</p>
+    <p class="note">用過哪些就勾哪些，隨時可以改。這只是讓我決定講多深。</p>
     <div class="uses" id="uses"></div>
     <p id="uses-n"></p>
   </section>
@@ -301,7 +303,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   })();
 
   var mine = [], tally = {}, voters = 0;
-  var myUses = [], answered = 0;
+  var myUses = [], answered = 0, useCounts = {};
   var myLikes = [], likeCounts = {};
   var listEl = document.getElementById('open');
   var stateEl = document.getElementById('state');
@@ -509,12 +511,13 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     USES.forEach(function (u) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'use'; b.dataset.k = u.key;
-      b.innerHTML = '<span class="box"></span><span class="t"></span><span class="eg"></span>';
+      b.innerHTML = '<span class="box"></span><span class="t"></span><span class="eg"></span><span class="n"></span>';
       b.querySelector('.t').textContent = u.title;
       b.querySelector('.eg').textContent = u.eg;
       b.addEventListener('click', function () {
         var i = myUses.indexOf(u.key);
-        if (i >= 0) myUses.splice(i, 1); else myUses.push(u.key);
+        if (i >= 0) { myUses.splice(i, 1); useCounts[u.key] = Math.max(0, (useCounts[u.key] || 0) - 1); }
+        else { myUses.push(u.key); useCounts[u.key] = (useCounts[u.key] || 0) + 1; }
         renderUses();
         clearTimeout(usesTimer);
         usesTimer = setTimeout(saveUses, 400);
@@ -527,6 +530,8 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
       var on = myUses.indexOf(b.dataset.k) >= 0;
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.querySelector('.box').textContent = on ? '☑' : '☐';
+      var c = useCounts[b.dataset.k] || 0;
+      b.querySelector('.n').textContent = c ? c + ' 人' : '';
     });
     var n = (myUses.length && !answered) ? 1 : answered;
     $('uses-n').textContent = n ? n + ' 人回答過' : '還沒有人回答';
@@ -535,7 +540,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' },
                  body: JSON.stringify({ voter: voter, uses: myUses }) })
       .then(function (r) { return r.json(); })
-      .then(function (d) { if (!d.error) { answered = d.answered || 0; renderUses(); } })
+      .then(function (d) { if (!d.error) { answered = d.answered || 0; useCounts = d.useCounts || {}; renderUses(); } })
       .catch(function () { setTimeout(saveUses, 4000); });
   }
 
@@ -557,6 +562,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
     if (Array.isArray(d.likes)) myLikes = d.likes;
     likeCounts = d.likeCounts || {};
     answered = d.answered || 0;
+    useCounts = d.useCounts || {};
     render();
     renderUses();
     renderHearts();
