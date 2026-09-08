@@ -25,8 +25,8 @@ window.VOTE_TOPICS = {
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'larch-vn',    title: '今晚做一部視覺小說',       date: '09-09', url: '/events/site-2026-09-09/', img: '/images/events/og-larch-vn.jpg' },
-    { slug: 'larch-puzzle-2', title: '解謎視覺小說第二週：劇情與背包', date: '09-16', url: '/events/puzzle-2026-09-16/', img: '/images/events/og-larch-puzzle.jpg' },
+    { slug: 'larch-vn',    title: '視覺小說第一週：手動做一段，接上 Agent', date: '09-09', url: '/events/site-2026-09-09/', img: '/images/events/og-larch-vn.jpg' },
+    { slug: 'larch-puzzle-2', title: '視覺小說第二週：15 分鐘定劇情，交給 Agent 做解謎', date: '09-16', url: '/events/puzzle-2026-09-16/', img: '/images/events/og-larch-puzzle.jpg' },
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg'},
     { slug: 'web-effects', title: '幫你的網頁加點特效',      date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
   ],
