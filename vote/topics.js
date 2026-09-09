@@ -18,14 +18,14 @@ window.VOTE_TOPICS = {
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
   ],
   done: [
-    { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', feedback: true , img: '/images/events/og-web-deck.jpg'},
+    { slug: 'larch-vn',   title: '視覺小說第一週：協作共創寫小說', date: '09-09', url: '/events/site-2026-09-09/', feedback: true , img: '/images/events/og-larch-vn.jpg'},
+    { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', img: '/images/events/og-web-deck.jpg'},
     { slug: 'wish-pool',  title: '拆解 AI 許願池',         date: '08-26', url: '/events/wishpool-2026-08-26/' , img: '/wish-pool/og.png'},
     { slug: 'skull-cam',  title: 'AI 給的設計圖會騙人',     date: '08-19', url: '/events/skull-2026-08-19/' , img: '/images/events/og-skull-cam.jpg'},
     { slug: 'chat-maker', title: 'LINE 對話創作營',        date: '08-12', url: '/events/chat-2026-08-12/' , img: '/images/events/og-chat-maker.jpg'},
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'larch-vn',    title: '視覺小說第一週：協作共創寫小說', date: '09-09', url: '/events/site-2026-09-09/', img: '/images/events/og-larch-vn.jpg' },
     { slug: 'larch-puzzle-2', title: '視覺小說第二週：15 分鐘定劇情，交給 Agent 做解謎', date: '09-16', url: '/events/puzzle-2026-09-16/', img: '/images/events/og-larch-puzzle.jpg' },
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg'},
     { slug: 'web-effects', title: '幫你的網頁加點特效',      date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
