@@ -16,7 +16,7 @@ author: Yaze Lin
 
 ## 那張卡把 origin 洗成 null
 
-9 月 8 日下午我在試 Larch 的小遊戲卡，想知道它能不能拿來播 16:9 的 HTML 簡報。16 點 35 分簡報本身進去了，心得記進 skill 檔。下一步想在簡報裡再嵌自己的站，麻煩從這裡開始。
+9 月 8 日下午我在試 Larch 的小遊戲卡，想知道它能不能拿來播 16:9 的 HTML 簡報。16 點 35 分簡報本身進去了，踩到的東西也收進了 skill 檔。下一步想在簡報裡再嵌自己的站，麻煩從這裡開始。
 
 那張卡是 sandbox iframe，而且沒有開 `allow-same-origin`。少了那個旗標，裡面的文件拿到的是一個 opaque origin：瀏覽器不認它屬於任何網域，`window.origin` 讀出來就是字串 `null`。
 
@@ -39,7 +39,7 @@ document.cookie                →  SecurityError: The document is sandboxed ...
 
 那裡沒有儲存空間。連 `window.localStorage` 這個屬性本身都讀不到，讀就丟。
 
-**探針最好由頁面自己的程式碼跑。** 同一組檢查改用 Playwright 的 `frame.evaluate` 從外面問，`localStorage.getItem` 會回 ok，`caches` 跟 `indexedDB.open` 照樣丟。那是另一個 world 的答案，跟站上的 script 實際拿到的不一樣。從外面問 `localStorage` 那一項會拿到假的 ok。
+**探針最好由頁面自己的程式碼跑。** 同一組檢查改用 Playwright 的 `frame.evaluate` 從外面問，`localStorage.getItem` 會回 ok，`caches` 跟 `indexedDB.open` 照樣丟。原因不在 Playwright，在被測的那一頁：它自己已經把 `window.localStorage` 換成記憶體版了，所以從外面問當然回 ok。拿還沒補墊片的裸頁去問，從外面問一樣會丟。這條的教訓是探針要問「站上的 script 現在拿到什麼」，而不是問「這個環境理論上給不給」。
 
 ## 17 點 03 分：開機從來沒有開始
 
@@ -57,7 +57,7 @@ if('serviceWorker'in navigator){
   navigator.serviceWorker.addEventListener('message',event=>{
 ```
 
-`'serviceWorker' in navigator` 在這個環境是 **true**，所以 `if` 進得去；下一行讀 `navigator.serviceWorker` 這個屬性就丟 SecurityError。程式碼走不到 `register()`，那條 20 秒的逾時線也沒有機會跑，因為管開機動畫的程式在同一支 script 更後面，一次都沒執行。畫面上停著的，是 HTML 裡寫死的那張底圖。
+`'serviceWorker' in navigator` 在這個環境是 **true**，所以 `if` 進得去；接著那兩行，第一行只是定義一個箭頭函式，定義的時候不求值；真正丟 SecurityError 的是再下一行的 `navigator.serviceWorker.addEventListener`。程式碼走不到 `register()`，那條 20 秒的逾時線也沒有機會跑，因為管開機動畫的程式在同一支 script 更後面，一次都沒執行。畫面上停著的，是 HTML 裡寫死的那張底圖。
 
 再往下十幾行才輪到安裝按鈕那段，它讀 localStorage 判斷這台裝過沒有。那一行在這個環境也會丟，只是輪不到它。第二個死掉的是另一支檔案 `js/glitch-call.js`，它自己也讀 localStorage，classic script 各死各的。
 
