@@ -62,32 +62,44 @@ git log --no-merges --format='%ad' --date=format:'%Y-%m-%d' | grep -c '^YYYY-MM-
 
 ---
 
-## 四、現在的狀態
+## 四、現在的狀態（2026-09-12 更新）
 
 | | |
 |---|---|
 | 分支 | `blog/backfill-2026-09` |
-| master | `35395af`，**一行沒動，等於全部尚未發佈** |
+| master | `35395af`，**一行沒動，全部尚未發佈** |
 | 發不發 | yazelin 自己決定。推分支是保存工作，不是發佈 |
 
-**已定稿 11 篇**（在 `_posts/`）：
+**總共 18 篇。**（原規劃 16 篇，週三系列另外新增 09-02、09-09 兩篇。）
 
-| 日期 | slug | 查核 |
+**已定稿 15 篇**（在 `_posts/`）：
+
+| 日期 | slug | 兩輪查核 |
 |---|---|---|
-| 08-31 | brand-site-starter-invisible-defects | 事實＋語氣 |
-| 09-01 | cutout-key-colour-collision | 尚未送查核 |
-| 09-02 | wednesday-web-deck | 事實＋語氣 |
-| 09-03 | larch-tts-bridge-admin-console | 尚未送查核 |
-| 09-04 | yori-voice-loudness | 尚未送查核 |
-| 09-05 | wish-pool-44-url-no-trace | 事實＋語氣 |
-| 09-06 | palette-colour-temp-check | 事實＋語氣 |
-| 09-07 | larch-taoyuan-silent-overwrite | 事實＋語氣 |
-| 09-08 | sandbox-iframe-null-origin | 事實＋語氣 |
-| 09-09 | wednesday-larch-vn-cocreate | 事實＋語氣 |
-| 09-11 | glitch-pet-rig-emote-gap | 尚未送查核 |
+| 08-31 | brand-site-starter-invisible-defects | 過 |
+| 09-01 | cutout-key-colour-collision | **欠** |
+| 09-02 | wednesday-web-deck | 過 |
+| 09-03 | four-model-vn-script-review | **欠** |
+| 09-03 | larch-tts-bridge-admin-console | **欠** |
+| 09-04 | larch-phone-chat-transparency | **欠** |
+| 09-04 | yori-voice-loudness | **欠** |
+| 09-05 | wish-pool-44-url-no-trace | 過 |
+| 09-06 | palette-colour-temp-check | 過 |
+| 09-07 | larch-taoyuan-silent-overwrite | 過 |
+| 09-08 | sandbox-iframe-null-origin | 過 |
+| 09-09 | four-larch-plugin-cards | **欠** |
+| 09-09 | wednesday-larch-vn-cocreate | 過 |
+| 09-10 | glitch-2d-regenerate-dont-warp | **欠** |
+| 09-11 | glitch-pet-rig-emote-gap | **欠** |
 
-**待重寫 7 篇**（在 `_drafts/舊版待重寫/`，`_drafts` 被 gitignore，已 `git add -f` 強制入版控）：
-09-02 slide-background-three-wrong-diagnoses、09-03 four-model-vn-script-review、09-04 larch-phone-chat-transparency、09-08 larch-challenge-2-baidicheng、09-09 four-larch-plugin-cards、09-10 glitch-2d-regenerate-dont-warp、09-10 larch-practice-pack-license。
+**七篇過了兩輪查核，八篇還欠。**欠的那七篇已經過了寫稿階段的三項自驗（speak-tw、冒領、加溫），但沒經過獨立查核員。
+
+**還沒開始 3 篇**：
+- 09-02 slide-background-three-wrong-diagnoses（簡報背景研究，跟 09-02 週三場不同篇）
+- 09-08 larch-challenge-2-baidicheng（番外《咒泉鄉的白帝城》上市集）
+- 09-10 larch-practice-pack-license（練習素材包授權）
+
+舊稿全部留在 `_drafts/舊版待重寫/`（`_drafts` 被 gitignore，已 `git add -f` 強制入版控）。
 
 **三篇曾經被擋下，原因記著免得再犯**：
 
