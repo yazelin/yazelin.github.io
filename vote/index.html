@@ -214,6 +214,16 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 
   <section class="panel fb p-fb" id="fb" hidden></section>
 
+  <section class="panel p-ask" id="ask-tonight">
+    <details class="ask" open>
+      <summary>今晚直播專用：想寫什麼解謎小說？</summary>
+      <p class="hint"><strong>這不是上面的長期主題投票。</strong>這是 9/16 開播前的劇情投稿。請寫一個題材，也可以附上一個角色或物品；開播時會挑一個和 AI 討論，直接做成解謎小說。</p>
+      <textarea id="tonight-text" maxlength="500" placeholder="例：廢棄車站／迷路的廣播員／一把會倒走的傘"></textarea>
+      <button class="send" id="tonight-send" type="button">投稿今晚劇情</button>
+      <p class="thanks" id="tonight-ok" hidden>收到了，開播時會從今晚投稿裡挑一個來做。</p>
+    </details>
+  </section>
+
   <section class="panel p-rank">
     <header>
       <h2>還沒排的主題</h2>
@@ -656,6 +666,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
   mountUses();
   renderUses();
   mountFeedback();
+  mountAsk('tonight-send', 'wish', 'tonight-text', null, 'tonight-ok');
   mountAsk('wish-send', 'wish', 'wish-text', null, 'wish-ok');
   mountAsk('offer-send', 'offer', 'offer-text', 'offer-contact', 'offer-ok');
   renderCards('scheduled', T.scheduled, true);
