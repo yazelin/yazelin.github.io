@@ -75,6 +75,77 @@ def fit_title(d, text, max_w, max_lines, start=82, floor=44):
     return font, wrap(d, text, font, max_w)[:max_lines], floor
 
 
+def render_bleed(args) -> None:
+    """Artwork edge to edge, text on a scrim. For posts where the picture is
+    the point and the words only have to stay readable on top of it."""
+    art_path = Path(args.bleed)
+    if not art_path.is_absolute():
+        art_path = ROOT / art_path
+    art = Image.open(art_path).convert("RGBA")
+    scale = max(W / art.width, H / art.height)
+    art = art.resize((round(art.width * scale), round(art.height * scale)), Image.LANCZOS)
+    left = max(0, (art.width - W) // 2)
+    top = max(0, (art.height - H) // 3)   # 三分之一:人物在畫面中上,別把臉切掉
+    canvas = art.crop((left, top, left + W, top + H))
+
+    # 底部漸層壓暗,字才讀得出來。上緣保持乾淨。
+    scrim = Image.new("L", (1, H))
+    for y in range(H):
+        t = max(0.0, (y / H - 0.30) / 0.70)
+        scrim.putpixel((0, y), int(225 * (t ** 1.25)))
+    dark = Image.new("RGBA", (W, H), (14, 12, 18, 255))
+    canvas.paste(dark, (0, 0), scrim.resize((W, H)))
+
+    d = ImageDraw.Draw(canvas)
+    text_w = MAX_TEXT_W
+    if "|" in args.title:   # 手動斷行:標題的斷點自己決定,不交給自動換行
+        size = round(W * 0.072)
+        parts = [p.strip() for p in args.title.split("|") if p.strip()]
+        while size > round(W * 0.040):
+            f = ImageFont.truetype(FONT_BLACK, size)
+            if max(d.textlength(p, font=f) for p in parts) <= text_w:
+                break
+            size -= 2
+        title_font, title_lines = ImageFont.truetype(FONT_BLACK, size), parts
+    else:
+        title_font, title_lines, size = fit_title(d, args.title, text_w, 3,
+                                                  start=round(W * 0.072), floor=round(W * 0.042))
+    sub_font = ImageFont.truetype(FONT_REG, round(W * 0.026))
+    sub_lines = wrap(d, args.subtitle, sub_font, text_w)[:2] if args.subtitle else []
+    block = len(title_lines) * int(size * 1.2) + len(sub_lines) * round(W * 0.037)
+    y = H - round(H * 0.10) - block
+
+    if args.eyebrow:
+        eb_font = ImageFont.truetype(FONT_BOLD, round(W * 0.021))
+        bb = d.textbbox((0, 0), args.eyebrow, font=eb_font)
+        pw, ph = (bb[2] - bb[0]) + 36, round(W * 0.038)
+        d.rounded_rectangle((MARGIN, y - ph - 24, MARGIN + pw, y - 24),
+                            radius=ph // 2, fill=ACCENT)
+        d.text((MARGIN + 18 - bb[0], y - ph - 24 + (ph - (bb[3] - bb[1])) // 2 - bb[1]),
+               args.eyebrow, fill=(255, 255, 255), font=eb_font)
+
+    for line in title_lines:
+        d.text((MARGIN, y), line, fill=(255, 255, 255), font=title_font)
+        y += int(size * 1.2)
+    for line in sub_lines:
+        d.text((MARGIN, y + 12), line, fill=(226, 222, 232), font=sub_font)
+        y += round(W * 0.037)
+
+    save(canvas, args.out)
+
+
+def save(canvas, out) -> None:
+    out_path = Path(out)
+    if not out_path.is_absolute():
+        out_path = ROOT / out_path
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    if out_path.suffix.lower() in (".jpg", ".jpeg"):
+        canvas.convert("RGB").save(out_path, "JPEG", quality=88, optimize=True, progressive=True)
+    else:
+        canvas.convert("RGB").save(out_path, "PNG", optimize=True)
+    print(f"saved {out_path} ({out_path.stat().st_size // 1024} KB)")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--title", default=SITE_TITLE)
@@ -83,8 +154,20 @@ def main() -> None:
                     help="small pill above the title (e.g. a category)")
     ap.add_argument("--art", default="",
                     help="portrait pasted flush right; the text column narrows to match")
+    ap.add_argument("--bleed", default="",
+                    help="artwork fills the whole card; text sits on a dark scrim")
+    ap.add_argument("--size", default="",
+                    help="WxH, e.g. 1080x1350 for a 4:5 Facebook post")
     ap.add_argument("-o", "--out", default="images/og-default.png")
     args = ap.parse_args()
+
+    global W, H, MARGIN, MAX_TEXT_W
+    if args.size:
+        W, H = (int(v) for v in args.size.lower().split("x"))
+        MARGIN = round(W * 0.08)
+        MAX_TEXT_W = W - MARGIN * 2
+    if args.bleed:
+        return render_bleed(args)
 
     canvas = Image.new("RGBA", (W, H), BG + (255,))
 
