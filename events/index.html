@@ -68,10 +68,10 @@ permalink: /events/
     <a href="https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=events&utm_medium=link&utm_campaign=index">AI 許願池社群</a>公布。</p>
 
   {% comment %}
-    資料來源:layout 為 event 的頁面(回饋頁 sitemap:false 濾掉,理由同前版)。
-    「下一場/之後/已辦」的分組交給瀏覽器用當下日期算:GitHub Pages 只在 push 時重建,
-    用 site.time 分組的話,場次辦完卻沒推新 commit 就會一直掛在「即將」。
-    沒有 JS 時退回下面這份完整清單(新的在上),跟改版前一樣。
+    資料來源：layout 為 event 的頁面（回饋頁 sitemap:false 濾掉，理由同前版）。
+    「下一場/之後/已辦」的分組交給瀏覽器用當下日期算：GitHub Pages 只在 push 時重建，
+    用 site.time 分組的話，場次辦完卻沒推新 commit 就會一直掛在「即將」。
+    沒有 JS 時退回下面這份完整清單（新的在上），跟改版前一樣。
   {% endcomment %}
   {% assign events = site.pages | where: "layout", "event" | where_exp: "e", "e.sitemap != false" | sort: "event_date" | reverse %}
 
@@ -88,7 +88,6 @@ permalink: /events/
       <h2>已辦的場次</h2>
       <ul class="ev-past" id="ev-past"></ul>
     </section>
-    <p class="ev-vote">想聽什麼自己點：投票連結只發在社群公告裡，加入社群就會看到。</p>
   </div>
 
   <ul class="post-list" id="ev-fallback">
@@ -101,6 +100,7 @@ permalink: /events/
     {% endfor %}
   </ul>
   {% if events.size == 0 %}<p class="excerpt">目前沒有安排中的場次。</p>{% endif %}
+  <p class="ev-vote">下次想聽什麼？到<a href="{{ '/vote/' | relative_url }}">主題投票頁</a>選最多三個，也可以寫下自己的題目。</p>
 </div>
 
 <script type="application/json" id="ev-data">[
@@ -116,7 +116,7 @@ permalink: /events/
   catch (e) { return; } // 解析失敗就維持原本的清單
   if (!data.length) return;
 
-  // 以瀏覽器當地日期分組:活動日整天都算「下一場」,隔天才進歷史
+  // 以瀏覽器當地日期分組：活動日整天都算「下一場」，隔天才進歷史
   var now = new Date();
   var today = now.getFullYear() + '-' +
     String(now.getMonth() + 1).padStart(2, '0') + '-' +

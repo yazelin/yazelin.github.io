@@ -46,6 +46,8 @@ blockquote { margin: 1.5rem 0; padding: 0.5rem 1.25rem; border-left: 3px solid v
 .related { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; }
 .related h2 { font-size: 1.1rem; }
 .related ul { padding-left: 1.2rem; }
+.event-vote-link { margin: 2rem 0; padding: 1rem 1.2rem; background: var(--accent-weak); border-radius: 10px; }
+.event-vote-link a { font-weight: 700; }
 
 /* blog list */
 .post-list { list-style: none; padding: 0; }

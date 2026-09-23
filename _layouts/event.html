@@ -3,21 +3,21 @@ layout: default
 ---
 {% comment %}
   通用免費活動報名頁 layout。
-  換一場活動 = 複製 events/ 底下任一頁,改 front matter 即可,不用動這裡:
-    event_batch      梯次 slug(必填,對應 Worker registrations.batch,如 sticker-2026-08-05)
+  換一場活動 = 複製 events/ 底下任一頁，改 front matter 即可，不用動這裡：
+    event_batch      梯次 slug（必填，對應 Worker registrations.batch，如 sticker-2026-08-05）
     event_datetime   時間字串
     event_duration   時長
-    event_location   形式(線上/實體)
+    event_location   形式（線上/實體）
     event_price      費用
     event_access     參加方式
     event_closed     true 時顯示額滿訊息、不輸出表單
-  正文(Markdown)寫在頁面 front matter 之後,會顯示在資訊列與報名表單之間。
+  正文（Markdown）寫在頁面 front matter 之後，會顯示在資訊列與報名表單之間。
 {% endcomment %}
 <article class="page container">
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<p class="section-lead" style="text-align:left; margin:0 0 2rem;">{{ page.subtitle }}</p>{% endif %}
 
-  {% comment %} 場次視覺:cover 原本只餵 og:image,頁面內看不到,補渲染在資訊列上方 {% endcomment %}
+  {% comment %} 場次視覺：cover 原本只餵 og:image，頁面內看不到，補渲染在資訊列上方 {% endcomment %}
   {% if page.cover %}<img src="{{ page.cover | relative_url }}" alt="{{ page.title }} 場次視覺"
     style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid var(--border); margin:0 0 1.6rem; display:block;">{% endif %}
 
@@ -32,6 +32,10 @@ layout: default
   {% endif %}
 
   {{ content }}
+
+  {% if page.event_date %}
+  <p class="event-vote-link">下次想聽什麼主題？到<a href="{{ '/vote/' | relative_url }}">主題投票頁</a>選最多三個，也可以寫下自己的題目。</p>
+  {% endif %}
 
   {% include event-register-form.html batch=page.event_batch community=page.event_community_url heading=page.form_heading lead=page.form_lead name_placeholder=page.form_name_placeholder note_placeholder=page.form_note_placeholder note_label=page.form_note_label note_rows=page.form_note_rows submit_label=page.form_submit_label success_msg=page.form_success_msg already_msg=page.form_already_msg closed=page.event_closed closed_heading=page.form_closed_heading closed_message=page.form_closed_message materials=page.event_materials_url %}
 </article>
