@@ -14,7 +14,7 @@ window.VOTE_TOPICS = {
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖', url: 'https://yazelin.github.io/mori-sprite-studio/' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
-    { slug: 'daily-writer', title: '讓網站每天自己寫一篇',   desc: '用 GitHub Actions 讓網站每天自己找靈感、寫文章，檢查過才發，壞了會開 issue 通知你' },
+    { slug: 'daily-writer', title: '讓網站每天自己寫一篇',   desc: '用 GitHub Actions 讓網站每天自己找靈感、寫文章、畫圖，檢查過才發；拿 catime、Mori、優理、格莉奇四個真的每天在跑的站當例子' },
     { slug: 'active-agent', title: '做一個會主動幫你做事的 agent', desc: '讓 agent 自己在某個地方發現事情、主動去處理，不只是定時跑排程；也會講一小段 agent 怎麼運作：迴圈怎麼跑、怎麼呼叫 API' },
   ],
   done: [
