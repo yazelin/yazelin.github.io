@@ -6,16 +6,16 @@
 // open 的 url 是「看作品」連結(Pages 或市集頁),可省略。
 // 票是按 slug 算的,搬走就自然退出排行,舊票不受影響。slug 一旦公開就不要改。
 //
-// open 的九項照 yaze-journal/projects/wednesday-live/選題-2026-10.md 的
+// open 的選項照 yaze-journal/projects/wednesday-live/選題-2026-10.md 的
 // 「建議的投票選項文字」原文,一字不加。要改先改那份。
 window.VOTE_TOPICS = {
   open: [
     { slug: 'larch-puzzle', title: 'Larch 解謎視覺小說創作', desc: '第二屆創作者挑戰主題是解謎，用背包與場景往返做一款 5 到 10 分鐘的謎案', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖', url: 'https://yazelin.github.io/mori-sprite-studio/' },
-    { slug: 'cast-lock',    title: 'AI 角色為什麼會變臉',  desc: '鎖角色的四條鐵律，現場鎖一隻出三張圖', url: 'https://yazelin.github.io/token-unlimited-comic/' },
-    { slug: 'editor-night', title: '小編工具夜',          desc: '抽獎、UTM 連結、簡體稿台灣化、分享卡預覽一次打包', url: 'https://yazelin.github.io/marketing-toolbox/' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
+    { slug: 'daily-writer', title: '讓網站每天自己寫一篇',   desc: '用 GitHub Actions 讓網站每天自己找靈感、寫文章，檢查過才發，壞了會開 issue 通知你' },
+    { slug: 'active-agent', title: '做一個會主動幫你做事的 agent', desc: '讓 agent 自己在某個地方發現事情、主動去處理，不只是定時跑排程；也會講一小段 agent 怎麼運作：迴圈怎麼跑、怎麼呼叫 API' },
   ],
   done: [
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg', feedback: true},
