@@ -106,6 +106,7 @@ playBtn.addEventListener('click', () => {
   $('.share-shot', share).hidden = true;
   $('.share-shot', share).after(f);
   share.classList.add('playing');
+  stage.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
   playBtn.textContent = '看截圖';
   interrupt();
   say('你玩，我看。', { emote: 'happy' });

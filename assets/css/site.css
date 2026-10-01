@@ -216,12 +216,18 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 
 /* 在台上直接玩:截圖換成那個作品的真頁面 */
 .share-nav .share-play { font-size: .75rem; padding: .3rem; writing-mode: vertical-rl; letter-spacing: .1em; border-color: var(--purple); }
-.share-live { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px -12px rgb(30 20 60 / .5); }
-.share.playing { width: 74%; }
-/* 玩的時候字幕講完就讓開,不蓋住作品 */
-.stage:has(.share.playing) .caption { opacity: 0; transition: opacity .4s 2.5s; }
-.stage[data-mode="share"]:has(.share.playing) .host { transform: scale(.55); }
-.stage[data-mode="share"]:has(.share.playing) .caption { right: 18%; }
+.share-shot[hidden] { display: none; }
+.share-live { display: block; width: 100%; flex: 1; min-height: 0; border: 0; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px -12px rgb(30 20 60 / .5); }
+/* 玩的時候作品占滿整個台,她縮到右下角看,字幕講完就讓開 */
+.share.playing { left: 1.5%; top: 2.5%; width: calc(97% - 3.2rem); height: 95%; display: flex; flex-direction: column; z-index: 4; }
+.share.playing figcaption { flex: none; }
+.share.playing .share-nav { right: -2.9rem; }
+.stage:has(.share.playing) { aspect-ratio: auto; height: min(calc(100svh - 7.5rem), 52rem); min-height: 22rem; }
+/* 玩的時候聊天室讓到台的下面,台用整個寬度 */
+.stream:has(.share.playing) { grid-template-columns: 1fr; }
+.stream:has(.share.playing) .chat-log { max-height: 12rem; }
+.stage:has(.share.playing) .host { transform: scale(.32); z-index: 5; }
+.stage:has(.share.playing) .caption { left: auto; right: 2%; width: 34%; z-index: 6; opacity: 0; transition: opacity .4s 2.5s; }
 
 /* 子母畫面:台捲出去之後她縮到左下角 */
 .pip { position: fixed; left: 16px; bottom: 16px; z-index: 60; display: flex; align-items: flex-end; gap: .6rem; pointer-events: none; }
