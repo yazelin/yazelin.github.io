@@ -1,0 +1,11 @@
+{% assign w = include.w %}
+<article class="vod{% if include.first %} vod--lead{% endif %}">
+  <a class="vod-shot" href="{{ w.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ '/images/portfolio/' | append: w.img | relative_url }}" alt="" loading="lazy" width="1440" height="900">
+    {% if w.badge %}<span class="vod-badge">{{ w.badge }}</span>{% endif %}
+  </a>
+  <h3><a class="vod-link" href="{{ w.url | relative_url }}">{{ w.title }}</a></h3>
+  <p class="vod-desc">{{ w.desc }}</p>
+  {% if w.made.size > 0 %}<details class="vod-made"><summary>怎麼做的</summary><ul>{% for m in w.made %}<li>{{ m }}</li>{% endfor %}</ul></details>{% endif %}
+  {% if w.series.size > 0 %}<p class="vod-series"><span>同系列</span>{% for s in w.series %}<a href="{{ s.url }}">{{ s.title }}</a>{% endfor %}</p>{% endif %}
+</article>

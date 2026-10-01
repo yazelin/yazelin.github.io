@@ -4,13 +4,20 @@
 
 - 首頁是 landing(定位、作品牆、故事、精選文章、訂閱表單),文章列表在 `/blog/`
 - 自寫 Jekyll 版型(`_layouts/` + `assets/css/site.css`),不用 remote theme;GitHub Pages 直接 build
-- 視覺概念是「三聯單」:桌面是淺灰辦公桌(深色模式是炭灰),內容都寫在單據上,紙是褪色的粉與黃。首頁三張單對應三聯:白聯=甲方存根(首屏發包單)、
-  黃聯=驗收(作品清冊)、紅聯=乙方收執(從工廠到 AI)。印刷的字用黑,填進去的字用複寫藍手寫體(霞鶩文楷 TC)。
-  開場順序:案由照筆順一筆一畫寫上去(`_includes/hand-title.html`,由 `scripts/make_hand_title.py` 產生;
-  筆畫資料 hanzi-writer-data / Make Me a Hanzi,Arphic Public License;改句子要重跑腳本)→ 三格打勾 → 蓋驗收章(`_includes/seal.svg`,印泥質感是 SVG filter;`prefers-reduced-motion`
-  時全部不播)。訪客在首屏單上點一下會蓋一顆章(純裝飾、不存);滑過作品會蓋上小驗收章。
-  色票寫在 `site.css` 開頭,有深色模式;導覽列右上角可切「跟隨系統／亮色／深色」,存在 localStorage 的 `wed_theme`,與 /vote/ 共用同一個值所以兩邊同步。深色色票在 site.css 寫兩次(系統深色未手動選亮色、手動選深色),少一條切換鈕就只能單向作用。舊頁面行內樣式用的 `--accent` 拿來當按鈕底色時,字色要用 `--on-accent`,
-  不要寫死 `#fff`(深色模式 `--accent` 是淺色)。內文用系統黑體,webfont 只載手寫體、宋體標題、Barlow 數字
+- 首頁是「格莉奇的台」:她當直播主持人介紹亞澤。白板上的題目照筆順一筆一畫寫出來
+  (`_includes/hand-title.html`,由 `scripts/make_hand_title.py` 產生;筆畫資料 hanzi-writer-data /
+  Make Me a Hanzi,Arphic Public License;改句子要重跑腳本)。右邊聊天室的問題按鈕就是導覽,
+  「有什麼好玩的」會切到畫面分享一個一個介紹作品。流程在 `assets/js/stream.js`。
+- 作品資料只有一份:`_data/works.json`(標題、網址、截圖、說明、怎麼做的、同系列、動手天數徽章、
+  格莉奇的那句台詞)。直播台與下方「作品回放」都吃它,新增作品改這裡就好。徽章只在文案有寫明確天數時才有。
+- 格莉奇本人是 glitch-2d 的活體骨架,抄在 `assets/glitch2d/`(來源 ai-brain-site 的 `glitch2d/`
+  與 `images/glitch2d/`,再上游是 yazelin/glitch-2d)。本站版 `pet.js` 多了 `follow` 選項與 `look(x, y)`
+  讓視線跟游標。骨架載不起來會留著靜態立繪。上游更新時手動重抄,rig.json 的貼圖路徑改成 `img/`。
+- 格莉奇的台詞照 ai-brain-site `persona.json` 的設定寫,事實只能改寫站上已核可的文案。
+  色票寫在 `site.css` 開頭(她的薄荷 #7cf3c0、霓虹紫 #b78bff 只當點綴),有深色模式;
+  導覽列右上角可切「跟隨系統／亮色／深色」,存在 localStorage 的 `wed_theme`,與 /vote/ 共用。
+  深色色票在 site.css 寫兩次(系統深色未手動選亮色、手動選深色),少一條切換鈕就只能單向作用。
+  舊頁面行內樣式用 `--accent` 當按鈕底色時,字色要用 `--on-accent`,不要寫死 `#fff`。
 - 205+ 篇文章 permalink 維持 `/:categories/:year/:month/:day/:title.html`,舊網址不斷
 - 作品牆截圖:`node scripts/portfolio-shots.mjs` 重截後以 Pillow 轉 webp(<100KB 走本地路徑)
 - 訂閱表單打 k-rider-api Worker(D1,`source: "blog"`)

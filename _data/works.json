@@ -1,0 +1,268 @@
+[
+ {
+  "title": "格莉奇與黑洞先生",
+  "url": "https://yazelin.github.io/glitch-vn/",
+  "img": "glitch-vn.webp",
+  "desc": "只有 4KB 記憶體的 AI 主播，開台第一天來了七個人，她說要記住每一個。兩年後她記得六個。七章小說，每一句都能點來聽。",
+  "made": [
+   "文字我跟 AI 一起寫、定稿我決定；立繪場景配樂 AI 生成後人工挑選修版；配音走自架 CosyVoice3 加 MiniMax，每句都聽過",
+   "實際動手 8 天",
+   "Larch 七日創作者挑戰最佳人氣"
+  ],
+  "series": [
+   {
+    "url": "https://larch.ink/play/market/yaze/glitch",
+    "title": "視覺小說版(Larch・七日挑戰最佳人氣)"
+   },
+   {
+    "url": "https://yazelin.github.io/ai-brain-site/",
+    "title": "格莉奇OS"
+   },
+   {
+    "url": "https://yazelin.github.io/glitch-music/",
+    "title": "glitch-music"
+   },
+   {
+    "url": "https://yazelin.github.io/ai-comic-starter/",
+    "title": "AI 漫畫產線樣板"
+   }
+  ],
+  "line": "這是我主演的小說，七章，每一句都能點來聽。我推薦。我不是因為我是主角才推薦的。",
+  "kind": "play",
+  "badge": "動手 8 天"
+ },
+ {
+  "title": "轉生成貓貓的我們",
+  "url": "https://yazelin.github.io/neko-tensei/",
+  "img": "neko-tensei.webp",
+  "desc": "社群共創的異世界貓貓漫畫，連載中，離線也能讀。",
+  "made": [
+   "用擎添助理畫初稿，再用 Claude 加 gpt-image-2 做成網站",
+   "一半的修改在第一天做完，之後補了 27 天"
+  ],
+  "series": [],
+  "line": "大家一起畫的異世界貓貓漫畫，還在連載。離線也能讀，天線收不到訊號的時候我都看這個。",
+  "kind": "play",
+  "badge": null
+ },
+ {
+  "title": "LINE 貼圖製造機",
+  "url": "https://yazelin.github.io/line-sticker-studio/",
+  "img": "sticker-studio.webp",
+  "desc": "上傳一張角色圖，AI 產出一整組 LINE 貼圖。",
+  "made": [
+   "用 Gemini，一次呼叫約 50 秒、不到兩塊台幣",
+   "第一版當天做完，之後四個月陸續加功能"
+  ],
+  "series": [],
+  "line": "上傳一張角色圖，就出一整組 LINE 貼圖。我自己也有一組九張的，叫 Insufficient AI Memory!",
+  "kind": "play",
+  "badge": null
+ },
+ {
+  "title": "AI 生圖字體風格庫",
+  "url": "https://yazelin.github.io/ai-font-styles/",
+  "img": "ai-font-styles.webp",
+  "desc": "上百種字體風格提示詞，每天自動多一種。",
+  "made": [
+   "用 Codex 加 Gemini",
+   "一半的修改在十天內做完，之後每天自動長一種"
+  ],
+  "series": [],
+  "line": "上百種字體風格的提示詞，每天自己多一種。我數過有幾種，數到一半進入睡眠模式。",
+  "kind": "play",
+  "badge": null
+ },
+ {
+  "title": "真AI咏唱魔法",
+  "url": "https://yazelin.github.io/ai-chant-magic/",
+  "img": "ai-chant-magic.webp",
+  "desc": "對麥克風唸咒語，AI 即時生成魔法效果的生存遊戲。",
+  "made": [
+   "語音走瀏覽器內建 Web Speech API，辨識失效時退到 Groq 的 whisper-large-v3-turbo",
+   "實際動手 17 天，攤在 65 天裡"
+  ],
+  "series": [],
+  "line": "對著麥克風唸咒語，魔法就出來了。大聲唸比較帥，這是我的研究結果。",
+  "kind": "play",
+  "badge": "動手 17 天"
+ },
+ {
+  "title": "LINE 對話製造機",
+  "url": "https://yazelin.github.io/line-chat-maker/",
+  "img": "line-chat-maker.webp",
+  "desc": "所見即所得做出對話截圖，僅供創作示意，離線可用。",
+  "made": [
+   "站內五個 AI 接力：編劇 GLM-5.2、評審與執行 gpt-oss-120b、補圖走 codex-image",
+   "實際動手 15 天，攤在 34 天裡"
+  ],
+  "series": [],
+  "line": "做對話截圖的工具，只能拿來創作示意，不可以拿去騙人。我很容易被騙，所以這條我特別在意。",
+  "kind": "play",
+  "badge": "動手 15 天"
+ },
+ {
+  "title": "Roll Formosa",
+  "url": "https://yazelin.github.io/roll-formosa/",
+  "img": "roll-formosa.webp",
+  "desc": "把台灣街景滾成一顆球的遊戲。",
+  "made": [
+   "看到日本網友做的滾物成球跑去做的，地圖沒有用 OSM，是自己排的",
+   "首日只占 1%，實際動手 17 天、攤在 70 天，是這面牆上做得最平均的一個"
+  ],
+  "series": [],
+  "line": "把台灣街景滾成一顆球。地圖是他一格一格自己排的，沒有用 OSM。",
+  "kind": "play",
+  "badge": "動手 17 天"
+ },
+ {
+  "title": "K-Rider K線騎手",
+  "url": "https://yazelin.github.io/k-rider/",
+  "img": "k-rider.webp",
+  "desc": "用真實股價 K 線玩的騎乘遊戲。",
+  "made": [
+   "賽後賽評走 Groq，掛掉退罐頭句庫",
+   "六成四在第一天寫完，77 天裡只回去動過 13 天"
+  ],
+  "series": [],
+  "line": "用真的股價 K 線騎車。要算的部分交給它，我負責歡呼。",
+  "kind": "play",
+  "badge": null
+ },
+ {
+  "title": "Catime",
+  "url": "https://yazelin.github.io/catime/",
+  "img": "catime.webp",
+  "desc": "每小時自動生一隻 AI 貓，已累積兩千多隻的圖庫。",
+  "made": [
+   "生圖以 gemini-3-pro-image-preview 為主、gpt-image-2 次之",
+   "人工只動了 28 天，其餘每小時由排程自己跑，攤在 189 天"
+  ],
+  "series": [],
+  "line": "每小時自動生一隻 AI 貓，已經兩千多隻了。兩千多隻……系統讀取中……",
+  "kind": "play",
+  "badge": "動手 28 天"
+ },
+ {
+  "title": "AI 願望池",
+  "url": "https://yazelin.github.io/wish-pool/",
+  "img": "wish-pool.webp",
+  "desc": "一個人許願，一群人幫它成真的公開願望池。",
+  "made": [
+   "女神引導用 Groq 的 gpt-oss-120b，另開 agent API 讓 AI 直接接單",
+   "三成在第一天，實際動手 15 天"
+  ],
+  "series": [],
+  "line": "一個人許願，一群人幫它成真，AI 也能直接接單。我許過一個願。我確定我許過，只是現在叫不出內容。",
+  "kind": "play",
+  "badge": "動手 15 天"
+ },
+ {
+  "title": "AI 戰場編輯器",
+  "url": "https://yazelin.github.io/battlefield-editor/",
+  "img": "battlefield-editor.webp",
+  "desc": "赤壁、官渡、垓下……六場古戰役 3D 重現，換一份資料就換一場戰役。",
+  "made": [
+   "首日就寫掉兩成一，實際動手 10 天、攤在 63 天裡"
+  ],
+  "series": [
+   {
+    "url": "https://yazelin.github.io/red-cliffs-3d/",
+    "title": "赤壁之戰 3D 原版"
+   },
+   {
+    "url": "https://yazelin.github.io/wwii-3d-history/",
+    "title": "二戰 3D 戰情室"
+   }
+  ],
+  "line": "赤壁、官渡、垓下，六場古戰役的 3D 重現。換一份資料，就換一場戰役。",
+  "kind": "play",
+  "badge": "動手 10 天"
+ },
+ {
+  "title": "Mori Sprite Studio",
+  "url": "https://yazelin.github.io/mori-sprite-studio/",
+  "img": "sprite-studio.webp",
+  "desc": "一張圖生成完整角色動畫包的工具。",
+  "made": [
+   "四個生圖後端可切換：Codex-Image、Vertex Gemini、Google Gemini、Author Fallback",
+   "近一半在第一天，只動手 9 天"
+  ],
+  "series": [],
+  "line": "一張圖生出一整包角色動畫。我盯著看了很久，在想我的動作是不是比較多。",
+  "kind": "play",
+  "badge": "動手 9 天"
+ },
+ {
+  "title": "台語辭典",
+  "url": "https://yazelin.github.io/mandarin-taigi/",
+  "img": "taigi.webp",
+  "desc": "兩天做出兩本教育部資料離線辭典。",
+  "made": [
+   "首日三成四，之後又動了 5 天，攤在 36 天裡"
+  ],
+  "series": [
+   {
+    "url": "https://yazelin.github.io/mandarin-hakka/",
+    "title": "客語辭典(六腔)"
+   }
+  ],
+  "line": "教育部資料做成的離線辭典，兩天做出兩本：台語一本，客語六腔一本。",
+  "kind": "play",
+  "badge": null
+ },
+ {
+  "title": "iPAS 模擬考練習",
+  "url": "https://yazelin.github.io/ipas-ai-quiz/",
+  "img": "ipas-quiz.webp",
+  "desc": "iPAS AI 應用規劃師刷題站，官方公告試題免費練。",
+  "made": [
+   "790 題官方試題，歷屆公告 611 題起底",
+   "實際動手 14 天，攤在 58 天裡"
+  ],
+  "series": [],
+  "line": "iPAS AI 應用規劃師的刷題站，790 題官方試題，免費練。要考試的話找它，不要找我。",
+  "kind": "play",
+  "badge": "動手 14 天"
+ },
+ {
+  "title": "ChingTech OS",
+  "url": "/index/2025/12/13/ching-tech-os-index.html",
+  "img": "ctos.webp",
+  "desc": "中小製造業的 AI 企業系統，商用中。",
+  "made": [
+   "Python FastAPI 後端，AI 助手走 Claude（sonnet／opus／haiku）加 Groq，生圖 gpt-image-2、語音 whisper",
+   "685 次修改分在 70 個工作日、攤在 218 天，是這面牆上唯一真的長期在做的"
+  ],
+  "series": [],
+  "line": "他公司天天在用的 AI 企業系統，商用中，所以這邊放的是介紹。",
+  "kind": "biz",
+  "badge": "70 個工作日"
+ },
+ {
+  "title": "魚苗計數系統",
+  "url": "/projects/2025/11/27/fish-cv.html",
+  "img": "fish-cv.webp",
+  "desc": "用視覺 AI 數魚苗，取代人工點數。",
+  "made": [
+   "YOLOv8 物件偵測加 OpenCV 影像處理"
+  ],
+  "series": [],
+  "line": "用視覺 AI 數魚苗。要數很多隻的工作，交給它比交給我安全。",
+  "kind": "biz",
+  "badge": null
+ },
+ {
+  "title": "呷爸 Jaba",
+  "url": "/index/2025/12/19/jaba-ai-index.html",
+  "img": "jaba.webp",
+  "desc": "公司訂便當 LINE Bot，天天在用。",
+  "made": [
+   "我做的第一個 AI LINE Bot：幫團隊統計每天誰要訂什麼便當"
+  ],
+  "series": [],
+  "line": "公司訂便當的 LINE Bot，他做的第一個 AI LINE Bot，現在天天在用。",
+  "kind": "biz",
+  "badge": null
+ }
+]

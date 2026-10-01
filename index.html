@@ -5,205 +5,76 @@ share-description: 林亞澤 Yaze — 甲方思維:不寫程式也能把軟體�
 head-extra:
   - head-custom.html
 ---
-<!-- 文案草稿:全部待 yazelin 逐句核可 -->
+<!-- 文案草稿:全部待 yazelin 逐句核可。格莉奇的台詞在 _data/works.json 的 line 與下方 SCRIPT -->
 {% comment %}
-  首屏是一份三聯單的第一聯。印刷的是欄位名(黑),填進去的是複寫藍手寫字。
-  開場:案由一行一行寫上去 → 三格打勾 → 蓋驗收章。之後滑鼠在單上會變成印章,點一下蓋一顆(只是好玩,不存)。
+  首屏是格莉奇的直播台:她當主持人介紹亞澤。右邊聊天室的問題按鈕就是導覽。
+  她是 glitch-2d 的活體骨架(assets/glitch2d/,抄自 ai-brain-site),載入失敗退回靜態立繪。
 {% endcomment %}
-<section class="pad" aria-labelledby="order-title">
-  <div class="pad-stack" aria-hidden="true"><i class="copy copy--pink"></i><i class="copy copy--yellow"></i></div>
-  <div class="sheet" data-stampable>
-    <header class="sheet-head">
-      <p class="sheet-kind">發包單</p>
-      <p class="sheet-copy">第一聯<br>甲方存根</p>
+<section class="stream" aria-labelledby="stream-title">
+  <div class="stream-main">
+    <header class="stream-bar">
+      <span class="live"><i></i>LIVE</span>
+      <span class="stream-name">格莉奇的台</span>
+      <span class="stream-guest">今天的來賓：林亞澤</span>
+      <span class="stream-viewers" title="現在在看的人">觀眾 1（你）</span>
     </header>
-    <dl class="sheet-row sheet-parties">
-      <div><dt>甲方</dt><dd class="hand">林亞澤</dd></div>
-      <div><dt>乙方</dt><dd class="hand">AI</dd></div>
-      <div><dt>日期</dt><dd class="hand"><time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: "%Y.%-m.%-d" }}</time></dd></div>
-    </dl>
-    <div class="sheet-cause">
-      <span class="sheet-label">案由</span>
-      <h1 id="order-title" class="hand cause"><span class="sr-only">不寫程式，也能把軟體做出來</span>{% include hand-title.html %}</h1>
+    <div class="stage" data-mode="board">
+      <div class="pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="board">
+        <p class="board-label">今天的題目</p>
+        <h1 id="stream-title" class="board-title"><span class="sr-only">不寫程式，也能把軟體做出來</span>{% include hand-title.html %}</h1>
+      </div>
+      <figure class="share" aria-live="polite" hidden>
+        <a class="share-shot" href="#" target="_blank" rel="noopener"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="1440" height="900"></a>
+        <figcaption>
+          <span class="share-count"></span>
+          <a class="share-title" href="#" target="_blank" rel="noopener"></a>
+          <span class="share-badge"></span>
+        </figcaption>
+        <div class="share-nav">
+          <button type="button" class="share-prev" aria-label="上一個作品">‹</button>
+          <button type="button" class="share-next" aria-label="下一個作品">›</button>
+          <button type="button" class="share-close">回到白板</button>
+        </div>
+      </figure>
+      <div class="host">
+        <img class="host-still" src="{{ '/images/characters/glitch.webp' | relative_url }}" alt="">
+        <canvas class="host-canvas" aria-hidden="true"></canvas>
+      </div>
+      <p class="caption" aria-live="polite"><b>格莉奇</b><span class="caption-text"></span></p>
     </div>
-    <div class="sheet-row sheet-flow">
-      <ol class="steps">
-        <li><span>開規格</span><svg class="tick" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 17 12 24 28 6"/></svg></li>
-        <li><span>下發包</span><svg class="tick" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 17 12 24 28 6"/></svg></li>
-        <li><span>做驗收</span><svg class="tick" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 17 12 24 28 6"/></svg></li>
-      </ol>
-      <a class="attach" href="#work">
-        <span class="sheet-label">附件</span>
-        {% assign attach = "glitch-vn,neko-tensei,roll-formosa,ai-chant-magic,battlefield-editor" | split: "," %}<span class="attach-pics" aria-hidden="true">{% for n in attach %}<img src="{{ '/images/portfolio/' | append: n | append: '.webp' | relative_url }}" alt="" style="--i:{{ forloop.index0 }}">{% endfor %}</span>
-        <span class="attach-note">交件清冊 17 件</span>
-      </a>
+    <div class="stream-tools">
+      <button type="button" class="tool tool-voice" aria-pressed="false">聽她自我介紹</button>
+      <button type="button" class="tool tool-wave">跟她揮手</button>
+      <a class="tool" href="#replays">看全部作品回放</a>
     </div>
-    <div class="sheet-foot">
-      <p class="sheet-sub">我用「甲方思維」跟 AI 一起做東西：開規格、下發包、做驗收。工業自動化十幾年，現在一個人加 AI，維護著 30 多個上線的專案。這裡記錄做法，和做出來的東西。</p>
-      <dl class="tally">
-        <div><dt>活躍專案</dt><dd class="hand">30+</dd></div>
-        <div><dt>原創 repo</dt><dd class="hand">148+</dd></div>
-        <div><dt>文章</dt><dd class="hand">{{ site.posts | size }}</dd></div>
-      </dl>
-      <svg class="seal-stamp" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg>
-    </div>
-    <p class="sheet-hint" aria-hidden="true">在單上點一下，蓋你自己的驗收章</p>
   </div>
-  <div class="perf" aria-hidden="true"></div>
+  <aside class="chat" aria-label="聊天室">
+    <header class="chat-head">聊天室</header>
+    <ol class="chat-log" aria-live="polite"></ol>
+    <div class="chat-ask">
+      <p>問格莉奇：</p>
+      <button type="button" data-ask="who">亞澤是誰？</button>
+      <button type="button" data-ask="play">有什麼好玩的？</button>
+      <button type="button" data-ask="read">他寫了什麼？</button>
+      <button type="button" data-ask="follow">怎麼追蹤他？</button>
+    </div>
+  </aside>
 </section>
 
-<section class="ledger" id="work" aria-labelledby="work-title">
-  <p class="copy-tag" aria-hidden="true">第三聯<br>驗收</p>
-  <header class="ledger-head">
-    <h2 id="work-title">最近做的東西</h2>
-    <p>能公開的可以直接玩;商用系統放的是介紹。</p>
+<section class="replays" id="replays" aria-labelledby="replays-title">
+  <header class="sec-head">
+    <h2 id="replays-title">作品回放</h2>
+    <p>能公開的可以直接玩;商用系統放的是介紹。右下角是實際動手的天數。</p>
   </header>
-  <div class="ledger-lead">
-    <article class="job job--lead">
-      <a class="job-shot" href="https://yazelin.github.io/glitch-vn/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/glitch-vn.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/glitch-vn/">格莉奇與黑洞先生</a></h3>
-        <p class="job-desc">只有 4KB 記憶體的 AI 主播，開台第一天來了七個人，她說要記住每一個。兩年後她記得六個。七章小說，每一句都能點來聽。</p>
-        <ul class="job-made"><li>文字我跟 AI 一起寫、定稿我決定；立繪場景配樂 AI 生成後人工挑選修版；配音走自架 CosyVoice3 加 MiniMax，每句都聽過</li><li>實際動手 8 天</li><li>Larch 七日創作者挑戰最佳人氣</li></ul>
-        <p class="job-series"><span>同系列</span><a href="https://larch.ink/play/market/yaze/glitch">視覺小說版(Larch・七日挑戰最佳人氣)</a><a href="https://yazelin.github.io/ai-brain-site/">格莉奇OS</a><a href="https://yazelin.github.io/glitch-music/">glitch-music</a><a href="https://yazelin.github.io/ai-comic-starter/">AI 漫畫產線樣板</a></p>
-      </div>
-    </article>
+  {% assign play = site.data.works | where: "kind", "play" %}
+  {% assign biz = site.data.works | where: "kind", "biz" %}
+  <div class="vod-grid">
+    {% for w in play %}{% include vod.html w=w first=forloop.first %}{% endfor %}
   </div>
-  <h3 class="ledger-group">可以直接玩</h3>
-  <div class="ledger-grid">
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/neko-tensei/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/neko-tensei.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/neko-tensei/">轉生成貓貓的我們</a></h3>
-        <p class="job-desc">社群共創的異世界貓貓漫畫，連載中，離線也能讀。</p>
-        <ul class="job-made"><li>用擎添助理畫初稿，再用 Claude 加 gpt-image-2 做成網站</li><li>一半的修改在第一天做完，之後補了 27 天</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/line-sticker-studio/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/sticker-studio.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/line-sticker-studio/">LINE 貼圖製造機</a></h3>
-        <p class="job-desc">上傳一張角色圖，AI 產出一整組 LINE 貼圖。</p>
-        <ul class="job-made"><li>用 Gemini，一次呼叫約 50 秒、不到兩塊台幣</li><li>第一版當天做完，之後四個月陸續加功能</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/ai-font-styles/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ai-font-styles.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/ai-font-styles/">AI 生圖字體風格庫</a></h3>
-        <p class="job-desc">上百種字體風格提示詞，每天自動多一種。</p>
-        <ul class="job-made"><li>用 Codex 加 Gemini</li><li>一半的修改在十天內做完，之後每天自動長一種</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/ai-chant-magic/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ai-chant-magic.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/ai-chant-magic/">真AI咏唱魔法</a></h3>
-        <p class="job-desc">對麥克風唸咒語，AI 即時生成魔法效果的生存遊戲。</p>
-        <ul class="job-made"><li>語音走瀏覽器內建 Web Speech API，辨識失效時退到 Groq 的 whisper-large-v3-turbo</li><li>實際動手 17 天，攤在 65 天裡</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/line-chat-maker/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/line-chat-maker.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/line-chat-maker/">LINE 對話製造機</a></h3>
-        <p class="job-desc">所見即所得做出對話截圖，僅供創作示意，離線可用。</p>
-        <ul class="job-made"><li>站內五個 AI 接力：編劇 GLM-5.2、評審與執行 gpt-oss-120b、補圖走 codex-image</li><li>實際動手 15 天，攤在 34 天裡</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/roll-formosa/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/roll-formosa.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/roll-formosa/">Roll Formosa</a></h3>
-        <p class="job-desc">把台灣街景滾成一顆球的遊戲。</p>
-        <ul class="job-made"><li>看到日本網友做的滾物成球跑去做的，地圖沒有用 OSM，是自己排的</li><li>首日只占 1%，實際動手 17 天、攤在 70 天，是這面牆上做得最平均的一個</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/k-rider/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/k-rider.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/k-rider/">K-Rider K線騎手</a></h3>
-        <p class="job-desc">用真實股價 K 線玩的騎乘遊戲。</p>
-        <ul class="job-made"><li>賽後賽評走 Groq，掛掉退罐頭句庫</li><li>六成四在第一天寫完，77 天裡只回去動過 13 天</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/catime/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/catime.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/catime/">Catime</a></h3>
-        <p class="job-desc">每小時自動生一隻 AI 貓，已累積兩千多隻的圖庫。</p>
-        <ul class="job-made"><li>生圖以 gemini-3-pro-image-preview 為主、gpt-image-2 次之</li><li>人工只動了 28 天，其餘每小時由排程自己跑，攤在 189 天</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/wish-pool/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/wish-pool.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/wish-pool/">AI 願望池</a></h3>
-        <p class="job-desc">一個人許願，一群人幫它成真的公開願望池。</p>
-        <ul class="job-made"><li>女神引導用 Groq 的 gpt-oss-120b，另開 agent API 讓 AI 直接接單</li><li>三成在第一天，實際動手 15 天</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/battlefield-editor/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/battlefield-editor.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/battlefield-editor/">AI 戰場編輯器</a></h3>
-        <p class="job-desc">赤壁、官渡、垓下……六場古戰役 3D 重現，換一份資料就換一場戰役。</p>
-        <ul class="job-made"><li>首日就寫掉兩成一，實際動手 10 天、攤在 63 天裡</li></ul>
-        <p class="job-series"><span>同系列</span><a href="https://yazelin.github.io/red-cliffs-3d/">赤壁之戰 3D 原版</a><a href="https://yazelin.github.io/wwii-3d-history/">二戰 3D 戰情室</a></p>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/mori-sprite-studio/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/sprite-studio.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/mori-sprite-studio/">Mori Sprite Studio</a></h3>
-        <p class="job-desc">一張圖生成完整角色動畫包的工具。</p>
-        <ul class="job-made"><li>四個生圖後端可切換：Codex-Image、Vertex Gemini、Google Gemini、Author Fallback</li><li>近一半在第一天，只動手 9 天</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/mandarin-taigi/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/taigi.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/mandarin-taigi/">台語辭典</a></h3>
-        <p class="job-desc">兩天做出兩本教育部資料離線辭典。</p>
-        <ul class="job-made"><li>首日三成四，之後又動了 5 天，攤在 36 天裡</li></ul>
-        <p class="job-series"><span>同系列</span><a href="https://yazelin.github.io/mandarin-hakka/">客語辭典(六腔)</a></p>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="https://yazelin.github.io/ipas-ai-quiz/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ipas-quiz.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="https://yazelin.github.io/ipas-ai-quiz/">iPAS 模擬考練習</a></h3>
-        <p class="job-desc">iPAS AI 應用規劃師刷題站，官方公告試題免費練。</p>
-        <ul class="job-made"><li>790 題官方試題，歷屆公告 611 題起底</li><li>實際動手 14 天，攤在 58 天裡</li></ul>
-      </div>
-    </article>
-  </div>
-  <h3 class="ledger-group">商用中</h3>
-  <div class="ledger-grid ledger-grid--biz">
-    <article class="job">
-      <a class="job-shot" href="{{ '/index/2025/12/13/ching-tech-os-index.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ctos.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="{{ '/index/2025/12/13/ching-tech-os-index.html' | relative_url }}">ChingTech OS</a></h3>
-        <p class="job-desc">中小製造業的 AI 企業系統，商用中。</p>
-        <ul class="job-made"><li>Python FastAPI 後端，AI 助手走 Claude（sonnet／opus／haiku）加 Groq，生圖 gpt-image-2、語音 whisper</li><li>685 次修改分在 70 個工作日、攤在 218 天，是這面牆上唯一真的長期在做的</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="{{ '/projects/2025/11/27/fish-cv.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/fish-cv.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="{{ '/projects/2025/11/27/fish-cv.html' | relative_url }}">魚苗計數系統</a></h3>
-        <p class="job-desc">用視覺 AI 數魚苗，取代人工點數。</p>
-        <ul class="job-made"><li>YOLOv8 物件偵測加 OpenCV 影像處理</li></ul>
-      </div>
-    </article>
-    <article class="job">
-      <a class="job-shot" href="{{ '/index/2025/12/19/jaba-ai-index.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/jaba.webp" | relative_url }}" alt="" loading="lazy"><svg class="job-seal" viewBox="0 0 120 120" aria-hidden="true"><use href="#seal-ink"/></svg></a>
-      <div class="job-text">
-        <h3><a class="job-link" href="{{ '/index/2025/12/19/jaba-ai-index.html' | relative_url }}">呷爸 Jaba</a></h3>
-        <p class="job-desc">公司訂便當 LINE Bot，天天在用。</p>
-        <ul class="job-made"><li>我做的第一個 AI LINE Bot：幫團隊統計每天誰要訂什麼便當</li></ul>
-      </div>
-    </article>
+  <h3 class="vod-group">商用中</h3>
+  <div class="vod-grid vod-grid--biz">
+    {% for w in biz %}{% include vod.html w=w %}{% endfor %}
   </div>
 </section>
 
@@ -226,7 +97,6 @@ head-extra:
 </section>
 
 <section class="swap" aria-labelledby="swap-title">
-  <p class="copy-tag" aria-hidden="true">第二聯<br>乙方收執</p>
   <h2 id="swap-title">從工廠到 AI</h2>
   <div class="swap-roles" aria-hidden="true">
     <span class="role role--was">乙方<svg class="strike" viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M4 26C50 18 120 14 196 10"/></svg></span>
@@ -250,27 +120,18 @@ head-extra:
   <p class="more"><a href="{{ '/blog/' | relative_url }}">全部 {{ site.posts | size }} 篇文章</a></p>
 </section>
 
-<section class="slip-wrap">{% include signup-form.html source="blog" %}</section>
+<section class="subscribe" id="subscribe">
+  {% include signup-form.html source="blog" %}
+</section>
 
-<script>
-// 在發包單上點一下就蓋一顆驗收章。純裝飾:不存、不送,最多留 8 顆,多了把最舊的拿掉。
-(function () {
-  var sheet = document.querySelector('[data-stampable]');
-  if (!sheet) return;
-  sheet.addEventListener('click', function (e) {
-    if (e.target.closest('a, button, input')) return;
-    var r = sheet.getBoundingClientRect();
-    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    s.setAttribute('viewBox', '0 0 120 120');
-    s.setAttribute('class', 'stamped');
-    s.setAttribute('aria-hidden', 'true');
-    s.style.left = (e.clientX - r.left) + 'px';
-    s.style.top = (e.clientY - r.top) + 'px';
-    s.style.rotate = (Math.random() * 30 - 15).toFixed(1) + 'deg';
-    s.innerHTML = '<use href="#seal-ink"/>';
-    sheet.appendChild(s);
-    var all = sheet.querySelectorAll('.stamped');
-    if (all.length > 8) all[0].remove();
-  });
-})();
-</script>
+<script type="application/json" id="works-data">{{ site.data.works | jsonify }}</script>
+<script type="application/json" id="stream-data">{
+  "posts": {{ site.posts | size }},
+  "feats": [{% assign feats = site.posts | where: "featured", true %}{% for p in feats %}{"t": {{ p.title | jsonify }}, "u": {{ p.url | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "about": {{ '/about/' | relative_url | jsonify }},
+  "blog": {{ '/blog/' | relative_url | jsonify }},
+  "voice": {{ '/assets/audio/intro-glitch.mp3' | relative_url | jsonify }},
+  "rig": {{ '/assets/glitch2d/pet.js' | relative_url | jsonify }},
+  "img": {{ '/images/portfolio/' | relative_url | jsonify }}
+}</script>
+<script type="module" src="{{ '/assets/js/stream.js' | relative_url }}"></script>

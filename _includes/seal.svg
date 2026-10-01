@@ -1,20 +1,5 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- 印泥的不均勻:雜訊當遮罩吃掉一些點,再用位移讓邊緣毛一點 -->
-    <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 2.15" result="holes"/>
-      <feComposite in="SourceGraphic" in2="holes" operator="in" result="speckled"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="3" result="w"/>
-      <feDisplacementMap in="speckled" in2="w" scale="3.5"/>
-    </filter>
-    <symbol id="seal-ink" viewBox="0 0 120 120">
-      <g filter="url(#ink)" fill="currentColor">
-        <path fill-rule="evenodd" d="M6 9q0-4 4-4h100q4 0 4 4v101q0 4-4 4H10q-4 0-4-4zM13 12v95h94V12z"/>
-        <text x="60" y="56" text-anchor="middle" font-family="'Noto Serif TC',serif" font-weight="900" font-size="44">驗</text>
-        <text x="60" y="101" text-anchor="middle" font-family="'Noto Serif TC',serif" font-weight="900" font-size="44">收</text>
-      </g>
-    </symbol>
     <symbol id="seal-name" viewBox="0 0 64 64">
       <rect x="2" y="2" width="60" height="60" rx="5" fill="currentColor"/>
       <text x="44" y="29" text-anchor="middle" font-family="'Noto Serif TC',serif" font-weight="900" font-size="23" fill="#fff">林</text>
