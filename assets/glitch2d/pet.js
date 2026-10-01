@@ -51,7 +51,10 @@ export async function mountPet(canvas, options = {}) {
   let emoteTimer = 0, glitching = false, visible = true, awake = !document.hidden, frameID = 0;
 
   const resize = () => {
-    const box = surface.getBoundingClientRect();
+    // 用版面尺寸(clientWidth),不用 getBoundingClientRect:後者含 CSS transform 縮放。
+    // 直播台把她 scale(.32) 縮到角落時會量成小畫布,縮放解除又不會觸發 ResizeObserver,
+    // 畫布就停在小解析度被拉大,看起來是馬賽克。本站版才有這個改動。
+    const box = { width: surface.clientWidth, height: surface.clientHeight };
     const dpr = Math.min(devicePixelRatio || 1, renderer.kind === 'WebGL' ? 2 : 1.5);
     const width = Math.max(1, Math.round((box.width || surface.clientWidth) * dpr));
     const height = Math.max(1, Math.round((box.height || surface.clientHeight) * dpr));

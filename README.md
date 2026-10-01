@@ -15,7 +15,7 @@
 - 作品資料只有一份:`_data/works.json`(標題、網址、截圖、說明、怎麼做的、同系列、動手天數徽章、
   格莉奇的那句台詞)。直播台與下方「作品回放」都吃它,新增作品改這裡就好。徽章只在文案有寫明確天數時才有。
 - 格莉奇本人是 glitch-2d 的活體骨架,抄在 `assets/glitch2d/`(來源 ai-brain-site 的 `glitch2d/`
-  與 `images/glitch2d/`,再上游是 yazelin/glitch-2d)。本站版 `pet.js` 多了 `follow` 選項與 `look(x, y)`
+  與 `images/glitch2d/`,再上游是 yazelin/glitch-2d)。本站版 `pet.js` 多了 `follow` 選項與 `look(x, y)`,畫布尺寸改用 clientWidth(不受 CSS 縮放影響,否則縮到角落再放大會變馬賽克)
   讓視線跟游標。骨架載不起來會留著靜態立繪。上游更新時手動重抄,rig.json 的貼圖路徑改成 `img/`。
 - 格莉奇的台詞照 ai-brain-site `persona.json` 的設定寫,事實只能改寫站上已核可的文案。
   色票寫在 `site.css` 開頭(她的薄荷 #7cf3c0、霓虹紫 #b78bff 只當點綴),有深色模式;

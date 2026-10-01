@@ -1,4 +1,4 @@
-// 首頁直播台的回歸檢查:連按換作品,字幕不可以兩句交錯。
+// 首頁直播台的回歸檢查:連按換作品,字幕不可以兩句交錯;直接玩再回白板,格莉奇不可以變馬賽克。
 // 用法:先在本機跑起站(預設 http://localhost:4011),然後 node scripts/check-stream.mjs [網址]
 // 本 repo 沒裝 playwright,借用全域安裝的那一份(npm i -g playwright)。
 import { createRequire } from 'node:module';
@@ -24,7 +24,15 @@ const r = await p.evaluate(() => {
   return { caption: document.querySelector('.caption-text').textContent, expect: play[3].line,
            broken: chat.filter(t => t.length > 20 && !lines.has(t) && !/[。！？]$/.test(t)) };
 });
+// 直接玩會把她 scale 縮到角落;回到白板後骨架畫布的解析度不可以停在縮小時的值(會變馬賽克)
+const res = () => p.evaluate(() => document.querySelector('.host-canvas').width);
+const full = await res();
+await p.click('.share-play'); await p.waitForTimeout(2000);
+await p.click('.share-close'); await p.waitForTimeout(1200);
+const back = await res();
+const sharp = back >= full * 0.95;
 await b.close();
-const ok = r.caption === r.expect && r.broken.length === 0 && errors.length === 0;
-console.log(ok ? 'OK 字幕與聊天室都沒有交錯' : `FAIL\n字幕:${r.caption}\n應為:${r.expect}\n殘句:${r.broken.join(' / ')}\n錯誤:${errors.join(' / ')}`);
+const ok = r.caption === r.expect && r.broken.length === 0 && errors.length === 0 && sharp;
+if (!sharp) console.log(`FAIL 骨架畫布解析度 ${full} → ${back}`);
+console.log(ok ? 'OK 字幕沒有交錯、骨架解析度沒有掉' : `FAIL\n字幕:${r.caption}\n應為:${r.expect}\n殘句:${r.broken.join(' / ')}\n錯誤:${errors.join(' / ')}`);
 process.exit(ok ? 0 : 1);
