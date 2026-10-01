@@ -4,11 +4,12 @@
 
 - 首頁是 landing(定位、作品牆、故事、精選文章、訂閱表單),文章列表在 `/blog/`
 - 自寫 Jekyll 版型(`_layouts/` + `assets/css/site.css`),不用 remote theme;GitHub Pages 直接 build
-- 視覺概念是「發包單」:首頁 hero 是一張發給 AI 的發包單(甲方、乙方、附件、流程、統計),
-  全站唯一自己會動的是蓋下去的「驗收」章(`_includes/seal.svg`,印泥質感是 SVG filter;
-  `prefers-reduced-motion` 時不播)。色票五個,寫在 `site.css` 開頭;朱印紅只用在「印」,
-  工安黃只在 hover 當螢光筆。有深色模式。字型:Noto Serif TC(標題,首頁直排)、Noto Sans TC(內文)、
-  Barlow Condensed(數字),Google Fonts 非阻塞載入
+- 視覺概念是「三聯單」:桌面是複寫紙藍紫色,內容都寫在單據上。首頁三張單對應三聯:白聯=甲方存根(首屏發包單)、
+  黃聯=驗收(作品清冊)、紅聯=乙方收執(從工廠到 AI)。印刷的字用黑,填進去的字用複寫藍手寫體(霞鶩文楷 TC)。
+  開場順序:案由寫上去 → 三格打勾 → 蓋驗收章(`_includes/seal.svg`,印泥質感是 SVG filter;`prefers-reduced-motion`
+  時全部不播)。訪客在首屏單上點一下會蓋一顆章(純裝飾、不存);滑過作品會蓋上小驗收章。
+  色票寫在 `site.css` 開頭,有深色模式。舊頁面行內樣式用的 `--accent` 拿來當按鈕底色時,字色要用 `--on-accent`,
+  不要寫死 `#fff`(深色模式 `--accent` 是淺色)。內文用系統黑體,webfont 只載手寫體、宋體標題、Barlow 數字
 - 205+ 篇文章 permalink 維持 `/:categories/:year/:month/:day/:title.html`,舊網址不斷
 - 作品牆截圖:`node scripts/portfolio-shots.mjs` 重截後以 Pillow 轉 webp(<100KB 走本地路徑)
 - 訂閱表單打 k-rider-api Worker(D1,`source: "blog"`)

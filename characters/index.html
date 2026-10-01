@@ -15,7 +15,7 @@ description: 林亞澤創作的原創角色圖鑑，各自散在不同的網站�
       <a class="card-main" href="{{ c.url | relative_url }}">
         {% if c.image %}<img class="{% if c.image_wide %}wide{% endif %}" src="{{ c.image | relative_url }}" alt="{{ c.title }}" loading="lazy">{% endif %}
         <div class="body">
-          <h3>{{ c.title }}{% if c.name_en %} <span class="en">{{ c.name_en }}</span>{% endif %}</h3>
+          <h2 class="card-title">{{ c.title }}{% if c.name_en %} <span class="en">{{ c.name_en }}</span>{% endif %}</h2>
           <p>{{ c.subtitle }}</p>
         </div>
       </a>
