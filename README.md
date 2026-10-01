@@ -8,6 +8,10 @@
   (`_includes/hand-title.html`,由 `scripts/make_hand_title.py` 產生;筆畫資料 hanzi-writer-data /
   Make Me a Hanzi,Arphic Public License;改句子要重跑腳本)。右邊聊天室的問題按鈕就是導覽,
   「有什麼好玩的」會切到畫面分享一個一個介紹作品。流程在 `assets/js/stream.js`。
+- 直播台捲出畫面後,格莉奇縮成左下角的子母畫面(同一個骨架實例搬過去,不另載),滑過或捲到哪件作品就講那件的台詞;
+  關掉只在這個分頁有效(sessionStorage)。她會記得訪客來過幾次、上次停在哪件作品(localStorage `glitch_visit`),
+  再來時說「我確定來過，只是叫不出你是誰」,照正典:她叫不出內容,但知道有這件事。
+  畫面分享的「直接玩」把作品真頁面嵌進台裡(iframe,允許麥克風);窄於 700px 改開新分頁。
 - 作品資料只有一份:`_data/works.json`(標題、網址、截圖、說明、怎麼做的、同系列、動手天數徽章、
   格莉奇的那句台詞)。直播台與下方「作品回放」都吃它,新增作品改這裡就好。徽章只在文案有寫明確天數時才有。
 - 格莉奇本人是 glitch-2d 的活體骨架,抄在 `assets/glitch2d/`(來源 ai-brain-site 的 `glitch2d/`

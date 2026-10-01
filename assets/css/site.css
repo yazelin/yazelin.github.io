@@ -189,8 +189,8 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .host { position: absolute; right: 2%; bottom: -2%; height: 104%; aspect-ratio: 1472 / 2470; transition: transform .5s cubic-bezier(.2, .7, .2, 1); transform-origin: bottom right; z-index: 2; pointer-events: none; }
 .host-still, .host-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
 .host-canvas { opacity: 0; transition: opacity .4s; }
-.rig-on .host-canvas { opacity: 1; }
-.rig-on .host-still { opacity: 0; transition: opacity .4s; }
+.host.rig-on .host-canvas { opacity: 1; }
+.host.rig-on .host-still { opacity: 0; transition: opacity .4s; }
 
 /* 字幕條 */
 .caption { position: absolute; left: 3%; right: 30%; bottom: 4%; margin: 0; z-index: 3; pointer-events: none; display: flex; gap: .7rem; align-items: baseline; background: rgb(24 20 34 / .78); color: #fff; backdrop-filter: blur(6px); border-radius: 12px; padding: .6rem .9rem; font-size: clamp(.88rem, 1.25vw, 1.05rem); line-height: 1.55; min-height: 2.9em; }
@@ -213,6 +213,35 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .stage[data-mode="share"] .board { opacity: 0; transform: translateY(-6%) scale(.96); pointer-events: none; }
 .stage[data-mode="share"] .host { transform: scale(.72); }
 .stage[data-mode="share"] .caption { right: 22%; }
+
+/* 在台上直接玩:截圖換成那個作品的真頁面 */
+.share-nav .share-play { font-size: .75rem; padding: .3rem; writing-mode: vertical-rl; letter-spacing: .1em; border-color: var(--purple); }
+.share-live { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px -12px rgb(30 20 60 / .5); }
+.share.playing { width: 74%; }
+/* 玩的時候字幕講完就讓開,不蓋住作品 */
+.stage:has(.share.playing) .caption { opacity: 0; transition: opacity .4s 2.5s; }
+.stage[data-mode="share"]:has(.share.playing) .host { transform: scale(.55); }
+.stage[data-mode="share"]:has(.share.playing) .caption { right: 18%; }
+
+/* 子母畫面:台捲出去之後她縮到左下角 */
+.pip { position: fixed; left: 16px; bottom: 16px; z-index: 60; display: flex; align-items: flex-end; gap: .6rem; pointer-events: none; }
+.pip[hidden] { display: none; }
+.pip > * { pointer-events: auto; }
+.pip-body { order: -1; position: relative; width: 132px; height: 150px; padding: 0; border: 3px solid var(--white); border-radius: 20px; background: var(--stage); box-shadow: var(--lift); overflow: hidden; cursor: pointer; }
+.pip-body::before { content: "LIVE"; position: absolute; left: 8px; top: 8px; z-index: 2; background: var(--seal); color: #fff; font-family: var(--num); font-weight: 600; font-size: .7rem; letter-spacing: .08em; padding: 0 .35rem; border-radius: 4px; }
+.pip .host { position: absolute; inset: auto; left: 50%; bottom: 0; right: auto; height: 100%; aspect-ratio: 1472 / 1395; transform: translateX(-50%); }
+.pip .host-canvas, .pip .host-still { object-position: center bottom; }
+.pip-close { position: absolute; left: 118px; top: -10px; z-index: 3; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--white); background: var(--ink); color: var(--white); font: 700 15px/1 var(--sans); cursor: pointer; }
+.pip-say { max-width: 17rem; margin: 0 0 1.1rem; background: var(--white); color: var(--ink); padding: .6rem .85rem; border-radius: 16px 16px 16px 4px; box-shadow: var(--lift); font-size: .9rem; line-height: 1.6; opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s; }
+.pip-say.on { opacity: 1; transform: none; }
+.pip-say:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .pip-say { transition: none; } }
+@media (max-width: 640px) {
+  .pip { left: 10px; bottom: 10px; }
+  .pip-body { width: 92px; height: 108px; border-radius: 16px; }
+  .pip-close { left: 80px; }
+  .pip-say { max-width: calc(100vw - 130px); font-size: .84rem; }
+}
 
 /* 工具列 */
 .stream-tools { display: flex; gap: .5rem; flex-wrap: wrap; padding: 0 .1rem .1rem; }
@@ -322,7 +351,7 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
   .share-nav { right: .4rem; top: .4rem; flex-direction: row; z-index: 4; }
   .share-nav button { background: rgb(255 255 255 / .92); color: #221f2b; }
   .share-prev, .share-next { width: 2.1rem; height: 2.1rem; }
-  .share-close { writing-mode: horizontal-tb; padding: .3rem .6rem; }
+  .share-close, .share-nav .share-play { writing-mode: horizontal-tb; padding: .3rem .6rem; }
   .stage[data-mode="share"] .host { transform: scale(.6); }
   .stage[data-mode="share"] .caption { right: 3%; }
   .stream-viewers { display: none; }

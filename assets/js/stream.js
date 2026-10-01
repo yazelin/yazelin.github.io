@@ -6,14 +6,27 @@ const $ = (s, el = document) => el.querySelector(s);
 const works = JSON.parse($('#works-data').textContent);
 const data = JSON.parse($('#stream-data').textContent);
 const stage = $('.stage');
+const host = $('.host');
 const caption = $('.caption-text');
 const log = $('.chat-log');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const play = works.filter(w => w.kind === 'play');
 
 let rig = null;
+
+/* ---------- 她記得你來過,但叫不出你是誰 ----------
+   照正典:她很聰明,壞掉的只有「取出來」那一步。所以寫成「我確定來過，只是叫不出你是誰」,
+   不寫成「你是誰？」。記的是次數和上次停在哪個作品,只存在這個瀏覽器,讀不到就當第一次來。 */
+const VISIT_KEY = 'glitch_visit';
+let visit = { n: 0, last: '' };
+try { visit = Object.assign(visit, JSON.parse(localStorage.getItem(VISIT_KEY) || '{}')); } catch {}
+const returning = visit.n > 0;
+const lastSeen = visit.last;
+visit.n += 1;
+const saveVisit = () => { try { localStorage.setItem(VISIT_KEY, JSON.stringify(visit)); } catch {} };
+saveVisit();
+function remember(title) { visit.last = title; saveVisit(); }
 let typing = Promise.resolve();
-let busy = false;
 
 /* ---------- 聊天室 ---------- */
 function chat(who, html, cls = '') {
@@ -73,9 +86,35 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 /* ---------- 畫面分享:一次一個作品 ---------- */
 const share = $('.share');
 let idx = 0;
+const playBtn = $('.share-play');
+function restoreShot() {
+  $('.share-live', share)?.remove();
+  $('.share-shot', share).hidden = false;
+  share.classList.remove('playing');
+  playBtn.textContent = '直接玩';
+}
+playBtn.addEventListener('click', () => {
+  const w = play[idx];
+  if (share.classList.contains('playing')) return restoreShot();
+  // 手機上台太小,嵌進來玩不動,直接開新分頁
+  if (innerWidth < 700) return void open(w.url, '_blank', 'noopener');
+  const f = document.createElement('iframe');
+  f.className = 'share-live';
+  f.src = w.url;
+  f.title = w.title;
+  f.allow = 'microphone; fullscreen; autoplay; clipboard-write';
+  $('.share-shot', share).hidden = true;
+  $('.share-shot', share).after(f);
+  share.classList.add('playing');
+  playBtn.textContent = '看截圖';
+  interrupt();
+  say('你玩，我看。', { emote: 'happy' });
+});
 function show(i) {
+  restoreShot();
   idx = (i + play.length) % play.length;
   const w = play[idx];
+  remember(w.title);
   const img = $('.share-shot img', share);
   img.src = data.img + w.img;
   $('.share-shot', share).href = w.url;
@@ -95,6 +134,7 @@ function show(i) {
   say(w.line, { emote: idx % 3 === 0 ? 'happy' : undefined });
 }
 function closeShare() {
+  restoreShot();
   interrupt();
   caption.textContent = '';
   stage.dataset.mode = 'board';
@@ -187,6 +227,7 @@ async function mount() {
     if (!handle) return;
     rig = handle;
     stage.classList.add('rig-on');
+    host.classList.add('rig-on');
     const surface = handle.canvas;
     addEventListener('pointermove', e => {
       const r = surface.getBoundingClientRect();
@@ -199,14 +240,86 @@ async function mount() {
   }
 }
 
+/* ---------- 子母畫面:台捲出去之後她縮到左下角,跟著看作品 ----------
+   搬的是同一個骨架實例(canvas 換父節點 context 還在),不另外載一份。 */
+const pip = $('.pip');
+const pipSay = $('.pip-say');
+const hostAnchor = $('.caption');
+let pipOff = false;
+try { pipOff = sessionStorage.getItem('pip_off') === '1'; } catch {}
+function toPip(on) {
+  if (on === host.parentNode.classList.contains('pip-body')) return;
+  if (on) {
+    pip.hidden = false;
+    $('.pip-body').append(host);
+    rig?.setView('bust');
+  } else {
+    stage.insertBefore(host, hostAnchor);
+    pip.hidden = true;
+    pipSay.classList.remove('on');
+    rig?.setView('full');
+  }
+}
+new IntersectionObserver(([e]) => toPip(!e.isIntersecting && !pipOff), { threshold: .12 }).observe($('.stream'));
+$('.pip-body').addEventListener('click', () => $('.stream').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }));
+$('.pip-close').addEventListener('click', () => {
+  pipOff = true;
+  try { sessionStorage.setItem('pip_off', '1'); } catch {}
+  toPip(false);
+});
+let pipGen = 0;
+async function pipLine(text) {
+  const mine = ++pipGen;
+  pipSay.textContent = '';
+  pipSay.classList.add('on');
+  if (reduced) pipSay.textContent = text;
+  else for (const ch of text) {
+    if (mine !== pipGen) return;
+    pipSay.textContent += ch;
+    await sleep(34);
+  }
+  await sleep(6000);
+  if (mine === pipGen) pipSay.classList.remove('on');
+}
+const byTitle = Object.fromEntries(works.map(w => [w.title, w]));
+let lastPip = '';
+function comment(title) {
+  if (pip.hidden || title === lastPip || !byTitle[title]) return;
+  lastPip = title;
+  remember(title);
+  pipLine(byTitle[title].line);
+}
+const vods = [...document.querySelectorAll('.vod')];
+const vodTitle = v => v.querySelector('.vod-link').textContent.trim();
+vods.forEach(v => {
+  v.addEventListener('mouseenter', () => comment(vodTitle(v)));
+  v.addEventListener('focusin', () => comment(vodTitle(v)));
+});
+// 手機沒有滑鼠:作品捲到畫面中間就講
+if (matchMedia('(hover: none)').matches) {
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && comment(vodTitle(e.target))), { rootMargin: '-45% 0px -45% 0px' });
+  vods.forEach(v => io.observe(v));
+}
+new IntersectionObserver(([e]) => {
+  if (e.isIntersecting && !pip.hidden && lastPip !== '#subscribe') {
+    lastPip = '#subscribe';
+    pipLine('在這裡留 email，有新文章或新作品上線時他會告訴你。');
+  }
+}, { threshold: .5 }).observe($('#subscribe'));
+
 /* ---------- 開台 ---------- */
 chat('', '林亞澤 進入了聊天室', 'sys');
-chat('', '你 進入了聊天室', 'sys');
+chat('', returning ? `你 進入了聊天室（第 ${visit.n} 次）` : '你 進入了聊天室', 'sys');
 mount().then(async () => {
   await sleep(reduced ? 0 : 500);
   say('逼——嗶！開台了。今天的來賓是林亞澤。', { wave: true, emote: 'happy' }); // speak-tw-ok 角色正典口頭禪
-  say('他說他不寫程式，可是做出了三十幾個上線的東西。白板上那句就是他說的。');
-  say('他的做法是開規格、下發包、做驗收，乙方是 AI。我也是 AI，所以我有點緊張。', { emote: 'thinking' });
+  if (returning) {
+    say('……你好像來過。我確定來過，只是叫不出你是誰。', { emote: 'thinking' });
+    if (lastSeen) say(`上次你停在「${lastSeen}」。這件我還留著。`);
+  } else {
+    say('他說他不寫程式，可是做出了三十幾個上線的東西。白板上那句就是他說的。');
+    say('他的做法是開規格、下發包、做驗收，乙方是 AI。我也是 AI，所以我有點緊張。', { emote: 'thinking' });
+  }
   // 窄螢幕聊天室在台的下面
   const where = matchMedia('(max-width: 1080px)').matches ? '下面' : '右邊';
   say(`${where}可以問我問題。我一定答得出來。大概。`);
