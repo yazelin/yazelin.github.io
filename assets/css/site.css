@@ -76,6 +76,7 @@ th { font-weight: 700; border-bottom: 2px solid var(--ink); }
 .container-wide { max-width: var(--maxw-wide); margin: 0 auto; padding: 0 1.25rem; }
 .more { margin: 1.75rem 0 0; }
 .more a { font-weight: 500; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .hand { font-family: var(--hand); color: var(--carbon); font-weight: 700; letter-spacing: .02em; }
 
 /* 內頁:內容放在一張白聯上 */
@@ -160,12 +161,16 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .sheet-parties dd { margin: 0; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.2; }
 .sheet-cause { position: relative; padding: .8rem 0 1.25rem; border-bottom: 1px solid var(--ink); }
 .cause {
-  margin: .25rem 0 0; font-size: clamp(2.8rem, 8.4vw, 7.6rem); line-height: 1.22; font-weight: 700; letter-spacing: .01em;
+  margin: .25rem 0 0; font-size: clamp(3rem, 9vw, 8.2rem); line-height: 1.22; font-weight: 700; letter-spacing: .01em;
   /* 單據上的書寫橫線 */
   background: repeating-linear-gradient(transparent 0 calc(1.22em - 2px), color-mix(in srgb, var(--rule) 85%, transparent) calc(1.22em - 2px) 1.22em);
 }
 .cause .w { display: block; }
-.cause .nb { display: inline-block; }
+.cause .nb { display: inline-block; white-space: nowrap; }
+/* 一筆一畫:每個字是一個 SVG,每一畫是一條被筆畫外形裁切的粗線(見 scripts/make_hand_title.py) */
+.hz { width: 1em; height: 1em; vertical-align: -.14em; overflow: visible; margin-right: -.05em; }
+.sk { fill: none; stroke: currentColor; stroke-width: 150; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
+.cause .w1 .sk[d^="M250"] { stroke-width: 80; }
 .cause .w1 { color: color-mix(in srgb, var(--carbon) 72%, var(--white)); }
 .sheet-flow { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: stretch; }
 .steps { list-style: none; margin: 0; padding: 0; display: flex; }
@@ -203,17 +208,15 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 
 /* 開場:寫字 → 打勾 → 蓋章。只有這一段會自己動 */
 @media (prefers-reduced-motion: no-preference) {
-  .cause .w { animation: write 1s cubic-bezier(.45, .05, .55, .95) both; }
-  .cause .w1 { animation-delay: .35s; animation-duration: .8s; }
-  .cause .w2 { animation-delay: 1.15s; animation-duration: 1.3s; }
+  .sk { animation: stroke var(--d) cubic-bezier(.4, 0, .6, 1) var(--t) both; }
   .tick path { stroke-dasharray: 40; animation: tick .35s ease-out both; }
-  .steps li:nth-child(1) .tick path { animation-delay: 2.5s; }
-  .steps li:nth-child(2) .tick path { animation-delay: 2.75s; }
-  .steps li:nth-child(3) .tick path { animation-delay: 3s; }
-  .seal-stamp { animation: stamp .5s cubic-bezier(.3, 0, .2, 1) 3.45s both; }
-  .sheet { animation: thud .28s ease-out 3.75s; }
+  .steps li:nth-child(1) .tick path { animation-delay: calc(var(--write-end, 4s) + .1s); }
+  .steps li:nth-child(2) .tick path { animation-delay: calc(var(--write-end, 4s) + .3s); }
+  .steps li:nth-child(3) .tick path { animation-delay: calc(var(--write-end, 4s) + .5s); }
+  .seal-stamp { animation: stamp .5s cubic-bezier(.3, 0, .2, 1) calc(var(--write-end, 4s) + .95s) both; }
+  .sheet { animation: thud .28s ease-out calc(var(--write-end, 4s) + 1.25s); }
 }
-@keyframes write { from { clip-path: inset(-10% 100% -10% 0); } to { clip-path: inset(-10% -2% -10% 0); } }
+@keyframes stroke { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes tick { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
 @keyframes stamp {
   0% { opacity: 0; transform: rotate(-16deg) scale(1.9); }
