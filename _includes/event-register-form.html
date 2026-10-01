@@ -28,9 +28,10 @@
   .event-signup .community-cta { display: block; width: fit-content; margin: 0.5rem auto 0; padding: 0.55rem 1.3rem;
     background: #06c755; color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
   .event-signup .community-cta:hover { filter: brightness(1.08); }
+  /* 照 Google 自家「在雲端硬碟中開啟」的樣子：白底灰框深色字、彩色標誌，跟旁邊綠色的 LINE 按鈕分得開 */
   .event-signup .materials-cta { display: block; width: fit-content; margin: 0.9rem auto 0; padding: 0.55rem 1.3rem;
-    background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
-  .event-signup .materials-cta:hover { filter: brightness(1.12); text-decoration: none; }
+    background: #fff; color: #3c4043; border: 1px solid #dadce0; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
+  .event-signup .materials-cta:hover { background: #f8f9fa; border-color: #c6c9cc; text-decoration: none; }
   /* 按鈕前的品牌圖示（Simple Icons，CC0）：雲端資料夾用 Google Drive、社群用 LINE，一眼看得出會開到哪裡 */
   .event-signup .cta-icon { width: 1.05em; height: 1.05em; vertical-align: -0.15em; margin-right: 0.45em; }
   .event-signup .hp { position: absolute; left: -9999px; }
@@ -42,7 +43,7 @@
   {% if include.closed %}
   <h2>{{ include.closed_heading | default: '本場已額滿' }}</h2>
   <p class="section-lead">{{ include.closed_message | default: '謝謝大家，報名已截止。' }}</p>
-  {% if include.materials %}<a class="materials-cta" href="{{ include.materials }}" target="_blank" rel="noopener"><svg class="cta-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z"/></svg>開啟雲端資料夾</a>{% endif %}
+  {% if include.materials %}<a class="materials-cta" href="{{ include.materials }}" target="_blank" rel="noopener"><svg class="cta-icon" viewBox="0 0 87.3 78" aria-hidden="true"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>開啟雲端資料夾</a>{% endif %}
   {% if include.community %}<a class="community-cta" href="{{ include.community }}" target="_blank" rel="noopener"><svg class="cta-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>加入 AI 許願池社群</a>{% endif %}
   {% else %}
   <h2>{{ include.heading | default: '報名這場' }}</h2>
