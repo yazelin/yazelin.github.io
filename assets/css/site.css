@@ -167,9 +167,9 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 @keyframes float { to { translate: 0 -18px; rotate: 25deg; } }
 
 /* 白板:今天的題目,照筆順一筆一畫寫上去 */
-.board { position: absolute; left: 4%; top: 7%; width: 60%; height: 64%; background: #fff; border-radius: 10px; border: 6px solid #e4e1ec; box-shadow: 0 6px 20px -10px rgb(60 40 120 / .35); padding: 3.5% 4.5%; display: flex; flex-direction: column; transition: opacity .35s, transform .45s cubic-bezier(.2, .7, .2, 1); }
-.board-label { margin: 0 0 .4em; font-family: var(--hand); font-weight: 700; font-size: clamp(.8rem, 1.3vw, 1.05rem); color: #8a8496; }
-.board-title { margin: 0; flex: 1; display: flex; flex-direction: column; justify-content: center; font-size: clamp(1.9rem, 4.6vw, 4.6rem); line-height: 1.18; color: var(--marker); font-weight: 400; }
+.board { container-type: size; position: absolute; left: 4%; top: 7%; width: 60%; height: 64%; background: #fff; border-radius: 10px; border: 6px solid #e4e1ec; box-shadow: 0 6px 20px -10px rgb(60 40 120 / .35); padding: 3.5% 4.5%; display: flex; flex-direction: column; transition: opacity .35s, transform .45s cubic-bezier(.2, .7, .2, 1); }
+.board-label { margin: 0 0 .4em; font-family: var(--hand); font-weight: 700; font-size: clamp(.75rem, 5cqh, 1.05rem); color: #8a8496; }
+.board-title { margin: 0; flex: 1; display: flex; flex-direction: column; justify-content: center; font-size: min(19cqh, 13cqw); line-height: 1.18; color: var(--marker); font-weight: 400; }
 :root:not([data-theme="light"]) .board { }
 .board-title .w { display: block; }
 .board-title .w1 { opacity: .78; }
@@ -193,7 +193,7 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .rig-on .host-still { opacity: 0; transition: opacity .4s; }
 
 /* 字幕條 */
-.caption { position: absolute; left: 3%; right: 30%; bottom: 4%; margin: 0; z-index: 3; display: flex; gap: .7rem; align-items: baseline; background: rgb(24 20 34 / .78); color: #fff; backdrop-filter: blur(6px); border-radius: 12px; padding: .6rem .9rem; font-size: clamp(.88rem, 1.25vw, 1.05rem); line-height: 1.55; min-height: 2.9em; }
+.caption { position: absolute; left: 3%; right: 30%; bottom: 4%; margin: 0; z-index: 3; pointer-events: none; display: flex; gap: .7rem; align-items: baseline; background: rgb(24 20 34 / .78); color: #fff; backdrop-filter: blur(6px); border-radius: 12px; padding: .6rem .9rem; font-size: clamp(.88rem, 1.25vw, 1.05rem); line-height: 1.55; min-height: 2.9em; }
 .caption b { flex: none; color: var(--mint); font-weight: 700; }
 .caption-text:empty::before { content: "…"; opacity: .5; }
 
@@ -315,12 +315,14 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
   /* 手機:台改直的,白板在上、她站右下 */
   .stage { aspect-ratio: 4 / 5; }
   .board { left: 4%; top: 4%; width: 70%; height: 52%; padding: 5% 5.5%; border-width: 4px; }
-  .board-title { font-size: clamp(1.7rem, 9vw, 2.6rem); }
   .host { height: 78%; right: -12%; bottom: -1%; }
   .caption { right: 3%; left: 3%; bottom: 3%; }
   .share { width: 94%; }
-  .share-nav { position: static; flex-direction: row; margin-top: .5rem; }
-  .share-close { writing-mode: horizontal-tb; padding: .3rem .8rem; }
+  /* 手機:換頁按鈕疊在截圖右上角,字幕條才蓋不到 */
+  .share-nav { right: .4rem; top: .4rem; flex-direction: row; z-index: 4; }
+  .share-nav button { background: rgb(255 255 255 / .92); color: #221f2b; }
+  .share-prev, .share-next { width: 2.1rem; height: 2.1rem; }
+  .share-close { writing-mode: horizontal-tb; padding: .3rem .6rem; }
   .stage[data-mode="share"] .host { transform: scale(.6); }
   .stage[data-mode="share"] .caption { right: 3%; }
   .stream-viewers { display: none; }

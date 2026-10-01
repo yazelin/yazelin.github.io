@@ -34,9 +34,18 @@ function chat(who, html, cls = '') {
 }
 const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-/* ---------- 她說話:字幕逐字出來,同一句也進聊天室 ---------- */
+/* ---------- 她說話:字幕逐字出來,同一句也進聊天室 ----------
+   一次只能有一句在打字。interrupt() 讓正在打的那句立刻收掉(聊天室補完整句,字幕不再寫),
+   排在後面還沒輪到的舊台詞直接跳過。換作品時要叫它,不然兩句會搶同一條字幕交錯在一起。 */
+let gen = 0;
+function interrupt() {
+  gen++;
+  typing = Promise.resolve();
+}
 function say(text, { emote, wave, links } = {}) {
+  const mine = gen;
   typing = typing.then(async () => {
+    if (mine !== gen) return;
     if (emote && rig) rig.emote(emote, 4500);
     if (wave && rig) rig.wave();
     caption.textContent = '';
@@ -47,6 +56,7 @@ function say(text, { emote, wave, links } = {}) {
       span.textContent = text;
     } else {
       for (const ch of text) {
+        if (mine !== gen) { span.textContent = text; break; }
         caption.textContent += ch;
         span.textContent += ch;
         log.scrollTop = log.scrollHeight;
@@ -54,7 +64,7 @@ function say(text, { emote, wave, links } = {}) {
       }
     }
     if (links) span.insertAdjacentHTML('beforeend', ' ' + links);
-    await sleep(reduced ? 0 : 700);
+    if (mine === gen) await sleep(reduced ? 0 : 700);
   });
   return typing;
 }
@@ -81,10 +91,12 @@ function show(i) {
   // 手機上聊天室在台的下面,點完問題看不到畫面分享,把台捲回來
   const r = stage.getBoundingClientRect();
   if (r.top < 0 || r.bottom > innerHeight) stage.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
-  typing = Promise.resolve(); // 換作品就不等上一句講完
+  interrupt(); // 換作品就收掉上一句
   say(w.line, { emote: idx % 3 === 0 ? 'happy' : undefined });
 }
 function closeShare() {
+  interrupt();
+  caption.textContent = '';
   stage.dataset.mode = 'board';
   share.hidden = true;
 }
