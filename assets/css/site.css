@@ -1,27 +1,27 @@
 /* ==========================================================================
    林亞澤 Yaze — 三聯單
-   桌面是複寫紙的藍紫色,內容都寫在單據上。首頁三張單對應三聯:
+   桌面是淺灰辦公桌,內容都寫在單據上;紙用真三聯單那種褪色的粉與黃。首頁三張單對應三聯:
    白聯=甲方存根(首屏)、黃聯=驗收(作品)、紅聯=乙方收執(乙方那十幾年)。
    印刷的字用黑,填進去的字用複寫藍手寫體。朱印紅只給「印」用。
    ========================================================================== */
 :root {
-  --desk: #26248a;        /* 複寫紙 */
-  --desk-ink: #f3f1ff;    /* 桌面上的字 */
-  --desk-ink-2: #c3c1f0;
-  --white: #fdfcf7;       /* 白聯 */
-  --pink: #f8ccd5;        /* 紅聯 */
-  --yellow: #f7e27c;      /* 黃聯 */
-  --ink: #22212b;         /* 印刷黑 */
-  --ink-2: #57545f;
-  --carbon: #2b2a9c;      /* 複寫藍:手寫填的字 */
-  --rule: #c9c6bd;
-  --seal: #d22a33;        /* 朱印 */
+  --desk: #e4e2dc;        /* 辦公桌面:淺灰 */
+  --desk-ink: #2f2e35;    /* 桌面上的字 */
+  --desk-ink-2: #5f5d66;
+  --white: #fffefb;       /* 白聯 */
+  --pink: #f3dfe2;        /* 紅聯(褪色) */
+  --yellow: #f2e9c4;      /* 黃聯(褪色) */
+  --ink: #26252b;         /* 印刷黑 */
+  --ink-2: #5a5862;
+  --carbon: #38378a;      /* 複寫藍:只給手寫填的字 */
+  --rule: #d3d0c8;
+  --seal: #c4333a;        /* 朱印 */
   --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --sans: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;  /* 內文用系統字:每個平台都有好的正體黑體,省下一個大字型檔 */
   --hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", serif;
   --num: "Barlow Condensed", "Noto Sans TC", sans-serif;
   --maxw: 46rem; --maxw-wide: 76rem;
-  --lift: 0 1px 0 rgb(0 0 0 / .08), 0 18px 40px -18px rgb(8 6 60 / .55);
+  --lift: 0 1px 0 rgb(0 0 0 / .06), 0 16px 34px -20px rgb(40 36 30 / .45);
   /* 舊頁面(活動頁、角色頁、報名表)的行內樣式還在用這幾個名字。
      --accent 會被拿來當按鈕底色配白字,也會被拿來當文字色,所以兩種模式都要兩邊都過 4.5。 */
   --fg: var(--ink); --muted: var(--ink-2); --bg: var(--white); --card: #fff;
@@ -30,10 +30,10 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --desk: #0f0e33; --desk-ink: #e9e8ff; --desk-ink-2: #a9a7dc;
-    --white: #1d1c45; --pink: #3d2236; --yellow: #383218;
-    --ink: #ecebf5; --ink-2: #b2b0c6; --carbon: #b3b1ff; --rule: #3e3c6e; --seal: #ff5a5f;
-    --card: #23224f; --accent-weak: #2a2960; --on-accent: #14133b;
+    --desk: #1c1c20; --desk-ink: #ecebe6; --desk-ink-2: #a7a6ad;
+    --white: #29292e; --pink: #312a2c; --yellow: #2f2d27;
+    --ink: #ecebe6; --ink-2: #b3b2ba; --carbon: #b4b3f2; --rule: #44434b; --seal: #f0646a;
+    --card: #2f2f35; --accent-weak: #33334a; --on-accent: #1c1c20;
     --lift: 0 18px 40px -18px rgb(0 0 0 / .7);
     color-scheme: dark;
   }
@@ -45,8 +45,8 @@ html, body { overflow-x: clip; }
 body {
   margin: 0; color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.8; letter-spacing: .02em;
   background: var(--desk);
-  /* 複寫紙的纖維感:極淡的雜訊 */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* 桌面的紙纖維感:極淡的雜訊 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1.5px; text-underline-offset: .22em; transition: text-decoration-color .15s, color .15s; }
 a:hover { text-decoration-color: var(--seal); }
@@ -161,7 +161,7 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .tick path { fill: none; stroke: var(--carbon); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .attach { display: flex; align-items: center; gap: 1rem; padding: .6rem 0; text-decoration: none; min-width: 0; }
 .attach-pics { display: flex; flex: none; padding-left: 4px; }
-.attach-pics img { width: 76px; aspect-ratio: 16/10; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 6px rgb(8 6 60 / .3); margin-left: -22px; transform: rotate(calc((var(--i) - 2) * 3deg)); transition: transform .3s cubic-bezier(.2,.7,.2,1), margin .3s cubic-bezier(.2,.7,.2,1); }
+.attach-pics img { width: 76px; aspect-ratio: 16/10; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 6px rgb(40 36 30 / .28); margin-left: -22px; transform: rotate(calc((var(--i) - 2) * 3deg)); transition: transform .3s cubic-bezier(.2,.7,.2,1), margin .3s cubic-bezier(.2,.7,.2,1); }
 .attach-pics img:first-child { margin-left: 0; }
 .attach:hover .attach-pics img { margin-left: -6px; transform: rotate(0) translateY(-3px); }
 .attach:hover .attach-pics img:first-child { margin-left: 0; }
@@ -269,7 +269,7 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .char-strip { display: flex; gap: 1.25rem; overflow-x: auto; padding: .4rem .4rem 1rem; margin: 0 -.4rem; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
 .char-strip a { flex: 0 0 150px; scroll-snap-align: start; text-decoration: none; }
 /* 立繪像拍立得一樣夾在單上 */
-.char-strip img { width: 150px; aspect-ratio: 3/4; object-fit: cover; object-position: top center; display: block; background: #fff; border: 6px solid #fff; border-bottom-width: 6px; box-shadow: 0 3px 10px rgb(8 6 60 / .22); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+.char-strip img { width: 150px; aspect-ratio: 3/4; object-fit: cover; object-position: top center; display: block; background: #fff; border: 6px solid #fff; border-bottom-width: 6px; box-shadow: 0 3px 10px rgb(40 36 30 / .2); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
 .char-strip a:nth-child(odd) img { transform: rotate(-1.5deg); }
 .char-strip a:nth-child(even) img { transform: rotate(1.2deg); }
 .char-strip a:hover img { transform: rotate(0) translateY(-5px); }
@@ -435,3 +435,4 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .char-said{margin:10px 0 0;font-size:.92rem;line-height:1.9;opacity:.7;
   border-left:2px solid currentColor;padding-left:13px}
 .char-said[data-on]{opacity:1}
+
