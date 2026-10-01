@@ -10,7 +10,7 @@
     if (!idx) idx = await (await fetch('/search.json')).json();
     const hits = idx.filter(p => (p.title + ' ' + p.tags).toLowerCase().includes(q)).slice(0, 30);
     out.innerHTML = hits.map(p =>
-      `<li><h2><a href="${p.url}">${p.title}</a></h2><p class="meta">${p.date}</p></li>`
+      `<li><time>${p.date}</time><h2><a href="${p.url}">${p.title}</a></h2></li>`
     ).join('') || '<li><p class="meta">沒有符合的文章。</p></li>';
     out.hidden = false; list.hidden = true; pagination.hidden = true;
   });

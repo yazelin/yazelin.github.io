@@ -6,129 +6,230 @@ head-extra:
   - head-custom.html
 ---
 <!-- 文案草稿:全部待 yazelin 逐句核可 -->
-<section class="hero">
-  <h1>不寫程式，也能把軟體做出來</h1>
-  <p class="sub">我用「甲方思維」跟 AI 一起做東西：開規格、下發包、做驗收。工業自動化十幾年，現在一個人加 AI，維護著 30 多個上線的專案。這裡記錄做法，和做出來的東西。</p>
-</section>
-
-<section class="section container-wide" id="work">
-  <h2 class="section-title">最近做的東西</h2>
-  <p class="section-lead">能公開的可以直接玩;商用系統放的是介紹。</p>
-  <div class="work-grid">
-    <div class="work-card">
-      <a class="card-main" href="https://yazelin.github.io/glitch-vn/">
-        <img src="{{ "/images/portfolio/glitch-vn.webp" | relative_url }}" alt="格莉奇與黑洞先生" loading="lazy">
-        <div class="body"><h3>格莉奇與黑洞先生</h3><p>只有 4KB 記憶體的 AI 主播，開台第一天來了七個人，她說要記住每一個。兩年後她記得六個。七章小說，每一句都能點來聽。</p><p class="made">文字我跟 AI 一起寫、定稿我決定；立繪場景配樂 AI 生成後人工挑選修版；配音走自架 CosyVoice3 加 MiniMax，每句都聽過　·　實際動手 8 天　·　Larch 七日創作者挑戰最佳人氣</p></div>
+<section class="order" aria-labelledby="order-title">
+  <div class="order-sheet">
+    <h1 id="order-title" class="order-title"><span>不寫程式，</span><span>也能把軟體做出來</span></h1>
+    <div class="order-form">
+      <p class="order-kind">發包單</p>
+      <dl class="order-parties">
+        <div><dt>甲方</dt><dd>林亞澤 <span lang="en">Yaze</span></dd></div>
+        <div><dt>乙方</dt><dd><span lang="en">AI</span></dd></div>
+      </dl>
+      <a class="order-attach" href="#work">
+        <span class="order-attach-label">附件</span>
+        <span class="order-attach-pics" aria-hidden="true"><img src="{{ "/images/portfolio/glitch-vn.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/neko-tensei.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/roll-formosa.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/ai-chant-magic.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/battlefield-editor.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/k-rider.webp" | relative_url }}" alt="" loading="eager"><img src="{{ "/images/portfolio/catime.webp" | relative_url }}" alt="" loading="eager"></span>
+        <span class="order-attach-note">交件清冊，17 件</span>
       </a>
-      <div class="series"><span class="lbl">同系列</span><a href="https://larch.ink/play/market/yaze/glitch">視覺小說版(Larch・七日挑戰最佳人氣)</a><a href="https://yazelin.github.io/ai-brain-site/">格莉奇OS</a><a href="https://yazelin.github.io/glitch-music/">glitch-music</a><a href="https://yazelin.github.io/ai-comic-starter/">AI 漫畫產線樣板</a></div>
+      <ol class="order-steps">
+        <li><b>開規格</b></li>
+        <li><b>下發包</b></li>
+        <li><b>做驗收</b></li>
+      </ol>
+      <p class="order-sub">我用「甲方思維」跟 AI 一起做東西：開規格、下發包、做驗收。工業自動化十幾年，現在一個人加 AI，維護著 30 多個上線的專案。這裡記錄做法，和做出來的東西。</p>
+      <dl class="order-stats">
+        <div><dt>活躍專案</dt><dd>30<small>+</small></dd></div>
+        <div><dt>原創 repo</dt><dd>148<small>+</small></dd></div>
+        <div><dt>文章</dt><dd>{{ site.posts | size }}</dd></div>
+      </dl>
+      <div class="seal-stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><use href="#seal-ink"/></svg></div>
     </div>
-    <a class="work-card" href="https://yazelin.github.io/neko-tensei/">
-      <img src="{{ "/images/portfolio/neko-tensei.webp" | relative_url }}" alt="轉生成貓貓的我們" loading="lazy">
-      <div class="body"><h3>轉生成貓貓的我們</h3><p>社群共創的異世界貓貓漫畫，連載中，離線也能讀。</p><p class="made">用擎添助理畫初稿，再用 Claude 加 gpt-image-2 做成網站　·　一半的修改在第一天做完，之後補了 27 天</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/line-sticker-studio/">
-      <img src="{{ "/images/portfolio/sticker-studio.webp" | relative_url }}" alt="LINE 貼圖製造機" loading="lazy">
-      <div class="body"><h3>LINE 貼圖製造機</h3><p>上傳一張角色圖，AI 產出一整組 LINE 貼圖。</p><p class="made">用 Gemini，一次呼叫約 50 秒、不到兩塊台幣　·　第一版當天做完，之後四個月陸續加功能</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/ai-font-styles/">
-      <img src="{{ "/images/portfolio/ai-font-styles.webp" | relative_url }}" alt="AI 生圖字體風格庫" loading="lazy">
-      <div class="body"><h3>AI 生圖字體風格庫</h3><p>上百種字體風格提示詞，每天自動多一種。</p><p class="made">用 Codex 加 Gemini　·　一半的修改在十天內做完，之後每天自動長一種</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/ai-chant-magic/">
-      <img src="{{ "/images/portfolio/ai-chant-magic.webp" | relative_url }}" alt="真AI咏唱魔法" loading="lazy">
-      <div class="body"><h3>真AI咏唱魔法</h3><p>對麥克風唸咒語，AI 即時生成魔法效果的生存遊戲。</p><p class="made">語音走瀏覽器內建 Web Speech API，辨識失效時退到 Groq 的 whisper-large-v3-turbo　·　實際動手 17 天，攤在 65 天裡</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/line-chat-maker/">
-      <img src="{{ "/images/portfolio/line-chat-maker.webp" | relative_url }}" alt="LINE 對話製造機" loading="lazy">
-      <div class="body"><h3>LINE 對話製造機</h3><p>所見即所得做出對話截圖，僅供創作示意，離線可用。</p><p class="made">站內五個 AI 接力：編劇 GLM-5.2、評審與執行 gpt-oss-120b、補圖走 codex-image　·　實際動手 15 天，攤在 34 天裡</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/roll-formosa/">
-      <img src="{{ "/images/portfolio/roll-formosa.webp" | relative_url }}" alt="Roll Formosa" loading="lazy">
-      <div class="body"><h3>Roll Formosa</h3><p>把台灣街景滾成一顆球的遊戲。</p><p class="made">看到日本網友做的滾物成球跑去做的，地圖沒有用 OSM，是自己排的　·　首日只占 1%，實際動手 17 天、攤在 70 天，是這面牆上做得最平均的一個</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/k-rider/">
-      <img src="{{ "/images/portfolio/k-rider.webp" | relative_url }}" alt="K-Rider K線騎手" loading="lazy">
-      <div class="body"><h3>K-Rider K線騎手</h3><p>用真實股價 K 線玩的騎乘遊戲。</p><p class="made">賽後賽評走 Groq，掛掉退罐頭句庫　·　六成四在第一天寫完，77 天裡只回去動過 13 天</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/catime/">
-      <img src="{{ "/images/portfolio/catime.webp" | relative_url }}" alt="Catime" loading="lazy">
-      <div class="body"><h3>Catime</h3><p>每小時自動生一隻 AI 貓，已累積兩千多隻的圖庫。</p><p class="made">生圖以 gemini-3-pro-image-preview 為主、gpt-image-2 次之　·　人工只動了 28 天，其餘每小時由排程自己跑，攤在 189 天</p></div>
-    </a>
-    <a class="work-card" href="https://yazelin.github.io/wish-pool/">
-      <img src="{{ "/images/portfolio/wish-pool.webp" | relative_url }}" alt="AI 願望池" loading="lazy">
-      <div class="body"><h3>AI 願望池</h3><p>一個人許願，一群人幫它成真的公開願望池。</p><p class="made">女神引導用 Groq 的 gpt-oss-120b，另開 agent API 讓 AI 直接接單　·　三成在第一天，實際動手 15 天</p></div>
-    </a>
-    <div class="work-card">
-      <a class="card-main" href="https://yazelin.github.io/battlefield-editor/">
-        <img src="{{ "/images/portfolio/battlefield-editor.webp" | relative_url }}" alt="AI 戰場編輯器" loading="lazy">
-        <div class="body"><h3>AI 戰場編輯器</h3><p>赤壁、官渡、垓下……六場古戰役 3D 重現，換一份資料就換一場戰役。</p><p class="made">首日就寫掉兩成一，實際動手 10 天、攤在 63 天裡</p></div>
-      </a>
-      <div class="series"><span class="lbl">同系列</span><a href="https://yazelin.github.io/red-cliffs-3d/">赤壁之戰 3D 原版</a><a href="https://yazelin.github.io/wwii-3d-history/">二戰 3D 戰情室</a></div>
-    </div>
-    <a class="work-card" href="https://yazelin.github.io/mori-sprite-studio/">
-      <img src="{{ "/images/portfolio/sprite-studio.webp" | relative_url }}" alt="Mori Sprite Studio" loading="lazy">
-      <div class="body"><h3>Mori Sprite Studio</h3><p>一張圖生成完整角色動畫包的工具。</p><p class="made">四個生圖後端可切換：Codex-Image、Vertex Gemini、Google Gemini、Author Fallback　·　近一半在第一天，只動手 9 天</p></div>
-    </a>
-    <div class="work-card">
-      <a class="card-main" href="https://yazelin.github.io/mandarin-taigi/">
-        <img src="{{ "/images/portfolio/taigi.webp" | relative_url }}" alt="台語辭典" loading="lazy">
-        <div class="body"><h3>台語辭典</h3><p>兩天做出兩本教育部資料離線辭典。</p><p class="made">首日三成四，之後又動了 5 天，攤在 36 天裡</p></div>
-      </a>
-      <div class="series"><span class="lbl">同系列</span><a href="https://yazelin.github.io/mandarin-hakka/">客語辭典(六腔)</a></div>
-    </div>
-    <a class="work-card" href="https://yazelin.github.io/ipas-ai-quiz/">
-      <img src="{{ "/images/portfolio/ipas-quiz.webp" | relative_url }}" alt="iPAS 模擬考練習" loading="lazy">
-      <div class="body"><h3>iPAS 模擬考練習</h3><p>iPAS AI 應用規劃師刷題站，官方公告試題免費練。</p><p class="made">790 題官方試題，歷屆公告 611 題起底　·　實際動手 14 天，攤在 58 天裡</p></div>
-    </a>
-    <a class="work-card" href="{{ '/index/2025/12/13/ching-tech-os-index.html' | relative_url }}">
-      <img src="{{ "/images/portfolio/ctos.webp" | relative_url }}" alt="ChingTech OS" loading="lazy">
-      <div class="body"><h3>ChingTech OS</h3><p>中小製造業的 AI 企業系統，商用中。</p><p class="made">Python FastAPI 後端，AI 助手走 Claude（sonnet／opus／haiku）加 Groq，生圖 gpt-image-2、語音 whisper　·　685 次修改分在 70 個工作日、攤在 218 天，是這面牆上唯一真的長期在做的</p></div>
-    </a>
-    <a class="work-card" href="{{ '/projects/2025/11/27/fish-cv.html' | relative_url }}">
-      <img src="{{ "/images/portfolio/fish-cv.webp" | relative_url }}" alt="魚苗計數系統" loading="lazy">
-      <div class="body"><h3>魚苗計數系統</h3><p>用視覺 AI 數魚苗，取代人工點數。</p><p class="made">YOLOv8 物件偵測加 OpenCV 影像處理</p></div>
-    </a>
-    <a class="work-card" href="{{ '/index/2025/12/19/jaba-ai-index.html' | relative_url }}">
-      <img src="{{ "/images/portfolio/jaba.webp" | relative_url }}" alt="呷爸 Jaba" loading="lazy">
-      <div class="body"><h3>呷爸 Jaba</h3><p>公司訂便當 LINE Bot，天天在用。</p><p class="made">我做的第一個 AI LINE Bot：幫團隊統計每天誰要訂什麼便當</p></div>
-    </a>
   </div>
 </section>
 
-<section class="section container-wide">
-  <h2 class="section-title">我創作的角色</h2>
-  <p class="section-lead">她們各自住在不同的作品裡，這一排是入口。</p>
+<section class="ledger" id="work" aria-labelledby="work-title">
+  <header class="ledger-head">
+    <h2 id="work-title">最近做的東西</h2>
+    <p>能公開的可以直接玩;商用系統放的是介紹。</p>
+  </header>
+  <div class="ledger-lead">
+    <article class="job job--lead">
+      <a class="job-shot" href="https://yazelin.github.io/glitch-vn/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/glitch-vn.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/glitch-vn/">格莉奇與黑洞先生</a></h3>
+        <p class="job-desc">只有 4KB 記憶體的 AI 主播，開台第一天來了七個人，她說要記住每一個。兩年後她記得六個。七章小說，每一句都能點來聽。</p>
+        <ul class="job-made"><li>文字我跟 AI 一起寫、定稿我決定；立繪場景配樂 AI 生成後人工挑選修版；配音走自架 CosyVoice3 加 MiniMax，每句都聽過</li><li>實際動手 8 天</li><li>Larch 七日創作者挑戰最佳人氣</li></ul>
+        <p class="job-series"><span>同系列</span><a href="https://larch.ink/play/market/yaze/glitch">視覺小說版(Larch・七日挑戰最佳人氣)</a><a href="https://yazelin.github.io/ai-brain-site/">格莉奇OS</a><a href="https://yazelin.github.io/glitch-music/">glitch-music</a><a href="https://yazelin.github.io/ai-comic-starter/">AI 漫畫產線樣板</a></p>
+      </div>
+    </article>
+  </div>
+  <h3 class="ledger-group">可以直接玩</h3>
+  <div class="ledger-grid">
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/neko-tensei/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/neko-tensei.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/neko-tensei/">轉生成貓貓的我們</a></h3>
+        <p class="job-desc">社群共創的異世界貓貓漫畫，連載中，離線也能讀。</p>
+        <ul class="job-made"><li>用擎添助理畫初稿，再用 Claude 加 gpt-image-2 做成網站</li><li>一半的修改在第一天做完，之後補了 27 天</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/line-sticker-studio/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/sticker-studio.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/line-sticker-studio/">LINE 貼圖製造機</a></h3>
+        <p class="job-desc">上傳一張角色圖，AI 產出一整組 LINE 貼圖。</p>
+        <ul class="job-made"><li>用 Gemini，一次呼叫約 50 秒、不到兩塊台幣</li><li>第一版當天做完，之後四個月陸續加功能</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/ai-font-styles/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ai-font-styles.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/ai-font-styles/">AI 生圖字體風格庫</a></h3>
+        <p class="job-desc">上百種字體風格提示詞，每天自動多一種。</p>
+        <ul class="job-made"><li>用 Codex 加 Gemini</li><li>一半的修改在十天內做完，之後每天自動長一種</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/ai-chant-magic/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ai-chant-magic.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/ai-chant-magic/">真AI咏唱魔法</a></h3>
+        <p class="job-desc">對麥克風唸咒語，AI 即時生成魔法效果的生存遊戲。</p>
+        <ul class="job-made"><li>語音走瀏覽器內建 Web Speech API，辨識失效時退到 Groq 的 whisper-large-v3-turbo</li><li>實際動手 17 天，攤在 65 天裡</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/line-chat-maker/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/line-chat-maker.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/line-chat-maker/">LINE 對話製造機</a></h3>
+        <p class="job-desc">所見即所得做出對話截圖，僅供創作示意，離線可用。</p>
+        <ul class="job-made"><li>站內五個 AI 接力：編劇 GLM-5.2、評審與執行 gpt-oss-120b、補圖走 codex-image</li><li>實際動手 15 天，攤在 34 天裡</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/roll-formosa/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/roll-formosa.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/roll-formosa/">Roll Formosa</a></h3>
+        <p class="job-desc">把台灣街景滾成一顆球的遊戲。</p>
+        <ul class="job-made"><li>看到日本網友做的滾物成球跑去做的，地圖沒有用 OSM，是自己排的</li><li>首日只占 1%，實際動手 17 天、攤在 70 天，是這面牆上做得最平均的一個</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/k-rider/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/k-rider.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/k-rider/">K-Rider K線騎手</a></h3>
+        <p class="job-desc">用真實股價 K 線玩的騎乘遊戲。</p>
+        <ul class="job-made"><li>賽後賽評走 Groq，掛掉退罐頭句庫</li><li>六成四在第一天寫完，77 天裡只回去動過 13 天</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/catime/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/catime.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/catime/">Catime</a></h3>
+        <p class="job-desc">每小時自動生一隻 AI 貓，已累積兩千多隻的圖庫。</p>
+        <ul class="job-made"><li>生圖以 gemini-3-pro-image-preview 為主、gpt-image-2 次之</li><li>人工只動了 28 天，其餘每小時由排程自己跑，攤在 189 天</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/wish-pool/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/wish-pool.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/wish-pool/">AI 願望池</a></h3>
+        <p class="job-desc">一個人許願，一群人幫它成真的公開願望池。</p>
+        <ul class="job-made"><li>女神引導用 Groq 的 gpt-oss-120b，另開 agent API 讓 AI 直接接單</li><li>三成在第一天，實際動手 15 天</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/battlefield-editor/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/battlefield-editor.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/battlefield-editor/">AI 戰場編輯器</a></h3>
+        <p class="job-desc">赤壁、官渡、垓下……六場古戰役 3D 重現，換一份資料就換一場戰役。</p>
+        <ul class="job-made"><li>首日就寫掉兩成一，實際動手 10 天、攤在 63 天裡</li></ul>
+        <p class="job-series"><span>同系列</span><a href="https://yazelin.github.io/red-cliffs-3d/">赤壁之戰 3D 原版</a><a href="https://yazelin.github.io/wwii-3d-history/">二戰 3D 戰情室</a></p>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/mori-sprite-studio/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/sprite-studio.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/mori-sprite-studio/">Mori Sprite Studio</a></h3>
+        <p class="job-desc">一張圖生成完整角色動畫包的工具。</p>
+        <ul class="job-made"><li>四個生圖後端可切換：Codex-Image、Vertex Gemini、Google Gemini、Author Fallback</li><li>近一半在第一天，只動手 9 天</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/mandarin-taigi/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/taigi.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/mandarin-taigi/">台語辭典</a></h3>
+        <p class="job-desc">兩天做出兩本教育部資料離線辭典。</p>
+        <ul class="job-made"><li>首日三成四，之後又動了 5 天，攤在 36 天裡</li></ul>
+        <p class="job-series"><span>同系列</span><a href="https://yazelin.github.io/mandarin-hakka/">客語辭典(六腔)</a></p>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="https://yazelin.github.io/ipas-ai-quiz/" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ipas-quiz.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="https://yazelin.github.io/ipas-ai-quiz/">iPAS 模擬考練習</a></h3>
+        <p class="job-desc">iPAS AI 應用規劃師刷題站，官方公告試題免費練。</p>
+        <ul class="job-made"><li>790 題官方試題，歷屆公告 611 題起底</li><li>實際動手 14 天，攤在 58 天裡</li></ul>
+      </div>
+    </article>
+  </div>
+  <h3 class="ledger-group">商用中</h3>
+  <div class="ledger-grid ledger-grid--biz">
+    <article class="job">
+      <a class="job-shot" href="{{ '/index/2025/12/13/ching-tech-os-index.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/ctos.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="{{ '/index/2025/12/13/ching-tech-os-index.html' | relative_url }}">ChingTech OS</a></h3>
+        <p class="job-desc">中小製造業的 AI 企業系統，商用中。</p>
+        <ul class="job-made"><li>Python FastAPI 後端，AI 助手走 Claude（sonnet／opus／haiku）加 Groq，生圖 gpt-image-2、語音 whisper</li><li>685 次修改分在 70 個工作日、攤在 218 天，是這面牆上唯一真的長期在做的</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="{{ '/projects/2025/11/27/fish-cv.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/fish-cv.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="{{ '/projects/2025/11/27/fish-cv.html' | relative_url }}">魚苗計數系統</a></h3>
+        <p class="job-desc">用視覺 AI 數魚苗，取代人工點數。</p>
+        <ul class="job-made"><li>YOLOv8 物件偵測加 OpenCV 影像處理</li></ul>
+      </div>
+    </article>
+    <article class="job">
+      <a class="job-shot" href="{{ '/index/2025/12/19/jaba-ai-index.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ "/images/portfolio/jaba.webp" | relative_url }}" alt="" loading="lazy"></a>
+      <div class="job-text">
+        <h3><a class="job-link" href="{{ '/index/2025/12/19/jaba-ai-index.html' | relative_url }}">呷爸 Jaba</a></h3>
+        <p class="job-desc">公司訂便當 LINE Bot，天天在用。</p>
+        <ul class="job-made"><li>我做的第一個 AI LINE Bot：幫團隊統計每天誰要訂什麼便當</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="cast" aria-labelledby="cast-title">
+  <header class="ledger-head">
+    <h2 id="cast-title">我創作的角色</h2>
+    <p>她們各自住在不同的作品裡，這一排是入口。</p>
+  </header>
   {% comment %} ponytail: 直接吃角色頁的 front matter,不另外維護一份名單。 {% endcomment %}
   <div class="char-strip">
     {% assign cs = site.pages | where: "layout", "character" | sort: "order" %}
     {% for c in cs %}
-    <a href="{{ c.url | relative_url }}" title="{{ c.title }}">
-      <img src="{{ c.image | relative_url }}" alt="{{ c.title }}" loading="lazy">
+    <a href="{{ c.url | relative_url }}">
+      <img src="{{ c.image | relative_url }}" alt="" loading="lazy">
       <span>{{ c.title }}</span>
     </a>
     {% endfor %}
   </div>
-  <p style="text-align:center; margin-top:1.5rem"><a href="{{ '/characters/' | relative_url }}">全部角色 →</a></p>
+  <p class="more"><a href="{{ '/characters/' | relative_url }}">全部角色</a></p>
 </section>
 
-<section class="section container-wide">
-  <div class="story">
-    <h2 class="section-title">從工廠到 AI</h2>
+<section class="swap" aria-labelledby="swap-title">
+  <h2 id="swap-title">從工廠到 AI</h2>
+  <div class="swap-roles" aria-hidden="true">
+    <span class="role role--was">乙方</span>
+    <span class="role role--now">甲方</span>
+  </div>
+  <div class="swap-text">
     <p>我在工業自動化做了十幾年：機器人、視覺檢測、AGV 車隊。工業現場預算有限，習慣了用軟體取代昂貴的感測器、用不一樣的解法把事情做成。</p>
     <p>我當了十幾年乙方。2024 年起換邊坐：乙方變成 AI，我把當年業主怎麼跟我合作的功課拿出來用：開規格、下發包、做驗收。結果是一個人維護 30 多個活躍專案。回頭看，關鍵從來不是會不會寫程式，而是能不能把需求講清楚。</p><!-- speak-tw-ok 這句的對比是實的:兩件事真的不同,不是為了製造反差 -->
-    <p style="text-align:center"><a href="{{ '/about/' | relative_url }}">完整的故事 →</a></p>
+    <p class="more"><a href="{{ '/about/' | relative_url }}">完整的故事</a></p>
   </div>
 </section>
 
-<section class="section container">
-  <h2 class="section-title">從這幾篇開始讀</h2>
+<section class="reads" aria-labelledby="reads-title">
+  <h2 id="reads-title">從這幾篇開始讀</h2>
   <ul class="featured-list">
     {% assign feats = site.posts | where: "featured", true %}
     {% for p in feats %}
     <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a><p class="why">{{ p.featured-why }}</p></li>
     {% endfor %}
   </ul>
-  <p style="text-align:center"><a href="{{ '/blog/' | relative_url }}">全部 {{ site.posts | size }} 篇文章 →</a></p>
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">全部 {{ site.posts | size }} 篇文章</a></p>
 </section>
 
-<section class="section container">{% include signup-form.html source="blog" %}</section>
+<section class="slip-wrap">{% include signup-form.html source="blog" %}</section>

@@ -8,9 +8,10 @@ title: Blog
   <ul class="post-list" id="post-list">
     {% for post in paginator.posts %}
     <li>
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       {% if post.subtitle %}<p class="excerpt">{{ post.subtitle | truncate: 120 }}</p>{% endif %}
-      <p class="meta">{{ post.date | date: "%Y-%m-%d" }}{% if post.tags.size > 0 %} · {{ post.tags | join: ", " | truncate: 60 }}{% endif %}</p>
+      {% if post.tags.size > 0 %}<p class="meta">{{ post.tags | join: ", " | truncate: 60 }}</p>{% endif %}
     </li>
     {% endfor %}
   </ul>
