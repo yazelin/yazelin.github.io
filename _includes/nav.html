@@ -5,5 +5,29 @@
     {% for item in site.navbar %}
     <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
     {% endfor %}
+    <button class="theme-toggle" type="button" aria-label="切換亮暗色">跟隨系統</button>
   </nav>
+  <script>
+  // 亮/暗/跟隨系統三段循環,選擇存 localStorage(與 /vote/ 同一個 key,兩邊同步)
+  (function () {
+    var btn = document.currentScript.parentNode.querySelector('.theme-toggle');
+    var modes = ['system', 'light', 'dark'];
+    var label = { system: '跟隨系統', light: '亮色', dark: '深色' };
+    var cur = 'system';
+    try { cur = localStorage.getItem('wed_theme') || 'system'; } catch (e) {}
+    if (modes.indexOf(cur) < 0) cur = 'system';
+    function paint() {
+      if (cur === 'system') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', cur);
+      btn.textContent = label[cur];
+      btn.title = '目前:' + label[cur] + '。點一下切換';
+    }
+    btn.addEventListener('click', function () {
+      cur = modes[(modes.indexOf(cur) + 1) % modes.length];
+      try { localStorage.setItem('wed_theme', cur); } catch (e) {}
+      paint();
+    });
+    paint();
+  })();
+  </script>
 </header>

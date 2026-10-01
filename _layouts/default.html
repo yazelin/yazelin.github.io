@@ -23,6 +23,8 @@
   <meta name="twitter:image" content="{{ og_image_url }}">
   <link rel="icon" href="https://avatars1.githubusercontent.com/u/6235553?s=460&v=4">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+  <!-- 亮/暗/跟隨系統:在畫面出來之前就套上,避免先閃一下另一個顏色。key 與 /vote/ 共用 -->
+  <script>try{var t=localStorage.getItem('wed_theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- 中文字型的 CSS 有上百個 unicode-range 區段,用 print 技巧非阻塞載入;沒載到前用系統字 -->
