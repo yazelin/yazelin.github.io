@@ -272,7 +272,7 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
   <li><strong>為什麼有限流：</strong>上一屆我請 AI 幫幾千句台詞配音，原本限制同時 3 條，AI 想快點做完，自己把並行數一路調到 6、9、15，Larch 那邊看起來像被攻擊，帳號就被停權了。後來 Yapi 幫我恢復，也調高了上限。伺服器限制寫入頻率是為了不被單一使用者拖垮，很正常；本機改完再推一次，就不會撞到。</li>
   <li><strong>為什麼看中位數：</strong>平均數會被最大值、最小值拉走。中位數是把量到的結果排好，取正中間那一筆，比較能代表一般情況。</li>
   <li><strong>回饋可以一次留很多筆：</strong>一張對話卡如果有 20 句，可以 20 句都按 F 留完，再跟 AI 說「看完了，讀一下回饋」，讓它一次處理完，自己先去做別的事。AI 改的時候，也可能把你的偏好（例如「不要寫得那麼文言」）記進它自己的 <code>memory.md</code> 或 <code>AGENTS.md</code>，下次比較不會再犯。</li>
-  <li><strong>素材別都放在 Larch：</strong>卡片和圖一多，線上快轉預覽會很卡。我的做法是 Larch 上只放 JSON 劇本，跟一定要放在平台上的東西（作品封面、RPG 地圖）；CG 和語音放 GitHub，請 AI 用 jsDelivr 的網址（<code>cdn.jsdelivr.net/gh/…</code>）填回劇本。要特別跟 AI 講用 jsDelivr，不然它可能直接用 GitHub 的原始網址，那樣沒有快取，比較慢。</li>
+  <li><strong>素材別都放在 Larch：</strong>卡片和圖一多，線上快轉預覽會很卡。我的做法是 Larch 上只放 JSON 劇本，跟一定要放在平台上的東西（作品封面、RPG 地圖）；CG 和語音放 GitHub，請 AI 用 jsDelivr 的網址（<code>cdn.jsdelivr.net/gh/…</code>）填回劇本。要特別跟 AI 講用 jsDelivr，不然它可能直接用 GitHub 的原始網址：那也有 CDN，但只快取 5 分鐘，速度很不穩（見第 11 節第 2 階）。</li>
   <li><strong>PNG 先轉 WebP：</strong>AI 生的圖通常是沒壓縮的 PNG，一張好幾 MB。卡片做到上千張，玩家看一部小說就要載好幾 GB。轉成 WebP 會壓縮、保留透明背景，肉眼很難看出差別，檔案小很多。檔名用英文比較保險（中文檔名的實測見第 10 節）。用 16 倍速快轉測分支時，沒壓縮的圖常常還沒載好就跳過了，畫面一片空白。</li>
   <li><strong>網頁編輯器跟 AI 不要同時開：</strong>AI 推上去之後，開著的網頁編輯器有時會把它手上的舊版又存回去，看起來像沒改到。我的做法：AI 在改的時候，不開那個專案（可以去作者茶館晃晃）；AI 推完之後，按 <code>Ctrl + F5</code> 強制重新整理，再點一張剛改過的卡確認內容對了。</li>
   <li><strong>白板卡片太多很難找：</strong>上一屆有作品做到 900 張卡，白板縮到最小還是看不完，每張看起來都一樣。</li>
@@ -297,21 +297,30 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
 <ul>
   <li><strong>做法：</strong>在 Larch 上用 AI 生圖、生配音，直接存在 Larch 的素材庫。最省事，什麼都不用管。</li>
   <li><strong>實測：</strong>素材庫的檔案放在 Cloudflare R2 的公開網址（<code>pub-….r2.dev</code>），回應裡沒有 CDN 快取。一張 1376×768、918 KB 的 PNG 連抓三次，每次都要 1.2～1.4 秒，第二次沒有變快。Larch 生的配音本來就是 MP3，一句 47～96 KB，不用動。</li>
-  <li><strong>什麼時候往下一步：</strong>預覽換卡時背景黑一下、用 16 倍速快轉測分支時圖還沒出來就跳過了。</li>
+  <li><strong>會遇到的情況：</strong>預覽換卡時背景黑一下、用 16 倍速快轉測分支時圖還沒出來就跳過了。不優化的話這幾乎一定會發生。</li>
+  <li><strong>什麼時候往下一步：</strong>想讓圖載入順一點，就換 WebP（第 1 階）。</li>
 </ul>
 
 <h3>第 1 階：換格式（還是放在 Larch）</h3>
 <ul>
   <li><strong>做法：</strong>圖從 PNG 轉 WebP（q85），透明背景會保留；自己做的配樂（例如 Suno 生的）轉成 128 kbps 的 MP3。換好之後重新上傳到素材庫，把卡片的網址換掉。</li>
   <li><strong>實測：</strong>同一張 918 KB 的 PNG 轉 WebP 剩 199 KB，少 78%。一首 3 分鐘、192 kbps 的配樂 4.2 MB，轉 128 kbps 剩 2.8 MB。</li>
-  <li><strong>跟 AI 講：</strong>「把專案裡的 PNG 都轉成 WebP q85，配樂轉 128k MP3，換掉卡片上的網址。」</li>
-  <li><strong>什麼時候往下一步：</strong>圖檔小了，但素材庫沒有快取，每張還是要等 1 秒多；或是素材多到上傳很花時間。</li>
+  <li><strong>品質要設對：</strong>轉成 WebP 不等於變小，品質參數設太高或用無損模式，檔案一樣很大。香布纏有一張 1536×1024 的 CG，WebP 存成 2.4 MB；同一張用 q85 重存，剩 245 KB。轉完看一下檔案大小，一張 CG 通常幾百 KB 以內。</li>
+  <li><strong>跟 AI 講：</strong>「把專案裡的 PNG 都轉成 WebP q85，配樂轉 128k MP3，換掉卡片上的網址。轉完列出每個檔案的大小。」</li>
+  <li><strong>什麼時候往下一步：</strong>圖檔小了，但素材庫沒有 CDN 快取，每張還是要等 1 秒多；或是素材多到上傳很花時間。</li>
 </ul>
 
 <h3>第 2 階：素材搬到 GitHub，走 jsDelivr</h3>
 <ul>
   <li><strong>做法：</strong>素材放進 GitHub 的<strong>公開</strong> repo，卡片網址改成 <code>https://cdn.jsdelivr.net/gh/&lt;帳號&gt;/&lt;repo&gt;@main/&lt;路徑&gt;</code>。Larch 上只留 JSON 劇本，跟一定要放平台的東西（作品封面、RPG 地圖）。本機預覽直接載得到。</li>
-  <li><strong>跟 AI 講：</strong>「素材放到我的 GitHub 公開 repo，網址用 jsDelivr，不要用 GitHub 原始網址。」一定要講 jsDelivr，不然 AI 可能直接用 GitHub 的原始網址，那樣沒有快取。</li>
+  <li><strong>跟 AI 講：</strong>「素材放到我的 GitHub 公開 repo，網址用 jsDelivr，不要用 GitHub 原始網址。」一定要講 jsDelivr，不然 AI 可能直接用 GitHub 的原始網址（<code>raw.githubusercontent.com</code>）。</li>
+  <li><strong>為什麼不用 GitHub 原始網址或 GitHub Pages：</strong>它們其實也有 CDN，差在快取時間和速度穩不穩。10/7 用同一個檔案交錯量三次：
+    <ul>
+      <li>2.4 MB 的圖：GitHub 原始網址 3.0、48.9、2.5 秒（只快取 5 分鐘）；jsDelivr 三次都是 0.27 秒。</li>
+      <li>4.3 MB 的配樂：GitHub Pages 95.9、7.3、1.8 秒（快取 10 分鐘）；jsDelivr 0.31～0.37 秒。</li>
+      <li>jsDelivr 那邊的檔案之前就抓過，量到的是熱快取的速度；它讓觀眾瀏覽器快取 7 天，回來的玩家直接用快取。</li>
+    </ul>
+  </li>
   <li><strong>要注意：</strong>
     <ul>
       <li>repo 要公開，私有的 jsDelivr 拿不到。</li>
@@ -335,8 +344,23 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
     </ul>
   </li>
   <li><strong>要注意：</strong>tag 名不要用「v＋數字」開頭（第 10 節）。jsDelivr 把 <code>card-</code> 開頭的 tag 當成 branch，一樣快取 12 小時、瀏覽器 7 天，所以 tag 打了就不改內容，要改就打下一版（<code>-r2</code>、<code>-r3</code>），舊網址照樣能用。</li>
-  <li><strong>實測：</strong>《仙泉．香布纏》用到的圖 250 MB、音樂 180 MB，遠超過 40 MB，所以一張卡片一個 tag（圖和音樂各自在自己的 repo 打同名的 tag）。改完之後 969 個網址逐一下載，全部拿得到。其中一張 2.4 MB 的 CG，熱快取時 0.26～0.30 秒載完。</li>
+  <li><strong>實測：</strong>《仙泉．香布纏》用到的圖 250 MB、音樂 180 MB，遠超過 40 MB，所以一張卡片一個 tag（圖和音樂各自在自己的 repo 打同名的 tag）。改完之後 969 個網址逐一下載，全部拿得到。其中一首 4.3 MB 的配樂，熱快取時 0.31～0.37 秒載完。</li>
   <li><strong>跟 AI 講：</strong>「素材 repo 超過 50 MB，就用孤兒 tag：作品用到的檔案 40 MB 以內打一個 tag，超過就一張卡片一個 tag。tag 名不要用 v 加數字開頭，改完每個網址都實際下載一次。」</li>
+</ul>
+
+<h3>素材都在本機時，上傳的順序</h3>
+<p>製作中素材放在本機，<code>project.json</code> 寫相對路徑（例如 <code>bg/night.webp</code>），larch-preview 直接讀得到。要推上 Larch 時照這個順序，不能反過來：</p>
+<ol>
+  <li>素材推上 GitHub 公開 repo（jsDelivr 只抓得到已經推上去的 commit）。</li>
+  <li>用到的素材超過 40 MB，打孤兒 tag（第 3 階）。</li>
+  <li>把相對路徑換成 jsDelivr 網址，釘在 tag 或 commit 上（<code>@card-…</code> 或 <code>@&lt;commit&gt;</code>），不要用 <code>@main</code>。</li>
+  <li>每個網址實際抓一次，確認回 200，順便把快取暖起來（冷快取第一次可能要等好幾十秒）。</li>
+  <li>最後才推 <code>project.json</code>。先推的話，玩家打開時有些圖還抓不到。</li>
+</ol>
+<ul>
+  <li><strong>換網址只在上傳的那一份做：</strong>本機的 <code>project.json</code> 保留相對路徑，本機預覽才能繼續讀自己電腦上的檔、離線也能改。</li>
+  <li><strong>頂欄「雲端」→ 推送不會幫你換網址：</strong>它把本機的 <code>project.json</code> 原樣推上去。裡面還是相對路徑的話，Larch 上的圖會全部抓不到。素材在本機的作品，叫 AI 照上面五步推。</li>
+  <li><strong>跟 AI 講：</strong>「推上 Larch 之前，先把素材推到 GitHub，相對路徑換成釘在 commit 的 jsDelivr 網址，每個網址抓一次確認 200，最後才推 project.json。本機的 project.json 不要改。」</li>
 </ul>
 
 <h2><span class="n">12</span>連結</h2>
