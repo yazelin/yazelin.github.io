@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>larch-preview 講義 2026-10-06</title>
+  <style>
+    :root {
+      --ink-deep: #181916; --accent: #b89345; --accent-text: #966f28;
+      --bg: #faf9f6; --card: #ffffff; --ink: #2b2d28; --muted: #72756c; --border: #e5e3dc;
+      --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      --code-bg: #141512; --code-text: #f4f2eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.85;
+      max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; font-size: 16px;
+    }
+    header { border-bottom: 3px solid var(--accent); padding-bottom: 1.6rem; margin-bottom: 2.4rem; }
+    .kicker { font-size: .85rem; letter-spacing: .2em; color: var(--accent-text); font-weight: 700; text-transform: uppercase; }
+    h1 { font-size: 2.1rem; line-height: 1.3; margin: .6rem 0; color: var(--ink-deep); }
+    header p { color: var(--muted); font-size: 1.05rem; }
+    h2 {
+      font-size: 1.35rem; color: var(--ink-deep); margin: 2.8rem 0 .9rem; padding-top: .8rem;
+      border-top: 1px solid var(--border); display: flex; align-items: center;
+    }
+    h2 .n {
+      display: inline-block; min-width: 2.1rem; height: 2.1rem; line-height: 2.1rem; text-align: center;
+      background: var(--accent); color: #fff; border-radius: 50%; font-size: 1rem; margin-right: .6rem; flex-shrink: 0;
+    }
+    h3 { font-size: 1.1rem; color: var(--ink-deep); margin: 1.5rem 0 .5rem; }
+    p { margin: .8rem 0; }
+    ul, ol { margin: .8rem 0 .8rem 1.5rem; }
+    li { margin: .4rem 0; }
+    strong { color: var(--ink-deep); font-weight: 700; }
+    a { color: var(--accent-text); text-decoration: none; word-break: break-all; }
+    a:hover { text-decoration: underline; }
+    code { background: #e2e8f0; border-radius: 4px; padding: .15rem .4rem; font-size: .9em; font-family: monospace; }
+    pre {
+      background: var(--code-bg); color: var(--code-text); padding: 1.1rem 1.3rem; border-radius: 10px;
+      overflow-x: auto; margin: 1rem 0; font-size: .9em; line-height: 1.6; font-family: monospace;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: .94rem; }
+    th, td { border: 1px solid var(--border); padding: .65rem .8rem; text-align: left; vertical-align: top; }
+    th { background: #edf2f7; color: var(--ink-deep); font-weight: 700; }
+    .box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+    .warn { background: #fffbeb; border-color: #fde68a; }
+    .warn b { color: #b45309; }
+    .tip { background: #f0fdf4; border-color: #bbf7d0; }
+    .tip b { color: #15803d; }
+    .steps { counter-reset: s; list-style: none; margin-left: 0; }
+    .steps li { counter-increment: s; position: relative; padding-left: 2.4rem; margin: .8rem 0; }
+    .steps li::before {
+      content: counter(s); position: absolute; left: 0; top: .15rem; width: 1.7rem; height: 1.7rem;
+      line-height: 1.7rem; text-align: center; background: var(--accent); color: #fff; border-radius: 50%;
+      font-size: .85rem; font-weight: 700;
+    }
+    footer { margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 1.5rem; font-size: .85rem; color: var(--muted); }
+    .wm { display: none; }
+    @media print {
+      body { background: #fff; padding: 0; font-size: 11pt; max-width: none; }
+      .wm { display: block; position: fixed; bottom: 8mm; right: 10mm; font-size: 8pt; color: #94a3b8; }
+      h2 { break-after: avoid; } .box, table, pre { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wm">亞澤 · yazelin.github.io</div>
+
+<header>
+  <p class="kicker">週二快閃加開場 · 2026-10-06</p>
+  <h1>Larch 視覺小說本機預覽：larch-preview 講義</h1>
+  <p>這份講義整理今晚講的東西：官方 API 的寫入限流實測、本機預覽怎麼運作、不用 AI 怎麼用、按 F 留回饋給 agent、改完怎麼推回 Larch，還有三個平台的安裝指令。數字是 2026-10-06 下午量的，量法和原始數據都留著。</p>
+</header>
+
+<h2><span class="n">1</span>線上改，卡在哪</h2>
+<p>單次改一句其實不慢。卡的是一部作品要來回改上百次：</p>
+<ul>
+  <li><strong>寫入限流：</strong>agent 連續寫入官方 API，第 13 次會回：
+    <pre><code>HTTP 429  retry-after: 51
+{"error":"Agent 專案寫入過於頻繁，請稍後再試"}</code></pre>
+    要等 49～52 秒才能繼續，等完又能寫 12 次。連續改 50 次會被擋 4 次。</li>
+  <li><strong>改完要自己重整：</strong>線上預覽重新整理後回到標題畫面，要按「開始遊戲」，再走回剛剛那張卡。</li>
+  <li><strong>講不清楚哪一句：</strong>打字描述「第二幕他講的那句怪怪的」，AI 常常找錯卡。</li>
+</ul>
+
+<div class="box">
+  <b>實測：線上 vs 本機（2026-10-06 下午，各量兩輪）</b>
+  <table>
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>線上（官方 agent API）</th>
+        <th>本機（larch-preview）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>單次：改一句到畫面看到</strong></td>
+        <td>中位數 1.65 秒（10 筆）</td>
+        <td>中位數 1.01 秒（100 筆）</td>
+      </tr>
+      <tr>
+        <td><strong>重整後停在哪</strong></td>
+        <td>回標題畫面，要按開始</td>
+        <td>停在原本那張卡、那一句</td>
+      </tr>
+      <tr>
+        <td><strong>限流</strong></td>
+        <td>連續第 13 次回 429，等 49～52 秒</td>
+        <td>沒有</td>
+      </tr>
+      <tr>
+        <td><strong>連續改 50 次</strong></td>
+        <td><strong>245.1 秒</strong>（兩輪相同）</td>
+        <td><strong>50.3 秒、51.0 秒</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: .5rem; font-size: .9em; color: var(--muted);">連續改 50 次，本機至少快 4.8 倍。線上那欄只算寫入，沒算每次重整預覽頁。本機的 1 秒是預覽頁每 1 秒檢查一次檔案的間隔。</p>
+</div>
+
+<h2><span class="n">2</span>不用 AI 也能用</h2>
+<p>預覽本身不呼叫 AI，不花松果幣，也不吃 token。要直接改 JSON，得先看得懂卡片結構。</p>
+
+<ol class="steps">
+  <li><strong>準備專案檔：</strong>
+    <ul>
+      <li><strong>已經有作品：</strong>從 Larch 匯出專案 JSON，存到自己的資料夾。</li>
+      <li><strong>先試試看：</strong>複製範本：
+        <pre><code>mkdir -p ~/my-story && cp ~/larch-preview/fixtures/bench_demo/* ~/my-story/</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li><strong>啟動本機預覽：</strong>
+    <pre><code>python3 ~/larch-preview/serve.py ~/my-story/project.json</code></pre>
+    終端機會印出網址，預設是 <code>http://127.0.0.1:8790/</code>，被佔用會自動換一個，以終端機印的為準。</li>
+  <li><strong>左右兩個視窗：</strong>左邊 VS Code 開 <code>project.json</code>，右邊 Chrome 開上面那個網址。</li>
+  <li><strong>改台詞存檔：</strong>找到卡片的 <code>data.text</code> 或 <code>data.dialogueLines</code> 改字，按 <code>Ctrl + S</code>（Mac 是 <code>Cmd + S</code>）。右邊大約 1 秒後自己重整，停在原本那一句。JSON 改壞的話，畫面停在上一版，上方會寫錯在哪。</li>
+  <li><strong>兩個快捷鍵：</strong>
+    <ul>
+      <li><strong><code>B</code></strong>：切到白板，看整個分支，點卡片上的 <code>▶</code> 從那張卡開始播。白板只能看，不能在上面改。</li>
+      <li><strong><code>F</code></strong>：留一句修稿筆記，附截圖，寫進專案旁邊的 <code>feedback/</code>。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2><span class="n">3</span>跟 agent 說哪裡要改：按 F</h2>
+<ul>
+  <li><strong>按 <code>F</code>：</strong>跳出回饋面板，先帶出現在這張卡、這一句（猜錯可以從清單改選），附上截圖。專案用了自訂對話框介面的話對不到卡，要從清單自己選。</li>
+  <li><strong>第一次按：</strong>Chrome 會問要不要分享這個分頁，按分享才截得到圖，截的只有預覽這個分頁。不允許也能送，只是沒有截圖。</li>
+  <li><strong>送出後：</strong>寫進 <code>feedback/feedback.jsonl</code>，截圖是同資料夾的 png，每筆都有卡片 ID 和第幾句。</li>
+  <li><strong>叫 agent 處理：</strong>
+    <pre><code>cd ~/larch-preview
+python3 -m lp.feedback list ~/my-story
+python3 -m lp.feedback done ~/my-story &lt;回饋id&gt; "改了什麼"</code></pre>
+    要在 <code>~/larch-preview</code> 底下跑；在別的資料夾就在前面加 <code>PYTHONPATH=~/larch-preview</code>。
+    agent 照卡片 ID 去改 JSON，改完存檔，右邊的預覽自己會更新。</li>
+</ul>
+
+<h2><span class="n">4</span>頂欄的「雲端」按鈕</h2>
+<p>按鈕或快捷鍵 <code>S</code> 打開同步面板。要先設好 Larch API 金鑰（環境變數 <code>LARCH_API_KEY</code>，或 <code>~/.config/larch/key</code>）。</p>
+<ul>
+  <li><strong>拉取：</strong>把雲端專案抓下來蓋掉本機檔。蓋之前先把本機檔備份成 <code>project.json.bak.&lt;時間&gt;</code>。</li>
+  <li><strong>推送：</strong>把本機檔整包取代雲端專案，一次 API。推之前一樣先備份本機檔。</li>
+</ul>
+<div class="tip box">
+  <b>推送前要知道：</b>推送不會檢查「拉下來之後雲端有沒有人改過」，會直接蓋掉。網頁編輯器開著的話先關掉，不然編輯器可能把它手上的舊版推回去。整包取代也會洗掉本機檔沒帶到的欄位，推之前先在雲端存一份快照，推完回網頁看一次。
+</div>
+
+<h2><span class="n">5</span>角色與素材</h2>
+<p><strong>看：</strong>預覽頁頂欄按「素材庫」，另開一頁列出角色的立繪與差分、專案所有的圖片音訊影片，每個標出被卡片用到幾次，沒用到的標紅。專案檔一改，兩秒內自己更新。只能看，不能在上面改。</p>
+<p><strong>改：</strong>抓下來的 <code>project.json</code> 是整個專案，角色在 <code>characters</code>，素材在 <code>media</code>，有三種改法：</p>
+<ul>
+  <li><strong>直接改 JSON：</strong>VS Code 改或叫 agent 改。角色的 <code>id</code> 不要動，卡片靠它對到角色。2026-10-06 沙盒實測：本機改角色名字與描述推回去，雲端更新，角色 id、差分、立繪網址沒被動到。</li>
+  <li><strong>在 Larch 網頁上改：</strong>改完回本機按頂欄「雲端」→ 拉取，再繼續改本機。沒拉就推送，網頁上的改動會被本機的舊版蓋掉。</li>
+  <li><strong>叫 agent 用 MCP 改</strong>（例如 <code>larch_upsert_character</code>）：改完一樣先拉取回本機。</li>
+</ul>
+<pre><code>"characters": [{ "id": "character-…", "name": "…", "portraitUrl": "…",
+  "expressions": [{ "id": "expression-…", "kind": "pose", "name": "窗邊等", "imageUrl": "…" }] }],
+"media": [{ "id": "…", "url": "https://cdn.jsdelivr.net/gh/&lt;帳號&gt;/&lt;repo&gt;@&lt;分支&gt;/&lt;路徑&gt;", "name": "…", "type": "image" }]</code></pre>
+<div class="tip box">
+  <b>要知道的三件事：</b>
+  <ol>
+    <li><strong>新圖可以用 jsDelivr：</strong>圖推到 GitHub 公開 repo，JSON 填 jsDelivr 網址，本機預覽直接載得到（實測 200），不用先傳上 Larch。RPG 地圖的圖例外：本機會經過 <code>serve.py</code> 的代理，只放行 Larch 網域。</li>
+    <li><strong>換差分圖，畫面不會跟著變：</strong>播放器顯示哪張立繪，看的是每張卡的 <code>stage.actors[].url</code>，跟角色資料裡的 <code>expressions</code> 無關。要換畫面上的立繪就改那些卡。</li>
+    <li><strong>rev 目前看不到：</strong>只有拉取或推送成功時頂端會閃一下「Rev 382」。本機沒記住是從哪一版拉下來的，所以推送也擋不到雲端被改過，這兩件是下一步要做的。</li>
+  </ol>
+</div>
+
+<h2><span class="n">6</span>安裝</h2>
+<p>MIT 授權。repo 不放 Larch 官方的前端檔案，<code>sync.py</code> 會在自己的電腦上從 larch.ink 抓（第一次大約 26 MB、一分鐘左右）。</p>
+
+<h3>macOS / Linux（終端機）</h3>
+<pre><code>git clone https://github.com/yazelin/larch-preview ~/larch-preview
+cd ~/larch-preview && python3 sync.py
+
+# Claude Code
+mkdir -p ~/.claude/skills && ln -s ~/larch-preview ~/.claude/skills/larch-preview
+# Codex、agy、GitHub Copilot CLI
+mkdir -p ~/.agents/skills && ln -s ~/larch-preview ~/.agents/skills/larch-preview</code></pre>
+
+<h3>Windows（PowerShell）</h3>
+<pre><code>git clone https://github.com/yazelin/larch-preview "$HOME\larch-preview"
+cd "$HOME\larch-preview"; python sync.py
+
+# Claude Code
+New-Item -ItemType Junction -Path "$HOME\.claude\skills\larch-preview" -Target "$HOME\larch-preview" -Force
+# Codex、agy、GitHub Copilot CLI
+New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "$HOME\larch-preview" -Force</code></pre>
+
+<div class="box">
+  <b>Larch 平台更新之後：</b>再跑一次 <code>python3 sync.py</code>（Windows 是 <code>python sync.py</code>）。官方前端沒變就不會重抓；要整包重抓加 <code>--force</code>。
+</div>
+<div class="box">
+  <b>跨平台現況：</b>回饋檔的檔案鎖在 Linux／macOS 用 <code>fcntl</code>，Windows 改用 <code>msvcrt.locking</code>。64 個 Python 測試、9 個 Node 測試在 Linux 上全過；Windows 和 macOS 還沒有實機跑過，遇到問題歡迎回報。
+</div>
+
+<h2><span class="n">7</span>改完怎麼推回 Larch</h2>
+<p>本機改的時候不打雲端 API，改完推一次。50 次寫入變成 1 次，就不會撞到限流。兩條路都是整包取代：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>怎麼做</th>
+      <th>要注意</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>叫 agent 推</strong></td>
+      <td>跟 agent 說：<em>「把本機的 <code>project.json</code> 推上雲端專案 <code>project-xxxx</code>」</em>，它會用 <code>larch_replace_project</code>。</td>
+      <td>沒帶到的欄位會被洗掉。推之前存快照，推完回網頁看一次。</td>
+    </tr>
+    <tr>
+      <td><strong>不用 AI</strong></td>
+      <td>預覽頁頂欄「雲端」→ 推送。</td>
+      <td>同上。不建議自己手打 <code>curl -X PUT</code>：body 要包一層 <code>{"project": …}</code>，少包這層，伺服器一樣回 200，但雲端專案會被清空。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span class="n">8</span>常見問答</h2>
+<div class="box">
+  <p><strong>Q1：圖片和語音會存到硬碟嗎？</strong><br>
+  A：不會。<code>serve.py</code> 從 Larch 的媒體網址代抓，放在記憶體裡，關掉伺服器就沒了。所以預覽時還是要連網。硬碟上只有專案 JSON 和播放器前端快取（約 26 MB）。</p>
+</div>
+
+<div class="box">
+  <p><strong>Q2：白板可以改嗎？</strong><br>
+  A：不能，白板只能看。要改卡片或連線，改 JSON 存檔，白板會跟著重整。</p>
+</div>
+
+<div class="box">
+  <p><strong>Q3：推上去會蓋掉別人的進度嗎？</strong><br>
+  A：會。推送不會檢查你拉下來之後雲端有沒有被改過。多人一起做、或網頁編輯器開著的時候，推之前先確認。</p>
+</div>
+
+<div class="box" style="border-left:4px solid var(--accent);background:var(--card-bg);margin-top:2rem">
+  <p><strong>官方活動：第三屆 Larch 創作者挑戰《自由與限制》</strong><br>
+  為期 3 週，10/04～10/24 截止，現在第 1 週，11/01 公布結果。用 Larch 做一個 5～10 分鐘的故事，有用 RPG 擴充功能會加分。<br>
+  報名送 100 枚松果幣，分享活動可以申請活動 Pro，最佳作品獎金 US$50。<br>
+  活動頁：<a href="https://larch.ink/creator-challenge" target="_blank">larch.ink/creator-challenge</a></p>
+</div>
+
+<h2><span class="n">9</span>現場補充（直播時講到、原本講義沒寫的）</h2>
+<ul>
+  <li><strong>官方桌面版：</strong>Yapi 10/6 早上在 Discord 說打算出離線的桌面版 Larch。我做這套是因為之前不知道有這個計畫；桌面版出來之後，我會直接改用官方的。</li>
+  <li><strong>為什麼有限流：</strong>上一屆我請 AI 幫幾千句台詞配音，原本限制同時 3 條，AI 想快點做完，自己把並行數一路調到 6、9、15，Larch 那邊看起來像被攻擊，帳號就被停權了。後來 Yapi 幫我恢復，也調高了上限。伺服器限制寫入頻率是為了不被單一使用者拖垮，很正常；本機改完再推一次，就不會撞到。</li>
+  <li><strong>為什麼看中位數：</strong>平均數會被最大值、最小值拉走。中位數是把量到的結果排好，取正中間那一筆，比較能代表一般情況。</li>
+  <li><strong>回饋可以一次留很多筆：</strong>一張對話卡如果有 20 句，可以 20 句都按 F 留完，再跟 AI 說「看完了，讀一下回饋」，讓它一次處理完，自己先去做別的事。AI 改的時候，也可能把你的偏好（例如「不要寫得那麼文言」）記進它自己的 <code>memory.md</code> 或 <code>AGENTS.md</code>，下次比較不會再犯。</li>
+  <li><strong>素材別都放在 Larch：</strong>卡片和圖一多，線上快轉預覽會很卡。我的做法是 Larch 上只放 JSON 劇本，跟一定要放在平台上的東西（作品封面、RPG 地圖）；CG 和語音放 GitHub，請 AI 用 jsDelivr 的網址（<code>cdn.jsdelivr.net/gh/…</code>）填回劇本。要特別跟 AI 講用 jsDelivr，不然它可能直接用 GitHub 的原始網址，那樣沒有快取，比較慢。</li>
+  <li><strong>PNG 先轉 WebP：</strong>AI 生的圖通常是沒壓縮的 PNG，一張好幾 MB。卡片做到上千張，玩家看一部小說就要載好幾 GB。轉成 WebP 會壓縮、保留透明背景，肉眼很難看出差別，檔案小很多。檔名用英文比較保險（中文檔名的實測見第 10 節）。用 16 倍速快轉測分支時，沒壓縮的圖常常還沒載好就跳過了，畫面一片空白。</li>
+  <li><strong>網頁編輯器跟 AI 不要同時開：</strong>AI 推上去之後，開著的網頁編輯器有時會把它手上的舊版又存回去，看起來像沒改到。我的做法：AI 在改的時候，不開那個專案（可以去作者茶館晃晃）；AI 推完之後，按 <code>Ctrl + F5</code> 強制重新整理，再點一張剛改過的卡確認內容對了。</li>
+  <li><strong>白板卡片太多很難找：</strong>上一屆有作品做到 900 張卡，白板縮到最小還是看不完，每張看起來都一樣。這類需求可以到 Larch 的許願池提。</li>
+  <li><strong>Windows 和 macOS：</strong>我自己用 Linux，Windows、macOS 是 AI 幫我寫的，沒有實機跑過。裝起來不能用的話，可以請你的 AI 照錯誤訊息修，或回報給我。</li>
+</ul>
+
+<h2><span class="n">10</span>會後補充（10/7）：jsDelivr 的兩個坑</h2>
+<p>直播隔天，《仙泉．香布纏》有些圖載得很慢、有些出不來，查下去是 jsDelivr 的限制。素材放 GitHub 走 jsDelivr 的話，作品一大就會遇到。</p>
+<ul>
+  <li><strong>repo 超過 50 MB 會 403：</strong>jsDelivr 的 <code>gh</code> 網址把整個 repo 當成一個套件，算的是整個 repo 的大小，不是單一檔案。超過就回 <code>Package size exceeded the configured limit of 50 MB</code>（jsDelivr 自己的 API 文件寫的是 GitHub 50 MB、npm 150 MB，跟實際一致；主說明文件那句「150 MB」講的是 npm。需要更高的上限，可以到 jsDelivr 的 GitHub repo 開 issue 申請）。之前被抓過的檔案還在快取裡，所以症狀是有些圖慢、有些出不來、重新整理又好了。香布纏的圖 repo 250 MB、音樂 repo 180 MB，兩個都超過。</li>
+  <li><strong>解法：孤兒 tag，先整部一個，超過才拆。</strong>做一個只放作品用到的檔案的孤兒 commit，打 tag，網址的 <code>@main</code> 換成 <code>@&lt;tag名&gt;</code>。tag 用的是 main 上現成的檔案，repo 不會變大。作品用到的檔案 40 MB 以內，整部一個 tag 就好；超過才一張卡片一個 tag。香布纏用到 430 MB，所以一張卡片一個（<code>@card-v3-8</code> 這種），好幾張卡共用的圖或配樂放在第一張用到它的卡片，網址只有一個，換卡時不會重抓。同一批 64 張圖實測：只放卷五的測試用孤兒分支（31 MB）64 張全部拿到，整個大 repo 掛了 8 張。詳細分組見第 11 節第 3 階。</li>
+  <li><strong>tag 名別用「v＋數字」開頭：</strong><code>v2-act1</code> 會被 jsDelivr 當成版本號，找不到檔案，回 404。第一輪 969 個網址掛了 71 個，全部是卷二。前面加 <code>card-</code> 之後全部拿得到。</li>
+  <li><strong>中文檔名：</strong>原本第 9 節寫「jsDelivr 遇到中文檔名會 404」，這句不準。這次 969 個網址大部分是中文檔名，改成小 tag 之後全部拿得到；10/7 另外抽香布纏小 tag 裡 3 個中文檔名的圖（例如 <code>cg3_地窖插曲一_1_c_v2.webp</code>），也都回 200。唐詩小旅行（repo 只有 15.9 MB）10/6 撞到中文檔名 404 的那張圖，10/7 用當時的 commit 和 <code>@main</code> 重抓也都是 200。中文檔名本身不會 404；10/6 那次的原因還沒找到，也不是 repo 太大。檔名用英文還是比較保險。</li>
+  <li><strong>跟 AI 講的一句話：</strong>「素材 repo 超過 50 MB，就用孤兒 tag：作品用到的檔案 40 MB 以內打一個 tag，超過就一張卡片一個 tag。tag 名不要用 v 加數字開頭，改完每個網址都實際下載一次。」</li>
+</ul>
+
+<h2><span class="n">11</span>會後補充（10/7）：素材載入加速，有需要才往下一步</h2>
+<p>不是每部作品都要做到最後一階。每往下一階都多一件要自己管的事，所以照順序來：<strong>看到「往下一步」的症狀才往下走</strong>，作品小就停在第 0 或第 1 階。下面的數字都是 2026-10-07 量的。</p>
+
+<h3>第 0 階：不優化</h3>
+<ul>
+  <li><strong>做法：</strong>在 Larch 上用 AI 生圖、生配音，直接存在 Larch 的素材庫。最省事，什麼都不用管。</li>
+  <li><strong>實測：</strong>素材庫的檔案放在 Cloudflare R2 的公開網址（<code>pub-….r2.dev</code>），回應裡沒有 CDN 快取。一張 1376×768、918 KB 的 PNG 連抓三次，每次都要 1.2～1.4 秒，第二次沒有變快。Larch 生的配音本來就是 MP3，一句 47～96 KB，不用動。</li>
+  <li><strong>什麼時候往下一步：</strong>預覽換卡時背景黑一下、用 16 倍速快轉測分支時圖還沒出來就跳過了。</li>
+</ul>
+
+<h3>第 1 階：換格式（還是放在 Larch）</h3>
+<ul>
+  <li><strong>做法：</strong>圖從 PNG 轉 WebP（q85），透明背景會保留；自己做的配樂（例如 Suno 生的）轉成 128 kbps 的 MP3。換好之後重新上傳到素材庫，把卡片的網址換掉。</li>
+  <li><strong>實測：</strong>同一張 918 KB 的 PNG 轉 WebP 剩 199 KB，少 78%。一首 3 分鐘、192 kbps 的配樂 4.2 MB，轉 128 kbps 剩 2.8 MB。</li>
+  <li><strong>跟 AI 講：</strong>「把專案裡的 PNG 都轉成 WebP q85，配樂轉 128k MP3，換掉卡片上的網址。」</li>
+  <li><strong>什麼時候往下一步：</strong>圖檔小了，但素材庫沒有快取，每張還是要等 1 秒多；或是素材多到上傳很花時間。</li>
+</ul>
+
+<h3>第 2 階：素材搬到 GitHub，走 jsDelivr</h3>
+<ul>
+  <li><strong>做法：</strong>素材放進 GitHub 的<strong>公開</strong> repo，卡片網址改成 <code>https://cdn.jsdelivr.net/gh/&lt;帳號&gt;/&lt;repo&gt;@main/&lt;路徑&gt;</code>。Larch 上只留 JSON 劇本，跟一定要放平台的東西（作品封面、RPG 地圖）。本機預覽直接載得到。</li>
+  <li><strong>跟 AI 講：</strong>「素材放到我的 GitHub 公開 repo，網址用 jsDelivr，不要用 GitHub 原始網址。」一定要講 jsDelivr，不然 AI 可能直接用 GitHub 的原始網址，那樣沒有快取。</li>
+  <li><strong>要注意：</strong>
+    <ul>
+      <li>repo 要公開，私有的 jsDelivr 拿不到。</li>
+      <li>單一檔案超過 20 MB，jsDelivr 預設不提供。影片、沒壓縮的 WAV 不要放；jsDelivr 的使用條款也寫明不能拿來放影片、當圖床或大量備份。</li>
+      <li>換圖要<strong>換檔名</strong>：<code>@main</code> 的網址，jsDelivr 會快取 12 小時，觀眾的瀏覽器會快取 7 天（實測 <code>max-age=604800, s-maxage=43200</code>）。<code>purge.jsdelivr.net</code> 只清得到 jsDelivr 那一層，清不到觀眾瀏覽器裡的舊圖。</li>
+      <li>檔名用英文比較保險（見第 10 節）。</li>
+      <li>GitHub 本身的門檻：單一檔案超過 50 MiB 會警告，超過 100 MiB 推不上去，整個 repo 建議 1 GB 以內。</li>
+    </ul>
+  </li>
+  <li><strong>什麼時候往下一步：</strong>repo 裡的檔案加起來逼近 50 MB。症狀是有些圖慢、有些出不來（403）、重新整理又好了（第 10 節）。</li>
+</ul>
+
+<h3>第 3 階：孤兒 tag（先整部一個，超過才拆）</h3>
+<ul>
+  <li><strong>為什麼釘 commit 沒用：</strong>jsDelivr 算的是 <code>@</code> 後面那個版本當下整個 repo 有哪些檔案（不算歷史）。把網址從 <code>@main</code> 改成大 repo 的某個 commit，那個 commit 一樣超過 50 MB。</li>
+  <li><strong>做法：</strong>在原本的素材 repo 裡做一個<strong>孤兒 commit</strong>（沒有上一層，裡面只放作品用到的檔案），對它打 tag，只把 tag 推上去，網址的 <code>@main</code> 換成 <code>@&lt;tag名&gt;</code>。不用另開 repo，也不會建立分支；用的是 main 上現成的檔案，repo 不會變大。指令在 larch-preview 的 SKILL.md（「素材放 GitHub 走 jsDelivr」那一節）。</li>
+  <li><strong>分幾個 tag，看作品實際用到多少：</strong>
+    <ul>
+      <li>用到的檔案加起來 40 MB 以內：整部作品打<strong>一個 tag</strong> 就好。jsDelivr 上限 50 MB，留 10 MB 給之後補圖。repo 本身多大沒關係，算的是 tag 裡放了什麼。</li>
+      <li>超過 40 MB：<strong>一張卡片一個 tag</strong>（例如 <code>@card-&lt;卡片id&gt;</code>），每張卡只放它用到的檔案。好幾張卡共用的圖或配樂，放在第一張用到它的卡，網址只有一個，換卡時不會重抓、配樂不會被打斷。</li>
+    </ul>
+  </li>
+  <li><strong>要注意：</strong>tag 名不要用「v＋數字」開頭（第 10 節）。jsDelivr 把 <code>card-</code> 開頭的 tag 當成 branch，一樣快取 12 小時、瀏覽器 7 天，所以 tag 打了就不改內容，要改就打下一版（<code>-r2</code>、<code>-r3</code>），舊網址照樣能用。</li>
+  <li><strong>實測：</strong>《仙泉．香布纏》用到的圖 250 MB、音樂 180 MB，遠超過 40 MB，所以一張卡片一個 tag（圖和音樂各自在自己的 repo 打同名的 tag）。改完之後 969 個網址逐一下載，全部拿得到。其中一張 2.4 MB 的 CG，熱快取時 0.26～0.30 秒載完。</li>
+  <li><strong>跟 AI 講：</strong>「素材 repo 超過 50 MB，就用孤兒 tag：作品用到的檔案 40 MB 以內打一個 tag，超過就一張卡片一個 tag。tag 名不要用 v 加數字開頭，改完每個網址都實際下載一次。」</li>
+</ul>
+
+<h2><span class="n">12</span>連結</h2>
+<div class="box" style="margin-top:1rem">
+  <ul>
+    <li><strong>larch-preview：</strong><a href="https://github.com/yazelin/larch-preview" target="_blank">github.com/yazelin/larch-preview</a></li>
+    <li><strong>LINE AI 許願池社群：</strong><a href="https://yazelin.github.io/line/" target="_blank">yazelin.github.io/line</a>（錄影、講義、開播通知都發在群裡）</li>
+    <li><strong>每週三主題投票：</strong><a href="https://yazelin.github.io/vote/" target="_blank">yazelin.github.io/vote</a></li>
+    <li><strong>請亞澤喝杯咖啡：</strong><a href="https://buymeacoffee.com/yazelin" target="_blank">buymeacoffee.com/yazelin</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>2026-10-06 週二快閃場 · 明晚 10/07 週三 20:00「讓網站每天自己寫一篇」</p>
+</footer>
+
+</body>
+</html>
