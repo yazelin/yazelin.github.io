@@ -267,6 +267,8 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
 (function () {
   var API = 'https://k-rider-api.yazelinj303.workers.dev/vote';
   var NOTE = 'https://k-rider-api.yazelinj303.workers.dev/note';
+  // 圖走 jsDelivr：Pages 這條路由從台灣抓圖很慢（實測 50–90KB/s）。@master 快取約 12 小時，新圖推完要 purge
+  var CDN = 'https://cdn.jsdelivr.net/gh/yazelin/yazelin.github.io@master';
   var MAX = 3;
   var LINE = 'https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=vote&utm_medium=link&utm_campaign=vote';
   var T = window.VOTE_TOPICS || { open: [], done: [], scheduled: [] };
@@ -464,7 +466,7 @@ footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--rule);
       a.className = 'card' + (isNext ? ' next' : '');
       if (t.img) {
         var im = document.createElement('img');
-        im.src = t.img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+        im.src = t.img.charAt(0) === '/' ? CDN + t.img : t.img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
         if (t.url) { var lk = document.createElement('a'); lk.href = t.url; lk.appendChild(im); a.appendChild(lk); }
         else a.appendChild(im);
       }

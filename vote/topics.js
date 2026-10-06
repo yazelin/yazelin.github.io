@@ -2,6 +2,7 @@
 //
 // 每辦完一場:把該主題從 open 搬到 done、補上 url 與 img(封面)、加 feedback:true 讓心得卡出現。
 // 封面就是該場簡報第一頁的截圖,放 yazelin.github.io/images/events/,640x360 的 jpg。
+// img 寫 / 開頭的站內路徑,index.html 會自動改走 jsDelivr(@master 快取約 12 小時,新圖推完到 purge.jsdelivr.net 清一次)。
 // 下一場開始之前把 feedback 拿掉,心得卡就收起來。
 // open 的 url 是「看作品」連結(Pages 或市集頁),可省略。
 // 票是按 slug 算的,搬走就自然退出排行,舊票不受影響。slug 一旦公開就不要改。
@@ -23,7 +24,7 @@ window.VOTE_TOPICS = {
     { slug: 'larch-puzzle-2', title: '視覺小說第二週：15 分鐘定劇情，交給 Agent 做解謎', date: '09-16', url: '/events/puzzle-2026-09-16/', img: '/images/events/og-larch-puzzle.jpg' },
     { slug: 'larch-vn',   title: '視覺小說第一週：協作共創寫小說', date: '09-09', url: '/events/site-2026-09-09/', img: '/images/events/og-larch-vn.jpg'},
     { slug: 'web-deck',   title: '怎麼做高質感的網頁簡報',   date: '09-02', url: '/events/deck-2026-09-02/', img: '/images/events/og-web-deck.jpg'},
-    { slug: 'wish-pool',  title: '拆解 AI 許願池',         date: '08-26', url: '/events/wishpool-2026-08-26/' , img: '/wish-pool/og.png'},
+    { slug: 'wish-pool',  title: '拆解 AI 許願池',         date: '08-26', url: '/events/wishpool-2026-08-26/' , img: 'https://cdn.jsdelivr.net/gh/yazelin/wish-pool@master/og.png'},
     { slug: 'skull-cam',  title: 'AI 給的設計圖會騙人',     date: '08-19', url: '/events/skull-2026-08-19/' , img: '/images/events/og-skull-cam.jpg'},
     { slug: 'chat-maker', title: 'LINE 對話創作營',        date: '08-12', url: '/events/chat-2026-08-12/' , img: '/images/events/og-chat-maker.jpg'},
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
