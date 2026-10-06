@@ -10,7 +10,7 @@
 // 「建議的投票選項文字」原文,一字不加。要改先改那份。
 window.VOTE_TOPICS = {
   open: [
-    { slug: 'larch-puzzle', title: 'Larch 解謎視覺小說創作', desc: '第二屆創作者挑戰主題是解謎，用背包與場景往返做一款 5 到 10 分鐘的謎案', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
+    { slug: 'larch-puzzle', title: 'Larch 平台分享', desc: 'Larch 上的創作經驗、作品與創作者挑戰賽', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
     { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖', url: 'https://yazelin.github.io/mori-sprite-studio/' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
