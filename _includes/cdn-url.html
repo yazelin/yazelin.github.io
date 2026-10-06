@@ -1,0 +1,11 @@
+{%- comment -%}
+圖片網址改走 jsDelivr：Pages 這條路由從台灣抓圖很慢（實測 50–90KB/s）。og:image 不要用這個，留原站給 FB／LINE 抓。
+站內路徑接上 site.cdn；許願池的圖在 wish-pool repo；其他外部網址原樣回傳。@master 快取約 12 小時，新圖推完到 purge.jsdelivr.net 清一次。
+用法：{% include cdn-url.html url=page.cover %}
+{%- endcomment -%}
+{%- assign u = include.url | default: "" -%}
+{%- if u == "" -%}
+{%- elsif u contains "https://yazelin.github.io/wish-pool/" -%}{{ u | replace: "https://yazelin.github.io/wish-pool/", "https://cdn.jsdelivr.net/gh/yazelin/wish-pool@master/" }}
+{%- elsif u contains "://" -%}{{ u }}
+{%- else -%}{{ site.cdn }}{{ u }}
+{%- endif -%}

@@ -23,6 +23,7 @@ feed_show_tags: true
 # 網站網址
 url: "https://yazelin.github.io"
 baseurl: ""
+cdn: "https://cdn.jsdelivr.net/gh/yazelin/yazelin.github.io@master"   # 圖片走 jsDelivr，見 _includes/cdn-url.html
 
 # Markdown 設定
 markdown: kramdown
