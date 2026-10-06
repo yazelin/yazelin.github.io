@@ -2,7 +2,8 @@
 //
 // 每辦完一場:把該主題從 open 搬到 done、補上 url 與 img(封面)、加 feedback:true 讓心得卡出現。
 // 封面就是該場簡報第一頁的截圖,放 yazelin.github.io/images/events/,640x360 的 jpg。
-// img 寫 / 開頭的站內路徑,index.html 會自動改走 jsDelivr(@master 快取約 12 小時,新圖推完到 purge.jsdelivr.net 清一次)。
+// img 寫 / 開頭的站內路徑,index.html 會自動改走 jsDelivr。@master 在 jsDelivr 快取 12 小時、觀眾瀏覽器 7 天:
+// 新增的圖推完到 purge.jsdelivr.net 清一次就好;替換舊圖要換檔名,purge 清不到觀眾瀏覽器裡的舊圖。
 // 下一場開始之前把 feedback 拿掉,心得卡就收起來。
 // open 的 url 是「看作品」連結(Pages 或市集頁),可省略。
 // 票是按 slug 算的,搬走就自然退出排行,舊票不受影響。slug 一旦公開就不要改。
