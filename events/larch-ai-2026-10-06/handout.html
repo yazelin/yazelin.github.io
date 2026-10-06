@@ -215,7 +215,7 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
   <b>Larch 平台更新之後：</b>再跑一次 <code>python3 sync.py</code>（Windows 是 <code>python sync.py</code>）。官方前端沒變就不會重抓；要整包重抓加 <code>--force</code>。
 </div>
 <div class="box">
-  <b>跨平台現況：</b>回饋檔的檔案鎖在 Linux／macOS 用 <code>fcntl</code>，Windows 改用 <code>msvcrt.locking</code>。64 個 Python 測試、9 個 Node 測試在 Linux 上全過；Windows 和 macOS 還沒有實機跑過，遇到問題歡迎回報。
+  <b>跨平台現況：</b>回饋檔的檔案鎖在 Linux／macOS 用 <code>fcntl</code>，Windows 改用 <code>msvcrt.locking</code>。64 個 Python 測試、9 個 Node 測試在 Linux 上全過；Windows 和 macOS 還沒有實機跑過，遇到問題請你的 AI 照錯誤訊息修。
 </div>
 
 <h2><span class="n">7</span>改完怎麼推回 Larch</h2>
@@ -275,12 +275,13 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
   <li><strong>素材別都放在 Larch：</strong>卡片和圖一多，線上快轉預覽會很卡。我的做法是 Larch 上只放 JSON 劇本，跟一定要放在平台上的東西（作品封面、RPG 地圖）；CG 和語音放 GitHub，請 AI 用 jsDelivr 的網址（<code>cdn.jsdelivr.net/gh/…</code>）填回劇本。要特別跟 AI 講用 jsDelivr，不然它可能直接用 GitHub 的原始網址，那樣沒有快取，比較慢。</li>
   <li><strong>PNG 先轉 WebP：</strong>AI 生的圖通常是沒壓縮的 PNG，一張好幾 MB。卡片做到上千張，玩家看一部小說就要載好幾 GB。轉成 WebP 會壓縮、保留透明背景，肉眼很難看出差別，檔案小很多。檔名用英文比較保險（中文檔名的實測見第 10 節）。用 16 倍速快轉測分支時，沒壓縮的圖常常還沒載好就跳過了，畫面一片空白。</li>
   <li><strong>網頁編輯器跟 AI 不要同時開：</strong>AI 推上去之後，開著的網頁編輯器有時會把它手上的舊版又存回去，看起來像沒改到。我的做法：AI 在改的時候，不開那個專案（可以去作者茶館晃晃）；AI 推完之後，按 <code>Ctrl + F5</code> 強制重新整理，再點一張剛改過的卡確認內容對了。</li>
-  <li><strong>白板卡片太多很難找：</strong>上一屆有作品做到 900 張卡，白板縮到最小還是看不完，每張看起來都一樣。這類需求可以到 Larch 的許願池提。</li>
-  <li><strong>Windows 和 macOS：</strong>我自己用 Linux，Windows、macOS 是 AI 幫我寫的，沒有實機跑過。裝起來不能用的話，可以請你的 AI 照錯誤訊息修，或回報給我。</li>
+  <li><strong>白板卡片太多很難找：</strong>上一屆有作品做到 900 張卡，白板縮到最小還是看不完，每張看起來都一樣。</li>
+  <li><strong>Larch 有許願池：</strong>版本更新頁（<a href="https://larch.ink/changelog" target="_blank">larch.ink/changelog</a>）會貼每次的大更新，右上角有「功能許願」，想要什麼功能可以在那裡提，也可以幫別人的願望按「我想要」。直接打開許願池：<a href="https://larch.ink/changelog?wishes=1" target="_blank">larch.ink/changelog?wishes=1</a>。小的更新會先累積，到大更新才貼一篇，所以有些實驗中的功能不會出現在頁面上。</li>
+  <li><strong>Windows 和 macOS：</strong>我自己用 Linux，Windows、macOS 是 AI 幫我寫的，沒有實機跑過。裝起來不能用的話，可以請你的 AI 照錯誤訊息修，不用回報給我。</li>
 </ul>
 
 <h2><span class="n">10</span>會後補充（10/7）：jsDelivr 的兩個坑</h2>
-<p>直播隔天，《仙泉．香布纏》有些圖載得很慢、有些出不來，查下去是 jsDelivr 的限制。素材放 GitHub 走 jsDelivr 的話，作品一大就會遇到。</p>
+<p>補充：素材放 GitHub 走 jsDelivr 有一些限制，作品一大就會遇到。</p>
 <ul>
   <li><strong>repo 超過 50 MB 會 403：</strong>jsDelivr 的 <code>gh</code> 網址把整個 repo 當成一個套件，算的是整個 repo 的大小，不是單一檔案。超過就回 <code>Package size exceeded the configured limit of 50 MB</code>（jsDelivr 自己的 API 文件寫的是 GitHub 50 MB、npm 150 MB，跟實際一致；主說明文件那句「150 MB」講的是 npm。需要更高的上限，可以到 jsDelivr 的 GitHub repo 開 issue 申請）。之前被抓過的檔案還在快取裡，所以症狀是有些圖慢、有些出不來、重新整理又好了。香布纏的圖 repo 250 MB、音樂 repo 180 MB，兩個都超過。</li>
   <li><strong>解法：孤兒 tag，先整部一個，超過才拆。</strong>做一個只放作品用到的檔案的孤兒 commit，打 tag，網址的 <code>@main</code> 換成 <code>@&lt;tag名&gt;</code>。tag 用的是 main 上現成的檔案，repo 不會變大。作品用到的檔案 40 MB 以內，整部一個 tag 就好；超過才一張卡片一個 tag。香布纏用到 430 MB，所以一張卡片一個（<code>@card-v3-8</code> 這種），好幾張卡共用的圖或配樂放在第一張用到它的卡片，網址只有一個，換卡時不會重抓。同一批 64 張圖實測：只放卷五的測試用孤兒分支（31 MB）64 張全部拿到，整個大 repo 掛了 8 張。詳細分組見第 11 節第 3 階。</li>
@@ -290,7 +291,7 @@ New-Item -ItemType Junction -Path "$HOME\.agents\skills\larch-preview" -Target "
 </ul>
 
 <h2><span class="n">11</span>會後補充（10/7）：素材載入加速，有需要才往下一步</h2>
-<p>不是每部作品都要做到最後一階。每往下一階都多一件要自己管的事，所以照順序來：<strong>看到「往下一步」的症狀才往下走</strong>，作品小就停在第 0 或第 1 階。下面的數字都是 2026-10-07 量的。</p>
+<p>不是每部作品都要做到最後一階。每往下一階都多一件要自己管的事（雖然也是叫 AI 做啦），所以照順序來：<strong>看到「往下一步」的症狀才往下走</strong>，作品小就停在第 0 或第 1 階。下面的數字都是 2026-10-07 量的。</p>
 
 <h3>第 0 階：不優化</h3>
 <ul>
