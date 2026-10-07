@@ -20,7 +20,7 @@ services:
     name: suno-web
     repo: https://github.com/yazelin/suno-web
     what: 用瀏覽器自動化操作 Suno 網頁做歌，包成排隊式的 API。
-    status: 實際上很難用，時不時就要重新登入；下載要另外想辦法，還沒處理
+    status: 實際上很難用。Suno 會抓機器人，服務條款也一直在改，時不時就要重新登入；下載要另外想辦法，還沒處理
   - id: larch-tts
     name: larch-tts-bridge
     what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。只有請 Claude 幫 Larch 作品用 Larch 上的 AI 配旁白時才會用到，沒有站在呼叫它。
