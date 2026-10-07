@@ -15,7 +15,7 @@ services:
     what: 把 Codex CLI 的生圖功能包成 API，一張圖大約 1～3 分鐘。
   - id: llmshare
     name: llmshare
-    what: Duotify（多奇）Ollama Cloud 團購的共用閘道，不是我架的，我是團購成員之一。OpenAI 相容格式，可以換不同家的文字模型。
+    what: Duotify（多奇）架的 Ollama Cloud 團購共用閘道，我是團購成員之一。OpenAI 相容格式，可以換不同家的文字模型。
   - id: taigi-voice
     name: 台語 TTS
     what: 國語先用 Groq 上的 gpt-oss-120b 翻成台語白話字，再用 facebook/mms-tts-nan 唸出來；國語朗讀用 edge-tts。只接受從指定網頁或擴充套件來的請求，每天有用量上限。
