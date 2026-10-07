@@ -31,7 +31,7 @@ window.VOTE_TOPICS = {
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/' , img: '/images/events/og-daily-writer.jpg'},
+    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/' , img: '/images/events/og-daily-writer-1007.jpg'},
   ],
 };
 
