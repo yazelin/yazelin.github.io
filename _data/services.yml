@@ -16,6 +16,10 @@ services:
   - id: llmshare
     name: llmshare
     what: 跟朋友共用的 Ollama Cloud 閘道，OpenAI 相容格式，可以換不同家的文字模型。
+  - id: taigi-voice
+    name: 台語 TTS
+    what: 國語先用 Groq 上的 gpt-oss-120b 翻成台語白話字，再用 facebook/mms-tts-nan 唸出來；國語朗讀用 edge-tts。只接受從指定網頁或擴充套件來的請求，每天有用量上限。
+    status: Beta。10/7 實測流程會通，一句短句幾秒內回音檔，但華語翻台語會漏字；台語還沒請母語人士檢查過；MMS 是只能非商業使用的研究模型
   - id: suno-web
     name: suno-web
     repo: https://github.com/yazelin/suno-web
@@ -32,6 +36,8 @@ groups:
     title: GitHub Actions 排程自己跑
   - id: paused
     title: 排程先關著，手動跑
+  - id: beta
+    title: 內測中
   - id: byok
     title: 使用者自己填金鑰接上
   - id: build
@@ -67,6 +73,13 @@ sites:
     group: runtime
     uses: [llmshare]
     how: 收到訊息時呼叫 llmshare 改寫語氣。
+
+  - name: 阿瑋好聲音
+    url: https://yazelin.github.io/awei-voice/
+    repo: https://github.com/yazelin/awei-voice
+    group: runtime
+    uses: [taigi-voice]
+    how: 給長輩用的國語／台語朗讀網頁，選台語朗讀時呼叫台語 TTS。
 
   - name: catime
     url: https://yazelin.github.io/catime/
@@ -107,6 +120,14 @@ sites:
     uses: [codex-image, gemini-web]
     how: 給別人從模板建 repo 用的版本，預設打官方 Gemini，可改接 gemini-web。
     status: 還沒有完整跑成功過
+
+  - name: 台語新聞朗讀器
+    url: https://yazelin.github.io/taigi-news-reader/
+    repo: https://github.com/yazelin/taigi-news-reader
+    group: beta
+    uses: [taigi-voice]
+    how: Chrome 擴充套件，把新聞用台語唸出來。後端跟阿瑋好聲音同一套。
+    status: 邀請制內測，Chrome 商店還在審核
 
   - name: 漫畫工作室
     url: https://yazelin.github.io/comic-studio/
