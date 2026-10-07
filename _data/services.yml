@@ -23,7 +23,7 @@ services:
     status: 實際上很難用，時不時就要重新登入；下載要另外想辦法，還沒處理
   - id: larch-tts
     name: larch-tts-bridge
-    what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。
+    what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。只有請 Claude 幫 Larch 作品用 Larch 上的 AI 配旁白時才會用到，沒有站在呼叫它。
 
 groups:
   - id: runtime
