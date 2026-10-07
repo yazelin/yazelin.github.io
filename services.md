@@ -12,7 +12,7 @@ share-description: 我自己架的幾個 AI 服務，還有哪些站在用它們
 ## 服務
 
 {% for s in site.data.services.services %}
-- **{% if s.repo %}[{{ s.name }}]({{ s.repo }}){% else %}{{ s.name }}{% endif %}**：{{ s.what }}
+- **{% if s.repo %}[{{ s.name }}]({{ s.repo }}){% else %}{{ s.name }}{% endif %}**：{{ s.what }}{% if s.status %}（{{ s.status }}）{% endif %}
 {%- endfor %}
 
 ## 站

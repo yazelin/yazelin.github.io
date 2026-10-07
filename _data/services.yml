@@ -1,4 +1,4 @@
-# /services/ 頁面的資料。新站或新服務加在這裡，頁面會自己長出來。
+# /services/ 頁面的資料。新站或新服務加在這裡，頁面會自己更新。
 # group：runtime 訪客用的時候才呼叫／scheduled 排程自己跑／paused 排程關著、手動跑／byok 使用者自己填金鑰接上／build 只在製作時用
 # 盤點日期寫在 checked，改了資料記得跟著改。
 
@@ -20,6 +20,7 @@ services:
     name: suno-web
     repo: https://github.com/yazelin/suno-web
     what: 用瀏覽器自動化操作 Suno 網頁做歌，包成排隊式的 API。
+    status: 實際上很難用，時不時就要重新登入；下載要另外想辦法，還沒處理
   - id: larch-tts
     name: larch-tts-bridge
     what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。
