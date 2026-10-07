@@ -27,7 +27,7 @@ services:
     status: 實際上很難用。Suno 會抓機器人，服務條款也一直在改，時不時就要重新登入；下載要另外想辦法，還沒處理
   - id: larch-tts
     name: larch-tts-bridge
-    what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。只有請 Claude 幫 Larch 作品用 Larch 上的 AI 配旁白時才會用到，沒有站在呼叫它。
+    what: 文字送進 Larch 配音，再用 ffmpeg 去掉頭尾靜音、統一每句音量，轉成 mp3、wav 等格式。只有請 Claude 幫 Larch 作品用 Larch 上的 AI 配旁白時才會用到，沒有站在呼叫它。
 
 groups:
   - id: runtime
