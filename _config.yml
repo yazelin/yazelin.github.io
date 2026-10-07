@@ -55,6 +55,8 @@ navbar:
     url: /characters/
   - title: 活動
     url: /events/
+  - title: 服務
+    url: /services/
   - title: Tags
     url: /tags/
 

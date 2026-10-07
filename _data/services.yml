@@ -1,0 +1,144 @@
+# /services/ 頁面的資料。新站或新服務加在這裡，頁面會自己長出來。
+# group：runtime 訪客用的時候才呼叫／scheduled 排程自己跑／paused 排程關著、手動跑／byok 使用者自己填金鑰接上／build 只在製作時用
+# 盤點日期寫在 checked，改了資料記得跟著改。
+
+checked: 2026-10-07
+
+services:
+  - id: gemini-web
+    name: gemini-web
+    repo: https://github.com/yazelin/gemini-web
+    what: 用瀏覽器自動化操作登入好的 Gemini 網頁，包成 API：文字、生圖、改圖、音樂。介面跟官方 Gemini API 相容，程式不設網址就直接打官方。
+  - id: codex-image
+    name: codex-image-service
+    repo: https://github.com/yazelin/codex-image-service
+    what: 把 Codex CLI 的生圖功能包成 API，一張圖大約 1～3 分鐘。
+  - id: llmshare
+    name: llmshare
+    what: 跟朋友共用的 Ollama Cloud 閘道，OpenAI 相容格式，可以換不同家的文字模型。
+  - id: suno-web
+    name: suno-web
+    repo: https://github.com/yazelin/suno-web
+    what: 用瀏覽器自動化操作 Suno 網頁做歌，包成排隊式的 API。
+  - id: larch-tts
+    name: larch-tts-bridge
+    what: 文字送進 Larch 配音，再用 ffmpeg 後製成音檔。
+
+groups:
+  - id: runtime
+    title: 訪客用的時候才呼叫
+  - id: scheduled
+    title: GitHub Actions 排程自己跑
+  - id: paused
+    title: 排程先關著，手動跑
+  - id: byok
+    title: 使用者自己填金鑰接上
+  - id: build
+    title: 只在製作的時候用
+
+sites:
+  - name: 格莉奇OS
+    url: https://yazelin.github.io/ai-brain-site/
+    repo: https://github.com/yazelin/ai-brain-site
+    group: runtime
+    uses: [gemini-web]
+    how: 跟格莉奇聊天、生圖走 Cloudflare Worker 轉送；格莉奇日記每天台北 22:10 排程寫一篇，單數日加一張圖。
+  - name: LINE 貼圖製造機
+    url: https://yazelin.github.io/line-sticker-studio/
+    repo: https://github.com/yazelin/line-sticker-studio
+    group: runtime
+    uses: [gemini-web]
+    how: 上傳角色圖後，Worker 呼叫改圖產生整張貼圖。
+  - name: 表情拉霸
+    url: https://yazelin.github.io/emoji-slot-machine/
+    repo: https://github.com/yazelin/emoji-slot-machine
+    group: runtime
+    uses: [gemini-web]
+    how: Worker 呼叫改圖產生表情格子圖。
+  - name: LINE 對話製造機
+    url: https://yazelin.github.io/line-chat-maker/
+    repo: https://github.com/yazelin/line-chat-maker
+    group: runtime
+    uses: [codex-image, llmshare]
+    how: AI 寫對話劇本走 llmshare，對話裡的插圖走 codex-image。
+  - name: 防衛語句翻譯 LINE Bot
+    repo: https://github.com/yazelin/defensive-tone-bot
+    group: runtime
+    uses: [llmshare]
+    how: 收到訊息時呼叫 llmshare 改寫語氣。
+
+  - name: catime
+    url: https://yazelin.github.io/catime/
+    repo: https://github.com/yazelin/catime
+    group: scheduled
+    uses: [codex-image, gemini-web]
+    how: 排每小時一次（實際一天跑 4～5 次）。gemini-web 想點子、寫提示詞，codex-image 畫貓；畫失敗就改用 Gemini 生圖補上。
+  - name: Mori 野外筆記
+    url: https://yazelin.github.io/mori-field-notes/
+    repo: https://github.com/yazelin/mori-field-notes
+    group: scheduled
+    uses: [gemini-web]
+    how: 每天台北 08:30 排程，讀 Hacker News 後寫一篇，不配圖，圖表用 HTML 畫。
+  - name: 優理成長日記
+    url: https://yazelin.github.io/yori-growth-log/
+    repo: https://github.com/yazelin/yori-growth-log
+    group: scheduled
+    uses: [llmshare, codex-image, gemini-web]
+    how: 每天台北 21:30 排程。gemini-web 找新聞，llmshare 寫日記，codex-image 畫四格；任何一步失敗整篇不發。
+  - name: AI 生圖字體風格庫
+    url: https://yazelin.github.io/ai-font-styles/
+    repo: https://github.com/yazelin/ai-font-styles
+    group: scheduled
+    uses: [codex-image]
+    how: 每天三次排程，產生新字體風格的字形與範例圖。
+    status: 10/5 起排程失敗，還沒查原因
+
+  - name: 貓貓轉生
+    url: https://yazelin.github.io/neko-tensei/
+    repo: https://github.com/yazelin/neko-tensei
+    group: paused
+    uses: [gemini-web, codex-image]
+    how: 按一次跑一話，gemini-web 寫劇本、codex-image 畫分鏡，產出要人工合併的 PR。
+  - name: AI 漫畫產線樣板
+    url: https://yazelin.github.io/ai-comic-starter/
+    repo: https://github.com/yazelin/ai-comic-starter
+    group: paused
+    uses: [codex-image, gemini-web]
+    how: 給別人從模板建 repo 用的版本，預設打官方 Gemini，可改接 gemini-web。
+    status: 還沒有完整跑成功過
+
+  - name: 漫畫工作室
+    url: https://yazelin.github.io/comic-studio/
+    repo: https://github.com/yazelin/comic-studio
+    group: byok
+    uses: [codex-image, gemini-web]
+    how: 純前端，網址預先填好，金鑰由使用者自己輸入。
+  - name: mori-sprite-studio
+    url: https://mori-sprite-studio.vercel.app
+    repo: https://github.com/yazelin/mori-sprite-studio
+    group: byok
+    uses: [codex-image]
+    how: 預設用官方 Gemini，可以改填 codex-image 的網址和金鑰。
+  - name: tiny-harness
+    repo: https://github.com/yazelin/tiny-harness
+    group: byok
+    uses: [llmshare]
+    how: 極小的 agent 迴圈，命令列或示範頁填金鑰就能跑。
+
+  - name: 格莉奇視覺小說
+    url: https://yazelin.github.io/glitch-vn/
+    repo: https://github.com/yazelin/glitch-vn
+    group: build
+    uses: [codex-image, suno-web]
+    how: 插圖用 codex-image 畫，配樂用 suno-web 做。
+  - name: 台灣人代表
+    url: https://yazelin.github.io/taiwan-people/
+    repo: https://github.com/yazelin/taiwan-people
+    group: build
+    uses: [codex-image]
+    how: 人物圖用 codex-image 畫。
+  - name: 仙泉·香布纏．無雙
+    repo: https://github.com/yazelin/xianquan-musou
+    group: build
+    uses: [gemini-web]
+    how: 頭目等素材圖用 gemini-web 生。
