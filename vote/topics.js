@@ -19,7 +19,8 @@ window.VOTE_TOPICS = {
     { slug: 'active-agent', title: '做一個會主動幫你做事的 agent', desc: '讓 agent 自己在某個地方發現事情、主動去處理，不只是定時跑排程；也會講一小段 agent 怎麼運作：迴圈怎麼跑、怎麼呼叫 API' },
   ],
   done: [
-    { slug: 'larch-ai-setup', title: '週二臨時加開：我的 Larch 視覺小說 AI 開發配置', date: '10-06', url: '/events/larch-ai-2026-10-06/', img: '/images/events/og-larch-ai.jpg', feedback: true },
+    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/', img: '/images/events/og-daily-writer-1007.jpg', feedback: true },
+    { slug: 'larch-ai-setup', title: '週二臨時加開：我的 Larch 視覺小說 AI 開發配置', date: '10-06', url: '/events/larch-ai-2026-10-06/', img: '/images/events/og-larch-ai.jpg' },
     { slug: 'web-effects', title: '幫你的網頁加點特效：做一個自己的個人網站', date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg'},
     { slug: 'larch-puzzle-2', title: '視覺小說第二週：15 分鐘定劇情，交給 Agent 做解謎', date: '09-16', url: '/events/puzzle-2026-09-16/', img: '/images/events/og-larch-puzzle.jpg' },
@@ -31,7 +32,7 @@ window.VOTE_TOPICS = {
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/' , img: '/images/events/og-daily-writer-1007.jpg'},
+    { slug: 'mori-universe', title: '預計：Mori 宇宙（Mori Desktop、mori-sprite-studio）', date: '10-14' },
   ],
 };
 
