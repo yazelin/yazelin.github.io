@@ -12,7 +12,7 @@ author: Yaze Lin
 
 我在製作《仙泉．香布纏．續》、《王子姬》和《十一分鐘》的地圖時，先用不同顏色的格子、透明圖框和測試角色確認空間關係。我和 AI 對著同一張色塊圖看動線、碰撞和前後順序，確認後才開始製作正式地圖。這個順序讓地圖設計能先被看見、討論和修改，之後才進入美術製作。
 
-本文的色塊圖依三個專案目前的地圖設計重新輸出，角色探針按現有物件座標重畫，呈現逐點放入角色確認遮擋的方法；每個圖示代表不同回合的一個測試站位。合成時也依實際排序列放置物件色塊：斜紋遮罩蓋住物件後方的角色，站在排序列前方的角色則顯示在色塊上層。實際效果圖則於 2026 年 10 月 13 日從各作品目前的 Larch 本機預覽重新擷取。
+本文的色塊圖依三個專案目前的地圖設計重新輸出，角色探針按現有物件座標重畫，呈現逐點放入角色確認遮擋的方法；每個圖示代表不同回合的一個測試站位。合成時也依實際排序列放置物件色塊：斜紋遮罩蓋住物件後方的角色，站在排序列前方的角色則顯示在色塊上層。實際畫面於 2026 年 10 月 13 日從各作品目前的 Larch 本機預覽重新擷取，並將角色放到與色塊圖相同的測試格；《十一分鐘》的測試副本略過開場自動劇情，地圖素材與分層設定維持原樣。
 
 ## 先分清楚「站在哪裡」和「畫到哪裡」
 
@@ -44,15 +44,28 @@ author: Yaze Lin
 
 ### 《仙泉．香布纏．續》：先確認魏家門口的門檻和院子走位
 
-目前的 A4「五原．魏家門口」地圖，把門檻、屋前的柴架、罈子、木桶、長架與水缸，以及院子裡的木樁、劈好的柴、竹簍、柴捆、老樹和對面屋頂分開標示。門口與院子的走位先在色塊圖上確認，角色才能從門框前後通過。
+目前的 A4「五原．魏家門口」地圖，把門檻、屋前的柴架、罈子、木桶、長架與水缸，以及院子裡的木樁、劈好的柴、竹簍、柴捆、老樹和對面屋頂分開標示。色塊階段先確認門口與院子的動線，再用逐點角色檢查每件物件的前後遮擋。
 
 ![《仙泉．香布纏．續》A4 五原．魏家門口地圖的多色格線規劃，斜紋物件色塊依排序列遮住後方測試角色，前方角色顯示在色塊上層](/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-plan.png)
 
 *色塊規劃：按目前 A4 物件配置標出 35 個測試站位；斜紋色塊蓋住後方角色，未被遮住的角色在前方。角色要逐一放進各處檢查，圖上的多個位置不代表同時出現。*
 
-![《仙泉．香布纏．續》A4 五原．魏家門口地圖的實際遊戲畫面，角色站在門檻前，可看到門框和院內物件的相對位置](/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-gameplay.jpg)
+木樁是這組實機對照的物件。色塊圖上的後側探針在 (12,9)，前側探針在 (12,12)。角色從木樁北側出發，下半身被木樁遮住；沿右側繞到南側後，角色完整顯示。這條路線繞過木樁，沒有穿過佔地格。
 
-*實際預覽：角色走到門檻前時，可以對照角色、門框和院內物件的前後關係。*
+<table>
+  <thead><tr><th>後側探針 (12,9)</th><th>前側探針 (12,12)</th></tr></thead>
+  <tbody><tr>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-back.png" alt="《仙泉．香布纏．續》本機 RPG 預覽：角色站在木樁北側 (12,9)，下半身被木樁遮住" style="max-width:100%;height:auto"></td>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-gameplay.jpg" alt="《仙泉．香布纏．續》本機 RPG 預覽：角色站在木樁南側 (12,12)，顯示在木樁前方" style="max-width:100%;height:auto"></td>
+  </tr></tbody>
+</table>
+
+<video controls preload="metadata" playsinline poster="/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-back.png" style="display:block;max-width:100%;height:auto">
+  <source src="/images/blog/2026-10-13-larch-rpg-map-layering/xiangbu-xu-a4-stump-occlusion.mp4" type="video/mp4">
+  您的瀏覽器不支援影片播放。
+</video>
+
+*短片：角色從 (12,9) 出發，沿木樁右側繞到 (12,12)，可以看到站位改變時的遮擋效果。*
 
 ### 《王子姬》：把育嬰室的家具和王城廣場拆成圖層
 
@@ -62,9 +75,22 @@ author: Yaze Lin
 
 *色塊規劃：20 件物件各有前後測試角色，共標出 40 個探針位置；斜紋遮住物件後方的角色，橘色站位顯示角色在物件前方。*
 
-![《王子姬》王城中央廣場的本機預覽畫面，一名角色站在噴水池南側，周圍有長椅、花圃和樹木](/images/blog/2026-10-13-larch-rpg-map-layering/prince-hime-plaza-gameplay.png)
+噴水池的後側探針在 (24,14)，前側探針在 (24,19)。角色在後側時完全藏在池身後；走到池南側後，角色出現在底座前方。
 
-*本機預覽：角色站在噴水池前方，能看到人物與噴水池底座的前後疊放。*
+<table>
+  <thead><tr><th>後側探針 (24,14)</th><th>前側探針 (24,19)</th></tr></thead>
+  <tbody><tr>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/prince-hime-plaza-back.png" alt="《王子姬》本機 RPG 預覽：角色站在噴水池北側 (24,14)，被池身完全遮住" style="max-width:100%;height:auto"></td>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/prince-hime-plaza-gameplay.png" alt="《王子姬》本機 RPG 預覽：角色站在噴水池南側 (24,19)，顯示在底座前方" style="max-width:100%;height:auto"></td>
+  </tr></tbody>
+</table>
+
+<video controls preload="metadata" playsinline poster="/images/blog/2026-10-13-larch-rpg-map-layering/prince-hime-plaza-back.png" style="display:block;max-width:100%;height:auto">
+  <source src="/images/blog/2026-10-13-larch-rpg-map-layering/prince-hime-plaza-occlusion.mp4" type="video/mp4">
+  您的瀏覽器不支援影片播放。
+</video>
+
+*短片：角色從 (24,14) 繞過噴水池東側，走到南側測試格 (24,19)。*
 
 ### 《十一分鐘》：把辦公室的桌面、隔間和門洞拆開
 
@@ -74,9 +100,22 @@ author: Yaze Lin
 
 *色塊規劃：把牆柱的獨立排序段也列入後，共標出 92 個前後、側邊與門洞測試站位；斜紋色塊會依排序列遮住後方角色，逐點移動時可以確認角色走到前方後會重新顯示。*
 
-![《十一分鐘》十九樓網管中心的本機預覽畫面，主角在工位旁，周主任位於辦公室隔間門口，警衛在下方走道](/images/blog/2026-10-13-larch-rpg-map-layering/eleven-minutes-office-gameplay.jpg)
+工位 A2 的後側探針在 (17,7)，前側探針在 (17,10)。角色從螢幕後方出發，身體被工位遮住；繞到工位南側後，角色完整顯示在桌面前方。
 
-*本機預覽：主角與周主任分處工位和隔間門口，下方走道也能看到警衛，可同時查看人物、桌面與牆體的前後順序。*
+<table>
+  <thead><tr><th>後側探針 (17,7)</th><th>前側探針 (17,10)</th></tr></thead>
+  <tbody><tr>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/eleven-minutes-office-back.png" alt="《十一分鐘》本機 RPG 預覽：角色在工位 A2 北側 (17,7)，身體被螢幕和桌面遮住" style="max-width:100%;height:auto"></td>
+    <td><img src="/images/blog/2026-10-13-larch-rpg-map-layering/eleven-minutes-office-gameplay.jpg" alt="《十一分鐘》本機 RPG 預覽：角色在工位 A2 南側 (17,10)，顯示在桌面前方" style="max-width:100%;height:auto"></td>
+  </tr></tbody>
+</table>
+
+<video controls preload="metadata" playsinline poster="/images/blog/2026-10-13-larch-rpg-map-layering/eleven-minutes-office-back.png" style="display:block;max-width:100%;height:auto">
+  <source src="/images/blog/2026-10-13-larch-rpg-map-layering/eleven-minutes-office-occlusion.mp4" type="video/mp4">
+  您的瀏覽器不支援影片播放。
+</video>
+
+*短片：角色從 (17,7) 沿工位右側繞到 (17,10)；這份本機預覽略過開場自動劇情，只保留目前的地圖素材與物件分層。*
 
 ## 色塊確認後，才製作正式場景
 
