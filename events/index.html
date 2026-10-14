@@ -106,7 +106,7 @@ permalink: /events/
 <script type="application/json" id="ev-data">[
 {% for e in events %}  { "date": {{ e.event_date | jsonify }}, "title": {{ e.title | jsonify }},
     "sub": {{ e.subtitle | default: "" | jsonify }}, "when": {{ e.event_datetime | default: "" | jsonify }},
-    "url": {{ e.url | relative_url | jsonify }}, "cover": {{ e.cover | default: "" | relative_url | jsonify }},
+    "url": {{ e.url | relative_url | jsonify }}, "cover": {% capture c %}{% include cdn-url.html url=e.cover %}{% endcapture %}{{ c | strip | jsonify }},
     "rec": {{ e.recording_url | default: "" | jsonify }} }{% unless forloop.last %},{% endunless %}
 {% endfor %}]</script>
 <script>

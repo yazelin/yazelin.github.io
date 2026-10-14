@@ -1,0 +1,276 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>視覺小說第一週 講義 2026-09-09</title>
+<style>
+  :root{
+    --ink-deep:#2b2228; --accent:#dd94a4; --accent-text:#b06277;
+    --bg:#faf7f6; --card:#ffffff; --ink:#2e2830; --muted:#7d7079; --border:#ece2e4;
+    --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.85;
+    max-width:820px;margin:0 auto;padding:3rem 1.5rem 5rem;font-size:16px;}
+  header{border-bottom:3px solid var(--accent);padding-bottom:1.6rem;margin-bottom:2.4rem;}
+  .kicker{font-size:.8rem;letter-spacing:.2em;color:var(--accent-text);font-weight:700;}
+  h1{font-size:2rem;line-height:1.3;margin:.6rem 0;color:var(--ink-deep);}
+  header p{color:var(--muted);}
+  h2{font-size:1.35rem;color:var(--ink-deep);margin:2.8rem 0 .9rem;padding-top:.6rem;border-top:1px solid var(--border);}
+  h2 .n{display:inline-block;min-width:2.1rem;height:2.1rem;line-height:2.1rem;text-align:center;
+    background:var(--accent-text);color:#fff;border-radius:50%;font-size:1rem;margin-right:.6rem;}
+  h3{font-size:1.05rem;color:var(--ink-deep);margin:1.4rem 0 .5rem;}
+  p{margin:.7rem 0;}
+  ul,ol{margin:.7rem 0 .7rem 1.4rem;}
+  li{margin:.35rem 0;}
+  strong{color:var(--accent-text);}
+  a{color:var(--accent-text);}
+  code{background:#f3eaec;border-radius:4px;padding:.1rem .35rem;font-size:.92em;}
+  table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.94rem;}
+  th,td{border:1px solid var(--border);padding:.55rem .7rem;text-align:left;vertical-align:top;}
+  th{background:#f3eaec;color:var(--ink-deep);font-weight:700;}
+  .box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0;}
+  .box b{color:var(--ink-deep);}
+  .warn{background:#fff5e3;border-color:#f0dcb8;}
+  .warn b{color:#a8631a;}
+  .steps{counter-reset:s;list-style:none;margin-left:0;}
+  .steps li{counter-increment:s;position:relative;padding-left:2.2rem;margin:.6rem 0;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.6rem;height:1.6rem;
+    line-height:1.6rem;text-align:center;background:var(--accent);color:#fff;border-radius:50%;font-size:.85rem;font-weight:700;}
+  figure{margin:1.2rem 0;}
+  figure img{width:100%;border:1px solid var(--border);border-radius:12px;display:block;background:#111;}
+  figcaption{font-size:.85rem;color:var(--muted);margin-top:.45rem;}
+  footer{margin-top:3.5rem;border-top:1px solid var(--border);padding-top:1.4rem;font-size:.85rem;color:var(--muted);}
+  .join{display:flex;gap:1.4rem;align-items:center;background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:1.2rem 1.4rem;margin:.6rem 0 1.6rem;}
+  .join b{display:block;color:var(--ink-deep);font-size:1rem;margin-bottom:.3rem;}
+  .btn{display:inline-block;background:var(--accent-text);color:#fff;text-decoration:none;font-weight:700;
+    padding:.5rem 1.4rem;border-radius:999px;font-size:.92rem;}
+  .wm{display:none;}
+  @media print{
+    body{background:#fff;padding:0;font-size:11.5pt;max-width:none;}
+    .wm{display:block;position:fixed;bottom:8mm;right:10mm;font-size:8pt;color:#b3a7ac;}
+    h2{break-after:avoid;} .box,table{break-inside:avoid;}
+  }
+</style>
+
+<div class="wm">亞澤　·　yazelin.github.io</div>
+
+<header>
+  <p class="kicker">視覺小說第一週　2026-09-09</p>
+  <h1>在 Larch 上做一部自己的視覺小說</h1>
+  <p>這份講義是給你回家自己做的。直播當晚我們花了很多時間在同一塊白板上一起玩，講述的部分因此講得比較零散。這份把它補齊，照著做，就算當天沒來也能從零做出一部能發佈的小說。</p>
+</header>
+
+<h2><span class="n">0</span>先準備這三件</h2>
+<ol class="steps">
+  <li>到 <a href="https://larch.ink">larch.ink</a> 用 Google 登入，不用填資料。</li>
+  <li>到 <a href="https://larch.ink/creator-challenge">創作者挑戰頁</a>按報名。<strong>第二屆創作者挑戰期間（到 2026-09-20 截止），報名之後平台的 AI 功能可無限使用</strong>（AI 影片除外）。沒報名、或挑戰賽結束之後，每次配音、生圖都會扣松果幣，免費方案每月只有 20 枚。</li>
+  <li>用電腦的瀏覽器。白板要拖曳與縮放，手機做得很痛苦。</li>
+</ol>
+<div class="warn box"><b>先報名再開始按生成。</b>沒報名就按生成，扣掉的點數要不回來。當晚示範配音前特地停下來確認大家都報名了，就是為了這件事。</div>
+
+<h2><span class="n">1</span>Larch 的結構：專案、章節、卡片</h2>
+<p>三層，由大到小：</p>
+<table>
+  <tr><th>層級</th><th>是什麼</th><th>比喻</th></tr>
+  <tr><td>專案</td><td>一部作品，也是素材、角色、設定的容器</td><td>一套書</td></tr>
+  <tr><td>章節（白板）</td><td>一張畫布，上面放卡片與連線</td><td>一本</td></tr>
+  <tr><td>卡片</td><td>玩家實際看到的一個畫面</td><td>一頁</td></tr>
+</table>
+<p>章節可以當「章」，也可以純粹當分類用。它們之間<strong>不會自動接下去</strong>：第一章演完不會自己跳到第二章，要在卡片上明確設定跳轉。</p>
+<p><strong>每個章節各自有一個「開始」起點。</strong>你可以把整個專案設計成一條連貫的長篇（只有一個真正的入口），也可以讓每一章都能獨立開始玩。兩種都行，差別在你要不要讓讀者從中間進來。</p>
+
+<h2><span class="n">2</span>創作順序：先寫結局，再往回推</h2>
+<p>手動排卡也好、之後交給 AI 也好，想故事的順序都一樣。卡在「不知道從哪裡開始寫」的時候，照這四步走：</p>
+<ol class="steps">
+  <li><strong>先寫兩個結局。</strong>各一兩句，各自要有畫面。先寫開頭的人會卡在中間，先寫結局的人只要把路接過去。</li>
+  <li><strong>回推那一個選擇。</strong>選項要兩邊都有人會選：說／不說、等／不等。一邊明顯比較好，那就只是一條走廊。</li>
+  <li><strong>兩個角色，一人一個想要的東西。</strong>識別特徵各寫一行就夠：髮型、髮色、一件配件。別寫身家背景，第一部用不到。</li>
+  <li><strong>場景最後才決定。</strong>場景只是他們碰面的地方，挑素材包裡現成的那張。</li>
+</ol>
+<div class="box">
+  <b>用當晚的範例拆一遍</b>
+  <p>先有兩個結局：「兩個店員把最後兩支黑輪分掉，好好道別了」與「隔天才發現他已經走了，沒有好好道別」。</p>
+  <p>回推：那個選擇是「說吧」或「明天再說」。</p>
+  <p>再回推：需要兩個角色（你、同事阿哲）與一個場景（打烊前的店）。</p>
+  <p>故事就這樣寫出來了，總共六到八張卡，十五分鐘做得完。</p>
+</div>
+
+<h2><span class="n">3</span>三種卡</h2>
+<p>核心只有三種，其他都是進階。在白板空白處<strong>點兩下</strong>就能加卡。</p>
+<table>
+  <tr><th>卡</th><th>做什麼</th><th>什麼時候用</th></tr>
+  <tr><td>場景卡</td><td>換背景</td><td>換地點、換時間。<strong>沒換場景就不用再放一張</strong>，背景會一直延續下去</td></tr>
+  <tr><td>對話卡</td><td>角色講話、配立繪與表情</td><td>用量最大的一種</td></tr>
+  <tr><td>選擇卡</td><td>跳出選項讓玩家選</td><td>分支的地方</td></tr>
+</table>
+<figure><img src="assets/講義/03-三種卡.jpg" alt="場景卡「深夜的店」。左上角的「開始」標籤代表這張是整章的起點，卡片底下的「新增下一段對話」就是加一句的入口。"><figcaption>場景卡「深夜的店」。左上角的「開始」標籤代表這張是整章的起點，卡片底下的「新增下一段對話」就是加一句的入口。</figcaption></figure>
+<h3>一張對話卡可以裝一整段對話</h3>
+<p>第一次做的人幾乎都會漏掉這件事，做出來自己玩會覺得卡卡的。一張對話卡預設只有一句，但<strong>只要場景沒換，你可以在同一張卡裡一直「加一句」</strong>，而且每一句可以是不同的人講的。</p>
+<p>兩個人鬥嘴十句，正確做法是<strong>一張卡裝十句</strong>。排成十張卡玩起來是一樣的，差別在白板：十張卡很快就把畫面佔滿，之後要找卡、接線、改東西都麻煩，一段長對話還會被拆散在好幾張卡上。<strong>同一個場景，一張對話卡就解決了。</strong></p>
+<h3>排法</h3>
+<p>場景 → 對話 → 對話 → 選擇 →（A 線）對話 → 結局 A ／（B 線）對話 → 結局 B。</p>
+<p>選擇卡的選項可以放在畫面下方或中間。放下方比較像對話中的回應，放中間比較像真的要做一個決定。</p>
+<figure><img src="assets/講義/07-測試播放.jpg" alt="排好之後在白板上長這樣：場景 → 對話 → 對話 → 選擇卡 → 兩條分支各接一個結局。"><figcaption>排好之後在白板上長這樣：場景 → 對話 → 對話 → 選擇卡 → 兩條分支各接一個結局。</figcaption></figure>
+
+
+<h2><span class="n">4</span>白板怎麼操作</h2>
+<table>
+  <tr><th>動作</th><th>怎麼做</th></tr>
+  <tr><td>縮放</td><td><code>Ctrl</code> + 滑鼠滾輪</td></tr>
+  <tr><td>移動畫布</td><td>在空白處按住左鍵拖曳</td></tr>
+  <tr><td>加卡片</td><td>空白處點兩下，選場景／對話／選擇</td></tr>
+  <tr><td>編輯卡片</td><td>卡片上點兩下。左邊是預覽，右邊是設定</td></tr>
+  <tr><td>存檔</td><td><code>Ctrl</code> + <code>S</code></td></tr>
+  <tr><td>框選多張</td><td>按住 <code>Shift</code> 拉框</td></tr>
+</table>
+<div class="warn box">
+  <b>存檔卡在「儲存中」不動，按第二次就好。</b>當晚實際發生過：第一次存檔畫面一直顯示儲存中、同步也沒發生，再按一次 <code>Ctrl</code>+<code>S</code> 立刻就完成了。看到卡住不要一直等。
+</div>
+<figure><img src="assets/講義/02-白板操作.jpg" alt="白板上的卡片。每張卡顯示標題、說話的人與台詞，虛線是接下去的路線。"><figcaption>白板上的卡片。每張卡顯示標題、說話的人與台詞，虛線是接下去的路線。</figcaption></figure>
+<h3>多人同時編輯會互相蓋掉</h3>
+<p>共創白板上大家改同一組卡片時，後存的會蓋掉先存的。當晚的解法是：<strong>框選你要練習的那一組卡 → 右鍵 → 原地複製一份</strong>，然後改你自己那份。想搬遠一點就剪下、貼到白板空的地方。</p>
+
+<h2><span class="n">5</span>角色與表情</h2>
+<p>對話卡的設定由上到下就是四件事，記住順序就不會亂：</p>
+<ol class="steps">
+  <li><strong>誰在說話</strong>，點一下換人。</li>
+  <li><strong>用什麼表情</strong>，換人之後右邊會列出這個角色有的表情，點選即可。</li>
+  <li><strong>他講什麼</strong>，台詞。</li>
+  <li><strong>配音</strong>，見下一節。</li>
+</ol>
+<figure><img src="assets/講義/05-角色表情.jpg" alt="對話卡的編輯畫面，由上到下就是那四件事：①誰在說話 ②表情與立繪 ③台詞，底下的「進階」裡是配音。"><figcaption>對話卡的編輯畫面，由上到下就是那四件事：①誰在說話 ②表情與立繪 ③台詞，底下的「進階」裡是配音。</figcaption></figure>
+<p>平台內建十四包素材，角色與場景都有，<strong>匯入不扣點數</strong>。專案的「素材」頁切到「素材包」就能匯入。第一部作品全部用現成的就夠了。</p>
+<p>活動頁那四個練習小故事的背景與角色，我另外畫成了一包「四個練習小故事・素材包」，在市集「素材」區搜名稱就有（四張背景、八個角色，NPC 各三種表情，免費）。</p>
+<p>真的找不到適合的角色，才去「角色工作坊」生一個。那會扣點數（第二屆挑戰賽期間報名後可無限使用）。</p>
+
+<h2><span class="n">6</span>AI 配音</h2>
+<ol class="steps">
+  <li>對話卡往下拉，展開<strong>進階</strong>。</li>
+  <li>台詞欄位右上角有一顆 <strong>AI 念台詞</strong>，或從<strong>進階</strong>展開，點<strong>音色與語氣</strong>。</li>
+  <li>清單預設只顯示十幾個，按<strong>檢視完整</strong>才會全部出來，<strong>總共 332 個音色，中文 34 個</strong>（2026-09-09 當天的數字，官方持續在加）。</li>
+  <li>每個音色都可以先試聽。挑好之後按<strong>生成</strong>，通常十秒內完成。</li>
+  <li>下面會出現播放鈕，聽一次。不滿意可以加情緒（流暢、自然等）重新生成。</li>
+</ol>
+<figure><img src="assets/講義/06-音色清單.jpg" alt="音色庫。右上角顯示總共 332 個，語言下拉可以篩，中文有 34 個，每個都能先試聽。"><figcaption>音色庫。右上角顯示總共 332 個，語言下拉可以篩，中文有 34 個，每個都能先試聽。</figcaption></figure>
+<div class="box">
+  <b>台詞先確定再生成。</b>它唸的就是當下那句台詞，改了字要重生。<br>
+  <b>挑音色一定要試聽。</b>名字跟實際聽感可能會有一點差異，自己聽一句再決定。
+</div>
+
+<h2><span class="n">7</span>測試：三種播法</h2>
+<table>
+  <tr><th>你想做的事</th><th>怎麼做</th></tr>
+  <tr><td>只看某一張卡的效果</td><td>那張卡按 <strong>Play</strong>，播完選「我看完了」回來改</td></tr>
+  <tr><td>從某一張往下走一整條線</td><td>那張卡按 Play，播完選「繼續往下播」</td></tr>
+  <tr><td>從頭玩整章</td><td>右上角的播放鈕。它會從你設定的<strong>開始</strong>那張卡起跑</td></tr>
+</table>
+<p>設定起點：在卡片上按右鍵 → 設為開始。設好之後那張卡會出現一個小標籤。</p>
+<div class="box"><b>已經是起點的卡，不能再設一次。</b>當晚按右鍵設不了起點，我當時腦袋當機還想說奇怪是場景卡不能當起點嗎，後來 Yapi 在聊天室說明：那張本來就已經是起點了，所以那個選項才點不動。場景卡當然可以當起點，第 3 節那張圖裡的場景卡左上角就掛著「開始」標籤。</div>
+<p><strong>每一條分支都要自己走一遍。</strong>選擇卡的兩邊各走一次，確認讀起來連貫、選項的字沒有誤導。這件事 AI 幫不了你：它可以把卡排好，但「讀起來順不順」只有人看得出來。</p>
+
+<h2><span class="n">8</span>接上你的 AI Agent</h2>
+<p>做到這裡你已經會手動排卡了。接下來這一步，是把「拉卡片、接線、打字」整包交出去，你只負責想劇情與驗收。</p>
+<ol class="steps">
+  <li>回到專案列表頁，左下角你的帳號旁邊 → <strong>偏好設定</strong>。</li>
+  <li>找到 <strong>AI 輔助</strong> → <strong>Agent Key</strong> → 建立新的 key。</li>
+  <li>先取一個名字（例如「共創板專用」）。</li>
+  <li><strong>選這把 key 能碰哪些專案。</strong>不指定就是全部都能碰。想保護手動維護的專案，就只勾要交給 AI 的那一個。</li>
+  <li><strong>勾權限。</strong>八項分開勾：讀取、編輯、素材、AI 生成、匯出、版本，以及對外的預覽與發佈。沒勾讀取它就看不到裡面有什麼；沒勾發佈，你叫它發佈它也不會動。</li>
+  <li>按產生，然後<strong>複製 Skill</strong>，那是一段很長的說明文字，內含操作這個平台的完整方法。</li>
+  <li>把那段文字貼進 Claude Code、Codex 或 Antigravity，然後直接下指令。</li>
+</ol>
+<figure><img src="assets/講義/08-agent設定.jpg" alt="偏好設定的「AI 輔助」頁。填 Key 的名稱、選它能操作哪個專案，右上角「產生並複製 Skill」。"><figcaption>偏好設定的「AI 輔助」頁。填 Key 的名稱、選它能操作哪個專案，右上角「產生並複製 Skill」。</figcaption></figure>
+<figure><img src="assets/講義/09-權限勾選.jpg" alt="權限是分項勾的，總共八項：讀取、編輯、素材、AI 生成、匯出、版本，以及對外的預覽與發佈。"><figcaption>權限是分項勾的，總共八項：讀取、編輯、素材、AI 生成、匯出、版本，以及對外的預覽與發佈。</figcaption></figure>
+<p>可以這樣起手：</p>
+<div class="box"><code>用內建素材包開一個新專案：打烊前老闆娘問常客要不要換一種茶。一個場景、兩個角色、一個選擇、兩個結局，設好標題畫面，做完發佈，給我市集網址。</code></div>
+<div class="warn box">
+  <b>那段 Skill 文字裡內嵌著你的 Agent Key，它等於你的帳號密碼。</b>
+  拿到 key 的人不需要你的密碼就能用你的身分建卡、刪卡、發佈作品。當晚示範時 key 直接出現在直播畫面上，所以那把當場就刪掉了。<strong>key 外流的正確處理就是立刻刪除，刪掉即永久失效</strong>（刪完畫面若沒更新，重整一次）。
+  <p style="margin-top:.6rem">所以：不要貼進公開的對話、不要傳到群組、不要 commit 進 repo、不要在螢幕分享時點開它。</p>
+</div>
+<div class="box"><b>權限越大越好用，也越容易被搞爛。</b>全勾的 key 能幫你做完所有事，出錯時也能把整個專案清空。自己衡量：常常手動編輯的專案，給它一把只讀的 key 就好。</div>
+
+<h2><span class="n">9</span>發佈與交件</h2>
+<ol class="steps">
+  <li>發佈視窗裡<strong>勾「第二屆創作者挑戰」</strong>，那一勾就是報名參賽（2026-09-20 截止；之後的屆數請看官方活動頁）。</li>
+  <li>更新日誌寫清楚<strong>哪些是 AI 做的</strong>：素材、文案、配音，各自到什麼程度。</li>
+  <li>發佈完會拿到一個市集網址，<strong>免登入就能玩</strong>，可以直接分享。</li>
+</ol>
+<div class="warn box">
+  <b>發佈出去的是快照，不是即時鏡像。</b>你之後改專案，市集上那一份不會跟著變，而且不會有任何提示。改完要<strong>再發佈一次</strong>。
+</div>
+
+<h2><span class="n">10</span>會讓你白做的坑</h2>
+<p>以下都是我自己做這兩部作品時實際碰到的，時間是 2026 年 8 到 9 月。<strong>平台一直在改，有些可能已經修好了。</strong>列出來是為了萬一你遇到，才不會卡在那邊找不到原因。</p>
+<table>
+  <tr><th>症狀</th><th>真正的原因</th></tr>
+  <tr><td>改完了，市集上還是舊的</td><td>發佈是快照，要再發佈一次</td></tr>
+  <tr><td>角色一直站在畫面上不走</td><td>立繪不會自己清。在該退場的那張卡上明確清空舞台</td></tr>
+  <tr><td>Agent 推上去的卡不見了</td><td>你的編輯器分頁開著，它會把白板打回它記得的版本。<strong>叫 Agent 動手前先關掉分頁</strong>，或要求它動手前先讀一次最新狀態</td></tr>
+  <tr><td>存檔卡在「儲存中」</td><td>再按一次 Ctrl+S</td></tr>
+  <tr><td>按右鍵設不了起點</td><td>那張卡本來就已經是起點了。卡片上有小標籤的就是</td></tr>
+  <tr><td>多人一起改，改的東西被蓋掉</td><td>框選那組卡右鍵原地複製一份，改自己那份</td></tr>
+</table>
+
+<h2><span class="n">11</span>AI 導演：當晚實測與結論</h2>
+<p>白板有一個「AI 模式」，開了之後 AI 會把版子上所有卡片當素材，照你寫的提示詞即興演一齣。當晚我們全場一起丟卡片然後跑了兩次，<strong>沒有預期中那麼好玩</strong>。以下是當時哪幾件事沒做到，你自己要用的時候可以先避開。</p>
+<p>當時的提示詞是「用白板上的卡片隨意推演劇情，每個卡片的人物都要出現到，大家一起出來開同樂會吧」。播出來的東西比較散：角色輪流亂入，沒有一條主線串著。</p>
+<h3>事後回頭看，有四件事沒做到</h3>
+<ul>
+  <li><strong>提示詞在要求它散。</strong>「隨意推演」加上「每個人物都要出現到」，等於叫它把十幾個不同世界的角色塞進同一場戲，而且沒有收尾條件。</li>
+  <li><strong>白板上沒有場景卡。</strong>一張都沒有。沒有舞台，導演只能在對白之間跳。</li>
+  <li><strong>沒有主持人也沒有終點。</strong>沒有任何一張卡告訴它這場戲要往哪去、什麼時候該結束。</li>
+  <li><strong>大家丟的句子彼此無關。</strong>來自五個不同的世界，沒有共同場景、沒有人物關係。素材本身就接不起來。</li>
+</ul>
+<h3>要用 AI 導演，先給它這四樣</h3>
+<ol class="steps">
+  <li>一張<strong>場景卡</strong>當舞台。</li>
+  <li>一個<strong>主持人角色</strong>，負責把場子交給下一個人。</li>
+  <li>提示詞要有<strong>場合、規則、收尾條件</strong>：一次只讓一到兩個人講話、講完換下一組、幾句之內收在哪一句話。把「隨意」拿掉。</li>
+  <li>丟素材的時候<strong>先定一個世界</strong>。大家各挑各的世界，導演救不回來。</li>
+</ol>
+
+<h2><span class="n">12</span>附錄：官方讀書會（延伸閱讀）</h2>
+<p>Larch 官方（Yayapipi Studio）在 2026-08-16 辦過一場《製作視覺小說讀書會》，72 分鐘，內容跟這場互補，<strong>講了很多我們當晚沒講到的事</strong>。</p>
+<p><strong>那場講的是第一屆創作者挑戰，我們現在參加的是第二屆</strong>，所以裡面的比賽規則、主題與截止日都已經不適用了，看的時候跳過那部分。平台操作的部分照樣有效，而且有幾項是我們當晚完全沒碰到的。</p>
+<p>以下是重點與時間位置，細節請直接看原片。</p>
+<p>原片：<a href="https://www.youtube.com/live/Cia-1hENf3s">youtube.com/live/Cia-1hENf3s</a>（音量偏小，記得調大）</p>
+<table>
+  <tr><th>時間</th><th>講了什麼</th></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=750">12:30</a></td><td>官方 Wiki 的位置：有問題先查那裡</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=840">14:00</a></td><td>一個角色掛多種表情的做法</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=1100">18:20</a></td><td>讓玩家輸入名字，之後劇情裡叫他的名字</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=1880">31:20</a></td><td>用變數記住玩家選過哪一條線</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=2070">34:30</a></td><td><strong>Claude Code 沒有生圖能力，Codex 有</strong>（挑 Agent 前要知道）</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=2360">39:20</a></td><td>上傳圖片的版權界線</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=2460">41:00</a></td><td>平台去背的實際效果與限制</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=2850">47:30</a></td><td><strong>把作品匯出成獨立遊戲</strong></td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=3220">53:40</a></td><td><strong>匯出的東西可以接進 Unity</strong></td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=3310">55:10</a></td><td>上傳作品的解析度規格</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=3590">59:50</a></td><td>下載成 EXE 檔</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=3870">64:30</a></td><td>同一句話生成不同語氣</td></tr>
+  <tr><td><a href="https://www.youtube.com/live/Cia-1hENf3s?t=4170">69:30</a></td><td><strong>AI Credit 到底花在哪些動作上</strong></td></tr>
+</table>
+
+<h2><span class="n">13</span>回家的四個練習</h2>
+<p>每一個都是<strong>一個場景、兩個角色、一個選擇、兩個結局</strong>，六到八張卡，十五分鐘做得完。背景全部用內建素材，不用生圖。</p>
+<table>
+  <tr><th>練習</th><th>故事</th><th>背景</th></tr>
+  <tr><td>一、關東煮前面</td><td>收銀機關了，同事阿哲說「有件事我一直沒跟你講」。選「說吧」或「明天再說」</td><td>霓虹夜城</td></tr>
+  <tr><td>二、茶館的最後一杯</td><td>常客每天點同一杯，今天老闆娘問「今天想換一種嗎」</td><td>星軌街屋・雨後夜巷</td></tr>
+  <tr><td>三、診療所的號碼牌</td><td>診所要關了，最後一號還沒叫到。選「明天再來」或「我可以等」</td><td>雨後急診走廊</td></tr>
+  <tr><td>四、霧港的信</td><td>一封寫錯地址的信，管理員問「要拆嗎」</td><td>霧港渡輪總站・藍時</td></tr>
+</table>
+<p>完整的故事內容在<a href="https://yazelin.github.io/events/site-2026-09-09/">活動頁</a>。不想用內建素材的話，這四個故事的背景與角色我另外畫成一包「四個練習小故事・素材包」，市集「素材」區搜名稱就有，免費。做完一個，你就有一個免登入可以分享的網址了。</p>
+
+<footer>
+  <div class="join">
+    <div>
+      <b>做完了、或卡住了，都歡迎來社群說一聲</b>
+      <p>LINE 社群「AI。許願池。作品分享。經驗交流。」<br>回放、下一場公告與大家的作品都在裡面。</p>
+      <a class="btn" href="https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default">加入社群</a>
+    </div>
+  </div>
+  <p>下一場 9/16：十五分鐘一起定劇情，剩下交給 Agent 做一款解謎。<a href="https://yazelin.github.io/events/puzzle-2026-09-16/">活動頁</a></p>
+  <p>2026-09-09　視覺小說第一週：協作共創寫小說　亞澤</p>
+</footer>
