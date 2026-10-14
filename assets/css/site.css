@@ -153,11 +153,11 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .live i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
 @media (prefers-reduced-motion: no-preference) { .live i { animation: blink 1.6s steps(1) infinite; } }
 @keyframes blink { 50% { opacity: .2; } }
-.stream-name { font-weight: 700; }
+.stream-name { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .stream-guest, .stream-viewers { color: var(--studio-ink-2); }
 .stream-viewers { margin-left: auto; font-size: .85rem; }
 .stream-cta { display: flex; gap: .4rem; }
-.cta-sub, .cta-tip { font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; text-decoration: none; border-radius: 999px; padding: .28rem .95rem; line-height: 1.4; }
+.cta-sub, .cta-tip { white-space: nowrap; font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; text-decoration: none; border-radius: 999px; padding: .28rem .95rem; line-height: 1.4; }
 .cta-sub { border: 0; background: var(--live-red); color: #fff; }
 .cta-tip { border: 1.5px solid #ffdd00; color: #ffdd00; background: transparent; }
 .cta-sub:hover { filter: brightness(1.1); }
@@ -391,12 +391,17 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 }
 @media (max-width: 700px) {
   /* 手機:台改直的,白板滿寬在上,她站右下,字幕在她左邊不壓到人 */
-  .stage { aspect-ratio: 3 / 4; }
-  .mem { top: 2%; font-size: .72rem; }
-  .mem-cells li { width: 11px; }
-  .board { left: 4%; top: 8%; width: 92%; height: 40%; padding: 4% 5%; border-width: 4px; }
-  .host { height: 52%; right: 1%; bottom: 2%; }
-  .caption { left: 3%; right: 40%; bottom: 3%; font-size: .88rem; padding: .5rem .7rem; }
+  /* 手機:頂端一排就好(來賓字樣與「一杯咖啡」先收),台矮一點讓下方按鈕留在首屏 */
+  .stream-main { padding: .6rem; gap: .6rem; }
+  .stream-guest, .cta-long { display: none; }
+  .stream-bar { flex-wrap: nowrap; }
+  .stage { aspect-ratio: 5 / 6; }
+  .mem { top: 2.5%; font-size: .7rem; }
+  .mem-cells li { width: 10px; }
+  .pixels i:nth-child(2), .pixels i:nth-child(4) { display: none; }
+  .board { left: 4%; top: 9%; width: 92%; height: 38%; padding: 4% 5%; border-width: 4px; }
+  .host { height: 50%; right: 0; bottom: 2%; }
+  .caption { left: 3%; right: 44%; bottom: 3%; font-size: .86rem; padding: .45rem .65rem; line-height: 1.5; }
   .caption b { display: none; }
   .share { left: 3%; width: 94%; height: 62%; }
   .share-bar { flex-wrap: wrap; row-gap: .35rem; }
@@ -405,7 +410,14 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
   .stage[data-mode="share"] .caption { right: 32%; }
   .stream-viewers { display: none; }
   .stream-cta { margin-left: auto; }
-  .stream-tools { display: grid; grid-template-columns: 1fr 1fr; }
+  .stream-tools { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .4rem; }
+  .stream-tools .tool { font-size: .82rem; padding: .45rem .3rem; }
+  .stream-tools .tool { white-space: nowrap; }
+}
+@media (max-width: 380px) {
+  .live { padding: .05rem .4rem; }
+  .cta-sub, .cta-tip { padding: .25rem .7rem; }
+  .stream-tools { grid-template-columns: 1fr 1fr; }
   .stream-tools .tool:last-child { grid-column: 1 / -1; }
   .chat-ask button { font-size: .9rem; }
 }
