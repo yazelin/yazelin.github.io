@@ -15,7 +15,7 @@
   --marker: #2f3cae;      /* 白板筆 */
   --mint: #7cf3c0;        /* 格莉奇的薄荷,只當底色點綴 */
   --purple: #b78bff;      /* 格莉奇的霓虹紫,只當底色點綴 */
-  --seal: #d93a40;        /* 全站唯一的紅:名章與 LIVE 共用 */
+  --seal: #d93a40;        /* 全站唯一的紅:LIVE 與提示訊息共用 */
   --stage: linear-gradient(140deg, #e8fbf3 0%, #efeaff 52%, #fbeef6 100%);
   --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --sans: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
@@ -88,8 +88,7 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 
 /* nav ------------------------------------------------------------------- */
 .site-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; max-width: var(--maxw-wide); margin: 0 auto; padding: 1.1rem 1.25rem; color: var(--desk-ink); }
-.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--serif); font-weight: 900; font-size: 1.1rem; letter-spacing: .12em; }
-.brand-seal { width: 30px; height: 30px; color: var(--seal); flex: none; }
+.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--serif); font-weight: 900; font-size: 1.3rem; letter-spacing: .12em; }
 .brand-en { font-family: var(--num); font-weight: 500; letter-spacing: .06em; color: var(--desk-ink-2); font-size: 1rem; }
 .site-nav nav { display: flex; gap: .25rem 1.1rem; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
 .site-nav nav a { text-decoration: none; color: var(--desk-ink-2); font-size: .95rem; padding: .2rem 0; border-bottom: 2px solid transparent; }
