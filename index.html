@@ -81,7 +81,7 @@ head-extra:
   </div>
   <h3 class="vod-group">商用中</h3>
   <div class="vod-grid vod-grid--biz">
-    {% for w in biz %}{% include vod.html w=w %}{% endfor %}
+    {% for w in biz %}{% include vod.html w=w first=false %}{% endfor %}
   </div>
 </section>
 
