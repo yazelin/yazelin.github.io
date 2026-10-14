@@ -223,7 +223,9 @@ document.querySelectorAll('[data-ask]').forEach(btn => {
 });
 
 /* ---------- 訂閱與抖內 ---------- */
-$('.cta-sub').addEventListener('click', () => {
+// 兩顆鈕在全站導覽列上;別頁的「訂閱」是連到首頁 #subscribe,在首頁就地捲過去
+$('.cta-sub').addEventListener('click', e => {
+  e.preventDefault();
   chat('你', '（按了訂閱）', 'me');
   $('#subscribe').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
   setTimeout(() => $('#subscribe input[type=email]')?.focus({ preventScroll: true }), reduced ? 0 : 700);

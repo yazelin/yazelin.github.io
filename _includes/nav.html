@@ -1,11 +1,16 @@
 <!-- _includes/nav.html -->
 <header class="site-nav">
+  <div class="nav-in">
   <a class="brand" href="{{ '/' | relative_url }}"><span>林亞澤</span><span class="brand-en" lang="en">{{ site.title }}</span></a>
   <nav aria-label="主選單">
     {% for item in site.navbar %}
     <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
     {% endfor %}
   </nav>
+  <span class="nav-cta">
+    <a class="cta-sub" href="{{ '/#subscribe' | relative_url }}">訂閱</a>
+    <a class="cta-tip" href="https://buymeacoffee.com/yazelin" target="_blank" rel="noopener">抖內<span class="cta-long">一杯咖啡</span></a>
+  </span>
   <button class="theme-toggle" type="button" aria-label="切換亮暗色">跟隨系統</button>
   <script>
   // 亮/暗/跟隨系統三段循環,選擇存 localStorage(與 /vote/ 同一個 key,兩邊同步)
@@ -30,4 +35,5 @@
     paint();
   })();
   </script>
+  </div>
 </header>
