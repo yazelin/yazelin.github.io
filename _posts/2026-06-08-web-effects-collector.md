@@ -79,4 +79,4 @@ author: Yaze Lin
 
 > **想支持持續開發?** 請我喝杯咖啡 → [buymeacoffee.com/yazelin](https://buymeacoffee.com/yazelin)
 
-相關直播：9 月 30 日週三直播「[幫你的網頁加點特效](/events/effects-2026-09-30/)」，錄影與講義在活動頁。
+9 月 30 日的週三直播「[幫你的網頁加點特效](/events/effects-2026-09-30/)」跟這份目錄是同一個主題。錄影和講義在活動頁。

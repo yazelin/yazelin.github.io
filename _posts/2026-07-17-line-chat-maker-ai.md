@@ -98,4 +98,4 @@ author: Yaze Lin
 
 <https://yazelin.github.io/line-chat-maker/>
 
-相關直播：8 月 12 日週三直播「[LINE 搞笑對話創作營](/events/chat-2026-08-12/)」，錄影與講義在活動頁。
+這套小劇組背後怎麼拆，8 月 12 日的週三直播「[LINE 搞笑對話創作營](/events/chat-2026-08-12/)」現場拆開來講過。錄影和講義在活動頁。

@@ -176,4 +176,4 @@ async scheduled(event, env, ctx) {
 - Cloudflare:[Workers KV](https://developers.cloudflare.com/kv/) ／ [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)
 - MDN:[Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
 
-相關直播：9 月 23 日週三直播「[用 AI 做自己的刷題網站](/events/quiz-2026-09-23/)」，錄影與講義在活動頁。
+這個站怎麼用、為什麼這樣設計、裡面是什麼，9 月 23 日的週三直播「[用 AI 做自己的刷題網站](/events/quiz-2026-09-23/)」整個拆開講過。錄影和講義在活動頁。

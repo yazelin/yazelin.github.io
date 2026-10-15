@@ -52,4 +52,4 @@ author: Yaze Lin
 
 先去做一張自己的貼圖：<https://yazelin.github.io/line-sticker-studio/>
 
-相關直播：8 月 5 日週三直播「[貼圖實作營](/events/sticker-2026-08-05/)」，錄影與講義在活動頁。
+一個晚上把角色做成一組貼圖，8 月 5 日的週三直播「[貼圖實作營](/events/sticker-2026-08-05/)」帶大家走過一遍。錄影和講義在活動頁。

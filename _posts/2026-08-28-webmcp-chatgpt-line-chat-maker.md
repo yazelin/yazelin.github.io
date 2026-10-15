@@ -127,4 +127,4 @@ LCM-VK4TWV
 
 想自己驗的話，程式碼跟測試都在 <https://github.com/yazelin/line-chat-maker>，`test/webmcp.e2e.mjs` 那支會自己開瀏覽器、開旗標、呼叫工具、再檢查畫面真的變了。工具本身在 <https://yazelin.github.io/line-chat-maker/>，先玩玩看它能做什麼，再回頭看它把哪些功能公開給了 AI。前情提要在這裡：[教一個 AI 小劇組寫出「值得截圖」的對話]({% post_url 2026-07-17-line-chat-maker-ai %})。
 
-相關直播：8 月 12 日週三直播「[LINE 搞笑對話創作營](/events/chat-2026-08-12/)」，錄影與講義在活動頁。
+文中說的「8/12 講的」，就是8 月 12 日的週三直播「[LINE 搞笑對話創作營](/events/chat-2026-08-12/)」。錄影和講義在活動頁。

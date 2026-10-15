@@ -71,4 +71,4 @@ YoYoDoDo 卡在 LINE 那邊的註冊沒收到回信，這一關我幫不上忙�
 
 工具留在線上，[免費、不用註冊](https://yazelin.github.io/line-sticker-studio/)。下一場開的時候我會在 LINE 社群公告。
 
-相關直播：8 月 5 日週三直播「[貼圖實作營](/events/sticker-2026-08-05/)」，錄影與講義在活動頁。
+這篇回顧的就是8 月 5 日的週三直播「[貼圖實作營](/events/sticker-2026-08-05/)」。錄影和講義在活動頁。

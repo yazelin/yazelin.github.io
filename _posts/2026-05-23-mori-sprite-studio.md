@@ -129,4 +129,4 @@ mori-desktop  ──→  Mori 的桌面實體(Rust + Tauri 2)
 > **想支持持續開發?** 請我喝杯咖啡 → [buymeacoffee.com/yazelin](https://buymeacoffee.com/yazelin)
 > 自掏腰包跑 Author Fallback 的 quota 真的會撐爆，每杯咖啡都會直接灌進去。
 
-相關直播：10 月 14 日週三直播「[讓 Mori 出現在你的桌面：Sprite Animation 到 Pet Player](/events/mori-pet-2026-10-14/)」，錄影與講義在活動頁。
+這個 Studio 在10 月 14 日的週三直播「[讓 Mori 出現在你的桌面](/events/mori-pet-2026-10-14/)」用過，從 4×4 動畫、去背到匯出 moripack 放上桌面，一路做了一遍。錄影和講義在活動頁。

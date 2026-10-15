@@ -218,4 +218,4 @@ return f"A cute cat with the date and time '{timestamp}' displayed in the image,
 - [catime GitHub](https://github.com/yazelin/catime)
 - [Google Gemini API 文件](https://ai.google.dev/gemini-api/docs)
 
-相關直播：10 月 7 日週三直播「[讓網站每天自己寫一篇](/events/daily-2026-10-07/)」，錄影與講義在活動頁。
+10 月 7 日的週三直播「[讓網站每天自己寫一篇](/events/daily-2026-10-07/)」拿 catime 當例子，講它怎麼用 GitHub Actions 每小時自己多一隻貓。錄影和講義在活動頁。
