@@ -213,8 +213,19 @@ const answers = {
     });
   },
 };
+/* ---------- 聊天室抽屜 ----------
+   桌機首屏留給主視覺,聊天室平常收在右邊,按「聊天室」或問了問題才拉出來。窄螢幕聊天室固定在台下面,這顆鈕用 CSS 藏掉 */
+const chatBtn = $('.chat-toggle');
+function openChat(on) {
+  $('.stream').classList.toggle('chat-open', on);
+  chatBtn.setAttribute('aria-expanded', on);
+  if (on) log.scrollTop = log.scrollHeight;
+}
+chatBtn.addEventListener('click', () => openChat(!$('.stream').classList.contains('chat-open')));
+
 document.querySelectorAll('[data-ask]').forEach(btn => {
   btn.addEventListener('click', () => {
+    openChat(true);
     interrupt(); // 訪客開口了,還在排隊的開場白就不講了,直接回答
     chat('你', esc(btn.textContent), 'me');
     btn.classList.add('asked');
@@ -378,6 +389,6 @@ mount().then(async () => {
     say('他的做法是開規格、下發包、做驗收，乙方是 AI。我也是 AI，所以我有點緊張。', { emote: 'thinking' });
   }
   // 窄螢幕聊天室在台的下面
-  const where = matchMedia('(max-width: 1080px)').matches ? '下面' : '右邊';
+  const where = matchMedia('(max-width: 700px)').matches ? '下面' : '左邊';
   say(`${where}可以問我問題。我一定答得出來。大概。`);
 });

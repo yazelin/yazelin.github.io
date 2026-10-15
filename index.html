@@ -48,22 +48,25 @@ head-extra:
       </div>
       <p class="caption" aria-live="polite"><b>格莉奇</b><span class="caption-text"></span></p>
     </div>
-    <div class="stream-tools">
-      <button type="button" class="tool tool-voice" aria-pressed="false">聽她自我介紹</button>
-      <button type="button" class="tool tool-wave">跟她揮手</button>
-      <a class="tool" href="#replays">看全部作品回放</a>
+    <div class="hero-ask">
+      <p class="sr-only">問格莉奇：</p>
+      <div class="ask-row">
+        <button type="button" data-ask="who">亞澤是誰？</button>
+        <button type="button" data-ask="play">有什麼好玩的？</button>
+        <button type="button" data-ask="read">他寫了什麼？</button>
+        <button type="button" data-ask="follow">怎麼追蹤他？</button>
+      </div>
+      <div class="stream-tools">
+        <button type="button" class="tool tool-voice" aria-pressed="false">聽她自我介紹</button>
+        <button type="button" class="tool tool-wave">跟她揮手</button>
+        <a class="tool" href="#replays">看全部作品回放</a>
+      </div>
     </div>
+    <button type="button" class="chat-toggle" aria-expanded="false" aria-controls="chat">聊天室</button>
   </div>
-  <aside class="chat" aria-label="聊天室">
+  <aside class="chat" id="chat" aria-label="聊天室">
     <header class="chat-head">聊天室<span class="stream-viewers" title="現在在看的人">觀眾 1（你）</span></header>
     <ol class="chat-log" aria-live="polite"></ol>
-    <div class="chat-ask">
-      <p>問格莉奇：</p>
-      <button type="button" data-ask="who">亞澤是誰？</button>
-      <button type="button" data-ask="play">有什麼好玩的？</button>
-      <button type="button" data-ask="read">他寫了什麼？</button>
-      <button type="button" data-ask="follow">怎麼追蹤他？</button>
-    </div>
   </aside>
 </section>
 
