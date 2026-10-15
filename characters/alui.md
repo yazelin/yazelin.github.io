@@ -3,6 +3,7 @@ layout: character
 title: 阿蕊
 name_en: A-luí
 permalink: /characters/alui/
+accent: "#4f7fbf"
 order: 3
 cover: /images/og/characters-alui.jpg
 image: /images/characters/alui.webp

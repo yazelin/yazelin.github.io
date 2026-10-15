@@ -3,6 +3,7 @@ layout: character
 title: 轉生異世界的我 token 無限
 name_en: Token Unlimited
 permalink: /characters/token-unlimited/
+accent: "#e9b93a"
 order: 10
 cover: /images/og/characters-token-unlimited.jpg
 image: /images/characters/token-unlimited.webp

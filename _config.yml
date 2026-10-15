@@ -51,11 +51,11 @@ navbar:
     url: /about/
   - title: Portfolio
     url: /portfolio/
-  - title: 角色
+  - title: Characters
     url: /characters/
-  - title: 活動
+  - title: Events
     url: /events/
-  - title: 服務
+  - title: Services
     url: /services/
   - title: Tags
     url: /tags/

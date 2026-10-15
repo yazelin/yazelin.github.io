@@ -3,6 +3,7 @@ layout: character
 title: catime 的四隻貓
 name_en: Mochi, Momo, Captain, Lingling
 permalink: /characters/catime/
+accent: "#e07a9a"
 order: 9
 cover: /images/og/characters-catime.jpg
 image: /images/characters/catime.webp

@@ -3,6 +3,7 @@ layout: character
 title: 格莉奇
 name_en: Glitch
 permalink: /characters/glitch/
+accent: "#8b6cff"
 order: 1
 cover: /images/og/characters-glitch.jpg
 image: /images/characters/glitch.webp

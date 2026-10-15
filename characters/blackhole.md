@@ -3,6 +3,7 @@ layout: character
 title: 黑洞先生
 name_en: Mr. Black Hole
 permalink: /characters/blackhole/
+accent: "#6b5bd6"
 order: 2
 cover: /images/og/characters-blackhole.jpg
 image: /images/characters/blackhole.webp

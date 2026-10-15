@@ -22,7 +22,6 @@ head-extra:
           <ol class="mem-cells" aria-label="她記得的作品"></ol>
         </div>
       </header>
-      <div class="pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="board">
         <p class="board-label">今天的題目</p>
         <h1 id="stream-title" class="board-title"><span class="sr-only">不寫程式，也能把軟體做出來</span>{% include hand-title.html %}</h1>
@@ -75,7 +74,7 @@ head-extra:
   <button type="button" class="pip-close" aria-label="關掉小視窗">×</button>
 </aside>
 
-<section class="replays" id="replays" aria-labelledby="replays-title">
+<section class="band band--studio replays" id="replays" aria-labelledby="replays-title">
   <p class="sec-en" aria-hidden="true">Works</p>
   <header class="sec-head">
     <h2 id="replays-title">作品回放</h2>
@@ -85,6 +84,7 @@ head-extra:
   {% assign biz = site.data.works | where: "kind", "biz" %}
   <div class="vod-grid">
     {% for w in play %}{% include vod.html w=w first=forloop.first %}{% endfor %}
+    <a class="vod-more" href="{{ '/portfolio/' | relative_url }}"><b lang="en">Portfolio</b><span>全部作品與更多介紹</span></a>
   </div>
   <h3 class="vod-group">商用中</h3>
   <div class="vod-grid vod-grid--biz">
@@ -92,27 +92,30 @@ head-extra:
   </div>
 </section>
 
-<section class="cast" aria-labelledby="cast-title">
+<section class="band cast" aria-labelledby="cast-title">
   <p class="sec-en" aria-hidden="true">Characters</p>
   <header class="ledger-head">
     <h2 id="cast-title">我創作的角色</h2>
     <p>她們各自住在不同的作品裡，這一排是入口。</p>
   </header>
-  {% comment %} ponytail: 直接吃角色頁的 front matter,不另外維護一份名單。 {% endcomment %}
-  <div class="char-strip">
+  {% comment %} ponytail: 直接吃角色頁的 front matter(含 accent 色),不另外維護一份名單。 {% endcomment %}
+  <ul class="roster">
     {% assign cs = site.pages | where: "layout", "character" | sort: "order" %}
     {% for c in cs %}
-    <a href="{{ c.url | relative_url }}">
-      <img src="{{ c.image | relative_url }}" alt="" loading="lazy">
-      <span>{{ c.title }}</span>
-    </a>
+    <li style="--acc: {{ c.accent | default: '#8b6cff' }}"><a href="{{ c.url | relative_url }}">
+      <img src="{{ c.image | relative_url }}" alt="" loading="lazy"{% if c.image_wide %} class="wide"{% endif %}>
+      <span class="r-en" lang="en">{{ c.name_en }}</span>
+      <span class="r-name">{{ c.title }}</span>
+    </a></li>
     {% endfor %}
-  </div>
+  </ul>
   <p class="more"><a href="{{ '/characters/' | relative_url }}">全部角色</a></p>
 </section>
 
-<section class="swap" aria-labelledby="swap-title">
+<section class="band band--void swap" aria-labelledby="swap-title">
   <p class="sec-en" aria-hidden="true">Story</p>
+  <p class="collab"><span>本段聯動</span><a href="{{ '/characters/blackhole/' | relative_url }}">黑洞先生</a></p>
+  <img class="collab-art" src="{{ '/images/characters/blackhole.webp' | relative_url }}" alt="" loading="lazy">
   <h2 id="swap-title">從工廠到 AI</h2>
   <div class="swap-roles" aria-hidden="true">
     <span class="role role--was">乙方<svg class="strike" viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M4 26C50 18 120 14 196 10"/></svg></span>
@@ -125,8 +128,9 @@ head-extra:
   </div>
 </section>
 
-<section class="reads" aria-labelledby="reads-title">
+<section class="band reads" aria-labelledby="reads-title">
   <p class="sec-en" aria-hidden="true">Reading</p>
+  <p class="collab"><span>本段聯動</span><a href="{{ '/characters/mori/' | relative_url }}">Mori</a></p>
   <h2 id="reads-title">從這幾篇開始讀</h2>
   <ul class="featured-list">
     {% assign feats = site.posts | where: "featured", true %}
@@ -137,8 +141,10 @@ head-extra:
   <p class="more"><a href="{{ '/blog/' | relative_url }}">全部 {{ site.posts | size }} 篇文章</a></p>
 </section>
 
-<section class="subscribe" id="subscribe">
+<section class="band band--denim subscribe" id="subscribe">
   <p class="sec-en" aria-hidden="true">Stay tuned</p>
+  <p class="collab"><span>本段聯動</span><a href="{{ '/characters/alui/' | relative_url }}">阿蕊</a></p>
+  <img class="collab-art" src="{{ '/images/characters/alui.webp' | relative_url }}" alt="" loading="lazy">
   {% include signup-form.html source="blog" %}
 </section>
 

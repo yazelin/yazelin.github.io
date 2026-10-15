@@ -3,6 +3,7 @@ layout: character
 title: 月牙
 name_en: Yueya
 permalink: /characters/yueya/
+accent: "#e0b84a"
 order: 7
 cover: /images/og/characters-yueya.jpg
 image: /images/characters/yueya.webp

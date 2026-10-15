@@ -3,6 +3,7 @@ layout: character
 title: 優理
 name_en: Yori
 permalink: /characters/yori/
+accent: "#c09a55"
 order: 5
 cover: /images/og/characters-yori.jpg
 image: /images/characters/yori.webp

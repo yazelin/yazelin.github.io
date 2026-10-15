@@ -3,6 +3,7 @@ layout: character
 title: Mori
 name_en: 森
 permalink: /characters/mori/
+accent: "#7fae5a"
 order: 4
 cover: /images/og/characters-mori.jpg
 image: /images/characters/mori.webp

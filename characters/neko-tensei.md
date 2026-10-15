@@ -3,6 +3,7 @@ layout: character
 title: 轉生成貓貓的我們
 name_en: Neko Tensei
 permalink: /characters/neko-tensei/
+accent: "#d9822b"
 order: 8
 cover: /images/og/characters-neko-tensei.jpg
 image: /images/characters/neko-tensei.webp

@@ -3,6 +3,7 @@ layout: character
 title: 小擎
 name_en: Jinn
 permalink: /characters/jinn/
+accent: "#3fa7c9"
 order: 6
 cover: /images/og/characters-jinn.jpg
 image: /images/characters/jinn.webp
