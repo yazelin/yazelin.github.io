@@ -166,6 +166,8 @@ html { scroll-padding-top: 4.5rem; }
 /* 台頂端的資訊列疊在畫面上:LIVE、台名、來賓、記憶體條 */
 .stream-bar { position: absolute; left: var(--gut); right: 3%; top: 3.5%; z-index: 3; display: flex; align-items: center; gap: .5rem 1rem; font-size: .95rem; pointer-events: none; }
 .stream-bar > * { pointer-events: auto; }
+/* 背景是圖,對比檢查量不到;字一律加陰影墊底 */
+.stream-bar, .tool, .board-label { text-shadow: 0 1px 6px rgb(10 8 20 / .9); }
 .live { display: inline-flex; align-items: center; gap: .4rem; background: var(--live-red); color: #fff; font-family: var(--num); font-weight: 600; letter-spacing: .08em; font-size: .85rem; padding: .05rem .55rem; border-radius: 6px; }
 .live i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
 @media (prefers-reduced-motion: no-preference) { .live i { animation: blink 1.6s steps(1) infinite; } }
@@ -176,15 +178,14 @@ html { scroll-padding-top: 4.5rem; }
 
 .stage {
   position: relative; height: clamp(34rem, calc(100svh - 4.1rem), 64rem); width: 100%; overflow: hidden; isolation: isolate; container-type: size;
-  /* 背後一盞補光打在她身上,地面往下漸暗,加一層極淡掃描線 */
+  /* 棚景是 codex 產的背景圖(assets/img/studio-bg.webp,裁掉天花板讓圓台貼近底部,讓她站在圓台上)。
+     左邊壓暗讓大字題目讀得清楚,底部再壓一層讓字幕條浮得起來 */
   background:
-    repeating-linear-gradient(0deg, rgb(255 255 255 / .018) 0 1px, transparent 1px 3px),
-    radial-gradient(42% 70% at 82% 46%, rgb(183 139 255 / .34), transparent 70%),
-    radial-gradient(30% 50% at 18% 30%, rgb(124 243 192 / .12), transparent 70%),
-    linear-gradient(180deg, var(--studio-2) 0%, var(--studio) 72%, #0a0814 100%);
+    linear-gradient(90deg, rgb(10 8 20 / .88) 0%, rgb(10 8 20 / .6) 38%, transparent 62%),
+    linear-gradient(0deg, rgb(10 8 20 / .7) 0%, transparent 30%),
+    url("../img/studio-bg.webp") 96% 100% / cover no-repeat,
+    var(--studio);
 }
-/* 棚後牆上的大字,只描邊、很淡,撐出空間感 */
-.stage-mark { position: absolute; right: -1%; bottom: -7%; margin: 0; z-index: -1; font-family: var(--num); font-weight: 600; font-size: 31cqh; line-height: .8; letter-spacing: .02em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.5px rgb(255 255 255 / .1); user-select: none; }
 /* 她身邊漂浮的像素方塊(正典:粉、薄荷、紫) */
 .pixels i { position: absolute; width: 14px; height: 14px; border-radius: 2px; opacity: .7; }
 .pixels i:nth-child(3n+1) { background: var(--mint); }
@@ -439,7 +440,6 @@ html { scroll-padding-top: 4.5rem; }
   .ask-row button { font-size: .92rem; padding: .6rem .5rem; text-align: left; }
   .mem { margin-left: auto; font-size: .7rem; gap: .35rem; }
   .mem-cells li { width: 9px; }
-  .stage-mark { font-size: 16cqh; bottom: -3%; }
   .pixels i:nth-child(2), .pixels i:nth-child(4) { display: none; }
   .board { left: var(--gut); right: var(--gut); width: auto; top: 11%; height: 30%; }
   .host { height: 60%; right: 2%; bottom: 2%; }
