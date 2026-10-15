@@ -4,15 +4,19 @@ title: Blog
 ---
 {% capture bl %}全部 {{ site.posts | size }} 篇。做了什麼、怎麼做的、哪裡踩了坑。{% endcapture %}
 {% include page-hero.html en="Blog" title="文章" lead=bl collab="mori" %}
-<div class="container">
+<div class="container container-wide blog-wrap">
+  <div class="blog-main">
   <input id="blog-search" type="search" placeholder="搜尋文章標題或 tag…" autocomplete="off">
   <ul class="post-list" id="post-list">
+    {% assign prev_y = "" %}
     {% for post in paginator.posts %}
+    {% assign y = post.date | date: "%Y" %}
+    {% if y != prev_y %}<li class="post-year" aria-hidden="true">{{ y }}</li>{% assign prev_y = y %}{% endif %}
     <li>
-      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%m.%d" }}</time>
       <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       {% if post.subtitle %}<p class="excerpt">{{ post.subtitle | truncate: 120 }}</p>{% endif %}
-      {% if post.tags.size > 0 %}<p class="meta">{{ post.tags | join: ", " | truncate: 60 }}</p>{% endif %}
+      {% if post.tags.size > 0 %}<p class="meta">{% for t in post.tags limit: 4 %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
     </li>
     {% endfor %}
   </ul>
@@ -21,5 +25,15 @@ title: Blog
     {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← 較新文章</a>{% else %}<span></span>{% endif %}
     {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">較舊文章 →</a>{% endif %}
   </nav>
+  </div>
+  {% comment %} 寬螢幕右邊一欄:首頁那幾篇精選,第一次來的人從這裡開始。窄螢幕排到列表後面 {% endcomment %}
+  <aside class="blog-rail" aria-labelledby="rail-title">
+    <h2 id="rail-title">從這幾篇開始讀</h2>
+    <ol>
+      {% assign feats = site.posts | where: "featured", true %}
+      {% for p in feats %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+    </ol>
+    <p><a href="{{ '/tags/' | relative_url }}">依標籤找</a></p>
+  </aside>
 </div>
 <script src="{{ '/assets/js/blog-search.js' | relative_url }}"></script>

@@ -5,9 +5,12 @@ layout: default
 {% comment %} 文章頁首也是深色的棚,大字是日期 {% endcomment %}
 {% include page-hero.html class="post-hero" en=pd title=page.title lead=page.subtitle meta=page.author %}
 <article class="post container">
-
+  <div class="post-body">
   {{ content }}
+  </div>
 
+  {% comment %} 標籤與相關文章:窄螢幕排在文末,寬螢幕變成右邊黏住的一欄 {% endcomment %}
+  <aside class="post-side">
   {% if page.tags.size > 0 %}
   <div class="post-tags">
     {% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag }}">{{ tag }}</a>{% endfor %}
@@ -27,7 +30,10 @@ layout: default
     <ul>{% for p in related %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
   </aside>
   {% endif %}
+  </aside>
 
+  <div class="post-foot">
   <div class="related">{% include signup-form.html source="post" %}</div>
   {% include giscus.html %}
+  </div>
 </article>

@@ -150,20 +150,45 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .post-tags { margin-top: 3rem; display: flex; gap: .5rem; flex-wrap: wrap; }
 .post-tags a, .tag-chip { text-decoration: none; border: 1px solid var(--rule); color: var(--ink-2); padding: .05em .7em; border-radius: 3px; font-size: .85rem; }
 .post-tags a:hover, .tag-chip:hover { border-color: var(--carbon); color: var(--carbon); }
+@media (min-width: 1200px) {
+  main > .post { max-width: calc(var(--maxw) + 23rem); display: grid; grid-template-columns: minmax(0, var(--maxw)) minmax(0, 18rem); column-gap: 5rem; align-items: start; }
+  .post-body, .post-foot { grid-column: 1; }
+  .post-side { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 6rem; font-size: .92rem; }
+  .post-side .post-tags { margin-top: 0; }
+  .post-side .related { margin-top: 1.5rem; }
+  .post-side .related ul { padding-left: 1rem; }
+}
 .related { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1.5rem; }
 .related h2 { font-size: 1.15rem; margin-top: 0; }
 .related ul { padding-left: 1.2rem; }
 
 /* blog list ------------------------------------------------------------- */
+/* 年份大字分段,日期只寫月日(年份在上面);tag 是小標籤 */
 .post-list { list-style: none; padding: 0; margin: 0; }
-.post-list li { border-top: 1px solid var(--rule); padding: 1.4rem 0; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: 1.25rem; }
+.post-list li { border-top: 1px solid var(--rule); padding: 1.6rem 0; display: grid; grid-template-columns: 6rem minmax(0, 1fr); column-gap: 1.5rem; }
 .post-list li > * { grid-column: 2; }
-.post-list time { grid-column: 1; grid-row: 1 / span 3; font-family: var(--num); font-weight: 500; font-size: 1.05rem; color: var(--ink-2); padding-top: .15rem; }
-.post-list h2 { margin: 0 0 .35rem; font-size: 1.28rem; font-weight: 700; }
-.post-list h2 a { text-decoration: none; }
+.post-list .post-year { display: block; border: 0; padding: 3.5rem 0 .6rem; font-family: var(--num); font-weight: 600; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; color: var(--ink); }
+.post-list .post-year:first-child { padding-top: .5rem; }
+.post-list .post-year::after { content: ""; display: inline-block; width: .16em; height: .16em; margin-left: .1em; background: #7fae5a; border-radius: 2px; }
+.post-list time { grid-column: 1; grid-row: 1 / span 3; font-family: var(--num); font-weight: 600; font-size: 1.5rem; line-height: 1.2; letter-spacing: .03em; color: var(--ink-2); }
+#search-results time { font-size: 1.05rem; }
+.post-list h2 { margin: 0 0 .4rem; font-size: clamp(1.2rem, 1.8vw, 1.45rem); font-weight: 900; line-height: 1.45; }
+.post-list h2 a { text-decoration: none; transition: color .15s; }
 .post-list h2 a:hover { color: var(--carbon); }
-.post-list .excerpt { color: var(--ink-2); margin: .25rem 0 .5rem; font-size: .95rem; }
-.post-list .meta { color: var(--ink-2); font-size: .85rem; margin: 0; }
+.post-list .excerpt { color: var(--ink-2); margin: .25rem 0 .7rem; font-size: .97rem; max-width: 60ch; }
+.post-list .meta { color: var(--ink-2); font-size: .8rem; margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.post-list .meta span { border: 1px solid var(--rule); border-radius: 999px; padding: 0 .65rem; line-height: 1.8; }
+.blog-wrap { display: grid; grid-template-columns: minmax(0, 58rem) minmax(14rem, 20rem); gap: 2rem 5rem; align-items: start; }
+.blog-rail { position: sticky; top: 6rem; padding-top: 1rem; }
+.blog-rail h2 { font-size: 1.05rem; margin: 0 0 .8rem; padding-left: .8rem; border-left: 3px solid #7fae5a; }
+.blog-rail ol { list-style: none; margin: 0; padding: 0; counter-reset: rl; }
+.blog-rail li { counter-increment: rl; display: grid; grid-template-columns: 2rem minmax(0, 1fr); padding: .7rem 0; border-top: 1px solid var(--rule); font-size: .92rem; line-height: 1.55; }
+.blog-rail li::before { content: counter(rl, decimal-leading-zero); font-family: var(--num); font-weight: 600; color: var(--ink-2); }
+.blog-rail a { text-decoration: none; font-weight: 700; }
+.blog-rail a:hover { color: var(--carbon); }
+.blog-rail p { margin: 1rem 0 0; font-size: .92rem; }
+.blog-rail p a { text-decoration: underline; font-weight: 500; }
+@media (max-width: 1100px) { .blog-wrap { grid-template-columns: minmax(0, 1fr); } .blog-rail { position: static; } }
 .pagination { display: flex; justify-content: space-between; padding: 2rem 0 0; }
 #blog-search { width: 100%; padding: .7rem .2rem; font: inherit; color: var(--ink); border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; margin: 1rem 0 1.5rem; background: transparent; }
 #blog-search::placeholder { color: var(--ink-2); }
