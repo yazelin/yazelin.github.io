@@ -79,3 +79,5 @@ chroma key 不會告訴你底色挑錯了。它照分數做事，主體身上哪
 skill 掛 MIT，repo 在 <https://github.com/yazelin/cutout-skill>。它不綁 Claude，README 寫的是任何 agent 讀 `SKILL.md` 就能照用法跑 `cutout.py`，依賴只有 numpy、Pillow、scipy。想先確認環境沒問題就跑 `python3 cutout.py demo`，它會印四角 alpha、alpha 分佈、殘留色邊，還有「背景沒去乾淨」那一欄。
 
 同一套 chroma 判定也在 [LINE 貼圖工作室]({% post_url 2026-07-15-line-sticker-studio-workshop %}) 那條線上跑，那邊的上架防呆後來被移植回這支 skill 的驗收。自家貼圖產線的 README 把背景沒去乾淨列為上架防呆的第一條，整包出貨前逐張跑一次 `check`，別等退件通知回來才找是哪一張。
+
+10 月 14 日的週三直播「[讓 Mori 出現在你的桌面](/events/mori-pet-2026-10-14/)」也講到去背：色幕要選角色少見的顏色，背景才去得乾淨。錄影、簡報與講義在活動頁。

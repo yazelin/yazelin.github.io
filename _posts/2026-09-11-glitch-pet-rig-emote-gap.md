@@ -133,3 +133,5 @@ canvas 直接掛在桌面的 DOM 裡，沒有包 iframe。桌寵頭上的對話�
 這件跟表情那件是同一個形狀：**量錯對象的檢查，綠得再乾脆也擋不住東西。**
 
 [去開機看看](https://yazelin.github.io/ai-brain-site/)，右下角點她一下。
+
+10 月 14 日的週三直播「[讓 Mori 出現在你的桌面](/events/mori-pet-2026-10-14/)」是另一條桌寵路線：用 Mori Sprite Studio 做 sprite animation，匯出後放進 Mori Pet Player。錄影與講義在活動頁。
