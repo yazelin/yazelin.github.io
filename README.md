@@ -19,6 +19,9 @@
   角色色寫在各角色頁 front matter 的 `accent`,首頁名冊直接吃它。內頁也用同一套:頂端是 `_includes/page-hero.html`(深色棚+大英文字+頁名+本頁聯動的角色卡),
   `layout: page` 的頁面用 front matter 的 `hero_en`、`hero_title`、`hero_lead`、`collab`(角色 slug)控制;
   文章頁的大字是日期,活動頁是活動日期,角色頁的卡是她自己、棚染上她的 `accent`。內文直接放在頁面底色上,不再裝白卡片。
+  活動頁的場次視覺(cover)放在頁首右邊(page-hero 的 `art`)。作品牆是 `_includes/works-wall.html`,首頁與作品集頁(`works_wall: true`)共用。
+  Blog 列表依年份分段,寬螢幕右邊一欄放精選文章;文章頁的標籤與相關文章在寬螢幕變成右邊黏住的一欄。
+  標籤頁用 `site.tags`,上方只列三篇以上的常用標籤,錨點一律 `slugify`(文章頁的標籤連結也是)。
   左右邊界全站只有一個變數 `--gut`(超過 96rem 寬時把內容收在中間),所有東西都對齊這條線。
   字體只用三種角色:標題明體(英數 Noto Serif、中文 Noto Serif TC,英文撇號才不會變全形)、英文標籤與數字窄體(Barlow Condensed)、內文黑體;手寫楷書只留給首屏題目。
   進場淡入用 CSS 捲動時間軸(`animation-timeline: view()`),不支援的瀏覽器直接顯示。頁尾全站都是棚的深色。
