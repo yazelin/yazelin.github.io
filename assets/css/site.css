@@ -123,7 +123,7 @@ html { scroll-padding-top: 4.5rem; }
 .site-nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--desk) 86%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); color: var(--desk-ink); }
 /* 頂端那條跟首頁的台一樣滿版,左右邊界都用 --gut,台裡的東西跟著對齊 */
 .nav-in { display: flex; align-items: center; gap: 1rem 2rem; padding: .8rem var(--gut); }
-.brand { display: inline-flex; align-items: baseline; gap: .7rem; text-decoration: none; font-family: var(--serif); font-weight: 900; font-size: 1.35rem; letter-spacing: .14em; line-height: 1; }
+.brand { white-space: nowrap; display: inline-flex; align-items: baseline; gap: .7rem; text-decoration: none; font-family: var(--serif); font-weight: 900; font-size: 1.35rem; letter-spacing: .14em; line-height: 1; }
 .brand-en { font-family: var(--num); font-weight: 600; text-transform: uppercase; letter-spacing: .22em; color: var(--desk-ink-2); font-size: .95rem; }
 .site-nav nav { display: flex; gap: .25rem 1.8rem; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
 .site-nav nav a { text-decoration: none; color: var(--desk-ink-2); font-family: var(--num); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 1.02rem; padding: .25rem 0; border-bottom: 2px solid transparent; }
@@ -514,9 +514,16 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 @keyframes rise-art { from { opacity: 0; translate: 6% 0; } }
 
 /* responsive ------------------------------------------------------------ */
-@media (max-width: 1240px) { .cta-long { display: none; } }
-/* 窄一點時選單換到第二排,第一排留名字、訂閱、抖內、亮暗 */
-@media (max-width: 1000px) {
+@media (max-width: 1240px) {
+  .cta-long { display: none; }
+  .ask-row { gap: .6rem 1.6rem; }
+  .ask-row button { min-width: 0; }
+  .hero-ask { max-width: 62%; }
+}
+/* 窄一點時選單換到第二排,第一排留名字、訂閱、抖內、亮暗(選單是英文大寫,1180 以下就擠不下一排) */
+@media (max-width: 1180px) {
+  /* 導覽列變兩排(約 6.7rem 高),首屏扣掉它才剛好一屏 */
+  .stage { height: clamp(32rem, calc(100svh - 6.7rem), 60rem); }
   .nav-in { flex-wrap: wrap; row-gap: .5rem; }
   .site-nav nav { order: 5; flex-basis: 100%; justify-content: flex-start; margin-left: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 1.4rem; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); padding-right: 1.5rem; }
   .site-nav nav::-webkit-scrollbar { display: none; }
@@ -530,7 +537,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
   .chat-toggle { display: none; }
   .chat { border-left: 0; border-top: 1px solid var(--studio-rule); }
   .chat-log { min-height: 10rem; }
-  .stage { height: clamp(32rem, calc(100svh - 4.1rem), 46rem); }
+  .stage { height: clamp(32rem, calc(100svh - 6.7rem), 46rem); }
   .chat-log { max-height: 16rem; }
 }
 @media (max-width: 960px) {
@@ -557,7 +564,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
   .stage { height: auto; aspect-ratio: 4 / 5; }
   .hero-ask { position: static; max-width: none; padding: .8rem var(--gut) 1rem; gap: .6rem; }
   .ask-row { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; }
-  .ask-row button { font-size: .92rem; padding: .6rem .5rem; text-align: left; }
+  .ask-row button { font-size: .92rem; padding: .6rem 0 0; text-align: left; }
   .mem { margin-left: auto; font-size: .7rem; gap: .35rem; }
   .mem-cells li { width: 9px; }
   .board { left: var(--gut); right: var(--gut); width: auto; top: 11%; height: 30%; }
