@@ -610,6 +610,19 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .work-card p { margin: 0; color: var(--ink-2); font-size: .9rem; line-height: 1.6; }
 .work-card .made { font-size: .78rem; margin-top: .4rem; }
 
+/* tags:上面一排索引(數字是篇數),下面寬螢幕排多欄 */
+main > .page:has(.tag-index) { max-width: var(--maxw-wide); }
+.tag-cloud-title { font-size: 1.05rem; margin: 0 0 1rem; padding-left: .8rem; border-left: 3px solid #c09a55; }
+.tag-cloud { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 3rem; }
+.tag-cloud a { display: inline-flex; align-items: baseline; gap: .35rem; text-decoration: none; border: 1px solid var(--rule); border-radius: 999px; padding: .1rem .75rem; font-size: .88rem; }
+.tag-cloud a:hover { border-color: var(--carbon); color: var(--carbon); }
+.tag-cloud small { font-family: var(--num); color: var(--ink-2); }
+.tag-index { columns: 3 20rem; column-gap: 3.5rem; }
+.tag-index section { break-inside: avoid; padding-top: 1.2rem; }
+.tag-index h2 { margin: 0 0 .5rem; font-size: 1.15rem; padding-bottom: .4rem; border-bottom: 1px solid var(--rule); scroll-margin-top: 5rem; }
+.tag-index ul { margin: 0; padding-left: 1.1rem; font-size: .9rem; }
+.tag-index small { color: var(--ink-2); font-family: var(--num); }
+
 /* signup */
 /* LINE 風對話框(About 許願池誕生現場) */
 .line-chat { background: #4d6a92; border-radius: 12px; padding: 1rem 1rem 0.5rem; max-width: 26rem; margin: 1.5rem 0; }
