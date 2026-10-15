@@ -1,0 +1,18 @@
+{% comment %} 作品牆:首頁與 /portfolio/ 共用。資料只有一份 _data/works.json。portfolio=true 時不放大英文字(頁首已經有),最後一格改連到下面的完整清單 {% endcomment %}
+<section class="band band--studio replays" id="replays" aria-labelledby="replays-title">
+  {% unless include.portfolio %}<p class="sec-en" aria-hidden="true">Works</p>{% endunless %}
+  <header class="sec-head">
+    <h2 id="replays-title">作品回放</h2>
+    <p>能公開的可以直接玩;商用系統放的是介紹。右下角是實際動手的天數。</p>
+  </header>
+  {% assign play = site.data.works | where: "kind", "play" %}
+  {% assign biz = site.data.works | where: "kind", "biz" %}
+  <div class="vod-grid">
+    {% for w in play %}{% include vod.html w=w first=forloop.first %}{% endfor %}
+    {% if include.portfolio %}<a class="vod-more" href="#page-body"><b lang="en">Full list</b><span>依時期整理的完整清單</span></a>{% else %}<a class="vod-more" href="{{ '/portfolio/' | relative_url }}"><b lang="en">Portfolio</b><span>全部作品與更多介紹</span></a>{% endif %}
+  </div>
+  <h3 class="vod-group">商用中</h3>
+  <div class="vod-grid vod-grid--biz">
+    {% for w in biz %}{% include vod.html w=w first=false %}{% endfor %}
+  </div>
+</section>

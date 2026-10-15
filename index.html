@@ -74,23 +74,7 @@ head-extra:
   <button type="button" class="pip-close" aria-label="關掉小視窗">×</button>
 </aside>
 
-<section class="band band--studio replays" id="replays" aria-labelledby="replays-title">
-  <p class="sec-en" aria-hidden="true">Works</p>
-  <header class="sec-head">
-    <h2 id="replays-title">作品回放</h2>
-    <p>能公開的可以直接玩;商用系統放的是介紹。右下角是實際動手的天數。</p>
-  </header>
-  {% assign play = site.data.works | where: "kind", "play" %}
-  {% assign biz = site.data.works | where: "kind", "biz" %}
-  <div class="vod-grid">
-    {% for w in play %}{% include vod.html w=w first=forloop.first %}{% endfor %}
-    <a class="vod-more" href="{{ '/portfolio/' | relative_url }}"><b lang="en">Portfolio</b><span>全部作品與更多介紹</span></a>
-  </div>
-  <h3 class="vod-group">商用中</h3>
-  <div class="vod-grid vod-grid--biz">
-    {% for w in biz %}{% include vod.html w=w first=false %}{% endfor %}
-  </div>
-</section>
+{% include works-wall.html %}
 
 <section class="band cast" aria-labelledby="cast-title">
   <p class="sec-en" aria-hidden="true">Characters</p>

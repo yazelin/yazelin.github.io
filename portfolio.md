@@ -5,6 +5,7 @@ permalink: /portfolio/
 hero_en: Portfolio
 hero_title: 作品集
 collab: blackhole
+works_wall: true
 ---
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)
