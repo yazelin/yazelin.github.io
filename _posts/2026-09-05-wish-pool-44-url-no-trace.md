@@ -50,7 +50,7 @@ author: Yaze Lin
 
 有一個 bug，測試全過也看不到。
 
-隔天凌晨那筆 commit 處理的是一個重複的 id（duplicate id）。
+前一晚我問過一句：「我們有拿實際的chrome 驗證過功能嗎」。隔天凌晨那筆 commit 處理的是一個重複的 id（duplicate id）。
 
 在 Google Chrome 151 用開發人員模式載入未封裝擴充（沒打包、直接從資料夾載入）的時候，service worker 的 `onStartup` 跟初始呼叫會同時去建「複製無痕連結」這個右鍵選單項目。兩邊都是先 `removeAll()` 再 `create()`，撞在一起，同一個 id 就被建兩次，`chrome://extensions` 上顯示錯誤。
 
@@ -62,7 +62,7 @@ author: Yaze Lin
 
 這支測試照使用者的方式載入擴充功能。
 
-同一個凌晨，又加了一支用真的 Google Chrome 跑的端到端測試 `tests/e2e/chrome.e2e.test.mjs`。它有 737 行，比 repo 裡任何一個擴充功能檔案都長（擴充功能本體裡最長的 `shared/cleaner.js` 是 374 行）。
+同一個凌晨，我問了一句「你可以做e2e嗎」，接著加了一支用真的 Google Chrome 跑的端到端測試 `tests/e2e/chrome.e2e.test.mjs`。它有 737 行，比 repo 裡任何一個擴充功能檔案都長（擴充功能本體裡最長的 `shared/cleaner.js` 是 374 行）。
 
 它不用 `--load-extension`，因為 Chrome 目前對命令列載入有限制。它開一顆乾淨的瀏覽器，進 `chrome://extensions`、把開發人員模式切開、按「載入未封裝項目」，連檔案選擇器都接了一個測試用的 portal mock（`filechooser-portal-mock`）。
 
