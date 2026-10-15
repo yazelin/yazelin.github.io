@@ -17,11 +17,13 @@
   --purple: #b78bff;      /* 格莉奇的霓虹紫,只當底色點綴 */
   --seal: #d93a40;        /* 全站唯一的紅:LIVE 與提示訊息共用 */
   --stage: linear-gradient(140deg, #e8fbf3 0%, #efeaff 52%, #fbeef6 100%);
-  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --serif: "Noto Serif", "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --sans: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
   --hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", serif;
   --num: "Barlow Condensed", "Noto Sans TC", sans-serif;
-  --maxw: 46rem; --maxw-wide: 96rem; --gut: clamp(1.25rem, 4vw, 4rem);
+  --maxw: 46rem; --maxw-wide: 96rem;
+  /* 全站唯一的左右邊界:窄螢幕是 4vw,超過 96rem 寬就把內容收在中間。導覽列、首屏、色帶、內文都對齊它 */
+  --gut: max(clamp(1.25rem, 4vw, 4rem), (100vw - var(--maxw-wide)) / 2);
   --lift: 0 1px 2px rgb(34 31 43 / .06), 0 12px 32px -14px rgb(60 40 120 / .22);
   --r: 12px;
   --fg: var(--ink); --muted: var(--ink-2); --bg: var(--white); --card: #fff;
@@ -78,13 +80,32 @@ th { font-weight: 700; border-bottom: 2px solid var(--ink); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .hand { font-family: var(--hand); color: var(--carbon); font-weight: 700; letter-spacing: .02em; }
 
-/* 內頁:內容放在一張卡片上 */
-main > .page, main > .post, main > .container {
-  background: var(--white); box-shadow: var(--lift); border-radius: var(--r);
-  padding: clamp(1.5rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3.5rem);
-  margin-top: .5rem; max-width: calc(var(--maxw) + 7rem);
-}
+/* 內頁:頂端是深色的棚(page-hero),內容直接放在頁面底色上,不再裝進白卡片 */
+/* 內文欄靠左,跟頁首的大字、導覽列的名字對齊在同一條線上(全站同一條 --gut) */
+main > .page, main > .post, main > .container { padding: clamp(2.5rem, 5vw, 4.5rem) 0 0; margin-left: var(--gut); margin-right: var(--gut); max-width: var(--maxw); }
+main > .container-wide { max-width: var(--maxw-wide); margin-right: var(--gut); }
 main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
+
+/* 內頁頂端的棚 ------------------------------------------------------------ */
+.page-hero { padding-top: clamp(3rem, 6vw, 6rem); padding-bottom: clamp(3rem, 5.5vw, 5.5rem); }
+.page-hero .sec-en { font-size: clamp(3rem, 8vw, 7.5rem); }
+.page-hero h1 { font-size: clamp(1.9rem, 3.6vw, 3.2rem); line-height: 1.3; margin: .9rem 0 0; max-width: 24ch; color: var(--ink); }
+.page-lead { margin: 1.1rem 0 0; max-width: 46ch; color: var(--ink-2); font-size: 1.06rem; }
+.page-meta { margin: .8rem 0 0; color: var(--ink-2); font-family: var(--num); letter-spacing: .06em; }
+/* 文章頁:大字是日期,標題可能很長 */
+.post-hero .sec-en { font-size: clamp(2.4rem, 5.5vw, 4.8rem); }
+.post-hero h1 { font-size: clamp(1.7rem, 3vw, 2.6rem); max-width: 30ch; }
+/* 本頁聯動的角色卡:掛在棚的右邊,下緣凸出棚外一點 */
+.page-hero.has-guest { padding-right: calc(var(--gut) + clamp(12rem, 17vw, 16rem) + 2rem); }
+.band.page-hero > .guest { position: absolute; z-index: 2; right: var(--gut); bottom: -2.5rem; width: clamp(11rem, 15vw, 14rem); }
+.guest-mobile { display: none; }
+.guest-tag { position: absolute; top: .8rem; left: .8rem; font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: #fff; background: rgb(10 8 20 / .55); backdrop-filter: blur(4px); border-radius: 999px; padding: .1rem .65rem; }
+.guest .r-name { font-size: 1.35rem; }
+/* 角色單頁:棚染上那個角色的顏色,卡放大 */
+.char-hero { background: radial-gradient(ellipse 55% 90% at 85% 60%, color-mix(in srgb, var(--acc) 38%, #110e1f) 0%, #110e1f 70%); }
+.char-hero.has-guest { padding-right: calc(var(--gut) + clamp(14rem, 22vw, 20rem) + 2rem); }
+.band.page-hero.char-hero > .guest { width: clamp(13rem, 21vw, 19rem); bottom: -3.5rem; }
+.char-hero .sec-en { font-size: clamp(2.6rem, 6.5vw, 6rem); }
 
 /* nav ------------------------------------------------------------------- */
 /* 全站頂端一條:滿版、捲動時黏在上面。訂閱/抖內也在這條上,首頁的直播台不再另外一排 */
@@ -120,7 +141,6 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .footer-note { font-size: .85rem; margin: 0; }
 
 /* page & post ----------------------------------------------------------- */
-.page > h1, .post-header h1 { font-size: clamp(1.9rem, 4.4vw, 2.7rem); margin: 0 0 .5rem; }
 .post-meta { color: var(--ink-2); font-family: var(--num); font-weight: 500; font-size: 1.05rem; letter-spacing: .05em; margin-bottom: 2.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule); }
 .post-meta a { color: var(--ink-2); }
 .post h2, .page h2 { font-size: 1.5rem; margin: 3rem 0 1rem; }
@@ -322,7 +342,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
    每一段請一位角色來「聯動」,那段的點綴色(--acc)跟著他走。深、淺、深、淺、藍交錯,
    深色段不管系統亮暗都是深的,首屏的攝影棚往下捲才接得上。內頁也用同一套 .band / .sec-en / .collab。
    ========================================================================== */
-.band { --acc: var(--mint); position: relative; padding: clamp(5rem, 9vw, 9rem) max(var(--gut), (100% - var(--maxw-wide)) / 2); }
+.band { --acc: var(--mint); position: relative; padding: clamp(5rem, 9vw, 9rem) var(--gut); }
 /* 深色段:整組色票換成棚裡的 */
 .band--studio, .band--void {
   --ink: #f1eefb; --ink-2: #b9b3cf; --rule: rgb(255 255 255 / .12); --carbon: #c4abff; --white: #1b1730; --card: #1b1730;
@@ -347,7 +367,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .band--denim .collab a { color: #fff; }
 .collab a:hover { color: var(--acc); }
 /* 聯動角色站在色帶右側,腳貼底 */
-.collab-art { position: absolute; right: max(var(--gut), (100% - var(--maxw-wide)) / 2); bottom: 0; height: min(92%, 44rem); width: auto; pointer-events: none; z-index: 0; }
+.collab-art { position: absolute; right: var(--gut); bottom: 0; height: min(92%, 44rem); width: auto; pointer-events: none; z-index: 0; }
 .band > :not(.collab-art) { position: relative; z-index: 1; }
 
 .sec-head, .cast .ledger-head { display: flex; align-items: baseline; gap: .25rem 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
@@ -393,24 +413,27 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
    首頁 3/3:角色、從工廠到 AI、文章、訂閱
    ========================================================================== */
 .cast .more { margin-top: .5rem; }
+/* 角色列表頁:同一種卡,換行排,卡下面一句介紹 */
+.roster--grid { grid-auto-flow: row; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); overflow: visible; gap: 2.5rem 1.5rem; padding-top: 1rem; }
+.roster--grid p { margin: .8rem 0 0; color: var(--ink-2); font-size: .9rem; line-height: 1.6; }
 /* 角色名冊:一張一張大卡,底色是那個角色的顏色。ponytail: 橫向捲動不做輪播,手機直接用手指撥,零 JS。 */
 .roster { list-style: none; margin: 0 0 1rem; padding: .5rem 0 1.25rem; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(13.5rem, 19vw, 18.5rem); gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .roster li { scroll-snap-align: start; }
-.roster a { position: relative; display: block; aspect-ratio: 3 / 4.3; border-radius: 16px; overflow: hidden; text-decoration: none; color: #fff; isolation: isolate;
+.roster a, .guest { position: relative; display: block; aspect-ratio: 3 / 4.3; border-radius: 16px; overflow: hidden; text-decoration: none; color: #fff; isolation: isolate;
   background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--acc) 55%, #fff) 0%, var(--acc) 38%, color-mix(in srgb, var(--acc) 30%, #0d0b16) 100%);
   box-shadow: var(--lift); transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s; }
-.roster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: -1; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
-.roster img.wide { object-position: center; }
-.roster a::after { content: ""; position: absolute; inset: 45% 0 0; z-index: -1; background: linear-gradient(transparent, rgb(10 8 20 / .88)); }
-.roster a::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--acc); }
-.roster a:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -18px color-mix(in srgb, var(--acc) 70%, #000); }
-.roster a:hover img { transform: scale(1.05); }
+.roster img, .guest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: -1; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.roster img.wide, .guest img.wide { object-position: center; }
+.roster a::after, .guest::after { content: ""; position: absolute; inset: 45% 0 0; z-index: -1; background: linear-gradient(transparent, rgb(10 8 20 / .88)); }
+.roster a::before, .guest::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--acc); }
+.roster a:hover, .guest:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -18px color-mix(in srgb, var(--acc) 70%, #000); }
+.roster a:hover img, .guest:hover img { transform: scale(1.05); }
 .r-en, .r-name { position: absolute; left: 1.1rem; right: 1rem; text-shadow: 0 1px 8px rgb(0 0 0 / .6); }
 .r-en { bottom: 3.3rem; font-family: var(--num); font-weight: 600; font-size: .85rem; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: color-mix(in srgb, var(--acc) 35%, #fff); }
 .r-name { bottom: 1.1rem; font-family: var(--serif); font-weight: 900; font-size: 1.55rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* 從工廠到 AI:黑洞先生的段。字留在左邊六成,右邊給他站 */
-.swap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem 4rem; align-items: center; padding-right: max(32%, (100% - var(--maxw-wide)) / 2 + 26rem); }
+.swap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem 4rem; align-items: center; padding-right: calc(var(--gut) + clamp(14rem, 28vw, 26rem)); }
 .swap h2, .swap > .sec-en, .swap > .collab { grid-column: 1 / -1; }
 .swap > .collab { justify-self: start; }
 .swap h2 { margin-bottom: .5rem; }
@@ -434,7 +457,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .featured-list .why { color: var(--ink-2); font-size: .92rem; margin: .3rem 0 0; }
 
 /* 訂閱:阿蕊的藍色段,兩張卡在左,她站右邊 */
-.subscribe { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; padding-right: max(30%, (100% - var(--maxw-wide)) / 2 + 24rem); }
+.subscribe { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; padding-right: calc(var(--gut) + clamp(12rem, 26vw, 24rem)); }
 .subscribe > .sec-en, .subscribe > .collab { grid-column: 1 / -1; }
 .subscribe > .collab { justify-self: start; margin-bottom: .6rem; }
 .subscribe .community-join, .subscribe .signup { max-width: none; text-align: left; background: var(--white); border-radius: var(--r); box-shadow: 0 18px 40px -20px rgb(0 0 0 / .5); padding: 2rem 2.25rem; margin: 0; }
@@ -482,6 +505,13 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
   .collab-art { height: auto; max-height: 30rem; width: 32%; object-fit: contain; object-position: bottom; }
 }
 @media (max-width: 700px) {
+  /* 手機:內頁的聯動角色卡收成一行字 */
+  .page-hero.has-guest, .char-hero.has-guest { padding-right: var(--gut); }
+  .band.page-hero > .guest { display: none; }
+  .page-hero .guest-mobile { display: inline-flex; margin: 1.2rem 0 0; }
+  /* 角色單頁例外:立繪就是主角,手機上照樣放,改成跟著字往下排 */
+  .band.page-hero.char-hero > .guest { display: block; position: relative; right: auto; bottom: auto; width: min(16rem, 70%); margin: 1.8rem 0 0; }
+  .char-hero .guest-mobile { display: none; }
   /* 手機:聯動角色不站右邊,改夾在標題與內容之間 */
   .swap, .subscribe { padding-right: var(--gut); }
   .collab-art { position: static; grid-column: 1 / -1; justify-self: center; width: auto; height: 15rem; max-height: none; margin: -.5rem 0 1rem; }
@@ -535,7 +565,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
   .signup form { flex-direction: column; }
   .post-list li { grid-template-columns: 1fr; }
   .post-list li > *, .post-list time { grid-column: 1; grid-row: auto; padding: 0 0 .15rem; }
-  main > .page, main > .post, main > .container { margin-left: .75rem; margin-right: .75rem; }
+  main > .page, main > .post, main > .container { margin-right: var(--gut); }
 }
 
 /* 其他頁面共用:角色列表、活動頁 ------------------------------------------ */

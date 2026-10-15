@@ -2,6 +2,9 @@
 layout: page
 title: Portfolio
 permalink: /portfolio/
+hero_en: Portfolio
+hero_title: 作品集
+collab: blackhole
 ---
 
 ## AI 主力時代：一個人維護 30+ 個專案 (2026)

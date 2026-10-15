@@ -22,9 +22,9 @@ layout: default
   .event-body a[href*="drive.google.com/drive/folders/"]::before { background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2087.3%2078%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%20%3Cpath%20d%3D%22m6.6%2066.85%203.85%206.65c.8%201.4%201.95%202.5%203.3%203.3l13.75-23.8h-27.5c0%201.55.4%203.1%201.2%204.5z%22%20fill%3D%22%230066da%22/%3E%20%3Cpath%20d%3D%22m43.65%2025-13.75-23.8c-1.35.8-2.5%201.9-3.3%203.3l-25.4%2044a9.06%209.06%200%200%200%20-1.2%204.5h27.5z%22%20fill%3D%22%2300ac47%22/%3E%20%3Cpath%20d%3D%22m73.55%2076.8c1.35-.8%202.5-1.9%203.3-3.3l1.6-2.75%207.65-13.25c.8-1.4%201.2-2.95%201.2-4.5h-27.502l5.852%2011.5z%22%20fill%3D%22%23ea4335%22/%3E%20%3Cpath%20d%3D%22m43.65%2025%2013.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6%200-3.15.45-4.5%201.2z%22%20fill%3D%22%2300832d%22/%3E%20%3Cpath%20d%3D%22m59.8%2053h-32.3l-13.75%2023.8c1.35.8%202.9%201.2%204.5%201.2h50.8c1.6%200%203.15-.45%204.5-1.2z%22%20fill%3D%22%232684fc%22/%3E%20%3Cpath%20d%3D%22m73.4%2026.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75%2023.8%2016.15%2028h27.45c0-1.55-.4-3.1-1.2-4.5z%22%20fill%3D%22%23ffba00%22/%3E%20%3C/svg%3E"); }
   .event-body a[href*="drive.google.com/file/d/"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23e2483d%22%20d%3D%22M6%202h8l6%206v12a2%202%200%200%201-2%202H6a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2z%22/%3E%3Cpath%20fill%3D%22%23fff%22%20fill-opacity%3D%22.55%22%20d%3D%22M14%202l6%206h-4a2%202%200%200%201-2-2z%22/%3E%3Ctext%20x%3D%2212%22%20y%3D%2218%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%226.2%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EPDF%3C/text%3E%3C/svg%3E"); }
 </style>
+{% assign ed = page.event_date | date: "%Y.%m.%d" | default: "Event" %}
+{% include page-hero.html class="event-hero" en=ed title=page.title lead=page.subtitle %}
 <article class="page container">
-  <h1>{{ page.title }}</h1>
-  {% if page.subtitle %}<p class="section-lead" style="text-align:left; margin:0 0 2rem;">{{ page.subtitle }}</p>{% endif %}
 
   {% comment %} 場次視覺：cover 原本只餵 og:image，頁面內看不到，補渲染在資訊列上方 {% endcomment %}
   {% if page.cover %}<img src="{% include cdn-url.html url=page.cover %}" alt="{{ page.title }} 場次視覺"

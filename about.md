@@ -2,6 +2,9 @@
 layout: page
 title: About
 permalink: /about/
+hero_en: About
+hero_title: 關於我
+collab: glitch
 ---
 
 ## Hi, I'm Yaze

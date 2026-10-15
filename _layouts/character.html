@@ -15,13 +15,11 @@ layout: default
     voice_text   那段配音的逐字稿。跟 voice 一起填,聽不到的人也讀得到
   正文(Markdown)寫在 front matter 之後,顯示在基本資料與成員/連結之間。
 {% endcomment %}
+{% include page-hero.html class="char-hero" en=page.name_en title=page.title lead=page.subtitle collab=page.url tag="角色檔案" %}
 <article class="page container">
+  {% if page.voice or page.profile %}
   <div class="char-head">
-    {% if page.image %}<img class="char-portrait" src="{{ page.image | relative_url }}" alt="{{ page.title }}">{% endif %}
     <div class="char-intro">
-      <h1>{{ page.title }}</h1>
-      {% if page.name_en %}<p class="char-en">{{ page.name_en }}</p>{% endif %}
-      {% if page.subtitle %}<p class="char-sub">{{ page.subtitle }}</p>{% endif %}
       {% if page.voice %}
       <button class="char-say" data-src="{{ page.voice | relative_url }}" aria-pressed="false"><b>▶</b>聽{{ page.title }}說</button>
       {% if page.voice_text %}<p class="char-said">{{ page.voice_text }}</p>{% endif %}
@@ -33,6 +31,7 @@ layout: default
       {% endif %}
     </div>
   </div>
+  {% endif %}
 
   {{ content }}
 

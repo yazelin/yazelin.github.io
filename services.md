@@ -3,6 +3,8 @@ layout: page
 title: AI 服務與用到的站
 permalink: /services/
 share-description: 我自己架的 AI 服務和團購共用的閘道，還有哪些站在用它們、怎麼用。
+hero_en: Services
+collab: jinn
 ---
 
 我的站用到的 AI 服務，大部分是我自己架的，llmshare 是團購共用的閘道。這頁記錄每個站用了哪些服務、怎麼用，有新的站就加上來。

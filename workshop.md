@@ -3,6 +3,8 @@ layout: page
 title: 森之魔道具工坊
 subtitle: The Forest Workshop · Artifacts crafted by the Archmage
 permalink: /workshop/
+hero_en: Workshop
+collab: mori
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +26,7 @@ permalink: /workshop/
     --ink-soft: #4a4a4a;
     --gold: #c9a24d;
     --gold-soft: #d4b572;
-    --mist: #6b8a99;
+    --mist: light-dark(#4b6876, #9db8c4);
     --serif-en: "Cinzel", "IM Fell English", Georgia, serif;
     --serif-zh: "Noto Serif TC", "PingFang TC", "Source Han Serif TC", serif;
   }
@@ -162,7 +164,7 @@ permalink: /workshop/
   .forest-workshop .artifact-repo {
     font-family: Menlo, "Fira Code", Consolas, monospace;
     font-size: 0.72rem;
-    color: var(--mist);
+    color: #4b6876; /* 卡片是羊皮紙底,亮暗模式都一樣 */
     margin-top: 1px;
   }
   .forest-workshop .artifact-school {
@@ -238,7 +240,7 @@ permalink: /workshop/
   .forest-workshop .school-divider {
     font-family: var(--serif-zh);
     font-size: 0.95rem;
-    color: var(--forest-mid);
+    color: light-dark(var(--forest-mid), #b9d3c4);
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--parchment-dark);
@@ -634,7 +636,7 @@ permalink: /workshop/
   此處列出的魔道具多為我與 Mori 共同打造的作品，部分為教學範例、部分為日常使用工具。
   若其中任何一件對你有用，歡迎 fork、改造、延伸。<br>
   新的魔道具會持續加入此處 — 這是一間還在生長的工坊。<br><br>
-  <em style="color: var(--mist); font-family: var(--serif-en);">
+  <em style="color: #4b6876; font-family: var(--serif-en);">
     Each artifact here was forged in collaboration with Mori, my contracted spirit.
     Some are teaching examples, others are daily tools. All are open. Take what you need.
   </em>

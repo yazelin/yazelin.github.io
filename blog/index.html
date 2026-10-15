@@ -2,8 +2,9 @@
 layout: default
 title: Blog
 ---
+{% capture bl %}全部 {{ site.posts | size }} 篇。做了什麼、怎麼做的、哪裡踩了坑。{% endcapture %}
+{% include page-hero.html en="Blog" title="文章" lead=bl collab="mori" %}
 <div class="container">
-  <h1>Blog</h1>
   <input id="blog-search" type="search" placeholder="搜尋文章標題或 tag…" autocomplete="off">
   <ul class="post-list" id="post-list">
     {% for post in paginator.posts %}

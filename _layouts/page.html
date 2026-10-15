@@ -1,7 +1,9 @@
 ---
 layout: default
 ---
+{% comment %} 頁首是深色的棚(page-hero.html):hero_en 大英文字、hero_title 頁名(預設 title)、hero_lead 導言、collab 聯動角色 slug {% endcomment %}
+{% assign ht = page.hero_title | default: page.title %}
+{% include page-hero.html en=page.hero_en title=ht lead=page.hero_lead collab=page.collab %}
 <article class="page container">
-  <h1>{{ page.title }}</h1>
   {{ content }}
 </article>
