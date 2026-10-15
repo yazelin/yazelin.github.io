@@ -1,14 +1,16 @@
 {% comment %}
   內頁頂端的深色棚:大英文字、中文頁名、一句導言,右邊是本頁聯動的角色卡(跟首頁角色名冊同一種卡)。
   用法:{% include page-hero.html en="Blog" title="文章" lead="…" collab="mori" %}
+  art 是右邊一張橫的主視覺(活動頁的場次視覺),已經是完整網址。
   collab 填角色頁的 slug(characters/ 底下的檔名),顏色吃那頁的 accent。不填就只有字。
 {% endcomment %}
 {% if include.collab %}{% capture cu %}{% if include.collab contains "/" %}{{ include.collab }}{% else %}/characters/{{ include.collab }}/{% endif %}{% endcapture %}{% assign cc = site.pages | where: "url", cu | first %}{% endif %}
-<header class="band band--studio page-hero {{ include.class }}{% if cc %} has-guest{% endif %}"{% if cc %} style="--acc: {{ cc.accent }}"{% endif %}>
+<header class="band band--studio page-hero {{ include.class }}{% if cc %} has-guest{% endif %}{% if include.art %} has-art{% endif %}"{% if cc %} style="--acc: {{ cc.accent }}"{% endif %}>
   {% if include.en %}<p class="sec-en" aria-hidden="true">{{ include.en }}</p>{% endif %}
   <h1>{{ include.title }}</h1>
   {% if include.lead %}<p class="page-lead">{{ include.lead }}</p>{% endif %}
   {% if include.meta %}<p class="page-meta">{{ include.meta }}</p>{% endif %}
+  {% if include.art %}<img class="hero-art" src="{{ include.art }}" alt="{{ include.art_alt }}">{% endif %}
   {% if cc %}
   <p class="collab guest-mobile"><span>{{ include.tag | default: "本頁聯動" }}</span><a href="{{ cc.url | relative_url }}">{{ cc.title }}</a></p>
   <a class="guest" href="{{ cc.url | relative_url }}">

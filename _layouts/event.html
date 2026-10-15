@@ -23,12 +23,11 @@ layout: default
   .event-body a[href*="drive.google.com/file/d/"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23e2483d%22%20d%3D%22M6%202h8l6%206v12a2%202%200%200%201-2%202H6a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2z%22/%3E%3Cpath%20fill%3D%22%23fff%22%20fill-opacity%3D%22.55%22%20d%3D%22M14%202l6%206h-4a2%202%200%200%201-2-2z%22/%3E%3Ctext%20x%3D%2212%22%20y%3D%2218%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%226.2%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EPDF%3C/text%3E%3C/svg%3E"); }
 </style>
 {% assign ed = page.event_date | date: "%Y.%m.%d" | default: "Event" %}
-{% include page-hero.html class="event-hero" en=ed title=page.title lead=page.subtitle %}
+{% if page.cover %}{% capture cv %}{% include cdn-url.html url=page.cover %}{% endcapture %}{% capture cva %}{{ page.title }} 場次視覺{% endcapture %}{% endif %}
+{% comment %} 場次視覺放在頁首右邊(cover 原本只餵 og:image) {% endcomment %}
+{% include page-hero.html class="event-hero" en=ed title=page.title lead=page.subtitle art=cv art_alt=cva %}
 <article class="page container">
 
-  {% comment %} 場次視覺：cover 原本只餵 og:image，頁面內看不到，補渲染在資訊列上方 {% endcomment %}
-  {% if page.cover %}<img src="{% include cdn-url.html url=page.cover %}" alt="{{ page.title }} 場次視覺"
-    style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid var(--border); margin:0 0 1.6rem; display:block;">{% endif %}
 
   {% if page.event_datetime or page.event_duration or page.event_location or page.event_price or page.event_access %}
   <ul class="event-meta">

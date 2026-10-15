@@ -103,6 +103,14 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 .guest-mobile { display: none; }
 .guest-tag { position: absolute; top: .8rem; left: .8rem; font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: #fff; background: rgb(10 8 20 / .55); backdrop-filter: blur(4px); border-radius: 999px; padding: .1rem .65rem; }
 .guest .r-name { font-size: 1.35rem; }
+/* 頁首右邊一張橫的主視覺(活動頁) */
+.page-hero.has-art { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); column-gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.page-hero.has-art > :not(.hero-art) { grid-column: 1; }
+.page-hero.has-art > .hero-art { grid-column: 2; grid-row: 1 / span 5; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; box-shadow: 0 24px 50px -22px rgb(0 0 0 / .8); outline: 1px solid rgb(255 255 255 / .1); }
+@media (max-width: 900px) {
+  .page-hero.has-art { display: block; }
+  .page-hero.has-art > .hero-art { margin-top: 1.8rem; }
+}
 /* 角色單頁:棚染上那個角色的顏色,卡放大 */
 .char-hero { background: radial-gradient(ellipse 55% 90% at 85% 60%, color-mix(in srgb, var(--acc) 38%, #110e1f) 0%, #110e1f 70%); }
 .char-hero.has-guest { padding-right: calc(var(--gut) + clamp(14rem, 22vw, 20rem) + 2rem); }
