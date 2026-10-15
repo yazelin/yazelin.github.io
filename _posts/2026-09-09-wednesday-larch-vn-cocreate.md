@@ -152,3 +152,5 @@ author: Yaze Lin
 那七章在這裡，免登入：<https://larch.ink/play/market/53c30eb6-bc5b-48bc-a5a7-a35f5da9ec6e>
 
 錄影、簡報與講義都在[雲端資料夾](https://drive.google.com/drive/folders/1snlnJg8NPVoIxvOHWElYekP7XAovqP7N)。
+
+相關直播：9 月 9 日週三直播「[視覺小說第一週：協作共創寫小說](/events/site-2026-09-09/)」，錄影與講義在活動頁。

@@ -51,3 +51,5 @@ author: Yaze Lin
 工作室的核心就是這條管線的產品化。學會了，你不只會用工具，還改得動它。
 
 先去做一張自己的貼圖：<https://yazelin.github.io/line-sticker-studio/>
+
+相關直播：8 月 5 日週三直播「[貼圖實作營](/events/sticker-2026-08-05/)」，錄影與講義在活動頁。

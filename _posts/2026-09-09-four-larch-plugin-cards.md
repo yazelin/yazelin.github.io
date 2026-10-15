@@ -170,3 +170,5 @@ fullscreen 的插件卡，外框預設先收走 65px，1280×720 的視窗到卡
 簡報插件開源，標記規格、切段工具與驗收器都在 <https://github.com/yazelin/larch-slide-deck>，MIT。另外三張的原始碼沒有公開，但在 Larch 的插件市集搜得到，清單也可以自己打一次 <https://larch.ink/api/plugins> 對。
 
 想看這些卡放進一部作品裡長什麼樣，咒泉鄉那一系列的正典站在 <https://yazelin.github.io/larch-taoyuan-canon/>。
+
+相關直播：9 月 9 日週三直播「[視覺小說第一週：協作共創寫小說](/events/site-2026-09-09/)」，錄影與講義在活動頁。

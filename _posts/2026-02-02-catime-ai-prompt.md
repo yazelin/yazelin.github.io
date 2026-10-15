@@ -217,3 +217,5 @@ return f"A cute cat with the date and time '{timestamp}' displayed in the image,
 - [Nanobanana 圖片生成]({% post_url 2026-01-14-nanobanana-image-generation %})
 - [catime GitHub](https://github.com/yazelin/catime)
 - [Google Gemini API 文件](https://ai.google.dev/gemini-api/docs)
+
+相關直播：10 月 7 日週三直播「[讓網站每天自己寫一篇](/events/daily-2026-10-07/)」，錄影與講義在活動頁。

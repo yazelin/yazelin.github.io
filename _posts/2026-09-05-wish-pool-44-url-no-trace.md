@@ -107,3 +107,5 @@ MVP 的邊界也寫在 `docs/wish-44.md`：手機 App、伺服器代理、AI 分
 9 月 11 日上午，池子上多了一則進度：通過審查，上架 Chrome Web Store，商店名稱「無痕清理器｜Clean Trail」：<https://chromewebstore.google.com/detail/goahbbfmfjfmlkngodpocghpjofjbolf>。願望 #44 的狀態同時轉成成真。
 
 上面那三條做不到，沒有因為上架改變。第二條還算數：網址整理發生在頁面載入之後，它管的是分享跟複製那一段，管不到網路層。
+
+相關直播：8 月 26 日週三直播「[拆解 AI 許願池](/events/wishpool-2026-08-26/)」，錄影與講義在活動頁。
