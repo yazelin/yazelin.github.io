@@ -49,7 +49,7 @@ description: 林亞澤在 Larch 上做的視覺小說與 RPG，點封面就能�
       var ch = (w.tags || []).filter(function (t) { return t.indexOf('挑戰') > -1; })[0];
       var meta = [w.publishedAt.slice(0, 10).replace(/-/g, '.')];
       if (ch) meta.push(ch);
-      if (w.marketRank) meta.push('市集第 ' + w.marketRank + ' 名');
+      if (w.marketRank) meta.push('市集瀏覽第 ' + w.marketRank + ' 名');
       li.querySelector('.lw-meta').textContent = meta.join(' · ');
       li.querySelector('.lw-desc').textContent = (w.description || '').replace(/\s*\n\s*/g, ' ');
       var nums = document.createElement('p'); nums.className = 'lw-nums';
