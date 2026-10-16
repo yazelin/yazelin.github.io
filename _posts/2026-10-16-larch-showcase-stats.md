@@ -8,7 +8,7 @@ tags: [Larch, larch-showcase, GitHub Actions, GitHub Pages, API, 自動化, 金�
 author: Yaze Lin
 ---
 
-![Larch 作品頁：上面一排總數，下面是作品封面牆](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-10-16-larch-showcase-stats.webp)
+![Larch 作品頁：上面一排總數，下面是作品封面牆](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-10-16-larch-showcase-cover.webp)
 
 我在 Larch 上架了 19 部作品。想知道哪一部有人在玩、哪一部多了留言，原本要一部一部點進去看。10 月 14 日中午我開了一個 repo 叫 larch-showcase，讓 GitHub Actions 每天替我去抄一次。
 
