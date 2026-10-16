@@ -6,6 +6,8 @@ date: 2026-09-02
 categories: [AI]
 tags: [週三直播, 簡報, AI 應用, 發包, 驗收, 逐字稿, 教學設計]
 author: Yaze Lin
+featured: true
+featured-why: "週三直播：開播前抓到簡報上一個錯的數字，只改了一半，上台照著大字唸了出來。"
 ---
 
 ![簡報頁面裡內嵌的真終端機，畫面上跑的是簡報自己的驗收工具，回報 33 頁、33 則講者備註、逐頁結構與翻頁驗收通過](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-02-wednesday-web-deck.webp)

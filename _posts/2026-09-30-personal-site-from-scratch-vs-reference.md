@@ -6,6 +6,8 @@ date: 2026-09-30
 categories: [AI]
 tags: [personal-brand-site-starter, drive-folio-2025, web-effects-collector, 個人網站, 驗收, 週三直播]
 author: Yaze Lin
+featured: true
+featured-why: "週三直播：拿一個喜歡的開源網站當底，同樣三句話換七個參考，做出來的樣子各不相同。"
 ---
 
 ![範例牆上實體店與在地服務那一區，花店、早餐店、鋼琴老師、房仲、水電、咖啡店、髮廊、獸醫各一張卡](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-08-31-brand-site-starter-invisible-defects.webp)
