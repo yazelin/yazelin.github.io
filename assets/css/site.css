@@ -28,6 +28,8 @@
   --r: 12px;
   --fg: var(--ink); --muted: var(--ink-2); --bg: var(--white); --card: #fff;
   --border: var(--rule); --accent: var(--carbon); --on-accent: #fff; --accent-weak: #efeaff;
+  /* 棚的底色:亮色是淡紫灰,深色是棚裡的黑紫。頁首、作品牆、頁尾共用;首屏直播台另外用 --studio,永遠是深的 */
+  --band-bg: light-dark(#e7e3f2, #110e1f);
   color-scheme: light;
 }
 /* 深色寫兩次是必要的:一次給「系統深色且沒手動選亮色」,一次給「手動選了深色」。
@@ -106,13 +108,13 @@ main > .container:has(> .post-list) { max-width: calc(var(--maxw) + 12rem); }
 /* 頁首右邊一張橫的主視覺(活動頁) */
 .page-hero.has-art { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); column-gap: clamp(2rem, 4vw, 4rem); align-items: center; }
 .page-hero.has-art > :not(.hero-art) { grid-column: 1; }
-.page-hero.has-art > .hero-art { grid-column: 2; grid-row: 1 / span 5; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; box-shadow: 0 24px 50px -22px rgb(0 0 0 / .8); outline: 1px solid rgb(255 255 255 / .1); }
+.page-hero.has-art > .hero-art { grid-column: 2; grid-row: 1 / span 5; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; box-shadow: var(--lift); outline: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
 @media (max-width: 900px) {
   .page-hero.has-art { display: block; }
   .page-hero.has-art > .hero-art { margin-top: 1.8rem; }
 }
 /* 角色單頁:棚染上那個角色的顏色,卡放大 */
-.char-hero { background: radial-gradient(ellipse 55% 90% at 85% 60%, color-mix(in srgb, var(--acc) 38%, #110e1f) 0%, #110e1f 70%); }
+.char-hero { background: radial-gradient(ellipse 55% 90% at 85% 60%, color-mix(in srgb, var(--acc) 38%, var(--band-bg)) 0%, var(--band-bg) 70%); }
 .char-hero.has-guest { padding-right: calc(var(--gut) + clamp(14rem, 22vw, 20rem) + 2rem); }
 .band.page-hero.char-hero > .guest { width: clamp(13rem, 21vw, 19rem); bottom: -3.5rem; }
 .char-hero .sec-en { font-size: clamp(2.6rem, 6.5vw, 6rem); }
@@ -141,12 +143,12 @@ html { scroll-padding-top: 4.5rem; }
 .theme-toggle svg { width: 15px; height: 15px; }
 
 /* footer ---------------------------------------------------------------- */
-/* 頁尾跟首屏同一間棚的深色,全站一致 */
-.site-footer { margin-top: 8rem; padding: 3.5rem 1.25rem 3.5rem; text-align: center; color: #b9b3cf; background: #110e1f; color-scheme: dark; }
+/* 頁尾跟頁首同一個棚色,跟著亮暗切換 */
+.site-footer { margin-top: 8rem; padding: 3.5rem 1.25rem 3.5rem; text-align: center; color: var(--ink-2); background: var(--band-bg); }
 main:has(.band--denim) + .site-footer { margin-top: 0; }
-.site-footer a { color: #f1eefb; }
+.site-footer a { color: var(--ink); }
 .footer-links { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; margin-bottom: .75rem; }
-.footer-links a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; color: #d6d1e6; border: 1px solid rgb(255 255 255 / .22); transition: color .15s, border-color .15s, background .15s; }
+.footer-links a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; color: var(--ink-2); border: 1px solid color-mix(in srgb, var(--ink-2) 40%, transparent); transition: color .15s, border-color .15s, background .15s; }
 .footer-links a:hover { color: #221f2b; background: var(--mint); border-color: var(--mint); }
 .footer-note { font-size: .85rem; margin: 0; }
 
@@ -375,31 +377,26 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 /* ==========================================================================
    首頁 2/3:一段一段的色帶
    每一段請一位角色來「聯動」,那段的點綴色(--acc)跟著他走。深、淺、深、淺、藍交錯,
-   深色段不管系統亮暗都是深的,首屏的攝影棚往下捲才接得上。內頁也用同一套 .band / .sec-en / .collab。
+   色帶跟著亮暗切換(--band-bg 與 light-dark()),只有首屏直播台永遠是深的。內頁也用同一套 .band / .sec-en / .collab。
    ========================================================================== */
-.band { --acc: var(--mint); position: relative; padding: clamp(5rem, 9vw, 9rem) var(--gut); }
-/* 深色段:整組色票換成棚裡的 */
-.band--studio, .band--void {
-  --ink: #f1eefb; --ink-2: #b9b3cf; --rule: rgb(255 255 255 / .12); --carbon: #c4abff; --white: #1b1730; --card: #1b1730;
-  --accent-weak: #2c2640; --lift: 0 14px 36px -16px rgb(0 0 0 / .8);
-  color: var(--ink); color-scheme: dark;
-}
-.band--studio { background: #110e1f; }
-/* 黑洞先生的段:中間一團星雲,往外沉到全黑 */
-.band--void { --acc: #a99bff; background: radial-gradient(ellipse 60% 70% at 78% 55%, #2b2266 0%, #14112a 45%, #08070e 80%); overflow: hidden; }
-.band--denim { --acc: #ffd27a; background: #2b4a78; overflow: hidden; }
+.band { --acc: light-dark(#086a47, var(--mint)); position: relative; padding: clamp(5rem, 9vw, 9rem) var(--gut); }
+/* 色帶跟著亮暗切換:深色模式是棚裡的黑紫,亮色模式是同一個色相的淡色版。字色直接吃全站色票 */
+.band--studio { background: var(--band-bg); }
+/* 黑洞先生的段:中間一團星雲,往外散開(深色沉到全黑,亮色淡到頁面底色) */
+.band--void { --acc: light-dark(#5b4bc8, #a99bff); background: radial-gradient(ellipse 60% 70% at 78% 55%, light-dark(#d4cbff, #2b2266) 0%, light-dark(#e6e1fb, #14112a) 45%, light-dark(#f3f2f7, #08070e) 80%); overflow: hidden; }
+.band--denim { --acc: light-dark(#2b4a78, #ffd27a); background: light-dark(#d9e4f3, #2b4a78); overflow: hidden; }
 .cast { --acc: var(--purple); }
 .reads { --acc: #7fae5a; background: var(--white); }
 
 /* 每一段頂上一個大英文字,底下才是中文標題;方塊是那段角色的顏色 */
 .sec-en { margin: 0 0 .6rem; font-family: var(--num); font-weight: 600; font-size: clamp(3.2rem, 7.5vw, 6.8rem); line-height: .82; letter-spacing: .01em; color: var(--ink); text-transform: uppercase; }
 .sec-en::after { content: ""; display: inline-block; width: .16em; height: .16em; margin-left: .1em; background: var(--acc, var(--mint)); border-radius: 2px; }
-.band--denim .sec-en, .band--denim .collab { color: #fff; }
+.band--denim .sec-en, .band--denim .collab { color: light-dark(var(--ink), #fff); }
 /* 「本段聯動」:左邊一條角色色 */
 .collab { display: inline-flex; align-items: baseline; gap: .7rem; margin: .4rem 0 1.4rem; padding-left: .8rem; border-left: 3px solid var(--acc); font-size: .9rem; color: var(--ink-2); }
 .collab span { font-family: var(--num); letter-spacing: .12em; }
 .collab a { color: var(--ink); font-weight: 700; text-decoration: none; }
-.band--denim .collab a { color: #fff; }
+.band--denim .collab a { color: light-dark(var(--ink), #fff); }
 .collab a:hover { color: var(--acc); }
 /* 聯動角色站在色帶右側,腳貼底 */
 .collab-art { position: absolute; right: var(--gut); bottom: 0; height: min(92%, 44rem); width: auto; pointer-events: none; z-index: 0; }
@@ -445,7 +442,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .vod-group { font-family: var(--num); font-size: 1.05rem; font-weight: 600; letter-spacing: .14em; color: var(--ink-2); margin: 4.5rem 0 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 
 /* Larch 作品:/larch/ 的海報牆、文章側欄與角色頁的小卡 */
-.larch-wall { --acc: var(--mint); }
+.larch-wall { --acc: light-dark(#086a47, var(--mint)); }
 .larch-stats { display: flex; flex-wrap: wrap; gap: 1rem clamp(1.5rem, 5vw, 4.5rem); margin: 0 0 3rem; }
 .larch-stats div { display: flex; flex-direction: column-reverse; }
 .larch-stats dt { color: var(--ink-2); font-size: .9rem; }
