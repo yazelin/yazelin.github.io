@@ -78,3 +78,5 @@ author: Yaze Lin
 如果你發現有死連結，或有更驚艷的開源特效該收進來，歡迎到 [GitHub](https://github.com/yazelin/web-effects-collector) 開 issue。我自己最常拿它當挑特效的起點 —— 要找背景、要找轉場、要找一個有記憶點的 hero，翻一翻通常就有靈感。
 
 > **想支持持續開發?** 請我喝杯咖啡 → [buymeacoffee.com/yazelin](https://buymeacoffee.com/yazelin)
+
+9 月 30 日的週三直播「[幫你的網頁加點特效](/events/effects-2026-09-30/)」跟這份目錄是同一個主題。錄影和講義在活動頁。

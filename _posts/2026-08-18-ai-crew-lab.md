@@ -91,3 +91,5 @@ author: Yaze Lin
 點子、要拆成幾個角色、每一條評分標準要不要加、什麼叫做「量過了」，是我定的。頁面、錄製腳本、基準測試、那些測試，是 AI 寫的。A／B 那組數字是真的跑出來的，不是估的。
 
 想看的話，[AI 劇組實驗室](https://yazelin.github.io/ai-crew-lab/) 打開就是，手機也讀得完。原始碼跟錄製檔在 <https://github.com/yazelin/ai-crew-lab>。想先看它拆的是什麼東西，工具本身在 <https://yazelin.github.io/line-chat-maker/>，那顆按鈕怎麼教出來的寫在這裡：[教一個 AI 小劇組寫出「值得截圖」的對話]({% post_url 2026-07-17-line-chat-maker-ai %})。
+
+對話背後那組 AI 的分工，8 月 12 日的週三直播「[LINE 搞笑對話創作營](/events/chat-2026-08-12/)」也拆開講過。錄影和講義在活動頁。

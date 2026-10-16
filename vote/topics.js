@@ -14,12 +14,12 @@ window.VOTE_TOPICS = {
   open: [
     { slug: 'larch-puzzle', title: 'Larch 平台分享', desc: 'Larch 上的創作經驗、作品與創作者挑戰賽', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
-    { slug: 'sprite',       title: '會動的角色',          desc: '上傳一張圖，生成會動的 sprite 貼圖', url: 'https://yazelin.github.io/mori-sprite-studio/' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
     { slug: 'active-agent', title: '做一個會主動幫你做事的 agent', desc: '讓 agent 自己在某個地方發現事情、主動去處理，不只是定時跑排程；也會講一小段 agent 怎麼運作：迴圈怎麼跑、怎麼呼叫 API' },
   ],
   done: [
-    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/', img: '/images/events/og-daily-writer-1007.jpg', feedback: true },
+    { slug: 'sprite', title: '讓 Mori 出現在你的桌面', date: '10-14', url: '/events/mori-pet-2026-10-14/', img: '/images/events/og-mori-pet-2026-10-14.jpg', feedback: true },
+    { slug: 'daily-writer', title: '讓網站每天自己寫一篇', date: '10-07', url: '/events/daily-2026-10-07/', img: '/images/events/og-daily-writer-1007.jpg' },
     { slug: 'larch-ai-setup', title: '週二臨時加開：我的 Larch 視覺小說 AI 開發配置', date: '10-06', url: '/events/larch-ai-2026-10-06/', img: '/images/events/og-larch-ai.jpg' },
     { slug: 'web-effects', title: '幫你的網頁加點特效：做一個自己的個人網站', date: '09-30', url: '/events/effects-2026-09-30/' , img: '/images/events/og-web-effects.jpg'},
     { slug: 'quiz-site',   title: '用 AI 做自己的刷題網站',   date: '09-23', url: '/events/quiz-2026-09-23/' , img: '/images/events/og-quiz-site.jpg'},
@@ -32,7 +32,7 @@ window.VOTE_TOPICS = {
     { slug: 'sticker',    title: '貼圖實作營',            date: '08-05', url: '/events/sticker-2026-08-05/' , img: '/images/events/og-sticker-card.jpg'},
   ],
   scheduled: [
-    { slug: 'mori-universe', title: '預計：Mori 宇宙（Mori Desktop、mori-sprite-studio）', date: '10-14' },
+    { slug: 'mori-desktop', title: '預計：Mori Desktop（語音輸入）', date: '10-21' },
   ],
 };
 
