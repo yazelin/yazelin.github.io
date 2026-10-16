@@ -11,6 +11,14 @@ layout: default
 
   {% comment %} 標籤與相關文章:窄螢幕排在文末,寬螢幕變成右邊黏住的一欄 {% endcomment %}
   <aside class="post-side">
+  {% comment %} Larch 引流:front matter 寫了 larch 就掛那幾部的封面;只有 Larch 標籤的掛作品頁入口 {% endcomment %}
+  {% if page.larch or page.tags contains "Larch" %}
+  <section class="post-larch">
+    <h2>{% if page.larch %}在 Larch 上玩{% else %}Larch 作品{% endif %}</h2>
+    {% if page.larch %}{% include larch-cards.html ids=page.larch %}{% endif %}
+    <a class="more" href="{{ '/larch/' | relative_url }}">全部 Larch 作品</a>
+  </section>
+  {% endif %}
   {% if page.tags.size > 0 %}
   <div class="post-tags">
     {% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor %}

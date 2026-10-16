@@ -27,6 +27,7 @@ appearances:
   - title: About Yori
     url: https://yazelin.github.io/yori-growth-log/about.html
     note: 她的角色邊界與現況
+larch: ["1abe8522"]
 ---
 
 優理是森林宇宙裡最年輕的一位。她的工作是練習、驗證，然後教回來。

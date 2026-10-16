@@ -6,6 +6,7 @@ date: 2026-09-07
 categories: [AI]
 tags: [Larch, 視覺小說, 咒泉鄉桃園三結義, 產線, 驗收, 發包]
 author: Yaze Lin
+larch: ["2375b478"]
 ---
 
 ![劉備戰甲的四張表情差分，由左到右是沉、凜、硬、柔](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-07-larch-taoyuan-silent-overwrite.webp)

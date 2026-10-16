@@ -6,6 +6,7 @@ date: 2026-09-06
 categories: [AI]
 tags: [glitch-vn, 格莉奇與黑洞先生, 色票, 色溫, 美術驗收, AI 生成, 視覺小說, 驗收]
 author: Yaze Lin
+larch: ["15cf12d3"]
 ---
 
 ![同一個公車站候車亭的白天背景，左邊是第一批被曬成金黃的版本，右邊是重產後清亮的版本](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-06-palette-colour-temp-check.webp)

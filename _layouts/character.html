@@ -50,6 +50,11 @@ layout: default
   </ul>
   {% endif %}
 
+  {% if page.larch %}
+  <h2 class="char-larch-title">演出的 Larch 作品</h2>
+  {% include larch-cards.html ids=page.larch %}
+  {% endif %}
+
   {% if page.appearances %}
   <h2>在哪裡遇得到</h2>
   <ul class="char-links">

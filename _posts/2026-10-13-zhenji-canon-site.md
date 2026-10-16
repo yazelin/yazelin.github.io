@@ -6,6 +6,7 @@ date: 2026-10-13
 categories: [AI]
 tags: [Larch, 視覺小說, 洛泉袁真跡, 公開站, 原聲帶, 設定集, 人物關係, 史料考證]
 author: Yaze Lin
+larch: ["35e85c22"]
 ---
 
 ![第五卷〈塘上行〉全詩那張 CG：寫完的詩，筆擱在筆架上](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-10-13-zhenji-canon-site.webp)

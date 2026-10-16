@@ -6,6 +6,7 @@ date: 2026-09-01
 categories: [AI]
 tags: [cutout-skill, 去背, chroma key, 綠幕, 立繪, 咒泉鄉桃園三結義, AI 生成, 驗收]
 author: Yaze Lin
+larch: ["2375b478"]
 ---
 
 ![劉關張三張常服立繪，上排是純藍底的原圖，下排是去背之後的透明 PNG](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-01-cutout-key-colour-collision.webp)

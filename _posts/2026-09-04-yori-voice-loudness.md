@@ -6,6 +6,7 @@ date: 2026-09-04
 categories: [AI]
 tags: [larch-vn-yori, 還沒送到的信, Larch, 視覺小說, F5-TTS, TTS, 配音, 響度]
 author: Yaze Lin
+larch: ["1abe8522"]
 ---
 
 ![153 個音檔的實際響度量測：BGM 原檔約 -12 LUFS，壓到 -31 太小聲，定案 -25；旁白 -18、優理 -16](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-04-yori-voice-loudness.webp)

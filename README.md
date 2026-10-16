@@ -21,6 +21,11 @@
   文章頁的大字是日期,活動頁是活動日期,角色頁的卡是她自己、棚染上她的 `accent`。內文直接放在頁面底色上,不再裝白卡片。
   活動頁的場次視覺(cover)放在頁首右邊(page-hero 的 `art`)。作品牆是 `_includes/works-wall.html`,首頁與作品集頁(`works_wall: true`)共用。
   Blog 列表依年份分段,寬螢幕右邊一欄放精選文章;文章頁的標籤與相關文章在寬螢幕變成右邊黏住的一欄。
+  Larch 作品頁 `/larch/`:卡片在 build 時由 `_data/larch.yml` 排出(縮圖在 `images/larch/<id 前八碼>.webp`、公開站網址),
+  開頁時再讀 larch-showcase 每天同步的 `data/works.json` 補簡介、數字、市集名次,yml 沒有的新作品用 Larch 原圖排上去。
+  文章或角色頁要掛某部作品,front matter 寫 `larch: ["id前八碼"]`:文章頁側欄出現「在 Larch 上玩」封面卡,角色頁出現「演出的 Larch 作品」,
+  /larch/ 那張卡下面也會自動列出這篇文章。只有 `Larch` 標籤沒寫 `larch` 的文章,側欄只放作品頁入口。首頁角色段下面有四張精選封面。
+  新作品上架:yml 補一行、縮圖轉 800 寬 webp。
   標籤頁用 `site.tags`,上方只列三篇以上的常用標籤,錨點一律 `slugify`(文章頁的標籤連結也是)。
   左右邊界全站只有一個變數 `--gut`(超過 96rem 寬時把內容收在中間),所有東西都對齊這條線。
   字體只用三種角色:標題明體(英數 Noto Serif、中文 Noto Serif TC,英文撇號才不會變全形)、英文標籤與數字窄體(Barlow Condensed)、內文黑體;手寫楷書只留給首屏題目。

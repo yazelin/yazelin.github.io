@@ -6,6 +6,7 @@ date: 2026-10-05
 categories: [AI]
 tags: [Larch, 視覺小說, 仙泉香布纏, 公開站, 原聲帶, 設定集, 人物關係, 地圖, 史料考證]
 author: Yaze Lin
+larch: ["458c5e49"]
 ---
 ![《仙泉．香布纏》公開站的原聲帶播放器，背景是第一卷〈琴聲知己〉月下撫琴的 CG](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-10-05-buchan-canon-site.webp)
 

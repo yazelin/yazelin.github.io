@@ -444,6 +444,55 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .vod-more:hover { border-color: var(--acc); background: rgb(255 255 255 / .04); }
 .vod-group { font-family: var(--num); font-size: 1.05rem; font-weight: 600; letter-spacing: .14em; color: var(--ink-2); margin: 4.5rem 0 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 
+/* Larch 作品:/larch/ 的海報牆、文章側欄與角色頁的小卡 */
+.larch-wall { --acc: var(--mint); }
+.larch-stats { display: flex; flex-wrap: wrap; gap: 1rem clamp(1.5rem, 5vw, 4.5rem); margin: 0 0 3rem; }
+.larch-stats div { display: flex; flex-direction: column-reverse; }
+.larch-stats dt { color: var(--ink-2); font-size: .9rem; }
+.larch-stats dd { margin: 0; font-family: var(--num); font-weight: 600; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1; }
+.larch-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem 2rem; }
+.lw { position: relative; min-width: 0; }
+.lw--lead { grid-column: span 2; grid-row: span 2; }
+.lw-shot { display: block; border-radius: 12px; overflow: hidden; background: #241f3d; box-shadow: var(--lift); outline: 1px solid rgb(255 255 255 / .08); }
+.lw-shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.lw:hover .lw-shot img { transform: scale(1.04); }
+.lw-title { font-family: var(--serif); font-weight: 900; font-size: 1.2rem; margin: .9rem 0 .2rem; }
+.lw--lead .lw-title { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.lw-title a { text-decoration: none; }
+.lw-title a::after { content: ""; position: absolute; inset: 0; }
+.lw:hover .lw-title a { color: var(--acc); }
+.lw-meta { margin: 0; font-family: var(--num); letter-spacing: .03em; color: var(--acc); font-size: .9rem; }
+.lw-meta:empty, .lw-desc:empty, .lw-links:empty { display: none; }
+.lw-desc { margin: .4rem 0 0; color: var(--ink-2); font-size: .93rem; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lw--lead .lw-desc { font-size: 1.02rem; -webkit-line-clamp: 5; max-width: 60ch; }
+.lw-nums { margin: .4rem 0 0; color: var(--ink-2); font-family: var(--num); font-size: .9rem; letter-spacing: .02em; }
+.lw-links { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: .25rem .9rem; margin: .5rem 0 0; font-size: .86rem; }
+.larch-foot { margin: 3rem 0 0; }
+.larch-mini { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 1rem; }
+.larch-mini li { min-width: 0; }
+.larch-mini a:first-child { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; color: #fff; text-decoration: none; isolation: isolate; background: #241f3d; }
+.larch-mini img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.larch-mini a:first-child::after { content: ""; position: absolute; inset: 40% 0 0; z-index: -1; background: linear-gradient(transparent, rgb(10 8 20 / .85)); }
+.larch-mini a:first-child:hover img { transform: scale(1.05); }
+.larch-mini span { position: absolute; left: .7rem; right: .7rem; bottom: .5rem; font-weight: 700; font-size: .95rem; line-height: 1.35; }
+.larch-site { display: inline-block; margin-top: .3rem; font-size: .85rem; }
+.post-larch { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1.5rem; }
+.post-larch h2, .char-larch-title { font-size: 1.15rem; margin-top: 0; }
+.post-larch .more { display: inline-block; margin-top: .8rem; }
+.post-side .post-larch { margin-top: 0; padding-top: 0; border-top: 0; margin-bottom: 1.5rem; }
+.post-side .larch-mini { grid-template-columns: 1fr; }
+.cast .larch-mini { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .larch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 1.25rem; }
+  .cast .larch-mini { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .lw--lead { grid-column: 1 / -1; grid-row: auto; }
+  .lw:not(.lw--lead) .lw-title { font-size: 1rem; }
+  .lw:not(.lw--lead) .lw-desc { display: none; }
+  .lw-nums, .lw-meta { font-size: .8rem; }
+}
+
 /* ==========================================================================
    首頁 3/3:角色、從工廠到 AI、文章、訂閱
    ========================================================================== */
@@ -520,8 +569,8 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
   .ask-row button { min-width: 0; }
   .hero-ask { max-width: 62%; }
 }
-/* 窄一點時選單換到第二排,第一排留名字、訂閱、抖內、亮暗(選單是英文大寫,1180 以下就擠不下一排) */
-@media (max-width: 1180px) {
+/* 窄一點時選單換到第二排,第一排留名字、訂閱、抖內、亮暗(選單是英文大寫,多了 Larch 後 1300 以下就擠不下一排) */
+@media (max-width: 1300px) {
   /* 導覽列變兩排(約 6.7rem 高),首屏扣掉它才剛好一屏 */
   .stage { height: clamp(32rem, calc(100svh - 6.7rem), 60rem); }
   .nav-in { flex-wrap: wrap; row-gap: .5rem; }

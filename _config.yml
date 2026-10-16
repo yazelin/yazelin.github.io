@@ -51,6 +51,8 @@ navbar:
     url: /about/
   - title: Portfolio
     url: /portfolio/
+  - title: Larch
+    url: /larch/
   - title: Characters
     url: /characters/
   - title: Events

@@ -6,6 +6,7 @@ date: 2026-09-09
 categories: [AI]
 tags: [Larch, 插件, larch-slide-deck, voice-input, credits-roll, 視覺小說, 簡報, AI 應用]
 author: Yaze Lin
+larch: ["1c011641", "53c30eb6"]
 ---
 
 ![四張插件卡的實際畫面。左上是簡報卡的第二頁，右側嵌著可以真的點的格莉奇音樂；右上是語音輸入卡的三張選項縮圖與輸入框；左下是 AI 對話手機；右下是片尾字卷的人物格](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-09-four-larch-plugin-cards.webp)

@@ -1,0 +1,9 @@
+{% comment %} Larch 作品小卡:ids 是 id 前八碼的陣列,資料在 _data/larch.yml。文章側欄、角色頁、首頁共用 {% endcomment %}
+<ul class="larch-mini">
+{% for k in include.ids %}{% assign w = site.data.larch | where: "id", k | first %}{% if w %}
+  <li><a href="{{ w.play }}">
+    <img src="{{ '/images/larch/' | append: w.id | append: '.webp' | relative_url }}" alt="" loading="lazy" width="800" height="450">
+    <span>{{ w.title }}</span>
+  </a>{% if w.site %}<a class="larch-site" href="{{ w.site }}">公開站</a>{% endif %}</li>
+{% endif %}{% endfor %}
+</ul>

@@ -8,6 +8,7 @@ tags: [glitch-vn, 格莉奇, Larch, 視覺小說, TTS, 配音, AI 生成, 比賽
 author: Yaze Lin
 featured: true
 featured-why: "比賽要 3 到 5 分鐘，交了七章、六百多句配音的 60 分鐘視覺小說，拿到最佳人氣。"
+larch: ["a2a10427"]
 ---
 
 ![格莉奇與黑洞先生](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-08-23-larch-seven-day-challenge.png)

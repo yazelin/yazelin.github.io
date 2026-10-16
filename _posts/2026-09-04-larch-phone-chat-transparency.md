@@ -6,6 +6,7 @@ date: 2026-09-04
 categories: [AI]
 tags: [larch-phone-chat, 格莉奇, Larch, 插件, 視覺小說, 除錯, AI 應用]
 author: Yaze Lin
+larch: ["1c011641"]
 ---
 
 ![格莉奇傳來的通知橫幅浮在深夜辦公室的場景上，橫幅底下就是場景本身，沒有壓一層黑](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-04-larch-phone-chat-transparency.webp)

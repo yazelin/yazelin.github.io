@@ -8,6 +8,7 @@ tags: [週三直播, Larch, 視覺小說, 共創, AI 導演, 提示詞, 教學�
 author: Yaze Lin
 featured: true
 featured-why: "週三直播：全場一起丟句子給 AI 導演，沒有預期中好玩，事後整理出四個原因。"
+larch: ["53c30eb6"]
 ---
 
 ![當晚的共創板，畫面上是對話卡與結局 B，右上角那排頭像是同時在版子上動手的人](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-09-wednesday-larch-vn-cocreate.webp)

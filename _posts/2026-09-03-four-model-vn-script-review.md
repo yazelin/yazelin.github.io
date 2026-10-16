@@ -6,6 +6,7 @@ date: 2026-09-03
 categories: [AI]
 tags: [larch-vn-mori, 空白也有質地, Larch, 視覺小說, llmshare, 多模型, 審稿, Mori]
 author: Yaze Lin
+larch: ["174eab77"]
 ---
 
 ![《空白也有質地》開場：夜之森、掛在低枝上的燈籠，Mori 醒來說出第一句台詞](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-03-four-model-vn-script-review.webp)

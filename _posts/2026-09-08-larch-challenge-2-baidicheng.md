@@ -6,6 +6,7 @@ date: 2026-09-08
 categories: [AI]
 tags: [Larch, 視覺小說, 咒泉鄉桃園三結義, 創作者挑戰, 解謎, 產線, 發包]
 author: Yaze Lin
+larch: ["b3892584"]
 ---
 
 ![《咒泉鄉的白帝城》的謝幕合影與四件道具。上半是戲台上並排的六個人，左三是男版、右二是女版，正中央是提著青銅油燈、黑髮夾白絲的老年劉備，頭頂一排暖黃紙燈籠，兩側垂著深紅幕簾；下半是四件道具的去背圖，由左到右是青銅豆形油燈、褪成粉色的紅髮帶、褪成灰綠的男子腰帶、金髮釵](https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/2026-09-08-larch-challenge-2-baidicheng.webp)

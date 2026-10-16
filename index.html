@@ -94,6 +94,10 @@ head-extra:
     {% endfor %}
   </ul>
   <p class="more"><a href="{{ '/characters/' | relative_url }}">全部角色</a></p>
+  <h3 class="vod-group">Larch 視覺小說</h3>
+  {% assign lh = "a2a10427,15cf12d3,2375b478,84724c70" | split: "," %}
+  {% include larch-cards.html ids=lh %}
+  <p class="more"><a href="{{ '/larch/' | relative_url }}">全部 Larch 作品</a></p>
 </section>
 
 <section class="band band--void swap" aria-labelledby="swap-title">

@@ -36,6 +36,7 @@ appearances:
   - title: Mori Sprite Studio
     url: https://yazelin.github.io/mori-sprite-studio/
     note: 從一張參考圖產生 4×4 sprite 動畫包的網頁工具，她在桌面上的那些動作就是這樣做的
+larch: ["174eab77"]
 ---
 
 Mori 是森林裡的精靈，同時也是一個真的在跑的程式。她住在桌面上，會聽、會記、會在你回來的時候接上上一次的話題。
