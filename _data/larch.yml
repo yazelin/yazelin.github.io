@@ -4,6 +4,8 @@
   title: "十一分鐘"
   play: https://larch.ink/play/market/yaze/11-minutes
   site: https://yazelin.github.io/larch-eleven-minutes/
+  yt: 2OlUN420y7k
+  yt_label: YouTube 原聲帶
 - id: "ff5c80f5"
   title: "王子姬 Prince Hime"
   play: https://larch.ink/play/market/yaze/prince-hime
@@ -13,6 +15,8 @@
 - id: "7bd0c3ed"
   title: "起跑總在開始前"
   play: https://larch.ink/play/market/yaze/start-line
+  yt: CzPKYH9Whtg
+  yt_label: YouTube 原聲帶
 - id: "74fc7b5a"
   title: "仙泉·香布纏．無雙"
   play: https://larch.ink/play/market/74fc7b5a-22ff-42e3-980b-5bdd3701bfff
@@ -20,10 +24,14 @@
   title: "洛泉．袁真跡"
   play: https://larch.ink/play/market/35e85c22-e262-4ad2-93ca-759f6d8c51f8
   site: https://yazelin.github.io/larch-zhenji-canon/
+  yt: kORGugOlFao
+  yt_label: YouTube 原聲帶
 - id: "458c5e49"
   title: "仙泉．香布纏"
   play: https://larch.ink/play/market/yaze/xiangbuchan
   site: https://yazelin.github.io/larch-buchan-canon/
+  yt: biB7nIYXEN8
+  yt_label: YouTube 原聲帶
 - id: "7a38860b"
   title: "小遊戲集合・示範"
   play: https://larch.ink/play/market/7a38860b-2864-4676-9a4e-cf464e7c03fe
@@ -61,3 +69,5 @@
 - id: "a2a10427"
   title: "格莉奇與黑洞先生"
   play: https://larch.ink/play/market/yaze/glitch
+  yt: J9OMebCjr9Y
+  yt_label: YouTube 完整遊玩

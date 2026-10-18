@@ -20,11 +20,11 @@ description: 林亞澤在 Larch 上做的視覺小說與 RPG，點封面就能�
       <h2 class="lw-title"><a href="{{ w.play }}">{{ w.title }}</a></h2>
       <p class="lw-meta"></p>
       <p class="lw-desc"></p>
-      <p class="lw-links">{% if w.site %}<a href="{{ w.site }}">公開站</a>{% endif %}{% for p in ps %}<a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% endfor %}</p>
+      <p class="lw-links">{% if w.site %}<a href="{{ w.site }}">公開站</a>{% endif %}{% if w.yt %}<a href="https://youtu.be/{{ w.yt }}">{{ w.yt_label }}</a>{% endif %}{% for p in ps %}<a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% endfor %}</p>
     </li>
   {% endfor %}
   </ul>
-  <p class="larch-foot"><a href="https://larch.ink/@yaze">Larch 上的作者頁</a></p>
+  <p class="larch-foot"><a href="https://larch.ink/@yaze">Larch 上的創作者首頁 @yaze</a> · <a href="https://www.youtube.com/@yazelin">YouTube 頻道</a></p>
 </section>
 <script>
 (function () {
