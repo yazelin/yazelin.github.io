@@ -1,3 +1,4 @@
+// (2026-10 起投票頁搬到直播記錄站,主題清單改維護 ai-workshop-backend/web/live/topics.mjs;這份只留給 k-rider 的統計腳本讀主題名稱,不再是來源。)
 // 週三直播主題清單。這是唯一要人手動維護的檔案。
 //
 // 每辦完一場:把該主題從 open 搬到 done、補上 url 與 img(封面)、加 feedback:true 讓心得卡出現。
