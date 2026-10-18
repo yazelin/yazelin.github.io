@@ -10,11 +10,15 @@ event_duration: 90 分鐘內
 event_location: 線上（Google Meet）
 event_price: 免費
 cover: /images/events/og-mori-desktop-2026-10-21.jpg
-event_access: 免費，不用報名，開播時間直接進來
+event_access: 不用報名；開播連結會在 AI 許願池 LINE 社群公布
+event_closed: true
+form_closed_heading: 免費直播，不用報名
+form_closed_message: 10 月 21 日（週三）晚上 8 點直接進入 Google Meet。開播連結會在 AI 許願池 LINE 社群公布，加入社群就收得到。
+event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=mori-desktop-2026-10-21
 share-description: 10/21 週三直播：Mori Desktop 語音輸入。對它口述，它聽寫並修飾，可以拿來寫信、寫貼文。從下載安裝到換 profile 換口氣，現場示範。
 ---
 
-> 免費，不用報名，開播時間直接進來。錄影、簡報與講義會在直播結束後放進雲端資料夾。
+> **10/21（三）20:00 免費線上分享，不用報名。**開播連結會在 [AI 許願池 LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=mori-desktop-2026-10-21)公布。錄影、簡報與講義會在直播結束後放進雲端資料夾。
 
 Mori Desktop 是裝在桌面上的個人 AI 管家。這場講它的語音輸入：按一個鍵，對著它說話，它轉成文字、整理好，貼到游標所在的視窗。
 
@@ -25,8 +29,7 @@ Mori Desktop 是裝在桌面上的個人 AI 管家。這場講它的語音輸入
 - **自己改**：profile 是一個 Markdown 檔，現場示範新增一份。
 - **詞庫校正**：同音錯字不再重複錯。
 - **耳朵與腦袋**：語音轉文字與整理文字的模型都能換，雲端或本機自己選。
-- **不吵架溝通術**：把不爽全部講出來，整理成對方聽得進去的訊息。遇到「我和你媽掉水裡你救誰」這種考題，它也有辦法。
-- **生圖描述**：想生圖卻說不出心中的畫面，講零碎的印象就好，整理成生圖工具畫得出來的描述。
+- **不吵架溝通術**：把不爽全部講出來，整理成對方聽得進去的訊息。
 - **下一場預告**：Agent 模式與定時任務，另開一場。
 
 ## 先知道的界線
