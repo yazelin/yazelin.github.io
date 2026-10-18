@@ -6,7 +6,7 @@ permalink: /events/mori-desktop-2026-10-21/
 event_batch: mori-desktop-2026-10-21
 event_date: "2026-10-21"
 event_datetime: 2026 年 10 月 21 日（週三）20:00
-event_duration: 約 50 分鐘加問答
+event_duration: 90 分鐘內
 event_location: 線上（Google Meet）
 event_price: 免費
 cover: /images/events/og-mori-desktop-2026-10-21.jpg
