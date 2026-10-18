@@ -4,19 +4,19 @@
    薄荷 #7cf3c0、霓虹紫 #b78bff 只當點綴,底色是安靜的淺灰紫,不讓整頁變吵。
    ========================================================================== */
 :root {
-  --desk: #faf7f2;        /* 頁面底色(沿用舊名,內頁規則都吃這個)。2026-10 改橘色系:亮色是沙色的白 */
-  --desk-ink: #1f1b16;
-  --desk-ink-2: #6f655b;
+  --desk: #f5f5f5;        /* 頁面底色(沿用舊名,內頁規則都吃這個)。2026-10 改橘色系:底色一律無彩度灰,橘色只給連結與強調 */
+  --desk-ink: #171717;
+  --desk-ink-2: #6b6b6b;
   --white: #ffffff;       /* 卡片/面板 */
-  --ink: #1f1b16;
-  --ink-2: #6f655b;
-  --rule: #ece3d6;
+  --ink: #171717;
+  --ink-2: #6b6b6b;
+  --rule: #e5e5e5;
   --carbon: #c2560a;      /* 文字層級的橘:連結、強調(對白底 4.9:1)。變數名沿用舊的 */
   --marker: #9a4207;      /* 白板筆 */
   --mint: #7cf3c0;        /* 格莉奇的薄荷,只當底色點綴 */
   --purple: #b78bff;      /* 格莉奇的霓虹紫,只當底色點綴 */
   --seal: #d93a40;        /* 全站唯一的紅:LIVE 與提示訊息共用 */
-  --stage: linear-gradient(140deg, #fff3df 0%, #ffe9d2 52%, #fde4d6 100%);
+  --stage: linear-gradient(140deg, #f7f7f7 0%, #efefef 52%, #f3f3f3 100%);
   --serif: "Noto Serif", "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --sans: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
   --hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", serif;
@@ -24,33 +24,33 @@
   --maxw: 46rem; --maxw-wide: 96rem;
   /* 全站唯一的左右邊界:窄螢幕是 4vw,超過 96rem 寬就把內容收在中間。導覽列、首屏、色帶、內文都對齊它 */
   --gut: max(clamp(1.25rem, 4vw, 4rem), (100vw - var(--maxw-wide)) / 2);
-  --lift: 0 1px 2px rgb(31 27 22 / .06), 0 12px 32px -14px rgb(150 80 20 / .22);
+  --lift: 0 1px 2px rgb(0 0 0 / .06), 0 12px 32px -14px rgb(0 0 0 / .2);
   --r: 12px;
   --fg: var(--ink); --muted: var(--ink-2); --bg: var(--white); --card: #fff;
-  --border: var(--rule); --accent: var(--carbon); --on-accent: #fff; --accent-weak: #fff0e0;
-  /* 棚的底色:亮色是淡沙色,深色是暖黑。頁首、作品牆、頁尾共用;首屏直播台另外用 --studio,永遠是深的 */
-  --band-bg: light-dark(#f1e8db, #0c0a08);
+  --border: var(--rule); --accent: var(--carbon); --on-accent: #fff; --accent-weak: #ececec;
+  /* 棚的底色:亮色是淡灰,深色是近黑(無彩度,橘色只用在強調)。頁首、作品牆、頁尾共用;首屏直播台另外用 --studio,永遠是深的 */
+  --band-bg: light-dark(#ebebeb, #0a0a0a);
   color-scheme: light;
 }
 /* 深色寫兩次是必要的:一次給「系統深色且沒手動選亮色」,一次給「手動選了深色」。
    少任何一條,導覽列的切換鈕就只能單向作用(同 vote/theme.css)。 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --desk: #0f0d0b; --desk-ink: #f3efe9; --desk-ink-2: #a69d92;
-    --white: #1a1714; --ink: #f3efe9; --ink-2: #a69d92; --rule: #2b2622;
+    --desk: #0f0f0f; --desk-ink: #f1f1f1; --desk-ink-2: #a3a3a3;
+    --white: #1a1a1a; --ink: #f1f1f1; --ink-2: #a3a3a3; --rule: #2e2e2e;
     --carbon: #ffa75a; --marker: #ffc58f; --seal: #ff6369;
-    --stage: linear-gradient(140deg, #2a1a0e 0%, #2b1d14 52%, #2a1a18 100%);
-    --card: #1f1b17; --accent-weak: #2b2118; --on-accent: #1a1208;
+    --stage: linear-gradient(140deg, #181818 0%, #1c1c1c 52%, #1a1a1a 100%);
+    --card: #1f1f1f; --accent-weak: #262626; --on-accent: #1a1208;
     --lift: 0 12px 32px -14px rgb(0 0 0 / .7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --desk: #0f0d0b; --desk-ink: #f3efe9; --desk-ink-2: #a69d92;
-  --white: #1a1714; --ink: #f3efe9; --ink-2: #a69d92; --rule: #2b2622;
+  --desk: #0f0f0f; --desk-ink: #f1f1f1; --desk-ink-2: #a3a3a3;
+  --white: #1a1a1a; --ink: #f1f1f1; --ink-2: #a3a3a3; --rule: #2e2e2e;
   --carbon: #ffa75a; --marker: #ffc58f; --seal: #ff6369;
-  --stage: linear-gradient(140deg, #2a1a0e 0%, #2b1d14 52%, #2a1a18 100%);
-  --card: #1f1b17; --accent-weak: #2b2118; --on-accent: #1a1208;
+  --stage: linear-gradient(140deg, #181818 0%, #1c1c1c 52%, #1a1a1a 100%);
+  --card: #1f1f1f; --accent-weak: #262626; --on-accent: #1a1208;
   --lift: 0 12px 32px -14px rgb(0 0 0 / .7);
   color-scheme: dark;
 }
@@ -68,7 +68,7 @@ img { max-width: 100%; height: auto; }
 h1, h2, h3 { font-family: var(--serif); line-height: 1.35; letter-spacing: .03em; font-weight: 900; }
 h3 { font-weight: 700; }
 code { background: var(--accent-weak); padding: .12em .4em; border-radius: 3px; font-size: .88em; }
-pre { background: #1f1b16; color: #f3efe9; padding: 1.1rem 1.3rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: .9rem; }
+pre { background: #1a1a1a; color: #f1f1f1; padding: 1.1rem 1.3rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: .9rem; }
 pre code { background: none; padding: 0; color: inherit; }
 blockquote { margin: 1.75rem 0; padding: .25rem 0 .25rem 1.25rem; border-left: 3px solid var(--carbon); color: var(--ink-2); }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
