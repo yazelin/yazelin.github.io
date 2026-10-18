@@ -58,7 +58,7 @@ navbar:
     url: /characters/
   - title: Events
     url: /events/
-  - title: Replay
+  - title: Live
     url: /live/        # 轉址頁 → site.live_url;導覽列用英文跟其他項一致,頁面裡叫「直播記錄」
   - title: Services
     url: /services/
