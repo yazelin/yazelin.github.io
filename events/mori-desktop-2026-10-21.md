@@ -10,15 +10,18 @@ event_duration: 90 分鐘內
 event_location: 線上（Google Meet）
 event_price: 免費
 cover: /images/events/og-mori-desktop-2026-10-21.jpg
-event_access: 不用報名；開播連結會在 AI 許願池 LINE 社群公布
+event_access: 不用報名；開播連結也會在 AI 許願池 LINE 社群公布
 event_closed: true
 form_closed_heading: 免費直播，不用報名
-form_closed_message: 10 月 21 日（週三）晚上 8 點直接進入 Google Meet。開播連結會在 AI 許願池 LINE 社群公布，加入社群就收得到。
+form_closed_message: 10 月 21 日（週三）晚上 8 點直接進入 Google Meet。開播連結也會在 AI 許願池 LINE 社群公布，加入社群就收得到。
 event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=mori-desktop-2026-10-21
 share-description: 10/21 週三直播：Mori Desktop 語音輸入。對它口述，它聽寫並修飾，可以拿來寫信、寫貼文。從下載安裝到換 profile 換口氣，現場示範。
 ---
 
-> **10/21（三）20:00 免費線上分享，不用報名。**開播連結會在 [AI 許願池 LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=mori-desktop-2026-10-21)公布。錄影、簡報與講義會在直播結束後放進雲端資料夾。
+> **10/21（三）20:00 免費線上分享，不用報名。**
+> [直接進入 Google Meet](https://meet.google.com/hex-gsvc-uyt)；開播連結也會在 [AI 許願池 LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=mori-desktop-2026-10-21)公布。
+
+> 錄影、簡報與講義會在直播結束後放進雲端資料夾。
 
 Mori Desktop 是裝在桌面上的個人 AI 管家。這場講它的語音輸入：按一個鍵，對著它說話，它轉成文字、整理好，貼到游標所在的視窗。
 
