@@ -4,19 +4,19 @@
    薄荷 #7cf3c0、霓虹紫 #b78bff 只當點綴,底色是安靜的淺灰紫,不讓整頁變吵。
    ========================================================================== */
 :root {
-  --desk: #f3f2f7;        /* 頁面底色(沿用舊名,內頁規則都吃這個) */
-  --desk-ink: #221f2b;
-  --desk-ink-2: #5d5868;
+  --desk: #faf7f2;        /* 頁面底色(沿用舊名,內頁規則都吃這個)。2026-10 改橘色系:亮色是沙色的白 */
+  --desk-ink: #1f1b16;
+  --desk-ink-2: #6f655b;
   --white: #ffffff;       /* 卡片/面板 */
-  --ink: #221f2b;
-  --ink-2: #5d5868;
-  --rule: #dfdce8;
-  --carbon: #5b3cc4;      /* 文字層級的紫:連結、強調(對白底 7:1) */
-  --marker: #2f3cae;      /* 白板筆 */
+  --ink: #1f1b16;
+  --ink-2: #6f655b;
+  --rule: #ece3d6;
+  --carbon: #c2560a;      /* 文字層級的橘:連結、強調(對白底 4.9:1)。變數名沿用舊的 */
+  --marker: #9a4207;      /* 白板筆 */
   --mint: #7cf3c0;        /* 格莉奇的薄荷,只當底色點綴 */
   --purple: #b78bff;      /* 格莉奇的霓虹紫,只當底色點綴 */
   --seal: #d93a40;        /* 全站唯一的紅:LIVE 與提示訊息共用 */
-  --stage: linear-gradient(140deg, #e8fbf3 0%, #efeaff 52%, #fbeef6 100%);
+  --stage: linear-gradient(140deg, #fff3df 0%, #ffe9d2 52%, #fde4d6 100%);
   --serif: "Noto Serif", "Noto Serif TC", "Songti TC", "PMingLiU", serif;
   --sans: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
   --hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", serif;
@@ -24,33 +24,33 @@
   --maxw: 46rem; --maxw-wide: 96rem;
   /* 全站唯一的左右邊界:窄螢幕是 4vw,超過 96rem 寬就把內容收在中間。導覽列、首屏、色帶、內文都對齊它 */
   --gut: max(clamp(1.25rem, 4vw, 4rem), (100vw - var(--maxw-wide)) / 2);
-  --lift: 0 1px 2px rgb(34 31 43 / .06), 0 12px 32px -14px rgb(60 40 120 / .22);
+  --lift: 0 1px 2px rgb(31 27 22 / .06), 0 12px 32px -14px rgb(150 80 20 / .22);
   --r: 12px;
   --fg: var(--ink); --muted: var(--ink-2); --bg: var(--white); --card: #fff;
-  --border: var(--rule); --accent: var(--carbon); --on-accent: #fff; --accent-weak: #efeaff;
-  /* 棚的底色:亮色是淡紫灰,深色是棚裡的黑紫。頁首、作品牆、頁尾共用;首屏直播台另外用 --studio,永遠是深的 */
-  --band-bg: light-dark(#e7e3f2, #110e1f);
+  --border: var(--rule); --accent: var(--carbon); --on-accent: #fff; --accent-weak: #fff0e0;
+  /* 棚的底色:亮色是淡沙色,深色是暖黑。頁首、作品牆、頁尾共用;首屏直播台另外用 --studio,永遠是深的 */
+  --band-bg: light-dark(#f1e8db, #0c0a08);
   color-scheme: light;
 }
 /* 深色寫兩次是必要的:一次給「系統深色且沒手動選亮色」,一次給「手動選了深色」。
    少任何一條,導覽列的切換鈕就只能單向作用(同 vote/theme.css)。 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --desk: #15131c; --desk-ink: #eeecf3; --desk-ink-2: #b1acbd;
-    --white: #1f1c28; --ink: #eeecf3; --ink-2: #b1acbd; --rule: #353141;
-    --carbon: #c4abff; --marker: #c9d2ff; --seal: #ff6369;
-    --stage: linear-gradient(140deg, #18252a 0%, #211d33 52%, #2a1d2a 100%);
-    --card: #24212f; --accent-weak: #2c2640; --on-accent: #15131c;
+    --desk: #0f0d0b; --desk-ink: #f3efe9; --desk-ink-2: #a69d92;
+    --white: #1a1714; --ink: #f3efe9; --ink-2: #a69d92; --rule: #2b2622;
+    --carbon: #ffa75a; --marker: #ffc58f; --seal: #ff6369;
+    --stage: linear-gradient(140deg, #2a1a0e 0%, #2b1d14 52%, #2a1a18 100%);
+    --card: #1f1b17; --accent-weak: #2b2118; --on-accent: #1a1208;
     --lift: 0 12px 32px -14px rgb(0 0 0 / .7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --desk: #15131c; --desk-ink: #eeecf3; --desk-ink-2: #b1acbd;
-  --white: #1f1c28; --ink: #eeecf3; --ink-2: #b1acbd; --rule: #353141;
-  --carbon: #c4abff; --marker: #c9d2ff; --seal: #ff6369;
-  --stage: linear-gradient(140deg, #18252a 0%, #211d33 52%, #2a1d2a 100%);
-  --card: #24212f; --accent-weak: #2c2640; --on-accent: #15131c;
+  --desk: #0f0d0b; --desk-ink: #f3efe9; --desk-ink-2: #a69d92;
+  --white: #1a1714; --ink: #f3efe9; --ink-2: #a69d92; --rule: #2b2622;
+  --carbon: #ffa75a; --marker: #ffc58f; --seal: #ff6369;
+  --stage: linear-gradient(140deg, #2a1a0e 0%, #2b1d14 52%, #2a1a18 100%);
+  --card: #1f1b17; --accent-weak: #2b2118; --on-accent: #1a1208;
   --lift: 0 12px 32px -14px rgb(0 0 0 / .7);
   color-scheme: dark;
 }
@@ -68,7 +68,7 @@ img { max-width: 100%; height: auto; }
 h1, h2, h3 { font-family: var(--serif); line-height: 1.35; letter-spacing: .03em; font-weight: 900; }
 h3 { font-weight: 700; }
 code { background: var(--accent-weak); padding: .12em .4em; border-radius: 3px; font-size: .88em; }
-pre { background: #1b1a40; color: #e6e5f5; padding: 1.1rem 1.3rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: .9rem; }
+pre { background: #1f1b16; color: #f3efe9; padding: 1.1rem 1.3rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: .9rem; }
 pre code { background: none; padding: 0; color: inherit; }
 blockquote { margin: 1.75rem 0; padding: .25rem 0 .25rem 1.25rem; border-left: 3px solid var(--carbon); color: var(--ink-2); }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
@@ -130,7 +130,7 @@ html { scroll-padding-top: 4.5rem; }
 .site-nav nav { display: flex; gap: .25rem 1.8rem; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
 .site-nav nav a { text-decoration: none; color: var(--desk-ink-2); font-family: var(--num); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 1.02rem; padding: .25rem 0; border-bottom: 2px solid transparent; }
 .site-nav nav a:hover { color: var(--desk-ink); }
-.site-nav nav a[aria-current] { color: var(--desk-ink); border-bottom-color: var(--purple); }
+.site-nav nav a[aria-current] { color: var(--desk-ink); border-bottom-color: var(--carbon); }
 .nav-cta { display: flex; gap: .45rem; }
 .cta-sub, .cta-tip { white-space: nowrap; font: inherit; font-size: .9rem; font-weight: 700; letter-spacing: .06em; cursor: pointer; text-decoration: none; border-radius: 999px; padding: .38rem 1.1rem; line-height: 1.4; transition: background .15s, color .15s, filter .15s; }
 .cta-sub { border: 0; background: #c62f36; color: #fff; }
@@ -181,7 +181,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .post-list li > * { grid-column: 2; }
 .post-list .post-year { display: block; border: 0; padding: 3.5rem 0 .6rem; font-family: var(--num); font-weight: 600; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; color: var(--ink); }
 .post-list .post-year:first-child { padding-top: .5rem; }
-.post-list .post-year::after { content: ""; display: inline-block; width: .16em; height: .16em; margin-left: .1em; background: #7fae5a; border-radius: 2px; }
+.post-list .post-year::after { content: ""; display: inline-block; width: .16em; height: .16em; margin-left: .1em; background: #f0802a; border-radius: 2px; }
 .post-list time { grid-column: 1; grid-row: 1 / span 3; font-family: var(--num); font-weight: 600; font-size: 1.5rem; line-height: 1.2; letter-spacing: .03em; color: var(--ink-2); }
 #search-results time { font-size: 1.05rem; }
 .post-list h2 { margin: 0 0 .4rem; font-size: clamp(1.2rem, 1.8vw, 1.45rem); font-weight: 900; line-height: 1.45; }
@@ -192,7 +192,7 @@ main:has(.band--denim) + .site-footer { margin-top: 0; }
 .post-list .meta span { border: 1px solid var(--rule); border-radius: 999px; padding: 0 .65rem; line-height: 1.8; }
 .blog-wrap { display: grid; grid-template-columns: minmax(0, 58rem) minmax(14rem, 20rem); gap: 2rem 5rem; align-items: start; }
 .blog-rail { position: sticky; top: 6rem; padding-top: 1rem; }
-.blog-rail h2 { font-size: 1.05rem; margin: 0 0 .8rem; padding-left: .8rem; border-left: 3px solid #7fae5a; }
+.blog-rail h2 { font-size: 1.05rem; margin: 0 0 .8rem; padding-left: .8rem; border-left: 3px solid #f0802a; }
 .blog-rail ol { list-style: none; margin: 0; padding: 0; counter-reset: rl; }
 .blog-rail li { counter-increment: rl; display: grid; grid-template-columns: 2rem minmax(0, 1fr); padding: .7rem 0; border-top: 1px solid var(--rule); font-size: .92rem; line-height: 1.55; }
 .blog-rail li::before { content: counter(rl, decimal-leading-zero); font-family: var(--num); font-weight: 600; color: var(--ink-2); }
@@ -755,3 +755,6 @@ main > .page:has(.tag-index) { max-width: var(--maxw-wide); }
   border-left:2px solid currentColor;padding-left:13px}
 .char-said[data-on]{opacity:1}
 
+
+/* 活動頁:這場的直播記錄入口 */
+.event-replay { margin: 1.75rem 0; padding: .9rem 1.1rem; border-left: 3px solid var(--carbon); background: var(--accent-weak); border-radius: 0 8px 8px 0; }
