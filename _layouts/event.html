@@ -43,6 +43,10 @@ layout: default
   {{ content }}
   </div>
 
+  {% if page.replay %}
+  <p class="event-replay"><strong>這場的重點記錄</strong>：剪成 3 到 5 分鐘一段，附逐字稿、講義與簡報。<a href="{{ site.live_url }}lesson?id={{ page.replay }}">到直播記錄看這一場 →</a></p>
+  {% endif %}
+
   {% if page.event_date %}
   <p class="event-vote-link">下次想聽什麼主題？到<a href="{{ '/vote/' | relative_url }}">主題投票頁</a>選最多三個，也可以寫下自己的題目。</p>
   {% endif %}
