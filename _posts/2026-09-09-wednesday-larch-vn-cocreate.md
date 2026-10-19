@@ -152,7 +152,7 @@ larch: ["53c30eb6"]
 
 ## 自己看一遍
 
-那七章在這裡，免登入：<https://larch.ink/play/market/53c30eb6-bc5b-48bc-a5a7-a35f5da9ec6e>
+那七章在這裡，免登入：<https://co-creation.larch.games>
 
 錄影、簡報與講義都在[雲端資料夾](https://drive.google.com/drive/folders/1snlnJg8NPVoIxvOHWElYekP7XAovqP7N)。
 
