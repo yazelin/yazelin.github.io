@@ -13,7 +13,7 @@
 // 「建議的投票選項文字」原文,一字不加。要改先改那份。
 window.VOTE_TOPICS = {
   open: [
-    { slug: 'larch-puzzle', title: 'Larch 平台分享', desc: 'Larch 上的創作經驗、作品與創作者挑戰賽', url: 'https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64' },
+    { slug: 'larch-puzzle', title: 'Larch 平台分享', desc: 'Larch 上的創作經驗、作品與創作者挑戰賽', url: 'https://yazelin-11-minutes.larch.games' },
     { slug: 'emoji-slot',   title: '表情拉霸影片',        desc: '自拍變成能貼 FB 的拉霸影片', url: 'https://yazelin.github.io/emoji-slot-machine/' },
     { slug: 'ai-crew',      title: '拆開 AI 產線',         desc: '五個 AI 角色怎麼合作生出一部漫畫對話', url: 'https://yazelin.github.io/ai-crew-lab/' },
     { slug: 'active-agent', title: '做一個會主動幫你做事的 agent', desc: '讓 agent 自己在某個地方發現事情、主動去處理，不只是定時跑排程；也會講一小段 agent 怎麼運作：迴圈怎麼跑、怎麼呼叫 API' },
