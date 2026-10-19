@@ -148,9 +148,9 @@ NG 花絮原本三段，9 月 8 日凌晨砍成兩段。被砍的是一段關於
 
 ## 現在玩得到的
 
-番外在這裡：<https://larch.ink/play/market/b3892584-79fc-4c2a-97a2-7394b3df149e>。更新說明第一行寫的是：一扇門，三件遺物，兩個結局。主辦方建議的長度是 5 到 10 分鐘，實際玩一遍多久沒有人量過。
+番外在這裡：<https://yazelin-baidicheng.larch.games>。更新說明第一行寫的是：一扇門，三件遺物，兩個結局。主辦方建議的長度是 5 到 10 分鐘，實際玩一遍多久沒有人量過。
 
-第一章在這裡：<https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64>。正典站在 <https://yazelin.github.io/larch-taoyuan-canon/>。
+第一章在這裡：<https://yazelin-3gurl.larch.games>。正典站在 <https://yazelin.github.io/larch-taoyuan-canon/>。
 
 ## 後記（2026-09-12）
 

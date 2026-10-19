@@ -27,7 +27,7 @@ larch: ["35e85c22"]
 
 **整個站都含劇情，包括賜死那一幕和結尾。** 還沒玩過、不想先知道的，先到市集玩，玩完再來。
 
-[到 Larch 市集玩《洛泉．袁真跡》](https://larch.ink/play/market/35e85c22-e262-4ad2-93ca-759f6d8c51f8)
+[到 Larch 市集玩《洛泉．袁真跡》](https://yazelin-yuanzhenji.larch.games)
 
 ## 人名太多：人物與關係
 
@@ -166,7 +166,7 @@ larch: ["35e85c22"]
 
 想要最完整的感覺，還是到 Larch 上玩。每一句台詞配著那一幕的音樂、音效和演出。開頭有目錄，可以直接挑一卷讀；每一卷讀完，可以接著讀下一卷、回到目錄或回到標題。
 
-[到 Larch 市集玩《洛泉．袁真跡》](https://larch.ink/play/market/35e85c22-e262-4ad2-93ca-759f6d8c51f8)
+[到 Larch 市集玩《洛泉．袁真跡》](https://yazelin-yuanzhenji.larch.games)
 
 在遊戲裡玩、讀劇本、看關係圖、聽音樂，挑一種適合自己的方式就好。
 

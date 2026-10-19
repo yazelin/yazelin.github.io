@@ -131,7 +131,7 @@ larch: ["458c5e49"]
 
 想要最完整的感覺，還是到 Larch 上玩。每一句台詞配著那一幕的音樂、音效和演出，第五卷最後那個選擇也要自己按下去。五卷大約三萬四千字，在遊戲裡讀大約兩個多小時。
 
-[到 Larch 市集玩《仙泉．香布纏》](https://larch.ink/play/market/458c5e49-9746-41a9-b0a3-5eae2fb8d584)
+[到 Larch 市集玩《仙泉．香布纏》](https://yazelin-xiangbuchan.larch.games)
 
 在遊戲裡玩、讀劇本、聽音樂，挑一種適合自己的方式就好。
 

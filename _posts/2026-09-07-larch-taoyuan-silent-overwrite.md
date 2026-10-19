@@ -132,7 +132,7 @@ larch: ["2375b478"]
 
 ## 現在玩得到的
 
-作品在這裡：<https://larch.ink/play/market/2375b478-10c0-4b52-8ff6-239e57162c64>。
+作品在這裡：<https://yazelin-3gurl.larch.games>。
 
 正典那份公開了，三類設定分開記、附原典連結：<https://yazelin.github.io/larch-taoyuan-canon/>。
 

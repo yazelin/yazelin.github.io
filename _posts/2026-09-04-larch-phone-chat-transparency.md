@@ -89,7 +89,7 @@ v0.3.3 加了一個設定欄位「官方 AI 卡 id」。做法是在版子上放
 
 當晚十點十二分，我把 0.3.4 送出去審。
 
-DEMO 在這裡：<https://larch.ink/play/market/yaze/glitch-phone>。它接在[《格莉奇與黑洞先生》]({% post_url 2026-08-23-larch-seven-day-challenge %}) 後面，手機的來歷是小說第五章那一晚。
+DEMO 在這裡：<https://yazelin-glitch-phone.larch.games>。它接在[《格莉奇與黑洞先生》]({% post_url 2026-08-23-larch-seven-day-challenge %}) 後面，手機的來歷是小說第五章那一晚。
 
 ## 後記（2026-09-12）
 

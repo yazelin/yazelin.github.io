@@ -117,4 +117,4 @@
 
 色塊確認在美術製作以前完成，讓角色動線、遮擋位置與地圖圖層的用途都能先被看見。
 
-目前可直接遊玩的作品：[《王子姬 Prince Hime》](https://larch.ink/play/market/ff5c80f5-bfb4-4b57-93ac-2d0add057635) · [《十一分鐘》](https://larch.ink/play/market/84724c70-a48b-4174-b7db-45c0f9c39c8e)。
+目前可直接遊玩的作品：[《王子姬 Prince Hime》](https://yazelin-prince-hime.larch.games) · [《十一分鐘》](https://yazelin-11-minutes.larch.games)。

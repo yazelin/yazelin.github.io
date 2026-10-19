@@ -21,7 +21,7 @@ larch: ["a2a10427"]
 
 ## 交的是什麼
 
-[《格莉奇與黑洞先生》](https://larch.ink/play/market/yaze/glitch)。一個老是自嘲只有 4KB 記憶體的虛擬主播，開台第一天來了七個人，她說她要記住每一個來的人。兩年後她記得六個。第七行一直空著。
+[《格莉奇與黑洞先生》](https://yazelin-glitch.larch.games)。一個老是自嘲只有 4KB 記憶體的虛擬主播，開台第一天來了七個人，她說她要記住每一個來的人。兩年後她記得六個。第七行一直空著。
 
 這篇是寫給想在一週內做完一個作品的人看的。下面全是可以查證的東西：時間、數字、還有我在按下送出前幾分鐘抓到的兩個假數字。
 
@@ -127,6 +127,6 @@ diff 長這樣：
 
 點子、七個人的設定、每一句定稿、什麼時候算完成、每一個對外的數字要不要信，是我定的，也是我逐項核的。文字是我跟 AI 一起寫的；立繪、場景、配樂是 AI 生成之後我挑選跟修版；配音走自架的 CosyVoice3 加平台提供的 MiniMax，每一句都聽過。build 腳本、去背工具、錄影腳本是 AI 寫的。
 
-作品在這裡：[在 Larch 上玩](https://larch.ink/play/market/yaze/glitch)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
+作品在這裡：[在 Larch 上玩](https://yazelin-glitch.larch.games)。不想玩的話，[小說站](https://yazelin.github.io/glitch-vn/)可以直接讀，每一句都能點來聽。[60 分鐘完整遊玩](https://youtu.be/J9OMebCjr9Y)在 YouTube。整個專案開源，配音工具、去背工具、錄影腳本都在 <https://github.com/yazelin/glitch-vn>。
 
 [得獎作品頁](https://larch.ink/events/creator-challenge)只公開七天，想看那 18 件別人做了七天的東西要趁早。過期之後，Larch 首頁的[社群玩家作品區](https://larch.ink/#community)還找得到，這部目前排在那裡的第一個。下一場挑戰 9 月 6 日公布主題。

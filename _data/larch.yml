@@ -2,33 +2,33 @@
 # 文章或角色頁要掛某部作品,在 front matter 寫 larch: [id 前八碼]。新作品上架後補一行、補縮圖(images/larch/<id>.webp,800 寬)。
 - id: "84724c70"
   title: "十一分鐘"
-  play: https://larch.ink/play/market/yaze/11-minutes
+  play: https://yazelin-11-minutes.larch.games
   site: https://yazelin.github.io/larch-eleven-minutes/
   yt: 2OlUN420y7k
   yt_label: YouTube 原聲帶
 - id: "ff5c80f5"
   title: "王子姬 Prince Hime"
-  play: https://larch.ink/play/market/yaze/prince-hime
+  play: https://yazelin-prince-hime.larch.games
 - id: "75bb2a1e"
   title: "唐詩小旅行：過故人莊"
-  play: https://larch.ink/play/market/yaze/guogurenzhuang
+  play: https://yazelin-guogurenzhuang.larch.games
 - id: "7bd0c3ed"
   title: "起跑總在開始前"
-  play: https://larch.ink/play/market/yaze/start-line
+  play: https://yazelin-start-line.larch.games
   yt: CzPKYH9Whtg
   yt_label: YouTube 原聲帶
 - id: "74fc7b5a"
   title: "仙泉·香布纏．無雙"
-  play: https://larch.ink/play/market/74fc7b5a-22ff-42e3-980b-5bdd3701bfff
+  play: https://yazelin-wushuang.larch.games
 - id: "35e85c22"
   title: "洛泉．袁真跡"
-  play: https://larch.ink/play/market/35e85c22-e262-4ad2-93ca-759f6d8c51f8
+  play: https://yazelin-yuanzhenji.larch.games
   site: https://yazelin.github.io/larch-zhenji-canon/
   yt: kORGugOlFao
   yt_label: YouTube 原聲帶
 - id: "458c5e49"
   title: "仙泉．香布纏"
-  play: https://larch.ink/play/market/yaze/xiangbuchan
+  play: https://yazelin-xiangbuchan.larch.games
   site: https://yazelin.github.io/larch-buchan-canon/
   yt: biB7nIYXEN8
   yt_label: YouTube 原聲帶
@@ -37,13 +37,13 @@
   play: https://larch.ink/play/market/7a38860b-2864-4676-9a4e-cf464e7c03fe
 - id: "15cf12d3"
   title: "格莉奇與黑洞先生・調查篇"
-  play: https://larch.ink/play/market/yaze/glitch-inv
+  play: https://yazelin-glitch-inv.larch.games
 - id: "123c83af"
   title: "晚霞是舌尖最後的刺痛"
-  play: https://larch.ink/play/market/123c83af-0788-4fe5-9cae-ea336d217c3c
+  play: https://yazelin-sunset.larch.games
 - id: "55eee50f"
   title: "淡藍與草木灰綠的雨幕"
-  play: https://larch.ink/play/market/55eee50f-bddc-4dd1-bad2-43eeec1c4168
+  play: https://yazelin-rain.larch.games
 - id: "18d113a5"
   title: "最終遺忘的橘色餘燼"
   play: https://larch.ink/play/market/18d113a5-8a47-4ebf-a3ab-9e5b0751766e
@@ -52,22 +52,22 @@
   play: https://larch.ink/play/market/53c30eb6-bc5b-48bc-a5a7-a35f5da9ec6e
 - id: "b3892584"
   title: "咒泉．白帝城"
-  play: https://larch.ink/play/market/b3892584-79fc-4c2a-97a2-7394b3df149e
+  play: https://yazelin-baidicheng.larch.games
 - id: "174eab77"
   title: "空白也有質地"
   play: https://larch.ink/play/market/174eab77-c1cb-4d0c-b66c-4f1734317946
 - id: "1abe8522"
   title: "還沒送到的信"
-  play: https://larch.ink/play/market/1abe8522-06b6-4527-87ef-ab20eaf9c2af
+  play: https://yazelin-yori.larch.games
 - id: "1c011641"
   title: "格莉奇傳訊來"
-  play: https://larch.ink/play/market/yaze/glitch-phone
+  play: https://yazelin-glitch-phone.larch.games
 - id: "2375b478"
   title: "咒泉．三結義"
-  play: https://larch.ink/play/market/yaze/3gurl
+  play: https://yazelin-3gurl.larch.games
   site: https://yazelin.github.io/larch-taoyuan-canon/
 - id: "a2a10427"
   title: "格莉奇與黑洞先生"
-  play: https://larch.ink/play/market/yaze/glitch
+  play: https://yazelin-glitch.larch.games
   yt: J9OMebCjr9Y
   yt_label: YouTube 完整遊玩

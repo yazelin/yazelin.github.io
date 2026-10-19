@@ -12,7 +12,7 @@ author: Yaze Lin
 
 《十一分鐘》從開案到最後一個 commit，是 2026-10-08 15:20 到 10-10 04:48，一共 116 個 commit：10-08 有 17 個，10-09 有 89 個，10-10 有 10 個。首次發佈在 10-09 07:59，離開案不到十七小時。之後一路更新，到 10-10 凌晨發到 1.0.5。
 
-遊戲本身在 [Larch 市集](https://larch.ink/play/market/yaze/11-minutes)可以玩，故事和人物放在[公開站](https://yazelin.github.io/larch-eleven-minutes/)，這篇只寫做的過程。
+遊戲本身在 [Larch 市集](https://yazelin-11-minutes.larch.games)可以玩，故事和人物放在[公開站](https://yazelin.github.io/larch-eleven-minutes/)，這篇只寫做的過程。
 
 開案第一晚（10-08 21:51）先定了一張表，每一關照九步走，一步沒過就不進下一步。
 
@@ -99,6 +99,6 @@ author: Yaze Lin
 
 ## 在哪裡看
 
-- 玩：[Larch 市集](https://larch.ink/play/market/yaze/11-minutes)
+- 玩：[Larch 市集](https://yazelin-11-minutes.larch.games)
 - 看人物、時間線、聽原聲帶：[公開站](https://yazelin.github.io/larch-eleven-minutes/)
 - 讀原文和程式：[GitHub](https://github.com/yazelin/larch-eleven-minutes)
