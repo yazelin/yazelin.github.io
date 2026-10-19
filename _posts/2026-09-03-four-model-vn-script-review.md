@@ -17,7 +17,7 @@ larch: ["174eab77"]
 
 畫面上的美術都是 AI 產的：三張背景、四個表情的立繪（洋紅幕去背）、三張結局 CG。四首 BGM 是 gemini-web 的 Lyria 出的器樂，環狀淡接做成無縫循環。
 
-市集連結在這裡，免登入可以直接玩：<https://larch.ink/play/market/174eab77-c1cb-4d0c-b66c-4f1734317946>
+市集連結在這裡，免登入可以直接玩：<https://yaze-mori.larch.games>
 
 ## 本來只想按發佈
 
@@ -158,7 +158,7 @@ gemini 的答案相反，說那句「自然且承接前文」，最嚴重的問�
 
 ## 先去玩一遍，再回頭看這三輪
 
-去玩一遍：<https://larch.ink/play/market/174eab77-c1cb-4d0c-b66c-4f1734317946>
+去玩一遍：<https://yaze-mori.larch.games>
 
 另一部跑在同一個平台上的作品，規模與做法都不一樣，寫在 [比賽說做 3 到 5 分鐘的視覺小說，我交了 60 分鐘]({% post_url 2026-08-23-larch-seven-day-challenge %})。
 
