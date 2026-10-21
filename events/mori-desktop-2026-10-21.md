@@ -38,7 +38,7 @@ Mori Desktop 是裝在桌面上的個人 AI 管家。這場講它的語音輸入
 ## 限制
 
 - 預設走 Groq 雲端，需要網路與金鑰，聲音與文字會送到 Groq。想全本機可換本機 Whisper 與 Ollama。
-- Windows 安裝檔由 CI 建置，講者尚未在 Windows 實機驗證。沒有 macOS 版，只提供 Windows 與 Linux 安裝檔。
+- Windows 安裝檔由 CI 建置，講者在 Windows 11 測過，可以用。沒有 macOS 版，只提供 Windows 與 Linux 安裝檔。
 - Linux Wayland 的全域熱鍵有限制，講義有替代做法。
 
 ## 會用到的連結
