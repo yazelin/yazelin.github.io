@@ -1,4 +1,5 @@
 ---
+replay: "1021"
 layout: event
 title: 開口就能寫：Mori Desktop 語音輸入
 subtitle: 下載安裝、填一把金鑰，按一個鍵口述信件、LINE 貼文與提示詞，整理好直接貼到游標的位置。
