@@ -1,4 +1,5 @@
 ---
+replay: "1028"
 layout: event
 title: 多 AI Agent 綜合應用：在 Larch 製作 RPG 遊戲的幕後經驗分享
 subtitle: 《仙泉．香布纏．續》十七天，怎麼讓 AI 做頁面給我按、怎麼把活分給好幾個 AI。講義與確認頁起手檔帶回去用。
