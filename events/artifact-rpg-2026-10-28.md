@@ -31,7 +31,7 @@ share-description: 10/28 週三直播：多 AI Agent 綜合應用。在 Larch �
 - **地圖的幾個實例**：連結圖、地圖總覽、事件點與路人路徑、遮擋（人走到樹後、屋後怎麼被蓋住）、建城牆、軍營與門、屋內、角色走路圖。
 - **多 AI 分工**：Claude 統籌，codex 改程式與審稿，另一台電腦的 Claude 與 codex，llmshare 做批次雜事，codex-images 產圖與修圖。包括 codex 帳號用到八成換帳號、審台詞的閘門。
 - **現場示範**：可以拖人物的遮擋示範頁。
-- **帶回去的**：講義，以及一個本機可用的確認頁起手檔。
+- **帶回去的**：講義，以及一個確認頁起手檔（[線上版](https://yazelin.github.io/confirm-starter/)，也可以存成檔案在本機用）。
 
 ## 限制
 
@@ -41,4 +41,5 @@ share-description: 10/28 週三直播：多 AI Agent 綜合應用。在 Larch �
 
 ## 會用到的連結
 
+- [確認頁起手檔（線上版）](https://yazelin.github.io/confirm-starter/)
 - [larch-preview](https://github.com/yazelin/larch-preview)・[codex-auth-switcher](https://github.com/yazelin/codex-auth-switcher)・[codex-image-service](https://github.com/yazelin/codex-image-service)
