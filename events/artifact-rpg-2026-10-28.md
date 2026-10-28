@@ -1,6 +1,6 @@
 ---
 layout: event
-title: 用頁面跟 AI 溝通：做 RPG 時的確認頁與多 AI 分工
+title: 多 AI Agent 綜合應用：在 Larch 製作 RPG 遊戲的幕後經驗分享
 subtitle: 《仙泉．香布纏．續》十七天，怎麼讓 AI 做頁面給我按、怎麼把活分給好幾個 AI。講義與確認頁起手檔帶回去用。
 permalink: /events/artifact-rpg-2026-10-28/
 event_batch: artifact-rpg-2026-10-28
@@ -15,7 +15,7 @@ event_closed: true
 form_closed_heading: 免費直播，不用報名
 form_closed_message: 10 月 28 日（週三）晚上 8 點直接進入 Google Meet。開播連結也會在 AI 許願池 LINE 社群公布，加入社群就收得到。
 event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=artifact-rpg-2026-10-28
-share-description: 10/28 週三直播：做 RPG 時用 Claude Code Artifact 跟 AI 溝通，確認地圖遮擋、建城、牆與門，也分享 Claude、codex 與其他 AI 怎麼分工。講義與確認頁起手檔帶回去用。
+share-description: 10/28 週三直播：多 AI Agent 綜合應用。在 Larch 製作 RPG 遊戲的幕後，用 Artifact 確認地圖遮擋、建城、牆與門，也分享 Claude、codex 與其他 AI 怎麼分工。講義與確認頁起手檔帶回去用。
 ---
 
 > **10/28（三）20:00 免費線上分享，不用報名。**
