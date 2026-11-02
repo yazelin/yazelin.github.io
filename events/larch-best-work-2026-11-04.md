@@ -6,6 +6,7 @@ permalink: /events/larch-best-work-2026-11-04/
 event_batch: larch-best-work-2026-11-04
 event_date: "2026-11-04"
 event_datetime: 2026 年 11 月 4 日（週三）21:00
+event_duration: 60～90 分鐘
 event_location: 線上（Google Meet：https://meet.google.com/hex-gsvc-uyt）
 event_price: 免費
 cover: /images/events/og-larch-best-work-2026-11-04.jpg
@@ -19,6 +20,8 @@ share-description: 11/4 週三晚上 9 點，Larch 第三屆創作者挑戰《�
 
 > **11/4（三）21:00 免費線上分享，不用報名。這次比平常晚一小時。**
 > [直接進入 Google Meet](https://meet.google.com/hex-gsvc-uyt)；開播連結也會在 [AI 許願池 LINE 社群](https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=larch-best-work-2026-11-04)公布。
+
+> 錄影會先剪掉講者的私人畫面，整理好再放進雲端資料夾。
 
 Larch 第三屆創作者挑戰的題目是「自由與限制」，最佳作品是茶葉飲料的《最後的聖戰》。這場請作者本人來分享，這部作品是怎麼做出來的。
 
