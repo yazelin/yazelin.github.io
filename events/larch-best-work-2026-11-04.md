@@ -24,7 +24,7 @@ share-description: 11/4 週三晚上 9 點，Larch 第三屆創作者挑戰《�
 
 > 錄影會先剪掉講者的私人畫面，整理好再放進雲端資料夾。
 
-Larch 第三屆創作者挑戰的題目是「自由與限制」，最佳作品是[茶葉飲料](https://larch.ink/@teawithoutsugar)的《最後的聖戰》。這場請作者本人來分享，這部作品是怎麼做出來的。
+Larch 第三屆創作者挑戰的題目是「自由與限制」，最佳作品是[茶葉飲料](https://larch.ink/@teawithoutsugar)的[《最後的聖戰》](https://zuihoudeshengzhan.larch.games)。這場請作者本人來分享，這部作品是怎麼做出來的。
 
 ## 這場會聊什麼
 
