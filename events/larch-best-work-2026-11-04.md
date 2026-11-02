@@ -1,7 +1,7 @@
 ---
 layout: event
 title: Larch 第三屆挑戰最佳作品《最後的聖戰》製作分享
-subtitle: 作者茶葉飲料分享從靈感、審題到劇情改動，一部挑戰賽作品怎麼做出來。
+subtitle: '作者<a href="https://larch.ink/@teawithoutsugar">茶葉飲料</a>分享從靈感、審題到劇情改動，一部挑戰賽作品怎麼做出來。'
 permalink: /events/larch-best-work-2026-11-04/
 event_batch: larch-best-work-2026-11-04
 event_date: "2026-11-04"
