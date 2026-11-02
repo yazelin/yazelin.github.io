@@ -9,7 +9,7 @@ event_datetime: 2026 年 11 月 4 日（週三）21:00
 event_duration: 60～90 分鐘
 event_location: 線上（Google Meet：https://meet.google.com/hex-gsvc-uyt）
 event_price: 免費
-cover: /images/events/og-larch-best-work-2026-11-04.jpg
+cover: /images/events/og-larch-best-work-2026-11-04-v2.jpg
 event_access: 不用報名；開播連結也會在 AI 許願池 LINE 社群公布
 event_closed: true
 form_closed_heading: 免費直播，不用報名
