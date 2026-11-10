@@ -262,10 +262,10 @@ categories: [教學, RobotSim, KUKA, LeapMotion]
 
 ## 實作資源
 
-**程式下載：**
-- [手臂端設定檔 (EKI XML)](./src/LeapMotion/LeepRobotServer.xml)
-- [手臂端程式 (KRL)](./src/LeapMotion/LeapMotionRobot.zip)
-- [PC 端程式 (Unity)](./src/LeapMotion/LeapMotionExample.zip)
+**程式下載：**（原始檔案已經找不到，下載連結先拿掉）
+- 手臂端設定檔 (EKI XML)
+- 手臂端程式 (KRL)
+- PC 端程式 (Unity)
 
 **參考影片：**
 - [Demo 影片 1](https://www.facebook.com/wisetech.dakuo/videos/1212236958861791/)

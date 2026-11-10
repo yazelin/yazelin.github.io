@@ -5,7 +5,7 @@ share-description: 林亞澤 Yaze — 甲方思維:不寫程式也能把軟體�
 head-extra:
   - head-custom.html
 ---
-<!-- 文案草稿:全部待 yazelin 逐句核可。格莉奇的台詞在 _data/works.json 的 line 與下方 SCRIPT -->
+{% comment %} 格莉奇的台詞在 _data/works.json 的 line 與下方 SCRIPT {% endcomment %}
 {% comment %}
   首屏是格莉奇的直播台:她當主持人介紹亞澤。右邊聊天室的問題按鈕就是導覽。
   她是 glitch-2d 的活體骨架(assets/glitch2d/,抄自 ai-brain-site),載入失敗退回靜態立繪。
@@ -64,7 +64,7 @@ head-extra:
   </div>
   <aside class="chat" id="chat" aria-label="聊天室">
     <header class="chat-head">聊天室<span class="stream-viewers" title="現在在看的人">觀眾 1（你）</span></header>
-    <ol class="chat-log" aria-live="polite"></ol>
+    <ol class="chat-log" aria-live="polite" tabindex="0" aria-label="聊天室"></ol>
   </aside>
 </section>
 
