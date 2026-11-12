@@ -12,7 +12,7 @@ author: Yaze Lin
 
 ## 前情提要
 
-[v1](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/) 做了一個基本的 Telegram 聊天機器人：使用者傳文字 → Copilot 回文字。
+[v1]({% post_url 2026-03-03-aw-telegram-bot-v1-basic-chatbot %}) 做了一個基本的 Telegram 聊天機器人：使用者傳文字 → Copilot 回文字。
 
 v2 的目標：**使用者傳「畫一隻穿太空衣的貓」→ 收到一張 AI 生成的圖片**。
 
@@ -293,7 +293,7 @@ MCP server 啟動失敗時，Copilot 不會報錯停止 — 它會自己想辦�
 ## Repo
 
 - [github.com/yazelin/aw-telegram-bot](https://github.com/yazelin/aw-telegram-bot)
-- `v1-basic-working` 分支：純文字版本（[v1 文章](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/)）
+- `v1-basic-working` 分支：純文字版本（[v1 文章]({% post_url 2026-03-03-aw-telegram-bot-v1-basic-chatbot %})）
 - `v2-image-generation` 分支：加上圖片生成的版本
 
 ---

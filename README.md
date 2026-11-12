@@ -45,20 +45,11 @@
   導覽列右上角可切「跟隨系統／亮色／深色」,存在 localStorage 的 `wed_theme`,與 /vote/ 共用。
   深色色票在 site.css 寫兩次(系統深色未手動選亮色、手動選深色),少一條切換鈕就只能單向作用。
   舊頁面行內樣式用 `--accent` 當按鈕底色時,字色要用 `--on-accent`,不要寫死 `#fff`。
-- 205+ 篇文章 permalink 維持 `/:categories/:year/:month/:day/:title.html`,舊網址不斷
+- 250+ 篇文章 permalink 維持 `/:categories/:year/:month/:day/:title.html`,舊網址不斷
+- 分享預覽圖:文章沒寫 `cover:` 時,自動用內文第一張 blog-images 封面圖(只收 png/jpg/webp/gif),再沒有才用站台預設圖。
+  封面圖的寬高記在 `_data/cover_sizes.json`,文章頁替第一張圖補寬高與 `fetchpriority="high"`。
+  **發新文章後跑 `python3 scripts/cover_sizes.py`**(只量還沒記過的),沒跑也不會壞,只是那篇少了寬高。
 - 作品牆截圖:`node scripts/portfolio-shots.mjs` 重截後以 Pillow 轉 webp(<100KB 走本地路徑)
 - 訂閱表單打 k-rider-api Worker(D1,`source: "blog"`)
-- `/vote/` 取代原本的 Google 表單,一頁收六件事:投票(限選三項、隨時可改)、
-  用 AI 到什麼程度(複選,選項在 `vote/topics.js` 的 `VOTE_USES`)、對已講過場次按愛心、
-  想聽的不在上面、想來講一場、以及某一場講完的心得。全部共用同一個匿名 voter id,
-  零登入、不收 email。純靜態,沒有 front matter 所以 Jekyll 原樣輸出;
-  後端是 k-rider-api 的 `/vote` 與 `/note`,提案與心得不公開,讀取走 `/admin/notes`。
-  **每辦完一場要手動改 `vote/topics.js`**:把該主題從 `open` 搬到 `done`、補錄影連結、
-  加 `feedback: true` 讓心得卡出現;下一場開始前把那個旗標拿掉。
-  票按 slug 算,搬走就自然退出排行。slug 一旦公開就不要改,改了那個主題的票會歸零。
-  `open` 那幾項的文字照 `yaze-journal/projects/wednesday-live/選題-2026-10.md` 的
-  「建議的投票選項文字」原文,要改先改那份。
-  **換顏色改 `vote/theme.css`**(色票獨立成一支,不用動 index.html);頁面右上角有
-  亮色/深色/跟隨系統的切換,選擇存 localStorage。`--all` 與 `--mine` 是唯二帶資料
-  意義的顏色,換之前先對 theme.css 開頭寫的三個條件(明度帶、彩度地板、色盲分離)。
-  送上來的東西在 k-rider 後台 `admin.html` 的「回饋」分頁看
+- `/vote/` 只剩一頁轉址(2026-10-19 起):投票與回饋搬到 ai-workshop-backend 的「週三直播記錄」`/live/vote`,
+  要登入才能投。舊的 `topics.js`、`theme.css` 已刪,場次與選項改在那邊維護。

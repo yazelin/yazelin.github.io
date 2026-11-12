@@ -1,5 +1,29 @@
 # Larch 作品的站內快照:縮圖檔名、公開站。/larch/ 的數字與新作品即時讀 larch-showcase 的 works.json,這份只管站內交叉連結。
 # 文章或角色頁要掛某部作品,在 front matter 寫 larch: [id 前八碼]。新作品上架後補一行、補縮圖(images/larch/<id>.webp,800 寬)。
+- id: "12cc23dc"
+  title: "轉生成寶箱怪的我"
+  play: https://larch.ink/play/market/12cc23dc-9e1b-428b-9067-0c79d3d32071
+- id: "f82f135a"
+  title: "卯時"
+  play: https://larch.ink/play/market/f82f135a-5da0-4d2f-babb-be6478968b7e
+- id: "f1c25453"
+  title: "仙泉．香布纏．續：純劇情版"
+  play: https://larch.ink/play/market/f1c25453-da7a-4271-bcc8-49be86ca8f73
+- id: "184feb89"
+  title: "交棒總在終點後"
+  play: https://larch.ink/play/market/184feb89-43e1-4a25-a237-8aa468e478f4
+- id: "26a2d0f4"
+  title: "優理的圖文日記"
+  play: https://larch.ink/play/market/26a2d0f4-cffe-44f3-a321-7801a45f4759
+- id: "1074fd06"
+  title: "格莉奇日記"
+  play: https://larch.ink/play/market/1074fd06-fda7-40c2-8c08-f432abf990b5
+- id: "26ba689c"
+  title: "非軍事區（The Demilitarized Zone）"
+  play: https://larch.ink/play/market/26ba689c-0fd2-4f6f-808c-67a1a4e2a988
+- id: "99ad6935"
+  title: "仙泉．香布纏．續"
+  play: https://larch.ink/play/market/99ad6935-1c3f-4d4e-9ad5-ed054ff3baf7
 - id: "84724c70"
   title: "十一分鐘"
   play: https://yazelin-11-minutes.larch.games

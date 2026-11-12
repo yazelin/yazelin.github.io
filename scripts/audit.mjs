@@ -2,7 +2,7 @@
 // 外加橫向捲動。淺色/深色 × 桌機/手機各跑一次。
 // 用法:先在本機跑起站(預設 http://localhost:4011),然後 node scripts/audit.mjs /路徑 /路徑 ...
 // 需要全域的 playwright 與 axe-core(npm i -g playwright axe-core)。
-// LINE 社群按鈕是 LINE 官方綠底白字(品牌色,刻意不改),結果裡排除。
+// LINE 社群按鈕 2026-11-10 起改成綠底深字(白字對比只有 2.25:1),不再排除。
 import { createRequire } from 'node:module';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -21,7 +21,7 @@ for (const scheme of ['light', 'dark']) for (const [w, h] of [[1440, 900], [390,
     await p.waitForTimeout(400);
     await p.addScriptTag({ content: axe });
     const found = await p.evaluate(async () => (await axe.run(document, { runOnly: ['color-contrast', 'link-name', 'image-alt', 'button-name', 'heading-order', 'label'] })).violations
-      .map(v => v.id + ': ' + v.nodes.filter(n => !n.html.includes('community-cta')).slice(0, 4).map(n => n.target.join(' ') + (n.any[0]?.data?.contrastRatio ? ' (' + n.any[0].data.contrastRatio + ')' : '')).join(' | ')));
+      .map(v => v.id + ': ' + v.nodes.slice(0, 4).map(n => n.target.join(' ') + (n.any[0]?.data?.contrastRatio ? ' (' + n.any[0].data.contrastRatio + ')' : '')).join(' | ')));
     const r = found.filter(x => !x.endsWith(': '));
     const ov = await p.evaluate(() => document.documentElement.scrollWidth > innerWidth);
     total += r.length + (ov ? 1 : 0);

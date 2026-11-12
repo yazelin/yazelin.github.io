@@ -7,12 +7,24 @@
 - [部落格首頁](https://yazelin.github.io/)
 - [關於我](https://yazelin.github.io/about/)
 - [作品集 Portfolio](https://yazelin.github.io/portfolio/)
-- [角色圖鑑](https://yazelin.github.io/characters/) — 原創角色索引:格莉奇、黑洞先生、阿蕊、Mori、優理、小擎 Jinn,以及貓貓漫畫、catime、token 無限的群像
+- [文章列表](https://yazelin.github.io/blog/) — 全部文章,依年份分段
+- [Larch 作品](https://yazelin.github.io/larch/) — 在 Larch 平台上的視覺小說與小遊戲
+- [活動](https://yazelin.github.io/events/) — 週三直播與實作課的場次、錄影與講義
+- [AI 服務與用到的站](https://yazelin.github.io/services/)
+- [角色圖鑑](https://yazelin.github.io/characters/) — 原創角色索引:格莉奇、黑洞先生、阿蕊、Mori、優理、小擎 Jinn、月牙,以及貓貓漫畫、catime、token 無限的群像
 
 ## 課程與教學
 
 - [AI 互動行銷頁實作課](https://yazelin.github.io/ai-marketing-pages-course/) — 教不會寫程式的行銷人,用 AI 做出會動、會玩、能上線的活動網頁
 - [Workshop](https://yazelin.github.io/workshop/)
+
+## 主要作品
+
+- [格莉奇與黑洞先生](https://yazelin.github.io/glitch-vn/) — 只有 4KB 記憶體的 AI 主播,七章視覺小說
+- [轉生成貓貓的我們](https://yazelin.github.io/neko-tensei/) — 社群共創的異世界貓貓漫畫,連載中
+- [真AI咏唱魔法](https://yazelin.github.io/ai-chant-magic/) — 對麥克風唸咒語,AI 即時生成魔法效果的生存遊戲
+- [AI 願望池](https://yazelin.github.io/wish-pool/) — 一個人許願,一群人幫它成真的公開願望池
+- [AI 生圖字體風格庫](https://yazelin.github.io/ai-font-styles/) — 上百種字體風格提示詞,每天自動多一種
 
 ## 開源專案與工具
 
