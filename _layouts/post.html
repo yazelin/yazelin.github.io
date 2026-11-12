@@ -6,7 +6,16 @@ layout: default
 {% include page-hero.html class="post-hero" en=pd title=page.title lead=page.subtitle meta=page.author %}
 <article class="post container">
   <div class="post-body">
-  {{ content }}
+  {% comment %} 封面(第一張圖)先抓、補寬高免得版面跳;尺寸由 scripts/cover_sizes.py 量好放 _data/cover_sizes.json {% endcomment %}
+  {% assign _body = content %}
+  {% assign _imgs = content | split: '<img ' %}
+  {% if _imgs.size > 1 and _imgs[1] contains 'releases/download/blog-images/' %}
+    {% assign _cn = _imgs[1] | split: 'releases/download/blog-images/' | last | split: '"' | first %}
+    {% assign _cs = site.data.cover_sizes[_cn] %}
+    {% capture _attrs %}<img fetchpriority="high"{% if _cs %} width="{{ _cs[0] }}" height="{{ _cs[1] }}"{% endif %} {% endcapture %}
+    {% assign _body = content | replace_first: '<img ', _attrs %}
+  {% endif %}
+  {{ _body }}
   </div>
 
   {% comment %} 標籤與相關文章:窄螢幕排在文末,寬螢幕變成右邊黏住的一欄 {% endcomment %}
@@ -45,3 +54,9 @@ layout: default
   {% include giscus.html %}
   </div>
 </article>
+<script>
+// 會橫向捲動的程式碼區塊要讓鍵盤也能進去捲
+document.querySelectorAll('.post-body pre').forEach(function (p) {
+  if (p.scrollWidth > p.clientWidth) { p.tabIndex = 0; p.setAttribute('role', 'region'); p.setAttribute('aria-label', '程式碼'); }
+});
+</script>

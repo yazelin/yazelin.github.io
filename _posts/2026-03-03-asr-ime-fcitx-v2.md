@@ -12,7 +12,7 @@ author: Yaze Lin
 
 ## 前情提要
 
-[上一篇](/chingtech/os/2026/02/14/asr-ime-fcitx/)介紹了 asr-ime-fcitx 的基本架構：C++ addon 攔截熱鍵、Python daemon 錄音辨識、FIFO 雙管道通訊。那時候的功能是「按 F8 說話，辨識結果送到游標」，加上 Copilot GPT-5 mini 自動補標點。
+[上一篇]({% post_url 2026-02-14-asr-ime-fcitx %})介紹了 asr-ime-fcitx 的基本架構：C++ addon 攔截熱鍵、Python daemon 錄音辨識、FIFO 雙管道通訊。那時候的功能是「按 F8 說話，辨識結果送到游標」，加上 Copilot GPT-5 mini 自動補標點。
 
 一個月過去，commit 從 12 個變成 20 個，`daemon_asr.py` 從 800 行長到 1500 行。核心架構沒變，但做了幾件重要的事。
 

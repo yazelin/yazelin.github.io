@@ -12,7 +12,7 @@ author: Yaze Lin
 
 ## 前情提要
 
-[v1](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/) 文字聊天，[v2](/2026/03/03/aw-telegram-bot-v2-image-generation/) AI 繪圖，[v3](/2026/03/03/aw-telegram-bot-v3-research-mode/) 研究模式，[v4](/2026/03/04/aw-telegram-bot-v4-video-download/) 影片下載，[v5](/2026/03/04/aw-telegram-bot-v5-app-factory/) App Factory。
+[v1]({% post_url 2026-03-03-aw-telegram-bot-v1-basic-chatbot %}) 文字聊天，[v2]({% post_url 2026-03-03-aw-telegram-bot-v2-image-generation %}) AI 繪圖，[v3]({% post_url 2026-03-03-aw-telegram-bot-v3-research-mode %}) 研究模式，[v4]({% post_url 2026-03-04-aw-telegram-bot-v4-video-download %}) 影片下載，[v5]({% post_url 2026-03-04-aw-telegram-bot-v5-app-factory %}) App Factory。
 
 v5 實現了「一句話建網站」，但有幾個痛點讓我馬上想改。
 

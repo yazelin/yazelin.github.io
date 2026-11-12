@@ -12,7 +12,7 @@ author: Yaze Lin
 
 ## 前情提要
 
-[v1](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/) 文字聊天，[v2](/2026/03/03/aw-telegram-bot-v2-image-generation/) AI 繪圖，[v3](/2026/03/03/aw-telegram-bot-v3-research-mode/) 研究模式 + 指令路由。
+[v1]({% post_url 2026-03-03-aw-telegram-bot-v1-basic-chatbot %}) 文字聊天，[v2]({% post_url 2026-03-03-aw-telegram-bot-v2-image-generation %}) AI 繪圖，[v3]({% post_url 2026-03-03-aw-telegram-bot-v3-research-mode %}) 研究模式 + 指令路由。
 
 v4 的目標：
 1. **使用者傳 `/download https://youtube.com/...` → 收到影片**
@@ -293,9 +293,9 @@ v1-v3 都沒有白名單，等於公開讓任何人用。雖然 bot 不公開、
 ## Repo
 
 - [github.com/yazelin/aw-telegram-bot](https://github.com/yazelin/aw-telegram-bot)
-- `v1-basic-working` 分支：純文字版本（[v1 文章](/2026/03/03/aw-telegram-bot-v1-basic-chatbot/)）
-- `v2-image-generation` 分支：加上圖片生成（[v2 文章](/2026/03/03/aw-telegram-bot-v2-image-generation/)）
-- `v3-research-mode` 分支：研究模式 + 指令路由（[v3 文章](/2026/03/03/aw-telegram-bot-v3-research-mode/)）
+- `v1-basic-working` 分支：純文字版本（[v1 文章]({% post_url 2026-03-03-aw-telegram-bot-v1-basic-chatbot %})）
+- `v2-image-generation` 分支：加上圖片生成（[v2 文章]({% post_url 2026-03-03-aw-telegram-bot-v2-image-generation %})）
+- `v3-research-mode` 分支：研究模式 + 指令路由（[v3 文章]({% post_url 2026-03-03-aw-telegram-bot-v3-research-mode %})）
 - `v4-video-download` 分支：影片下載 + 白名單（本文）
 
 ---

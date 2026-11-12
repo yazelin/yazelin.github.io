@@ -11,7 +11,9 @@ description: 林亞澤在 Larch 上做的視覺小說與 RPG，點封面就能�
   兩份對不上時以 works.json 為準;yml 只負責縮圖、公開站與站內文章的交叉連結。
 {% endcomment %}
 <section class="band band--studio larch-wall" aria-label="作品列表">
-  <dl class="larch-stats" id="larch-stats" hidden></dl>
+  {% comment %} 先排好五格、數字用「—」佔位,資料回來只換數字,版面不會跳 {% endcomment %}
+  {% assign stat_labels = "作品,瀏覽,遊玩,愛心,留言" | split: "," %}
+  <dl class="larch-stats" id="larch-stats">{% for x in stat_labels %}<div><dt>{{ x }}</dt><dd>—</dd></div>{% endfor %}</dl>
   <ul class="larch-grid" id="larch-grid">
   {% for w in site.data.larch %}
     {% assign ps = site.posts | where_exp: "p", "p.larch contains w.id" %}
@@ -35,12 +37,11 @@ description: 林亞澤在 Larch 上做的視覺小說與 RPG，點封面就能�
     var s = d.summary;
     stats.innerHTML = [['作品', s.total_works], ['瀏覽', s.total_views], ['遊玩', s.total_plays], ['愛心', s.total_likes], ['留言', s.total_comments]]
       .map(function (x) { return '<div><dt>' + x[0] + '</dt><dd>' + n(x[1]) + '</dd></div>'; }).join('');
-    stats.hidden = false;
     d.works.forEach(function (w) {
       var id = w.id.slice(0, 8), li = grid.querySelector('[data-id="' + id + '"]');
       if (!li) { // 新上架、yml 還沒補的作品:用 Larch 的原圖排在最前面
         li = document.createElement('li'); li.className = 'lw'; li.dataset.id = id;
-        li.innerHTML = '<a class="lw-shot" tabindex="-1" aria-hidden="true"><img alt="" width="800" height="450"></a><h2 class="lw-title"><a></a></h2><p class="lw-meta"></p><p class="lw-desc"></p><p class="lw-links"></p>';
+        li.innerHTML = '<a class="lw-shot" tabindex="-1" aria-hidden="true"><img alt="" loading="lazy" decoding="async" width="800" height="450"></a><h2 class="lw-title"><a></a></h2><p class="lw-meta"></p><p class="lw-desc"></p><p class="lw-links"></p>';
         li.querySelector('img').src = w.coverUrl;
         li.querySelector('.lw-title a').textContent = w.title;
         li.querySelectorAll('a[class="lw-shot"], .lw-title a').forEach(function (a) { a.href = w.playUrl; });
@@ -56,6 +57,6 @@ description: 林亞澤在 Larch 上做的視覺小說與 RPG，點封面就能�
       nums.textContent = '瀏覽 ' + n(w.views) + ' · 遊玩 ' + n(w.plays) + ' · 愛心 ' + n(w.likes) + ' · 留言 ' + n(w.comments);
       li.querySelector('.lw-desc').after(nums);
     });
-  }).catch(function () {});
+  }).catch(function () { stats.hidden = true; });
 })();
 </script>

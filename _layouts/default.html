@@ -14,7 +14,23 @@
     Share image: page cover, else the site card. Covers hosted elsewhere
     (GitHub Releases) are already absolute — absolute_url would mangle those.
   {%- endcomment -%}
-  {% assign og_image = page.cover | default: site.og_image %}
+  {%- comment -%}
+    Posts rarely set `cover:`; their cover is the first blog-images release
+    asset in the body, so fall back to that before the site card.
+  {%- endcomment -%}
+  {% assign og_image = page.cover %}
+  {% if og_image == nil and page.layout == 'post' %}
+    {% assign _parts = page.content | split: 'releases/download/blog-images/' %}
+    {% for _p in _parts offset: 1 %}
+      {% assign _name = _p | split: '"' | first | split: ')' | first %}
+      {% assign _ext = _name | split: '.' | last | downcase %}
+      {% if _ext == 'png' or _ext == 'jpg' or _ext == 'jpeg' or _ext == 'webp' or _ext == 'gif' %}
+        {% assign og_image = 'https://github.com/yazelin/yazelin.github.io/releases/download/blog-images/' | append: _name %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% assign og_image = og_image | default: site.og_image %}
   {% if og_image contains '://' %}{% assign og_image_url = og_image %}{% else %}{% assign og_image_url = og_image | absolute_url %}{% endif %}
   <meta property="og:image" content="{{ og_image_url }}">
   <meta name="twitter:card" content="summary_large_image">
