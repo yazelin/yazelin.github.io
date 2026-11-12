@@ -53,3 +53,9 @@
 - 訂閱表單打 k-rider-api Worker(D1,`source: "blog"`)
 - `/vote/` 只剩一頁轉址(2026-10-19 起):投票與回饋搬到 ai-workshop-backend 的「週三直播記錄」`/live/vote`,
   要登入才能投。舊的 `topics.js`、`theme.css` 已刪,場次與選項改在那邊維護。
+
+## 活動頁瀏覽計數
+
+已發布且有 `event_date` 的活動頁會以 `event-<event_batch>` 為鍵，透過 `sendBeacon()` 呼叫 k-rider-api 的 `/hit`。計數只記日期、鍵值與次數，不存 IP、Cookie、識別碼或 referrer；請求失敗不會影響頁面。footer 會略過這些活動頁的一般站名計數，避免同一頁重複上報。
+
+執行 `python3 scripts/event_hits.py` 會讀取 Worker 公開的 `/hits` 儀表板，列出每場活動的累計瀏覽數。

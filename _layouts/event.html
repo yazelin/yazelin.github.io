@@ -24,7 +24,7 @@ layout: default
 </style>
 {% assign ed = page.event_date | date: "%Y.%m.%d" | default: "Event" %}
 {% assign art = page.hero | default: page.cover %}{% if art %}{% capture cv %}{% include cdn-url.html url=art %}{% endcapture %}{% capture cva %}{{ page.title }} 場次視覺{% endcapture %}{% endif %}
-{% comment %} 場次視覺放在頁首右邊(hero 是 16:9 的頁首主視覺;沒有 hero 就用 cover。cover 是 1200×630 的 og:image,頁首會被裁成 16:9) {% endcomment %}
+{% comment %} 場次視覺放在頁首右邊（hero 是 16:9 的頁首主視覺；沒有 hero 就用 cover。cover 是 1200×630 的 og:image，頁首會被裁成 16:9） {% endcomment %}
 {% include page-hero.html class="event-hero" en=ed title=page.title lead=page.subtitle art=cv art_alt=cva %}
 <article class="page container">
 
@@ -53,3 +53,16 @@ layout: default
 
   {% include event-register-form.html batch=page.event_batch community=page.event_community_url heading=page.form_heading lead=page.form_lead name_placeholder=page.form_name_placeholder note_placeholder=page.form_note_placeholder note_label=page.form_note_label note_rows=page.form_note_rows submit_label=page.form_submit_label success_msg=page.form_success_msg already_msg=page.form_already_msg closed=page.event_closed closed_heading=page.form_closed_heading closed_message=page.form_closed_message materials=page.event_materials_url %}
 </article>
+
+{% comment %} 活動頁是一般頁面，沒有 page.slug；鍵值用每場 front matter 都有的 event_batch（與檔名相同） {% endcomment %}
+{% if page.event_date and page.event_batch %}
+<script>
+(function () {
+  try {
+    if (location.hostname === "yazelin.github.io" && navigator.sendBeacon) {
+      navigator.sendBeacon("https://k-rider-api.yazelinj303.workers.dev/hit?s=event-{{ page.event_batch | uri_escape }}");
+    }
+  } catch (e) {}
+})();
+</script>
+{% endif %}
