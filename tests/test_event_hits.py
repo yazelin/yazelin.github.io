@@ -15,7 +15,7 @@ class EventHitsTests(unittest.TestCase):
         footer_condition = '{% if page.layout != "event" or page.event_date == nil %}'
         footer_start = footer.index(footer_condition)
         footer_end = footer.index("{% endif %}", footer_start)
-        self.assertIn("event-{{ page.slug | uri_escape }}", layout)
+        self.assertIn("event-{{ page.event_batch | uri_escape }}", layout)
         self.assertEqual(layout.count("navigator.sendBeacon("), 1)
         self.assertIn("navigator.sendBeacon(", footer[footer_start:footer_end])
 
