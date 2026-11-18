@@ -1,4 +1,6 @@
 ---
+replay: "1118"
+replay_note: 剪成 7 堂 3 到 5 分鐘的旁白短課，附逐字稿、講義與簡報。
 layout: event
 title: 我和 AI 的相處模式
 subtitle: 把一年多打給 AI 的 7,981 則訊息一則一則數。九成三是一般交代事情，指出要改、帶情緒、稱讚都是少數，謝謝 0 次。
@@ -6,20 +8,20 @@ permalink: /events/ai-profile-2026-11-18/
 event_batch: ai-profile-2026-11-18
 event_date: "2026-11-18"
 event_datetime: 2026 年 11 月 18 日（週三）20:00（台北時間）
-event_duration: 預計一小時左右
+event_duration: 約 84 分鐘
 event_location: 線上（Google Meet）
 event_price: 免費
-event_access: 不用報名，直接加入 Google Meet
+event_access: 已結束。旁白短課、講義與簡報開放取用
 cover: /images/events/og-ai-profile-2026-11-18.jpg
 hero: /images/events/hero-ai-profile-2026-11-18.webp
 event_closed: true
 form_closed_heading: 這場不用報名
-form_closed_message: 11/18 週三 20:00 開始，免費分享，直接從頁面上的 Google Meet 連結加入。
+form_closed_message: 這場已經結束。內容剪成 7 堂旁白短課，連同講義、簡報放在直播記錄，免費。
 event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=ai-profile-2026-11-18
-share-description: 11/18 週三分享：我和 AI 的相處模式。把 Claude Code、Codex、Copilot、Gemini 一年多的 7,981 則訊息一則一則數：九成三是一般交代事情，指出要改不到 3%，帶情緒和稱讚都不到 1%。頁面上有一段提示，貼給你的 AI，用你自己的紀錄做出同樣一頁。
+share-description: 11/18 我和 AI 的相處模式分享已結束，短課、講義與簡報開放取用。把 Claude Code、Codex、Copilot、Gemini 一年多的 7,981 則訊息一則一則數：九成三是一般交代事情，指出要改不到 3%，帶情緒和稱讚都不到 1%。頁面上有一段提示，貼給你的 AI，用你自己的紀錄做出同樣一頁。
 ---
 
-> 11/18 週三 20:00 開始，預計一小時左右。免費，不用報名，<a href="https://meet.google.com/hex-gsvc-uyt" target="_blank" rel="noopener">直接加入 Google Meet →</a>
+> **這場已經結束。**內容剪成 7 堂旁白短課，講義與簡報也放在一起：[到直播記錄看這一場](https://ai-workshop-backend.yazelinj303.workers.dev/live/lesson?id=1118)。免費。
 
 上週有個 vibe coding 的朋友，系統改到跑不動來找我求救，想知道我是怎麼用 AI 的。我想了一下答不出來，因為我就是正常跟它講話。乾脆讓 AI 把我這一年多打給它的字全部讀完，一則一則數。
 
@@ -35,7 +37,7 @@ share-description: 11/18 週三分享：我和 AI 的相處模式。把 Claude C
 
 完整的統計和挑過的原話放在這一頁，可以直接點：[我和 AI 的相處模式（統計頁）](https://yazelin.github.io/ai-and-me/)
 
-## 這晚會聊什麼
+## 這晚聊了什麼
 
 - **一般的 93% 長什麼樣**：中位數 20 個字，一半完全沒有標點，不條列。「好」只對剛才那一則有效。沒有格式，但六成的指令會講範圍。
 - **指出要改的那 3% 都在改什麼**：AI 整理成最常被退件的十二件事，做完不回報、回報變英文、兩隻左手想用鏡射救……每一件都附當時的原話。
