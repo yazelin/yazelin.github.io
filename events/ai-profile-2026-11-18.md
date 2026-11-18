@@ -19,7 +19,7 @@ event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5L
 share-description: 11/18 週三分享：我和 AI 的相處模式。把 Claude Code、Codex、Copilot、Gemini 一年多的 7,981 則訊息一則一則數：九成三是一般交代事情，指出要改不到 3%，帶情緒和稱讚都不到 1%。頁面上有一段提示，貼給你的 AI，用你自己的紀錄做出同樣一頁。
 ---
 
-> 11/18 週三 20:00 開始，預計 75 分鐘。免費，不用報名，<a href="https://meet.google.com/hex-gsvc-uyt" target="_blank" rel="noopener">直接加入 Google Meet →</a>
+> 11/18 週三 20:00 開始，預計一小時左右。免費，不用報名，<a href="https://meet.google.com/hex-gsvc-uyt" target="_blank" rel="noopener">直接加入 Google Meet →</a>
 
 上週有個 vibe coding 的朋友，系統改到跑不動來找我求救，想知道我是怎麼用 AI 的。我想了一下答不出來，因為我就是正常跟它講話。乾脆讓 AI 把我這一年多打給它的字全部讀完，一則一則數。
 
