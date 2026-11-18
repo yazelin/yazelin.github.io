@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我和 AI 的相處模式｜謝謝 0 次，「好了嗎」190 次</title>
+<meta name="description" content="把一年多打給 AI 的 7,981 則訊息一則一則數。93% 是公事公辦，稱讚 44 次，謝謝 0 次，「好了嗎」問了 190 次。">
+<meta property="og:title" content="我和 AI 的相處模式">
+<meta property="og:description" content="把一年多打給 AI 的 7,981 則訊息一則一則數。93% 是公事公辦，稱讚 44 次，謝謝 0 次，「好了嗎」問了 190 次。">
+<meta property="og:image" content="https://yazelin.github.io/images/events/og-ai-profile-2026-11-18.jpg">
+<meta property="og:type" content="article">
+<style>
+:root{--bg:#13110e;--panel:#1d1a16;--line:#35312a;--fg:#f3eee3;--dim:#a8a091;--gold:#e0ae66;--red:#e5604d;--blue:#7aa2d6;--green:#6fbf8f;--sand:#b9a27c;--grey:#8a8477;--slate:#9aa7b8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 "Noto Sans TC","Noto Sans CJK TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left)) 90px}
+h1,h2,.num{font-family:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif}
+header{padding:72px 0 30px}
+.kicker{color:var(--gold);letter-spacing:.14em;font-size:14px;margin:0 0 10px}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.15;margin:0 0 16px;text-wrap:balance}
+h1 em,h2 em{font-style:normal;color:var(--gold)}
+.lead{color:var(--dim);font-size:clamp(17px,2.2vw,20px);max-width:38em;margin:0}
+.lead b{color:var(--fg)}
+section{padding:54px 0 0}
+h2{font-size:clamp(26px,4.2vw,38px);line-height:1.25;margin:0 0 8px;text-wrap:balance}
+.sub{color:var(--dim);margin:0 0 22px;max-width:40em}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.card .num{display:block;font-weight:700;font-size:clamp(52px,9vw,84px);line-height:1;font-variant-numeric:tabular-nums}
+.card .what{display:block;margin-top:10px;font-size:19px;font-weight:700}
+.card .note{display:block;color:var(--dim);font-size:15.5px;line-height:1.55;margin-top:4px}
+.c-gold{color:var(--gold)}.c-red{color:var(--red)}.c-blue{color:var(--blue)}.c-green{color:var(--green)}.c-grey{color:var(--grey)}
+.ratio{display:flex;height:46px;border-radius:10px;overflow:hidden;gap:2px;margin:18px 0 12px}
+.ratio i{display:block;height:100%;min-width:6px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:16.5px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:13px;height:13px;border-radius:3px;display:inline-block;flex:none}
+.wall{display:flex;flex-wrap:wrap;gap:10px}
+.q{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-size:19px;line-height:1.55;max-width:100%;overflow-wrap:anywhere}
+.q small{display:block;color:var(--dim);font-size:13.5px;margin-top:2px}
+.q.hot{border-color:var(--red);background:#2a1714}
+.ladder .q{font-size:calc(17px + var(--i)*0.75px);border-color:color-mix(in srgb,var(--blue) calc(100% - var(--i)*6%),var(--red))}
+.steps{display:grid;gap:10px;counter-reset:s}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.step::before{counter-increment:s;content:counter(s);font:700 30px/1 "Noto Serif TC",serif;color:var(--gold)}
+.step b{display:block;font-size:19px}
+.step span{color:var(--dim);font-size:16px}
+.step .res{color:var(--fg)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+button.chip{font:inherit;font-size:16px;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+button.chip[aria-pressed=true]{background:var(--fg);color:#17130d;border-color:var(--fg);font-weight:700}
+button.chip:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;overflow-x:auto}
+svg{display:block;width:100%;min-width:640px;height:auto}
+svg text{fill:var(--dim);font-size:14px}
+svg .m{fill:var(--fg);font-size:17px;font-weight:700}
+svg .v{fill:var(--fg);font-size:13px}
+.again{margin-top:14px}
+.cta{background:linear-gradient(135deg,#2a2217,#1d1a16);border:1px solid var(--gold);border-radius:18px;padding:26px 26px 28px;margin-top:10px}
+.cta a.btn{display:inline-block;margin-top:14px;background:var(--gold);color:#17130d;font-weight:700;text-decoration:none;border-radius:999px;padding:10px 22px}
+a{color:var(--gold)}
+footer{border-top:1px solid var(--line);margin-top:64px;padding-top:20px;color:var(--dim);font-size:15px;line-height:1.7}
+footer a{margin-right:16px}
+@media (max-width:520px){.q{font-size:17px}.card{padding:16px 18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">AI 許願池・週三線上分享・2026-11-18</p>
+    <h1>我和 AI 的<em>相處模式</em></h1>
+    <p class="lead" id="lead"></p>
+  </header>
+
+  <section aria-labelledby="h-big">
+    <h2 id="h-big">先看<em>幾個數字</em></h2>
+    <div class="big" id="big"></div>
+  </section>
+
+  <section aria-labelledby="h-ratio">
+    <h2 id="h-ratio">公事公辦：<em id="pct"></em>是一般交代事情</h2>
+    <p class="sub">要它做什麼、問它問題、選一個選項。指出要改、帶情緒、稱讚，加起來都是少數。</p>
+    <div class="ratio" id="ratio" role="img" aria-label="各種語氣的比例"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <div id="groups"></div>
+
+  <section aria-labelledby="h-sug">
+    <h2 id="h-sug">連催它，都是<em>它教我的</em></h2>
+    <p class="sub" id="sugText"></p>
+    <div class="wall"><div class="q">完成了嗎<small>AI 建議，我按了接受</small></div><div class="q">目前進度怎麼樣了<small>AI 建議，我按了接受</small></div></div>
+  </section>
+
+  <section aria-labelledby="h-month">
+    <h2 id="h-month">每個月<em>各幾次</em></h2>
+    <p class="sub">2026 年 10 月我把一整部作品交給 AI 自己做，那個月問了 <b id="oct"></b> 次進度。最後一個月還沒過完。</p>
+    <div class="bar" id="chips"></div>
+    <div class="chart"><svg id="chart" role="img" aria-label="每月次數"></svg></div>
+  </section>
+
+  <section aria-labelledby="h-four">
+    <h2 id="h-four">這些數字，AI <em>數了四次才對</em></h2>
+    <p class="sub">統計也是叫 AI 做的。每一次都是我自己看了原話，才發現它算錯。</p>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section aria-labelledby="h-cta">
+    <div class="cta">
+      <h2 id="h-cta">做<em>你自己的</em>那一頁</h2>
+      <p style="margin:0;color:var(--dim)">活動頁上有一段提示。整段貼給 Claude Code 或 Codex，它會用你自己的對話紀錄做出同樣的統計。做出來的頁面有你的原話，只放在自己的電腦上。</p>
+      <a class="btn" href="https://yazelin.github.io/events/ai-profile-2026-11-18/#貼給你的-ai做你自己的那一頁">去拿提示</a>
+    </div>
+  </section>
+
+  <footer>
+    <p id="foot"></p>
+    <p><a href="https://yazelin.github.io/events/ai-profile-2026-11-18/">這場分享的活動頁</a><a href="https://yazelin.github.io/live/">歷次直播記錄</a><a href="https://yazelin.github.io/line/">LINE 分享社群</a><a href="https://github.com/yazelin">GitHub</a></p>
+  </footer>
+</div>
+<script>
+const S={"n": 7981, "first": "2025-07", "last": "2026-11-18", "counts": {"一般": 7434, "指出問題要改": 218, "問進度": 190, "我講過了": 39, "帶情緒": 56, "稱讚": 44}, "angry": 3, "thanks": 0, "kwSwear": 24, "swear": 2, "suggested": 702, "suggestedNudge": 43, "pasted": 635, "tools": {"Gemini": 245, "Copilot": 583, "Codex": 1550, "Claude Code": 5603}, "monthly": [{"m": "2026-05", "n": 228, "問進度": 5, "指出問題要改": 1, "帶情緒": 0, "稱讚": 0, "我講過了": 0}, {"m": "2026-06", "n": 191, "問進度": 5, "指出問題要改": 8, "帶情緒": 2, "稱讚": 2, "我講過了": 5}, {"m": "2026-07", "n": 282, "問進度": 3, "指出問題要改": 7, "帶情緒": 0, "稱讚": 0, "我講過了": 1}, {"m": "2026-08", "n": 347, "問進度": 6, "指出問題要改": 17, "帶情緒": 4, "稱讚": 0, "我講過了": 1}, {"m": "2026-09", "n": 1411, "問進度": 12, "指出問題要改": 51, "帶情緒": 9, "稱讚": 9, "我講過了": 5}, {"m": "2026-10", "n": 2710, "問進度": 102, "指出問題要改": 71, "帶情緒": 26, "稱讚": 15, "我講過了": 12}, {"m": "2026-11", "n": 2231, "問進度": 55, "指出問題要改": 59, "帶情緒": 13, "稱讚": 18, "我講過了": 14}], "octNudge": 102}, Q=[{"id": "nudge", "title": "「好了嗎」的各種講法", "lead": "一年多問了 190 次進度。AI 做完不會自己講，我只好一直問。照我愈來愈沒耐心的順序排。", "items": [{"x": "好了嗎", "p": "香布纏．續"}, {"x": "好了嗎?", "p": "直播"}, {"x": "好了沒?", "p": "香布纏"}, {"x": "好了吧?", "p": "香布纏"}, {"x": "好了喔??", "p": "香布纏"}, {"x": "OK了??", "p": "十一分鐘"}, {"x": "完成了?", "p": "袁真跡"}, {"x": "好 生了嗎", "p": "香布纏"}, {"x": "好了嗎到哪了", "p": "香布纏"}, {"x": "是卡住了嗎??", "p": "直播"}, {"x": "跑完了嗎 這很快", "p": "直播"}, {"x": "怎麼還要那麼久?", "p": "香布纏．續"}, {"x": "好了沒? 好久都沒進度", "p": "香布纏．續"}, {"x": "好了嗎 為什麼你都沒辦法知道好了嗎? 也沒通知我", "p": "香布纏．續"}, {"x": "你還有在做事嗎", "p": "香布纏．續"}, {"x": "真的有在做事嗎", "p": "夜後明月"}]}, {"id": "praise", "title": "我的稱讚長這樣", "lead": "一年多稱讚了 44 次。最高級大概是「這樣很好」。", "items": [{"x": "好像還行", "p": "優理日記"}, {"x": "好像還行喔", "p": "夜後明月"}, {"x": "好像可以耶", "p": "香布纏．續"}, {"x": "我看起來好像可以耶?", "p": "香布纏．續"}, {"x": "地板好像還算可以", "p": "香布纏．續"}, {"x": "樣張看起來還行", "p": "夜後明月"}, {"x": "現在這樣就好", "p": "夜後明月"}, {"x": "全OK 這樣很好", "p": "夜後明月"}, {"x": "有趣版 有趣", "p": "夜後明月"}, {"x": "我覺得很有戲 不錯", "p": "袁真跡"}, {"x": "字真秀氣好", "p": "袁真跡"}, {"x": "細節鮮活 很好不是嗎", "p": "香布纏．續"}]}, {"id": "reject", "title": "退件名句", "lead": "指出問題要它改，佔全部的 2.7%。大部分是平靜地講。", "items": [{"x": "都不好 只有劍尖下巴OK", "p": "袁真跡"}, {"x": "cgv_llask 待選 都錯 丕都有2隻右手..........", "p": "袁真跡"}, {"x": "都不對 手的部份都還是有問題 到底是劉夫人的手還是誰的手 劉夫人 1個人 單邊長了2隻手", "p": "袁真跡"}, {"x": "感受臩懷中女子xxxxx柔軟骨略?? 軟骨症? 你可以文學好一點來寫嗎", "p": "香布纏"}, {"x": "案上兩只匣子開著，燈照不進去。???? 關燈什麼事", "p": "袁真跡"}, {"x": "他跪著聽，想知道曹丕寫這道旨的時候，手穩不穩。 穩不穩??要說人話", "p": "袁真跡"}, {"x": "他現在知道，她們那一夜，也是這樣怕。 說人話", "p": "袁真跡"}, {"x": "他一聲都不給。 又是AI味", "p": "袁真跡"}, {"x": "你先生成3視圖再按圖細部畫出來就可以了吧 你不是會畫畫嗎?", "p": "格莉奇樂園"}, {"x": "完全還是不行\\", "p": "格莉奇樂園"}, {"x": "扭蛋機本來比較蠻亮的嗎 為什麼變成那麼黑暗了 完全沒開燈耶", "p": "格莉奇樂園"}, {"x": "我覺得 沒有質感", "p": ""}, {"x": "新聞已朗讀完畢。但我根本沒聽到?", "p": ""}, {"x": "先給我中文我才看得懂", "p": "夜後明月"}, {"x": "不是FB 我要LINE的", "p": "直播"}]}, {"id": "emo", "title": "少數有情緒的時候", "lead": "7,981 則裡只有 56 則，不到 1%。明顯生氣的 3 則裡，這裡放了 2 則。", "items": [{"x": "非常醜.....我以為你會用類似blender 之類的建模 我看到你gpt6 的demo超強的 結果你畫這個大便給我.....", "p": "格莉奇樂園", "hot": 1}, {"x": "幹又不是鏡射的問題 你他媽的2隻左手你鏡射完不就是2隻右手了 你要重畫才有可能會正確啊 一定要一左手一右手啊!!!   我回應完了你看看啦", "p": "香布纏", "hot": 1}, {"x": "不要用SVG~~~你在畫什麼鬼???用imagegen功能生圖", "p": ""}, {"x": "你有用心嗎", "p": "部落格"}, {"x": "為什麼你一直在改同一行", "p": ""}, {"x": "你都沒有看過全劇本就亂畫", "p": "格莉奇"}, {"x": "為什麼你好像會做事做到忘記?", "p": "香布纏．續"}, {"x": "全部接著處理完，為什麼你說會做但是都要我再問? 你沒有監控??", "p": "香布纏．續"}, {"x": "你從來沒有一次是通知回報我的 每次都是我問題.....你很被動", "p": "香布纏．續"}, {"x": "你核對為什麼要我核對 不是都在github repos 中嗎?", "p": "格莉奇"}, {"x": "結果網站兩天沒更新，我今天中午才發現。?????????寫這幹嘛", "p": "直播"}, {"x": "這次妳不說是天氣了喔? 這是什麼讓人冷掉的發言?????", "p": "夜後明月"}, {"x": "你說中文 到底要麼了", "p": "夜後明月"}, {"x": "我回饋了 我看你製作得很爛", "p": "餘燼"}]}];
+const $=id=>document.getElementById(id), esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const C=S.counts, pct=k=>100*C[k]/S.n, f=n=>n.toLocaleString();
+const COL={'一般':'var(--grey)','指出問題要改':'var(--sand)','問進度':'var(--blue)','我講過了':'var(--slate)','帶情緒':'var(--red)','稱讚':'var(--green)'};
+const p1=k=>pct(k)<1?pct(k).toFixed(1):pct(k).toFixed(pct(k)<10?1:0);
+
+$('lead').innerHTML=`朋友問我平常怎麼用 AI，我答不出來，因為我就是正常跟它講話。乾脆把這一年多打給它的 <b>${f(S.n)} 則</b>訊息一則一則數。來源是 Claude Code、Codex、Copilot、Gemini 四個工具，從 ${S.first.slice(0,4)} 年 ${+S.first.slice(5)} 月到 ${S.last.slice(0,4)} 年 ${+S.last.slice(5,7)} 月。`;
+$('big').innerHTML=[
+  [S.thanks,'次謝謝','c-gold','AI 原本說有 3 次。我一則一則看，都不是在謝它。'],
+  [C['問進度'],'次「好了嗎」','c-blue',`它做完不會自己講。光是 2026 年 10 月就問了 ${S.octNudge} 次。`],
+  [C['稱讚'],'次稱讚','c-green','最高級大概是「這樣很好」。常見的是「好像還行」。'],
+  [C['帶情緒'],'次帶情緒','c-red',`佔 ${p1('帶情緒')}%。明顯生氣的只有 ${S.angry} 次。`],
+  [S.swear,'次爆粗口','c-red',`用關鍵字抓出 ${S.kwSwear} 次，逐則看只有 ${S.swear} 次是真的。其他大多是「幹嘛」。`],
+  [S.suggestedNudge,'次是 AI 自己叫我催它','c-gold','它在輸入框替我寫好「完成了嗎」，我只按了接受。這些不算我講的。'],
+].map(x=>`<div class="card"><span class="num ${x[2]}">${x[0]}</span><span class="what">${x[1]}</span><span class="note">${x[3]}</span></div>`).join('');
+
+$('pct').textContent=pct('一般').toFixed(0)+'% ';
+const order=['一般','指出問題要改','問進度','我講過了','帶情緒','稱讚'];
+$('ratio').innerHTML=order.map(k=>`<i style="width:${Math.max(pct(k),0.9)}%;background:${COL[k]}" title="${k} ${f(C[k])} 則"></i>`).join('');
+$('legend').innerHTML=order.map(k=>`<span><i class="dot" style="background:${COL[k]}"></i>${k==='我講過了'?'「我講過了」':k} ${p1(k)}%（${f(C[k])} 則）</span>`).join('');
+
+$('groups').innerHTML=Q.map(g=>`<section aria-labelledby="h-${g.id}"><h2 id="h-${g.id}">${esc(g.title)}</h2><p class="sub">${esc(g.lead)}</p><div class="wall${g.id==='nudge'?' ladder':''}" id="w-${g.id}">${g.items.map((q,i)=>`<div class="q${q.hot?' hot':''}" style="--i:${i}">${esc(q.x)}${q.p?`<small>${esc(q.p)}</small>`:''}</div>`).join('')}</div></section>`).join('');
+
+$('sugText').innerHTML=`Claude Code 會在輸入框先替我寫好一句回覆，我按鍵就送出。這種訊息有 ${f(S.suggested)} 則，字是 AI 寫的，所以沒有算進上面的統計。其中 <b>${S.suggestedNudge} 則是它建議我催它</b>：`;
+$('oct').textContent=S.octNudge;
+
+const SER=[['問進度','var(--blue)'],['指出問題要改','var(--sand)'],['帶情緒','var(--red)'],['稱讚','var(--green)'],['我講過了','var(--slate)']];
+const on=new Set(['問進度','帶情緒','稱讚']);
+function chart(){
+  const ks=SER.filter(s=>on.has(s[0])), M=S.monthly, W=Math.max(640,M.length*130), H=380, L=44, B=74, TOP=24;
+  const max=Math.max(1,...M.flatMap(m=>ks.map(k=>m[k[0]]))), cw=(W-L-8)/M.length, y=v=>H-B-(H-B-TOP)*v/max;
+  let s='';const step=max<=12?2:max<=40?10:max<=120?20:50;
+  for(let v=0;v<=max;v+=step)s+=`<line x1="${L}" x2="${W-8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-8}" y="${y(v)+5}" text-anchor="end">${v}</text>`;
+  M.forEach((m,i)=>{const x0=L+i*cw, bw=Math.min(30,(cw-18)/Math.max(1,ks.length));
+    ks.forEach((k,j)=>{const v=m[k[0]], bx=x0+(cw-bw*ks.length)/2+j*bw;
+      s+=`<rect x="${bx}" y="${y(v)}" width="${bw-4}" height="${Math.max(0,H-B-y(v))}" rx="4" fill="${k[1]}"><title>${+m.m.slice(5)} 月 ${k[0]} ${v} 次</title></rect><text class="v" x="${bx+(bw-4)/2}" y="${y(v)-6}" text-anchor="middle">${v}</text>`});
+    s+=`<text class="m" x="${x0+cw/2}" y="${H-B+28}" text-anchor="middle">${+m.m.slice(5)} 月</text><text x="${x0+cw/2}" y="${H-B+50}" text-anchor="middle">${f(m.n)} 則</text>`;
+    if(i===M.length-1)s+=`<text x="${x0+cw/2}" y="${H-B+68}" text-anchor="middle" style="fill:var(--gold)">只到 ${+S.last.slice(8)} 日</text>`});
+  const c=$('chart');c.setAttribute('viewBox',`0 0 ${W} ${H}`);c.innerHTML=s;
+}
+$('chips').innerHTML=SER.map(s=>`<button class="chip" data-k="${s[0]}" aria-pressed="${on.has(s[0])}"><i class="dot" style="background:${s[1]}"></i>${s[0]==='我講過了'?'「我講過了」':s[0]}</button>`).join('');
+$('chips').querySelectorAll('button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;on.has(k)?on.delete(k):on.add(k);if(!on.size)on.add(k);b.setAttribute('aria-pressed',on.has(k));chart()});
+chart();
+
+$('steps').innerHTML=[
+  ['用關鍵字抓',`爆粗口 ${S.kwSwear} 次`,`逐句看，真的只有 1 次。其他大多是「幹嘛」。`],
+  ['交給 AI 一則一則判','生氣 275 次、不耐煩 234 次、謝謝 3 次','平靜地說「重畫」被算成生氣，問一句「好了嗎」被算成不耐煩。3 次謝謝都不是在謝 AI。圖做出來，我看起來很兇。'],
+  ['內容和情緒分開判','帶情緒 189 次','我習慣把「??」當一般問號用。問問題、跟它討論，也被算成有情緒。'],
+  ['規定問號數量不算數，再判一次',`帶情緒 ${C['帶情緒']} 次，明顯生氣 ${S.angry} 次`,'跟我自己的印象對得上，才用這一版。'],
+].map(x=>`<div class="step"><div><b>${x[0]}</b><span class="res">算出：${x[1]}</span><br><span>${x[2]}</span></div></div>`).join('');
+
+$('foot').textContent=`語氣是 AI（deepseek-v4.1-flash）逐則判斷、本人抽看訂正的，是約略的數字。只算我親手打的 ${f(S.n)} 則；AI 建議後按接受的 ${f(S.suggested)} 則、貼上或別的 AI 代送的 ${f(S.pasted)} 則不算。頁面上的原話是挑過的，錯字照留。`;
+</script>
+</body>
+</html>
