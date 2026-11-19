@@ -1,6 +1,6 @@
 ---
 replay: "1118"
-replay_note: 剪成 7 堂 3 到 5 分鐘的旁白短課，附逐字稿、講義與簡報。
+replay_note: 剪成 7 段 3 到 5 分鐘的旁白短片，附逐字稿、講義與簡報。
 layout: event
 title: 我和 AI 的相處模式
 subtitle: 把一年多打給 AI 的 7,981 則訊息一則一則數。九成三是一般交代事情，指出要改、帶情緒、稱讚都是少數，謝謝 0 次。
@@ -11,18 +11,18 @@ event_datetime: 2026 年 11 月 18 日（週三）20:00（台北時間）
 event_duration: 約 84 分鐘
 event_location: 線上（Google Meet）
 event_price: 免費
-event_access: 已結束。旁白短課、錄影分段、講義與簡報開放取用
+event_access: 已結束。旁白短片、錄影分段、講義與簡報開放取用
 cover: /images/events/og-ai-profile-2026-11-18.jpg
 hero: /images/events/hero-ai-profile-2026-11-18.webp
 event_closed: true
 form_closed_heading: 這場不用報名
 event_materials_url: https://drive.google.com/drive/folders/1d54JSIRRz5gC4lCvSNnpMQBfUa7ibRQB
-form_closed_message: 這場已經結束。內容剪成 7 堂旁白短課放在直播記錄；錄影（切成 5 段，共約 84 分鐘）、講義、簡報與逐字稿放在雲端資料夾。免費，不用留資料。
+form_closed_message: 這場已經結束。內容剪成 7 段旁白短片放在直播記錄；錄影（切成 5 段，共約 84 分鐘）、講義、簡報與逐字稿放在雲端資料夾。免費，不用留資料。
 event_community_url: https://line.me/ti/g2/xshYqZH3DLsqO8XNipmG3abL_KM6DORU7da5Lw?utm_source=invitation&utm_medium=link_copy&utm_campaign=ai-profile-2026-11-18
-share-description: 11/18 我和 AI 的相處模式分享已結束，短課、講義與簡報開放取用。把 Claude Code、Codex、Copilot、Gemini 一年多的 7,981 則訊息一則一則數：九成三是一般交代事情，指出要改不到 3%，帶情緒和稱讚都不到 1%。頁面上有一段提示，貼給你的 AI，用你自己的紀錄做出同樣一頁。
+share-description: 11/18 我和 AI 的相處模式分享已結束，短片、講義與簡報開放取用。把 Claude Code、Codex、Copilot、Gemini 一年多的 7,981 則訊息一則一則數：九成三是一般交代事情，指出要改不到 3%，帶情緒和稱讚都不到 1%。頁面上有一段提示，貼給你的 AI，用你自己的紀錄做出同樣一頁。
 ---
 
-> **這場已經結束。**內容剪成 7 堂旁白短課，講義與簡報也放在一起：[到直播記錄看這一場](https://ai-workshop-backend.yazelinj303.workers.dev/live/lesson?id=1118)。錄影（切成 5 段，共約 84 分鐘）、講義、簡報與逐字稿在[雲端資料夾](https://drive.google.com/drive/folders/1d54JSIRRz5gC4lCvSNnpMQBfUa7ibRQB)。免費，不用留資料。
+> **這場已經結束。**內容剪成 7 段旁白短片，講義與簡報也放在一起：[到直播記錄看這一場](https://ai-workshop-backend.yazelinj303.workers.dev/live/lesson?id=1118)。錄影（切成 5 段，共約 84 分鐘）、講義、簡報與逐字稿在[雲端資料夾](https://drive.google.com/drive/folders/1d54JSIRRz5gC4lCvSNnpMQBfUa7ibRQB)。免費，不用留資料。
 
 上週有個 vibe coding 的朋友，系統改到跑不動來找我求救，想知道我是怎麼用 AI 的。我想了一下答不出來，因為我就是正常跟它講話。乾脆讓 AI 把我這一年多打給它的字全部讀完，一則一則數。
 
