@@ -2,7 +2,7 @@
 layout: post
 title: "《起跑總在開始前》《交棒總在終點後》：上下篇和它們的公開站"
 subtitle: "上篇偷跑，下篇跑過頭。"
-date: 2026-11-25
+date: 2026-11-03
 categories: [AI]
 tags: [Larch, 視覺小說, 起跑總在開始前, 交棒總在終點後, 公開站, 原聲帶, 第三屆創作者挑戰]
 author: Yaze Lin

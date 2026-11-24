@@ -2,7 +2,7 @@
 layout: post
 title: "《轉生成寶箱怪的我》公開站"
 subtitle: "這次你轉生成被撬開的那個寶箱。"
-date: 2026-11-25
+date: 2026-11-10
 categories: [AI]
 tags: [Larch, 3D, 轉生成寶箱怪的我, 公開站, 繪本, 第四屆創作者挑戰]
 author: Yaze Lin

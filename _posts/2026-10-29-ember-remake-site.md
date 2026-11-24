@@ -2,7 +2,7 @@
 layout: post
 title: "《餘燼》重製版：一部按下開始就能看完的音樂小說"
 subtitle: "歌唱到哪裡，故事就走到哪裡。"
-date: 2026-11-25
+date: 2026-10-29
 categories: [AI]
 tags: [Larch, 視覺小說, 餘燼, 公開站, 原聲帶, 唱歌卡]
 author: Yaze Lin

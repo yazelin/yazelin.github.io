@@ -2,7 +2,7 @@
 layout: post
 title: "讓遊戲裡的 AI 角色知道劇情進度，還能動手操作畫面"
 subtitle: "明是排進度的人，卻答不出現在做到哪。"
-date: 2026-11-25
+date: 2026-11-24
 categories: [AI]
 tags: [Larch, 夜後明月, AI 角色, 系統提示, Cloudflare Workers, 視覺小說]
 author: Yaze Lin
