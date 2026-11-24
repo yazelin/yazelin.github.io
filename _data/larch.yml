@@ -1,5 +1,8 @@
 # Larch 作品的站內快照:縮圖檔名、公開站。/larch/ 的數字與新作品即時讀 larch-showcase 的 works.json,這份只管站內交叉連結。
 # 文章或角色頁要掛某部作品,在 front matter 寫 larch: [id 前八碼]。新作品上架後補一行、補縮圖(images/larch/<id>.webp,800 寬)。
+- id: "66dcf6a2"
+  title: "夜後明月．晨前朝霞．慕詩客"
+  play: https://yazelin-chayu.larch.games
 - id: "12cc23dc"
   title: "轉生成寶箱怪的我"
   play: https://larch.ink/play/market/12cc23dc-9e1b-428b-9067-0c79d3d32071
