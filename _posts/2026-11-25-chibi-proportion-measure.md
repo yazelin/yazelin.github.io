@@ -2,7 +2,7 @@
 layout: post
 title: "提示詞寫「二頭身」不夠：45 張 Q 版貼圖怎麼統一比例"
 subtitle: "把比例寫成數字，產完畫線量。"
-date: 2026-11-25
+date: 2026-11-25 10:00:00 +0800
 categories: [AI]
 tags: [AI 生圖, 貼圖, Q 版, 提示詞, Larch, 夜後明月]
 author: Yaze Lin

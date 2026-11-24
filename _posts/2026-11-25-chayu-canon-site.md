@@ -2,7 +2,7 @@
 layout: post
 title: "《夜後明月．晨前朝霞．慕詩客》公開站"
 subtitle: "30 天的試戀期結束前，我想把他們三個都留下來。"
-date: 2026-11-25
+date: 2026-11-25 12:00:00 +0800
 categories: [AI]
 tags: [Larch, 視覺小說, 夜後明月, 公開站, 原聲帶, 第四屆創作者挑戰]
 author: Yaze Lin
